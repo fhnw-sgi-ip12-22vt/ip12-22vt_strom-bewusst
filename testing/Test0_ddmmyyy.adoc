@@ -1,0 +1,13 @@
+== Test 0
+
+[%autowidth]
+|===
+|Datum | dd.mm.yyy
+|Verantwortlich | Max Muster
+|===
+
+include::TestCases/1_1_EinAusschalten.adoc[]
+
+*Status:* Erfolgreich
+
+*Bemerkungen:* Der Knopf lies sich nur schwer drücken.

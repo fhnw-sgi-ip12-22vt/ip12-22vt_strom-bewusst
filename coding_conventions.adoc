@@ -1,0 +1,9 @@
+= Coding Conventions
+
+== Verwendete Konventionen
+
+_Beschreiben Sie hier, welche Konventionen sie verwenden wollen. Sie können auch auf bestehende verlinken._
+
+== Sicherstellung der Einhaltung der Konventionen
+
+_Beschreiben Sie hier, wie sie sicherstellen wollen, dass die Konventionen eingehalten werden. z.B. Hinterlegen in IntelliJ, Code Reviews, ..._
