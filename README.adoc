@@ -10,6 +10,7 @@ In diesem Projekt sollen Sie die Dokumentation ihres Produktes Ablegen. Dazu geh
 Sie sollen diese Dokumentation im Ascii-Doc Format schreiben
 
 == Softwaredokumentation
+Die Softwaredokumentation soll nach den Vorgaben von arc42 erstellt werden (https://arc42.org/). Als erstes soll jedoch die link:software(sad)/system-idee.adoc[System-Idee] geschrieben werden.
 
 == Hardwaredokumentation
 In der Hardwaredokumentation sollen Sie alles erfassen, was zum Bauen des Produkts nötig ist. Dazu gehören:
