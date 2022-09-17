@@ -1,0 +1,30 @@
+= Produktdokumentation
+
+In diesem Projekt sollen Sie die Dokumentation ihres Produktes Ablegen. Dazu gehört die Dokumentation von:
+
+- Softwaredokumentation (SAD)
+- Hardware-Dokumentation
+- Testdokumentation
+- Programmierkonventionen
+
+Sie sollen diese Dokumentation im Ascii-Doc Format schreiben
+
+== Softwaredokumentation
+
+== Hardwaredokumentation
+In der Hardwaredokumentation sollen Sie alles erfassen, was zum Bauen des Produkts nötig ist. Dazu gehören:
+
+- *Teileliste*: In der Teileliste führen sie alle Teile auf, welche Sie verbaut haben. Für jedes Teil soll auch noch angegeben werden, wie viel es gekostet hat und wie es verdrahtet wurde.
+- *Files*: Alle Files, welche sie für die Erstellung von physischen Bauteilen aus Holz (z.b. Laser) oder Plastik (z.b. 3D-Druck) gebraucht haben.
+- *Abmessungen*: Für Elemente, welche sie nicht automatisiert herstellen liessen geben Sie die Masse an.
+
+== Testdokumentation
+Die Testdokumentation zeigt auf, wie sie geprüft haben, ob das Produkt den Vorgaben entspricht. Einige Vorgaben werden automatisch mit Unit-Test überprüfbar sein, ander mit manuellen Tests.
+
+Bei den Unit-Tests wird davon ausgegangen, dass diese regelmässig ab Entstehungsdatum durchgeführt werden. Hier muss nicht angegeben werden, wann genau diese Tests ausgeführt wurden.
+
+Bei den manuellen Test sollen Testprotokolle darüber auskunft geben, wann was geprüft wurde und was das Resultat der Prüfung war. Dafür werden Testfälle erstellt, die dann immer wieder neu zu Tests zusammengeführt werden können. Auch der Abnahmetest am Ende des Projekts ist so eine Zusammenstellung derjenigen Tests, welche die wichtigsten Requirements überprüfen.
+
+
+== Programmierkonventionen (Coding-Conventions)
+Die Coding-Conventions geben vor, wie der Code geschrieben werden soll. Hierbei soll sich das Team an schon vorhandenen Coding-Conventions orientieren. Interessant ist vielmehr, wie sichergestellt wurde, dass diese Regeln auch eingehalten wurden.
