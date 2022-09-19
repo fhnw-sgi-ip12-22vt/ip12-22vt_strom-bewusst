@@ -7,7 +7,14 @@ In diesem Projekt sollen Sie die Dokumentation ihres Produktes Ablegen. Dazu geh
 - Testdokumentation
 - Programmierkonventionen
 
-Sie sollen diese Dokumentation im Ascii-Doc Format schreiben
+Sie sollen diese Dokumentation im Ascii-Doc Format schreiben. Referenzen hierfür ist einerseits die Dokumentation aus dem OOPI1/EIPR (https://gitlab.fhnw.ch/2022hs-oop1/docs) oder auch:
+
+- https://docs.asciidoctor.org/asciidoc/latest/
+- https://www.informatik-aktuell.de/entwicklung/methoden/docs-as-code-die-grundlagen.html
+- https://www.vogella.com/tutorials/AsciiDoc/article.html
+- https://www.heise.de/hintergrund/Documentation-as-Code-mit-Asciidoctor-4642013.html
+- https://blogs.uni-bremen.de/studytools/2021/09/11/projekte-dokumentierenmit-asciidoc/
+
 
 == Softwaredokumentation
 Die Softwaredokumentation soll nach den Vorgaben von arc42 erstellt werden (https://arc42.org/). Als erstes soll jedoch die link:software(sad)/system-idee.adoc[System-Idee] geschrieben werden.
