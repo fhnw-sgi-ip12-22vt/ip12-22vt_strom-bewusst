@@ -7,7 +7,8 @@
 // configure DE settings for asciidoc
 include::src/config.adoc[]
 
-= image:arc42-logo.png[arc42] Template
+= image:fhnw-logo.png[Fachhochschule Nordwestschweiz, 100] image:primeo-energie-logo.png[Primeo Energie, 100] Projekt Strom Bewusst
+
 :revnumber: 8.1 DE
 :revdate: Mai 2022
 :revremark: (basiert auf AsciiDoc Version)
