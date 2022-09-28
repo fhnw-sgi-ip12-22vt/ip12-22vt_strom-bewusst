@@ -2,12 +2,13 @@
 
 == Kernaufgabe des Systems
 ****
-Ziel des Projektes Strom Bewusst ist es, ein Spiel für das Erlebniscenter Kosmos von Primeo Energie zu schaffen. Das Spiel soll Kindern näherbringen wie viel Strom im Alltag verbraucht wird, oft auch ohne dass es uns bewusst ist und Tipps und Tricks zum Stromsparen vermitteln.
+Ziel des Projektes Strom Bewusst ist es, ein Spiel für das Erlebniscenter Kosmos von Primeo Energie zu schaffen. Das Spiel soll Kindern näherbringen wie viel Strom im Alltag verbraucht wird - oft auch ohne dass es uns bewusst ist und Tipps - und Tipps zum Stromsparen vermitteln.
 ****
 
 == Kategorie von System
 ****
-Unser Projekt ist ein operationales System, jedoch ohne externe Schnittstellen. Ausserdem hat unser System einige Eigenschaften eines Eingebetteten Systems, da wir spezielle Hardware und Peripherie für unser Projekt verwenden werden.
+Unser Projekt ist ein operationales System, jedoch ohne externe Schnittstellen. Ausserdem hat unser System einige Eigenschaften eines Eingebetteten Systems, da wir spezielle Hardware und Peripherie verwenden werden.
+Abhängig von der Spielidee für welche wir uns entscheiden werden wird unser System auch Eigenschaften eines Simulationssystemes besitzen.
 ****
 
 == Wesentliche Qualitätsanforderungen
@@ -21,12 +22,12 @@ Unser Team hat folgende Qualitätsanforderungen (nach https://de.wikipedia.org/w
 * **Funktionalität**, insbesondere Angemessenheit
   Wichtig weil wir sicherstellen wollen, dass unser System für die Ausstellung der Primeo Energie geeignet ist
 
-Es gibt ausserdem einige Qualitätsanforderungen die für unser Projekt weniger relevant sind, namentlich Sicherheit, da das System weder Schnittstellen auf externe Systeme hat, noch speziell schützenswerte Daten verarbeitet werden, die gesamte Übertragbarkeit, da unser System einen spezialisierten Anwendungsfall hat und einzigartig sein wird und Effizienz, da diese auf das Spielerlebnis nur wenig Einfluss hat.
+Es gibt ausserdem einige Qualitätsanforderungen die für unser Projekt weniger relevant sind, namentlich Sicherheit, da das System weder Schnittstellen auf externe Systeme hat, noch speziell schützenswerte Daten verarbeitet werden, Übertragbarkeit, da unser System einen spezialisierten Anwendungsfall hat und einzigartig sein wird und Effizienz, da diese auf das Spielerlebnis nur bedingt Einfluss hat.
 ****
 
 == Relevante Stakeholder
 ****
-Welche Rollen oder Personen (= Stakeholder) innerhalb oder ausserhalt der Organisation haben ein Interesse am System? Beispiele sind Benutzer der Kernfunktionalität („Anwender“), Administratoren und Betreiber, Benutzer mit Sonderfunktionen.
+Folgende Personen und Gruppen haben ein Interesse am System
 
 **Auftraggeber:** +
 Primeo Energie
@@ -59,5 +60,5 @@ Das System ist in sich geschlossen. Es gibt keine Schnittstellen zu externen Sys
 
 == Datenhaltung
 ****
-Abhängig von der Spielidee für die wir uns entscheiden müssen Spieldaten wie z.B. High-Scores persistent gespeichert werden. Dafür werden wir gegebenenfalls eine SQLite Datenbank verwenden, so können wir die Funktionalität von SQL verwenden, ohne eine externe Schnittstelle erstellen zu müssen.
+Abhängig von der Spielidee für die wir uns entscheiden müssen Spieldaten wie z.B. High-Scores persistent gespeichert werden. Dafür werden wir gegebenenfalls eine SQLite Datenbank verwenden, so können wir uns die  Vorteile relationaler Datenbanken zunutze machen, ohne eine externe Schnittstelle erstellen zu müssen.
 ****
