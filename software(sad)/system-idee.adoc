@@ -1,4 +1,4 @@
-= Systemidee Projekt Strom Bewusst
+= image:images/fhnw-logo.png[Fachhochschule Nordwestschweiz, 100] image:images/primeo-energie-logo.png[Primeo Energie, 100] Systemidee Projekt Strom Bewusst
 
 == Kernaufgabe des Systems
 ****
@@ -55,4 +55,9 @@ Zielgruppe sind 12 - 16 jährige Kinder welche die Ausstellung der Primeo Energi
 == Schnittstellen zu externen Systemen
 ****
 Das System ist in sich geschlossen. Es gibt keine Schnittstellen zu externen Systemen.
+****
+
+== Datenhaltung
+****
+Abhängig von der Spielidee für die wir uns entscheiden müssen Spieldaten wie z.B. High-Scores persistent gespeichert werden. Dafür werden wir gegebenenfalls eine SQLite Datenbank verwenden, so können wir die Funktionalität von SQL verwenden, ohne eine externe Schnittstelle erstellen zu müssen.
 ****
