@@ -29,18 +29,16 @@ Es gibt ausserdem einige Qualitätsanforderungen die für unser Projekt weniger 
 ****
 Folgende Personen und Gruppen haben ein Interesse am System
 
-**Auftraggeber:** +
+.Auftraggeber
 Primeo Energie
 
 Die Primeo Energie wird nach Projektabschluss das System in ihrer Ausstellung in Betrieb nehmen und administrireren.
 
-**Kunden:**
-
+.Kunden
 * Cédric Merz
 * Hannah Sarah Kühne
 
-**Teammitglieder:**
-
+.Teammitglieder
 * Andrin Martig
 * Daniel Barber
 * Samuel Burkhardt
@@ -49,7 +47,7 @@ Die Primeo Energie wird nach Projektabschluss das System in ihrer Ausstellung in
 * Viktor Weilenmann
 * Marco Worni
 
-**Benutzer:** +
+.Benutzer
 Zielgruppe sind 12 - 16 jährige Kinder welche die Ausstellung der Primeo Energie besuchen
 ****
 
