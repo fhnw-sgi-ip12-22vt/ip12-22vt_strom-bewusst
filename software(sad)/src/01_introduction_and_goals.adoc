@@ -16,7 +16,7 @@ Dazu gehören:
 
 === Aufgabenstellung
 
-[role="arc42help"]
+[role="arc42help hidden"]
 ****
 .Inhalt
 Kurzbeschreibung der fachlichen Aufgabenstellung, treibenden Kräfte, Extrakt (oder Abstract) der Anforderungen.
@@ -37,10 +37,15 @@ Halten Sie diese Auszüge so knapp wie möglich und wägen Sie Lesbarkeit und Re
 Siehe https://docs.arc42.org/section-1/[Anforderungen und Ziele] in der online-Dokumentation (auf Englisch!).
 
 ****
+****
+Die Kurzbeschreibung des Kunden lautet wie folgt:
+
+Strom wird im Alltag oft unbewusst verbraucht. Wir lassen Lichter brennen, Geräte werden nicht komplett vom Stromnetz getrennt, Computer werden nicht heruntergefahren. Fast in allen Lebensbereichen sind wir auf Strom angewiesen, sei dies im Transport, Haushalt oder auf der Arbeit. Trotzdem haben viele Menschen kein Verständnis für die Menge an Strom, die sie verbrauchen und gehen verschwenderisch mit Strom um. In diesem Projekt soll ein Spiel entwickelt werden, welches ein Bewusstsein für den Stromverbrauch im Alltag schafft und zum Strom sparen anregt.
+****
 
 === Qualitätsziele
 
-[role="arc42help"]
+[role="arc42help hidden"]
 ****
 .Inhalt
 Die Top-3 bis Top-5 der Qualitätsanforderungen für die Architektur, deren Erfüllung oder Einhaltung den maßgeblichen Stakeholdern besonders wichtig sind.
@@ -56,6 +61,16 @@ Weil Qualitätsziele grundlegende Architekturentscheidungen oft maßgeblich beei
 
 .Form
 Tabellarische Darstellung der Qualitätsziele mit möglichst konkreten Szenarien, geordnet nach Prioritäten.
+****
+****
+Die wichtigsten Qualitätsanforderungen an die Architektur sind folgende:
+
+* **Erlernbarkeit** +
+  Die Architektur soll einfach verständlich und erlernbar sein, damit alle Teammitglieder bei der Programmierung mithelfen können, ohne grössere Zeitinvestments um sich in die Architektur einzuarbeiten.
+* **Funktionale Eignung** +
+  Die Architektur soll sich für das Projekt gut eignen. Dabei ist vor allem auf die Komplexität Acht zu geben, denn durch höhere Komplexität steigt zwar potentiell die Wartbarkeit in der Zukunft, die Entwicklung wird aber verlangsamt und erschwert.
+* **Zuverlässigkeit** +
+  Die Architektur soll Zuverlässig funktionieren. Das heisst es muss damit gerechnet werden, dass unerwartete Inputs generiert werden, diese aber nicht zu einem Absturz des Systems führen.
 ****
 
 === Stakeholder
