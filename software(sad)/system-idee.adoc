@@ -2,7 +2,7 @@
 
 == Kernaufgabe des Systems
 ****
-Ziel des Projektes Strom Bewusst ist es, ein Spiel für das Erlebniscenter Kosmos von Primeo Energie zu schaffen. Das Spiel soll Kindern näherbringen wie viel Strom im Alltag verbraucht wird - oft auch ohne dass es uns bewusst ist und Tipps - und Tipps zum Stromsparen vermitteln.
+Ziel des Projektes Strom Bewusst ist es, ein Spiel für das Erlebniscenter Kosmos von Primeo Energie zu schaffen. Das Spiel soll Kindern näherbringen wie viel Strom im Alltag verbraucht wird - oft auch ohne dass es uns bewusst ist - und Tipps zum Stromsparen vermitteln.
 ****
 
 == Kategorie von System
