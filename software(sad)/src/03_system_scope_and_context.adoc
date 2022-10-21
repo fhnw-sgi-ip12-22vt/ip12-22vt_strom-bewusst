@@ -1,6 +1,7 @@
 [[section-system-scope-and-context]]
 == Kontextabgrenzung
 
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -26,9 +27,10 @@ Verschiedene Optionen:
 Siehe https://docs.arc42.org/section-3/[Kontextabgrenzung] in der online-Dokumentation (auf Englisch!).
 
 ****
+////
 
 === Fachlicher Kontext
-
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -48,9 +50,21 @@ Der Titel gibt den Namen Ihres Systems wieder; die drei Spalten sind: Kommunikat
 **<Diagramm und/oder Tabelle>**
 
 **<optional: Erläuterung der externen fachlichen Schnittstellen>**
+////
+
+////
+TODO:
+Keine Schnittstellen zu externen Systemen
+////
+
+[cols="1,2,2" options="header"]
+|===
+| Kommunikations-beziehung | Input                                                 | Output 
+| Spieler                  | Game-Controls durch Peripherie (Joystick, Controller) | Visueller Output mit dem aktuellen Spielstatus (Score, Rätsel, Spielerbewegung, etc.)
+|===
 
 === Technischer Kontext
-
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -71,3 +85,10 @@ Beispielsweise UML Deployment-Diagramme mit den Kanälen zu Nachbarsystemen, beg
 **<optional: Erläuterung der externen technischen Schnittstellen>**
 
 **<Mapping fachliche auf technische Schnittstellen>**
+////
+
+////
+TODO:
+Schnittstellen zu Controller und Bildschirm. Evtl. LEDs, etc.
+Diagramm falls möglich, sobald wir eine spezifische Idee und feste Hardware haben.
+////
