@@ -1,5 +1,5 @@
 [[section-introduction-and-goals]]
-==	Einführung und Ziele
+== Einführung und Ziele
 === Aufgabenstellung
 ****
 Die Kurzbeschreibung des Kunden lautet wie folgt:
