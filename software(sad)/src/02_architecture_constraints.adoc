@@ -21,3 +21,19 @@ Bei Bedarf unterscheiden Sie technische, organisatorische und politische Randbed
 Siehe https://docs.arc42.org/section-2/[Randbedingungen] in der online-Dokumentation (auf Englisch!).
 
 ****
+=== Technologie Stack
+****
+Die folgenden Technologien und Libraries werden für das Projekt empfohlen und werden von uns übernommen
+
+.Programmiersprache +
+Java 11
+
+.Hardware +
+Raspberry Pi
+
+.Libraries +
+* Pi4J (Java API für Raspberry Pi)
+* JUnit (Test-Framework)
+* JavaFX (Java Grafiklibrary)
+
+****
