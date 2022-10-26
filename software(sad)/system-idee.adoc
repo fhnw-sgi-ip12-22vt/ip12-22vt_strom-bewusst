@@ -57,6 +57,9 @@ Die Primeo Energie wird nach Projektabschluss das System in ihrer Ausstellung in
 * Cédric Merz
 * Hannah Sarah Kühne
 
+.Coach
+* Norbert Seyff
+
 .Teammitglieder
 * Andrin Martig
 * Daniel Barber
