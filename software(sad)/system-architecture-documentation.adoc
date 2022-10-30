@@ -10,7 +10,7 @@ include::src/config.adoc[]
 = image:fhnw-logo.png[Fachhochschule Nordwestschweiz, 100] image:primeo-energie-logo.png[Primeo Energie, 100] Projekt Strom Bewusst
 
 :revnumber: 8.1 DE
-:revdate: Mai 2022
+:revdate: October 2022
 :revremark: (basiert auf AsciiDoc Version)
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Inhaltsverzeichnis
@@ -30,7 +30,7 @@ ifdef::backend-html5[]
 ++++
 endif::backend-html5[]
 
-
+////
 include::src/about-arc42.adoc[]
 
 // horizontal line
@@ -45,7 +45,7 @@ Sie dient der Einarbeitung in arc42 sowie dem Verständnis der Konzepte.
 Für die Dokumentation eigener System verwenden Sie besser die _plain_ Version.
 ====
 ****
-
+////
 
 // numbering from here on
 :numbered:
