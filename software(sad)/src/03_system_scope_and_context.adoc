@@ -60,7 +60,7 @@ Keine Schnittstellen zu externen Systemen
 [cols="1,2,2" options="header"]
 |===
 | Kommunikations-beziehung | Input                                                 | Output 
-| Spieler                  | Game-Controls durch Peripherie (Joystick, Controller) | Visueller Output mit dem aktuellen Spielstatus (Score, Rätsel, Spielerbewegung, etc.)
+| Spieler                  | Game-Controls durch Peripherie (Controller mit Stecker, Steuerkreuz, Buttons) | Visueller Output mit dem aktuellen Spielstatus (Score, Rätsel, Spielerbewegung, etc.)
 |===
 
 === Technischer Kontext
