@@ -3,7 +3,7 @@
 [%autowidth]
 |===
 |Datum | dd.mm.yyy
-|Verantwortlich | Max Muster
+|Verantwortlich | Max Müller
 |===
 
 include::TestCases/1_1_EinAusschalten.adoc[]
