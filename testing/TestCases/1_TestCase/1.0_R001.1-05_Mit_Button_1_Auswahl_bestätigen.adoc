@@ -1,10 +1,10 @@
 TC 1.0: R001.1-05 Mit Button 1 Auswahl bestätigen
 
 *Beschreibung:* Der Bestätigungsbutton während dem ganzen Spiel benutzt, um folgende Aktionen zu bestätigen: 
-    - Objekte im Raum anklicken
-    - Um weiteren Textdialog zu lesen 
-    - Die Wahl der Farbblöcke in den Rätsel zu bestätigen
-    - <continue> 
+    ** Objekte im Raum anklicken
+    ** Um weiteren Textdialog zu lesen 
+    ** Die Wahl der Farbblöcke in den Rätsel zu bestätigen
+    ** <continue> 
 
 *Annahmen und Voraussetzungen:* Damit der Bestätigungsbutton funktioniert, muss dieser stabil im Kontroller verbaut sein. Zudem muss die Betätigung vom Spiel erkannt werden. 
 
@@ -12,26 +12,26 @@ TC 1.0: R001.1-05 Mit Button 1 Auswahl bestätigen
 
 *Auszuführende Schritte:*
     
-    - Objekte im Raum anklicken:
-    1) Figur steht vor dem Objekt. 
-    2) Es wird angezeigt, dass das Objekt angeklickt werden kann.
+    ** Objekte im Raum anklicken:
+        1) Figur steht vor dem Objekt. 
+        2) Es wird angezeigt, dass das Objekt angeklickt werden kann.
 
-    - Um weiteren Textdialog zu lesen:
-    1) Textfeld ist geöffnet, unten steht "Zum weiterlesen/beenden Bestätigungsbutton drücken"
+    ** Um weiteren Textdialog zu lesen:
+        1) Textfeld ist geöffnet, unten steht "Zum weiterlesen/beenden Bestätigungsbutton drücken"
 
-    - Die Wahl der Farbblöcke in den Rätsel zu bestätigen:
-    1) Spieler wählt den Farbblock mit dem Einstecken des Steckers in die entsprechende Steckdose. Spezialfall Schätzungsfrage erfolgt die Eingabe mit Joystick.
-    2) Die Wahl wird mit dem Bestätigungsbutton bestätigt.  
+    ** Die Wahl der Farbblöcke in den Rätsel zu bestätigen:
+        1) Spieler wählt den Farbblock mit dem Einstecken des Steckers in die entsprechende Steckdose. Spezialfall Schätzungsfrage erfolgt die Eingabe mit Joystick.
+        2) Die Wahl wird mit dem Bestätigungsbutton bestätigt.  
 
-    - <continue> 
+    ** <continue> 
 
 *erwartetes Ergebnis:* 
 
-    - Objekte im Raum anklicken:
+    ** Objekte im Raum anklicken: + 
     Wird der Bestätigungsbutton gedrückt, wird die entsprechend gewünschte Aktion ausgeführt.
 
-    - Um weiteren Textdialog zu lesen:
+    ** Um weiteren Textdialog zu lesen: +
     Textdialog wird weitergeführt oder verschwindet, falls dieser fertig ist. Figur kann sich nun wieder frei im Raum bewegen.
 
-    - Die Wahl der Farbblöcke in den Rätsel zu bestätigen:
+    ** Die Wahl der Farbblöcke in den Rätsel zu bestätigen: + 
     Auf dem Bildschirm wird die Auswahl markiert und das Rätsel wird fortgeführt. 
