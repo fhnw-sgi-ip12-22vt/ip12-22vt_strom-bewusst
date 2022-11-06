@@ -5,7 +5,7 @@ Der Bestätigungsbutton wird während dem ganzen Spiel benutzt, um folgende Akti
 
     * Objekte im Raum anklicken
     * Um weiteren Textdialog zu lesen 
-    * Die Wahl der Farbblöcke in den Rätsel werden bestätigen
+    * Die Wahl der Farbblöcke in den Rätsel werden bestätigt
     * <continue> 
 
 === Annahmen und Voraussetzungen: === 
@@ -23,7 +23,7 @@ Objekt/Tätigkeit, welche bestätigt wird. (Welches Objekt im Raum, welcher Farb
     * Um weiteren Textdialog zu lesen:
         ** Textfeld ist geöffnet, unten steht "Zum weiterlesen/beenden Bestätigungsbutton drücken"
 
-    * Die Wahl der Farbblöcke in den Rätsel werden bestätigen:
+    * Die Wahl der Farbblöcke in den Rätsel werden bestätigt:
         ** Spieler wählt den Farbblock mit dem Einstecken des Steckers in die entsprechende Steckdose. Spezialfall Schätzungsfrage erfolgt die Eingabe mit Joystick.
         ** Die Wahl wird mit dem Bestätigungsbutton bestätigt.  
 
@@ -37,7 +37,7 @@ Objekt/Tätigkeit, welche bestätigt wird. (Welches Objekt im Raum, welcher Farb
     * Um weiteren Textdialog zu lesen: +
     ** Textdialog wird weitergeführt oder verschwindet, falls dieser fertig ist. Figur kann sich nun wieder frei im Raum bewegen.
 
-    * Die Wahl der Farbblöcke in den Rätsel werden bestätigen: +
+    * Die Wahl der Farbblöcke in den Rätsel werden bestätigt: +
     ** Auf dem Bildschirm wird die Auswahl markiert und das Rätsel wird fortgeführt.
 
     * <continue>
