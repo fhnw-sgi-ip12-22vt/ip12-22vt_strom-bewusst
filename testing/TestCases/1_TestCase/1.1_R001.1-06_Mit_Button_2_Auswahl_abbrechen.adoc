@@ -1,0 +1,43 @@
+== TC 1.1: R001.1-06 Mit Button 2 Auswahl abbrechen ==
+
+=== Beschreibung: === 
+Der Abbrechbutton wird während dem ganzen Spiel benutzt, um folgende Aktionen abzubrechen: +
+
+    * Angeklickte Objekte verlassen
+    * Um Textdialog abzubrechen 
+    * Die Wahl der Farbblöcke in den Rätsel werden rückgängig gemacht
+    * <continue> 
+
+=== Annahmen und Voraussetzungen: === 
+Damit der Abbrechbutton funktioniert, muss dieser stabil im Kontroller verbaut sein. Zudem muss das Abbrechen vom Spiel erkannt werden. 
+
+=== Testdaten: ===
+Objekt/Tätigkeit, welches/e abgebrochen wird. (Welches Objekt im Raum, welcher Farbblock im Rätsel, welcher Textdialog)
+
+=== Auszuführende Schritte: ===
+    
+    * Angeklickte Objekte verlassen:
+        ** Das Fenster für das Objekt ist geöffnet. 
+        ** Es wird angezeigt, dass das Objekt jederzeit verlassen werden kann.
+
+    * Um Textdialog abzubrechen:
+        ** Textfeld ist geöffnet, unten steht "Zum verlassen Abbrechbutton drücken"
+
+    * Die Wahl der Farbblöcke in den Rätsel werden rückgängig gemacht:
+        ** Spieler hat ein Farbblock oder Zahl mit dem Bestätigungsbutton bestätigt.
+        ** Die Wahl wird auf dem Bildschirm markiert.  
+
+    * <continue> 
+
+=== erwartetes Ergebnis: === 
+
+    * Angeklickte Objekte verlassen: + 
+    ** Wird der Abbrechbutton gedrückt, kann der Spieler sich sofort wieder frei im Raum bewegen.
+
+    * Um Textdialog abzubrechen: +
+    ** Wird der Abbrechbutton gedrückt, kann der Spieler sich sofort wieder frei im Raum bewegen.
+
+    * Die Wahl der Farbblöcke in den Rätsel werden rückgängig gemacht: +
+    ** Mit dem Abbrechbutton kann der Spieler die Wahl ändern.  
+
+    * <continue>
