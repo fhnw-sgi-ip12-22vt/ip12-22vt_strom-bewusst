@@ -9,12 +9,12 @@
 - Zeilen sind max. 120 Zeichen lang
 - Verkettungen sind umgebrochen auf neue Zeilen mit 8 Leerzeichen Einrückung
 
-Dokumentation:
+=== Dokumentation:
 
 - Für jede Klasse ist ein JavaDoc Kommentar gesetzt, welcher die Zuständigkeit beschreibt.
 - Bei jeder Funktion ausser bei Konstruktoren und bei Gettern / Settern ist ein JavaDoc Kommentar gesetzt, welcher mindestens die Funktion beschreibt und bei komplexeren Funktionen die Parameter.
 
 == Sicherstellung der Einhaltung der Konventionen
 
-- In der IDE können viele dieser Punkte konfiguriert werden, und exportiert werden. Diese können dann jedem Teamitglied verteilt werden.
+- Die konfigurierten Coding Conventions werden automatisch im Projekt gespeichert und importiert wenn das Projekt in IntelliJ geöffnet wird.
 - Jede Person arbeitet auf einem eigenen Git Branch. Sobald ein Feature fertiggestellt wurde, wird ein Merge-Request gestellt und der Branch wird geprüft vor dem Merge.
