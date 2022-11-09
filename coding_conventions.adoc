@@ -2,8 +2,19 @@
 
 == Verwendete Konventionen
 
-_Beschreiben Sie hier, welche Konventionen sie verwenden wollen. Sie können auch auf bestehende verlinken._
+- Namenskonventionen: Packagenamen sind immer klein, Klassen sind CamelCase, Variablen sind drinkingCamelCase, Konstanten und Enums sind in UPPER_CASE.
+- 4 Leerschläge Einrückung pro Block, Leerzeichen wie hier beschrieben.
+- Keine Mehrfachdeklarationen pro Zeile.
+- Öffnende Klammer auf der vorherigen Zeile, schliessende auf eine neue Zeile.
+- Zeilen sind max. 120 Zeichen lang
+- Verkettungen sind umgebrochen auf neue Zeilen mit 8 Leerzeichen Einrückung
+
+Dokumentation:
+
+- Für jede Klasse ist ein JavaDoc Kommentar gesetzt, welcher die Zuständigkeit beschreibt.
+- Bei jeder Funktion ausser bei Konstruktoren und bei Gettern / Settern ist ein JavaDoc Kommentar gesetzt, welcher mindestens die Funktion beschreibt und bei komplexeren Funktionen die Parameter.
 
 == Sicherstellung der Einhaltung der Konventionen
 
-_Beschreiben Sie hier, wie sie sicherstellen wollen, dass die Konventionen eingehalten werden. z.B. Hinterlegen in IntelliJ, Code Reviews, ..._
+- In der IDE können viele dieser Punkte konfiguriert werden, und exportiert werden. Diese können dann jedem Teamitglied verteilt werden.
+- Jede Person arbeitet auf einem eigenen Git Branch. Sobald ein Feature fertiggestellt wurde, wird ein Merge-Request gestellt und der Branch wird geprüft vor dem Merge.
