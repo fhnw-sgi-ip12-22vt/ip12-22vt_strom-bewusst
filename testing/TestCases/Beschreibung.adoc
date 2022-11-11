@@ -31,7 +31,7 @@ Dies zeigt das Ergebnis an, das nach der Ausführung des Testfallschritts erwart
 
 == TEMPLATE ==
 
-== <ID> : <Anforderung> ==
+== <TestID> : <AnforderungsID> : <Anforderung> ==
 
 === Beschreibung: === 
 <Beschreibung>: +
@@ -60,7 +60,7 @@ Dies zeigt das Ergebnis an, das nach der Ausführung des Testfallschritts erwart
 
 == BEISPIEL ==
 
-== R001.1-05 : Mit Button 1 Auswahl bestätigen ==
+== TC1.1 : R001.1-05 : Mit Button 1 Auswahl bestätigen ==
 
 === Beschreibung: === 
 Der Bestätigungsbutton wird während dem ganzen Spiel benutzt, um folgende Aktionen zu bestätigen: +
