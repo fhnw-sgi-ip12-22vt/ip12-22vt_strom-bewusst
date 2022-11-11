@@ -1,0 +1,26 @@
+== TC1.1 : R003.1-01 : <Anforderung> ==
+
+=== Beschreibung: === 
+<Beschreibung>: +
+
+    * <Aufzählungspunkte>
+
+=== Annahmen und Voraussetzungen: === 
+<Annahme>
+
+=== Testdaten: ===
+<Testdaten>
+
+=== Auszuführende Schritte: ===
+    
+    * <Aufzählungspunkte>:
+        ** <Aufzählungspunkte> 
+
+    * <Aufzählungspunkte>:
+        
+=== Erwartetes Ergebnis: === 
+
+    * <Aufzählungspunkte>: + 
+    ** <Aufzählungspunkte>
+
+    * <Aufzählungspunkte> +
