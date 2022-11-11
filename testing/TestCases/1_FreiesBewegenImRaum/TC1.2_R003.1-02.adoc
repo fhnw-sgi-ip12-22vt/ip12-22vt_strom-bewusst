@@ -1,26 +1,18 @@
-== TC1.1 : R003.1-01 : <Anforderung> ==
+== TC1.2 : R003.1-02 : Bei Objekten im Raum steht der Spieler vor dem Objekt ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Figuren sollen nicht von Objekten im Raum überdeckt werden. Nehmen wir als Beispiel einen Tisch, dann ist um den Tisch herum eine Zone. Die Figuren können nicht in diese Zone, weil sie ansonsten vom Tisch überdeckt werden oder sie den Tisch überdecken.  
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Objekte im Raum werden im Code mit x,y Koordinaten und Zonenbereich implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Objekte im Raum mit Zonenbereich. 
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figur steht vor dem Objekt
+    * Die Figur wird nach vorne navigiert
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die Figur wird vor dem Objekt gestoppt und muss das Objekt links oder rechts umgehen. 

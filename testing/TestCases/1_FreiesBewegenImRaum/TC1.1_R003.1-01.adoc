@@ -1,26 +1,18 @@
-== TC1.1 : R003.1-01 : <Anforderung> ==
+== TC1.1 : R003.1-01 : Spieler kann sich horizontal und vertikal bewegen mit dem Joystick ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Figuren auf dem Bildschirm bewegen sich horizontal und vertikal wenn der Joystick in diese Richtung gedrückt wird.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Der Joystick muss stabil im Kontroller verbaut sein und vom System als Eingabe erkannt werden. 
 
 === Testdaten: ===
-<Testdaten>
+Die x und y Koordinaten stimmen mit der Position der Figuren überein. 
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figur steht im Raum.
+    * Der Joystick wird nach oben/unten/rechts/links gedrückt.
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die Software reagiert auf die Eingabe und verschiebt die Figuren auf dem Display in die Richtung, in die der Joystick gedrückt wird.   
