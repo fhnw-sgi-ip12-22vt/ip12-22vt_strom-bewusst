@@ -27,36 +27,7 @@ Dies sollten leicht wiederholbare Schritte sein, wie sie aus Sicht des Endbenutz
 
 === Schritt 6: erwartetes Ergebnis ===
 
-Dies zeigt das Ergebnis an, das nach der Ausführung des Testfallschritts erwartet wird. 
-
-== TEMPLATE ==
-
-== <TestID> : <AnforderungsID> : <Anforderung> ==
-
-=== Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
-
-=== Annahmen und Voraussetzungen: === 
-<Annahme>
-
-=== Testdaten: ===
-<Testdaten>
-
-=== Auszuführende Schritte: ===
-    
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
-        
-=== Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Dies zeigt das Ergebnis an, das nach der Ausführung des Testfallschritts erwartet wird.
 
 == BEISPIEL ==
 
@@ -98,3 +69,52 @@ Objekt/Tätigkeit, welche bestätigt wird. (Welches Objekt im Raum, welcher Farb
 
     * Die Wahl der Farbblöcke in den Rätsel werden bestätigt: +
     ** Auf dem Bildschirm wird die Auswahl markiert und das Rätsel wird fortgeführt.
+
+== TEMPLATE TESTCASE ==
+
+== <TestID> : <AnforderungsID> : <Anforderung> ==
+
+=== Beschreibung: === 
+<Beschreibung>: +
+
+    * <Aufzählungspunkte>
+
+=== Annahmen und Voraussetzungen: === 
+<Annahme>
+
+=== Testdaten: ===
+<Testdaten>
+
+=== Auszuführende Schritte: ===
+    
+    * <Aufzählungspunkte>:
+        ** <Aufzählungspunkte> 
+
+    * <Aufzählungspunkte>:
+        
+=== Erwartetes Ergebnis: === 
+
+    * <Aufzählungspunkte>: + 
+    ** <Aufzählungspunkte>
+
+    * <Aufzählungspunkte> +
+
+== TEMPLATE TESTDOKUMENT ==
+
+=== Test: <Nummer> ===
+
+[%autowidth]
+|===
+|Datum | <dd.mm.yyy>
+|Verantwortlich | <Nachname Vorname>
+|===
+
+|===
+|Link Testcase |Status|Bemerkungen
+
+|<Anforderung> https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/Beschreibung.adoc[<TestCase>]
+|<Status>
+|<Bemerkung>
+
+|===
+

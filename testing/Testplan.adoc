@@ -7,7 +7,7 @@
 
 |Elaboration 13.11.2022
 |Figma Prototyp
-|
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
 |Elaboration 21.11.2022
 |Prototyp Hardware
@@ -56,21 +56,3 @@
 |===
 
 
-== TEMPLATE ==
-
-=== Test: <Nummer> ===
-
-[%autowidth]
-|===
-|Datum | <dd.mm.yyy>
-|Verantwortlich | <Nachname Vorname>
-|===
-
-|===
-|Link Testcase |Status|Bemerkungen
-
-|<Anforderung> https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/Beschreibung.adoc[<TestCase>]
-|<Status>
-|<Bemerkung>
-
-|===
