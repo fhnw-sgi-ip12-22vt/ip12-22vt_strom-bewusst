@@ -4,21 +4,25 @@
 Jede Eingabe wird vom System erkannt, ausgeführt und auf dem Display angezeigt. Dies soll maximal eine halbe Sekunde dauern.
 
 === Annahmen und Voraussetzungen: === 
-
+Eingaben von der Hardware werden erkannt und in der Software ausgeführt. Figuren, Rätsel und Textfenster können mit der Eingabe bedient werden. 
 
 === Testdaten: ===
-<Testdaten>
+Figuren, Rätsel, Textfenster.    
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figuren:
+        ** Figur steht im Raum.
+        ** Figur wird mit dem Joystick bewegt. 
+    * Rätsel:
+        ** Spieler hat ein Rätselfenster geöffnet. 
+        ** Stecker ist eingesteckt und Bestätigungsbutton wird gedrückt.
+    * Textfelder:
+        ** Textfeld ist offen. 
+        ** Um weiterzulesen wird der Bestätigungsbutton gedrückt.
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    
+    * Figur bewegt sich innerhalb von maximal einer halben Sekunde.
+    * Wahl im Rätsel wird innerhalb von maximal einer halben Sekunde angezeigt. 
+    * Neuer Text wird innerhalb von maximal einer halben Sekunde angezeigt.
