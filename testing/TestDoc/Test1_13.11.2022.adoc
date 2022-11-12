@@ -1,0 +1,16 @@
+=== Test: <Nummer> ===
+
+[%autowidth]
+|===
+|Datum | <dd.mm.yyy>
+|Verantwortlich | <Nachname Vorname>
+|===
+
+|===
+|Link Testcase |Status|Bemerkungen
+
+|<Anforderung> https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/Beschreibung.adoc[<TestCase>]
+|<Status>
+|<Bemerkung>
+
+|===
