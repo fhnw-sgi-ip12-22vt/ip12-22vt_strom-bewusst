@@ -1,26 +1,19 @@
-== TC1.1 : R003.1-01 : <Anforderung> ==
+== TC1.5 : R003.1-05 : Beide Spieler können sich gleichzeitig bewegen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Die Figuren im Raum sollen sich zur gleichen Zeit bewegen können.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Das System kann zwei Eingaben gleichzeitig verarbeiten. Im Code ist die Navigation der Figuren implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Zwei Figuren mit ihren x und y Koordinaten.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
+    * Zwei Figuren stehen nebeneindander im Raum.
+    * Die erste Figur wird nach oben/unten/links/rechts navigiert.
+    * Die zweite Figur wird zur selben Zeit nach oben/unten/links/rechts navigiert. 
 
-    * <Aufzählungspunkte>:
-        
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die erste Figur bewegt sich nach oben/unten/links/rechts. Zur selben Zeit bewegt sich die zweite Figur nach oben/unten/links/rechts.

@@ -1,24 +1,19 @@
-== TC1.3 : R003.1-03 :  Der Spieler bewegt sich fliessend, heisst nicht ruckartig==
+== TC1.3 : R003.1-03 :  Der Spieler bewegt sich fliessend, heisst nicht ruckartig ==
 
 === Beschreibung: === 
-
+Die Navigation der Figur soll so animiert sein, dass sich die Figur zum neuen Ort hinbewegt und nicht einfach die Position des neuen Orts einnimmt.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Im Code wurde die Bewegung der Figuren implementiert. Mit einer Eingabe kann die Figur gesteuert werden.
 
 === Testdaten: ===
-<Testdaten>
+x und y Koordinate der Figur und Richtung, in die die Figur gesteuert wird.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figur befindet sich in einem Raum.
+    * Mit dem Controller wird die Figur nach oben/unten/rechts/links navigiert.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Figur bewegt sich nach vorne/hinten/rechts/links mit einer Animation.

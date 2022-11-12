@@ -1,26 +1,19 @@
-== TC1.1 : R003.1-01 : <Anforderung> ==
+== TC1.4 : R003.1-04 : Der Spieler kann sich nicht aus dem Raum bewegen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Die Figur stoppt bei den Wänden im Raum. Die Figur kann den Raum nur durch die Tür verlassen.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Im Code wurden Wände als Objekte mit Zonenbereich implementiert. Diese Zone können die Figuren nicht betreten. 
 
 === Testdaten: ===
-<Testdaten>
+Wandobjekt mit Zonenbereich.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figur steht vor der Wand.
+    * Die Figur wird in Richtung der Wand navigiert.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Figur stoppt vor der Wand.

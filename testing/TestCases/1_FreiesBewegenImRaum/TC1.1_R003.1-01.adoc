@@ -4,7 +4,7 @@
 Figuren auf dem Bildschirm bewegen sich horizontal und vertikal wenn der Joystick in diese Richtung gedrückt wird.
 
 === Annahmen und Voraussetzungen: === 
-Der Joystick muss stabil im Kontroller verbaut sein und vom System als Eingabe erkannt werden. 
+Der Joystick muss stabil im Kontroller verbaut sein und vom System als Eingabe erkannt werden.
 
 === Testdaten: ===
 Die x und y Koordinaten stimmen mit der Position der Figuren überein. 
