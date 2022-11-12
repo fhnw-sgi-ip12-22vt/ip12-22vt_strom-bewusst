@@ -1,15 +1,35 @@
-=== Test: <Nummer> ===
+=== Test 1 ===
 
 [%autowidth]
 |===
-|Datum | <dd.mm.yyy>
-|Verantwortlich | <Nachname Vorname>
+|Datum | 13.11.2022
+|Verantwortlich | Mlinar Damjan
 |===
 
 |===
-|Link Testcase |Status|Bemerkungen
+|Testcase |Status|Bemerkungen
 
-|<Anforderung> https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/Beschreibung.adoc[<TestCase>]
+|Spieler kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.1_R003.1-01.adoc[TC 1.1]
+|<Status>
+|<Bemerkung>
+
+|Bei Objekten im Raum steht der Spieler vor dem Objekt https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.2_R003.1-02[TC 1.2]
+|<Status>
+|<Bemerkung>
+
+|Der Spieler bewegt sich fliessend, heisst nicht ruckartig https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.3_R003.1-03[TC 1.3]
+|<Status>
+|<Bemerkung>
+
+|Der Spieler kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.4_R003.1-04[TC 1.4]
+|<Status>
+|<Bemerkung>
+
+|Beide Spieler können sich gleichzeitig bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.5_R003.1-05[TC 1.5]
+|<Status>
+|<Bemerkung>
+
+|Die Eingabeverzögerung ist maximal eine halbe Sekunde https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.6_R003.1-06[TC 1.6]
 |<Status>
 |<Bemerkung>
 
