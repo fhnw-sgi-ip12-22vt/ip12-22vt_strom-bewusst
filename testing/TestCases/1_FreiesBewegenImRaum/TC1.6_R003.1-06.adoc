@@ -1,12 +1,10 @@
-== TC1.1 : R003.1-01 : <Anforderung> ==
+== TC1.1 : R003.1-01 : Die Eingabeverzögerung ist maximal eine halbe Sekunde ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Jede Eingabe wird vom System erkannt, ausgeführt und auf dem Display angezeigt. Dies soll maximal eine halbe Sekunde dauern.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+
 
 === Testdaten: ===
 <Testdaten>
