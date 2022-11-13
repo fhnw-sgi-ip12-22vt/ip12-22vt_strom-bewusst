@@ -23,7 +23,7 @@
 
 |Der Spieler kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.4_R003.1-04.adoc[TC 1.4]
 |Erfolgreich
-|Die Figur wird bei allen 4 Wänden gestoppt und kann diese nicht passieren. Es gibt leider einen Sonderfall, und zwar wenn die Figur im ersten Raum vor der südlichen Wand steht. Wird die Figur nach unten bewegt, so taucht das Steuerungsmenü auf.  
+|Die Figur wird bei allen 4 Wänden gestoppt und kann diese nicht passieren.  
 
 |Beide Spieler können sich gleichzeitig bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.5_R003.1-05.adoc[TC 1.5]
 |Erfolgreich
