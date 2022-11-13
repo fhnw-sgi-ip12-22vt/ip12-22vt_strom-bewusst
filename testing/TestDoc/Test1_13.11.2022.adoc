@@ -10,27 +10,27 @@
 |Testcase |Status|Bemerkungen
 
 |Spieler kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.1_R003.1-01.adoc[TC 1.1]
-|<Status>
-|<Bemerkung>
+|Erfolgreich
+|Die Figur bewegt sich in grossen Stücken nach links oder rechts. Wir müssen hier beachten, dass alle anklickbare Objekte auch von der Figur erreicht werden können. Steht die Figur zum Beispiel links vom Rätselobjekt und bewegt sich einmal nach rechts, dann sollte nun das Rätsel angewählt werden können.
 
 |Bei Objekten im Raum steht der Spieler vor dem Objekt https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.2_R003.1-02.adoc[TC 1.2]
-|<Status>
-|<Bemerkung>
+|Gescheitert
+|Als Testobjekt wurde ein Tisch im ersten Raum verwendet. Wenn die Figur nach vorne navigiert wird, so wird der Tisch von der Figur überdeckt. Erwartet wird, dass die Figur vor dem Tisch stoppt und nicht über den Tisch navigiert werden kann. 
 
 |Der Spieler bewegt sich fliessend, heisst nicht ruckartig https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.3_R003.1-03.adoc[TC 1.3]
-|<Status>
-|<Bemerkung>
+|Erfolgreich
+|Die Figuren bewegen sich elegant in alle Richtungen auf dem Display.
 
 |Der Spieler kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.4_R003.1-04.adoc[TC 1.4]
-|<Status>
-|<Bemerkung>
+|Erfolgreich
+|Die Figur wird bei allen 4 Wänden gestoppt und kann diese nicht passieren. Es gibt leider einen Sonderfall, und zwar wenn die Figur im ersten Raum vor der südlichen Wand steht. Wird die Figur nach unten bewegt, so taucht das Steuerungsmenü auf.  
 
 |Beide Spieler können sich gleichzeitig bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.5_R003.1-05.adoc[TC 1.5]
-|<Status>
-|<Bemerkung>
+|Erfolgreich
+|Zwei Eingaben werden gleichzeitig erkannt und ausgeführt. Beide Figuren können jeder der vier Richtungen einschlagen. Beide bewegen sich fliessend, es wird keine zusätzliche Verzögerung festgestellt.
 
 |Die Eingabeverzögerung ist maximal eine halbe Sekunde https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.6_R003.1-06.adoc[TC 1.6]
-|<Status>
-|<Bemerkung>
+|Erfolgreich
+|Gemessen wurde mit einer Stopuhr. Figuren und Rätsel erfüllen die Anforderung. Wir haben momentan noch keine Textfelder, welche aus mehr als einem Textfenster bestehen. Alle Textfelder haben nur ein Fenster. 
 
 |===
