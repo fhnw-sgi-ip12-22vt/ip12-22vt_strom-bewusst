@@ -3,53 +3,53 @@
 = Testplan =
 
 |===
-|Phase und Datum |Was wird getestet |Testdokument
+|Datum |Was wird getestet |Testdokument
 
-|Elaboration 13.11.2022
+|13.11.2022
 |Figma Prototyp
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
-|Elaboration 21.11.2022
+|21.11.2022
 |Prototyp Hardware
 |
 
-|Elaboration 28.11.2022
+|28.11.2022
 |Prototyp Screen
 |
 
-|Elaboration 5.12.2022
+|5.12.2022
 |Ausarbeitung Hardware
 |
 
-|Elaboration 12.12.2022
+|12.12.2022
 |Ausarbeitung Grafiken
 |
 
-|Elaboration 23.12.2022
+|23.12.2022
 |Source Code schreiben
 |
 
-|Construction 9.1.2022
+|9.1.2022
 |Hardware bauen
 |
 
-|Construction 23.1.2022
+|23.1.2022
 |Erster Release
 |
 
-|Construction 20.2.2022
+|20.2.2022
 |Usability Testing
 |
 
-|Construction 20.3.2022
+|20.3.2022
 |Quality Testing
 |
 
-|Construction 21.4.2022
+|21.4.2022
 |Zweiter Release
 |
 
-|Transition 1.5.2022
+|1.5.2022
 |Finaler Produkt Release
 |
 
