@@ -3,54 +3,79 @@
 = Testplan =
 
 |===
-|Datum |Was wird getestet |Testdokument
+| Datum |Testobjekt | Testart | Feature |Testdokument
 
 |13.11.2022
 |Figma Prototyp
+|Manuell
+|Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
 |21.11.2022
 |Prototyp Hardware
 |
+|
+|
+
 
 |28.11.2022
 |Prototyp Screen
+|
+|
 |
 
 |5.12.2022
 |Ausarbeitung Hardware
 |
+|
+|
 
 |12.12.2022
 |Ausarbeitung Grafiken
+|
+|
 |
 
 |23.12.2022
 |Source Code schreiben
 |
+|
+|
 
 |9.1.2022
 |Hardware bauen
+|
+|
 |
 
 |23.1.2022
 |Erster Release
 |
+|
+|
 
 |20.2.2022
 |Usability Testing
+|
+|
 |
 
 |20.3.2022
 |Quality Testing
 |
+|
+|
 
 |21.4.2022
 |Zweiter Release
 |
+|
+|
 
 |1.5.2022
 |Finaler Produkt Release
+|
+|
 |
 
 |===
