@@ -3,7 +3,7 @@
 = Testplan =
 
 |===
-| Datum |Testobjekt | Testart | Feature |Testdokument
+| Datum |Testobjekt | Testart | Was getestet wird |Testdokument
 
 |13.11.2022
 |Figma Prototyp
