@@ -7,7 +7,7 @@
 
 |13.11.2022
 |Figma Prototyp
-|Manuell
+|Testcase
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
