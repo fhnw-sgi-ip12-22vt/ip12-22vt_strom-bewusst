@@ -2,79 +2,215 @@
 
 = Testplan =
 
+== Construction 1 : 18.11.2022 - 23.12.2022 == 
+
 |===
 | Datum |Testobjekt | Testart | Was getestet wird |Testdokument
 
 |13.11.2022
-|Figma Prototyp
+|Prototyp Räume
 |Testcase
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
-|21.11.2022
-|Prototyp Hardware
-|
-|
-|
-
-
-|28.11.2022
-|Prototyp Screen
-|
+|27.11.2022
+|Prototyp Rätsel
+|Testcase
 |
 |
 
-|5.12.2022
-|Ausarbeitung Hardware
-|
+
+|2.12.2022
+|Klassen und Methoden (Räume)
+|Testscript
 |
 |
 
-|12.12.2022
-|Ausarbeitung Grafiken
-|
-|
-|
-
-|23.12.2022
-|Source Code schreiben
-|
+|2.12.2022
+|Klassen und Methoden (Bewegung)
+|Testscript
 |
 |
 
-|9.1.2022
-|Hardware bauen
-|
-|
-|
-
-|23.1.2022
-|Erster Release
-|
+|2.12.2022
+|Klassen und Methoden (Steuerung/Mechanik)
+|Testscript
 |
 |
 
-|20.2.2022
-|Usability Testing
-|
-|
-|
-
-|20.3.2022
-|Quality Testing
-|
+|9.12.2022
+|Konsole
+|Testcase
 |
 |
 
-|21.4.2022
-|Zweiter Release
-|
+|9.12.2022
+|Kontroller
+|Testcase
 |
 |
 
-|1.5.2022
-|Finaler Produkt Release
+|9.12.2022
+|Elektronik
+|Testcase
 |
+|
+
+|9.12.2022
+|Steuerung/Mechanik
+|Testcase
+|
+|
+
+|16.12.2022
+|Bewegung
+|Testcase
+|
+|
+
+|16.12.2022
+|Räume
+|Testcase
+|
+|
+
+|16.12.2022
+|Rätsel
+|Testcase
+|
+|
+
+|===
+
+== Construction 2 : 23.12.2022 - 17.3.2023 == 
+
+|===
+| Datum |Testobjekt | Testart | Was getestet wird |Testdokument
+
+|10.2.2023
+|Klassen und Methoden (Räume)
+|Testscript
+|
+|
+
+|10.2.2023
+|Klassen und Methoden (Bewegung)
+|Testscript
+|
+|
+
+|10.2.2023
+|Klassen und Methoden (Steuerung/Mechanik)
+|Testscript
+|
+|
+
+|24.2.2023
+|Konsole
+|Testcase
+|
+|
+
+|24.2.2023
+|Kontroller
+|Testcase
+|
+|
+
+|24.2.2023
+|Elektronik
+|Testcase
+|
+|
+
+|24.2.2023
+|Steuerung/Mechanik
+|Testcase
+|
+|
+
+|11.3.2023
+|Bewegung
+|Testcase
+|
+|
+
+|11.3.2023
+|Räume
+|Testcase
+|
+|
+
+|11.3.2023
+|Rätsel
+|Testcase
+|
+|
+
+|===
+
+== Construction 3 : 17.03.2023 - 21.4.2023 == 
+
+|===
+| Datum |Testobjekt | Testart | Was getestet wird |Testdokument
+
+|31.3.2023
+|Klassen und Methoden (Räume)
+|Testscript
+|
+|
+
+|31.3.2023
+|Klassen und Methoden (Bewegung)
+|Testscript
+|
+|
+
+|31.3.2023
+|Klassen und Methoden (Steuerung/Mechanik)
+|Testscript
+|
+|
+
+|7.4.2023
+|Konsole
+|Testcase
+|
+|
+
+|7.4.2023
+|Kontroller
+|Testcase
+|
+|
+
+|7.4.2023
+|Elektronik
+|Testcase
+|
+|
+
+|7.4.2023
+|Steuerung/Mechanik
+|Testcase
+|
+|
+
+|14.4.2023
+|Bewegung
+|Testcase
+|
+|
+
+|14.4.2023
+|Räume
+|Testcase
+|
+|
+
+|14.4.2023
+|Rätsel
+|Testcase
 |
 |
 
