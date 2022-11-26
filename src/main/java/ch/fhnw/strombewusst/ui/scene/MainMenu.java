@@ -15,10 +15,10 @@ public class MainMenu extends FXGLMenu {
         super(MenuType.MAIN_MENU);
 
         Texture bg = FXGL.getAssetLoader().loadTexture("background/mainmenu.png");
-        bg.setFitHeight(getAppHeight());
         bg.setFitWidth(getAppWidth());
+        bg.setFitHeight(getAppHeight());
 
-        Label title = new Label("Strom Bewusst :)");
+        Label title = new Label("Strom Bewusst");
         title.getStyleClass().add("title");
 
         HBox titleHBox = new HBox(title);
@@ -31,6 +31,7 @@ public class MainMenu extends FXGLMenu {
         btnPlay.getStyleClass().add("main_menu_button");
 
         Button btnLeaderboard = new Button("Leaderboard");
+        btnLeaderboard.setOnAction(e -> FXGL.getSceneService().pushSubScene(new LeaderboardSubScene()));
         btnLeaderboard.getStyleClass().add("main_menu_button");
 
         VBox buttonVBox = new VBox(30, btnPlay, btnLeaderboard);
