@@ -1,0 +1,13 @@
+.title {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 60px;
+}
+
+.main_menu_button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 44px;
+    -fx-padding: 10 20 10 20;
+}
