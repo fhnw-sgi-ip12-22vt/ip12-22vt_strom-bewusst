@@ -1,4 +1,4 @@
-== TC1.3 : R003.1-03 :  Der Spieler bewegt sich fliessend, heisst nicht ruckartig ==
+== TC3.3 : F003R03 :  Benutzer/in kann sich fliessend bewegen ==
 
 === Beschreibung: === 
 Die Navigation der Figur soll so animiert sein, dass sich die Figur zum neuen Ort hinbewegt und nicht einfach die Position des neuen Orts einnimmt.

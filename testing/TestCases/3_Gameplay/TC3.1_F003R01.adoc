@@ -1,4 +1,4 @@
-== TC1.1 : R003.1-01 : Spieler kann sich horizontal und vertikal bewegen mit dem Joystick ==
+== TC3.1 : F003R01 : Benutzer/in  kann sich horizontal und vertikal bewegen mit dem Joystick ==
 
 === Beschreibung: === 
 Figuren auf dem Bildschirm bewegen sich horizontal und vertikal wenn der Joystick in diese Richtung gedrückt wird.

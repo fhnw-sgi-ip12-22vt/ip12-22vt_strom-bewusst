@@ -1,4 +1,4 @@
-== TC1.5 : R003.1-05 : Beide Spieler können sich gleichzeitig bewegen ==
+== TC3.5 : F003R05 : Beide Benutzer/in  können sich gleichzeitig bewegen ==
 
 === Beschreibung: === 
 Die Figuren im Raum sollen sich zur gleichen Zeit bewegen können.

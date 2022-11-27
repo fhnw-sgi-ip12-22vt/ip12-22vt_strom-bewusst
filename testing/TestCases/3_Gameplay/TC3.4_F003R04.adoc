@@ -1,4 +1,4 @@
-== TC1.4 : R003.1-04 : Der Spieler kann sich nicht aus dem Raum bewegen ==
+== TC3.4 : F003R04 : Benutzer/in  kann sich nicht aus dem Raum bewegen ==
 
 === Beschreibung: === 
 Die Figur stoppt bei den Wänden im Raum. Die Figur kann den Raum nur durch die Tür verlassen.

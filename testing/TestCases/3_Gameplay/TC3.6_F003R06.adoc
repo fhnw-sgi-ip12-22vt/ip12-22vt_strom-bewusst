@@ -1,4 +1,4 @@
-== TC1.6 : R003.1-06 : Die Eingabeverzögerung ist maximal eine halbe Sekunde ==
+== TC3.6 : F003R06 : Benutzer/in hat eine Eingabeverzögerung < 0.5s ==
 
 === Beschreibung: === 
 Jede Eingabe wird vom System erkannt, ausgeführt und auf dem Display angezeigt. Dies soll maximal eine halbe Sekunde dauern.
