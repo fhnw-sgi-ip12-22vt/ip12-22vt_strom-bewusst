@@ -1,0 +1,26 @@
+== TC1.2 : F001R02 : Benutzer/in kann mit Joystick Figur Horizontal , Vertikal  und Diagonal bewegen ==
+
+=== Beschreibung: === 
+<Beschreibung>: +
+
+    * <Aufzählungspunkte>
+
+=== Annahmen und Voraussetzungen: === 
+<Annahme>
+
+=== Testdaten: ===
+<Testdaten>
+
+=== Auszuführende Schritte: ===
+    
+    * <Aufzählungspunkte>:
+        ** <Aufzählungspunkte> 
+
+    * <Aufzählungspunkte>:
+        
+=== Erwartetes Ergebnis: === 
+
+    * <Aufzählungspunkte>: + 
+    ** <Aufzählungspunkte>
+
+    * <Aufzählungspunkte> +
