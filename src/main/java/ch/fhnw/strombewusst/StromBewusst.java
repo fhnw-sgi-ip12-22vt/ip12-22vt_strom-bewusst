@@ -7,12 +7,15 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.input.KeyCode;
 import org.jetbrains.annotations.NotNull;
 
 public class StromBewusst extends GameApplication {
     private static final int PLAYER_SPEED = 5;
-    private Entity player;
+    private Entity player1;
+    private Entity player2;
     private Entity desk;
     private Entity emptyRoom;
 
@@ -43,15 +46,105 @@ public class StromBewusst extends GameApplication {
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
 
         emptyRoom = FXGL.spawn("emptyRoom");
-        player = FXGL.spawn("player", FXGL.getAppCenter());
+        player1 = FXGL.spawn("player1", FXGL.getAppCenter());
+        player2 = FXGL.spawn("player2", 100, 100);
         desk = FXGL.spawn("desk");
     }
 
     @Override
     protected void initInput() {
-        FXGL.onKey(KeyCode.W, () -> player.getComponent(PlayerComponent.class).up(PLAYER_SPEED));
+
+        //Samuel
+       /* FXGL.onKey(KeyCode.W, () -> player.getComponent(PlayerComponent.class).up(PLAYER_SPEED));
         FXGL.onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left(PLAYER_SPEED));
         FXGL.onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).down(PLAYER_SPEED));
         FXGL.onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right(PLAYER_SPEED));
+    }*/
+
+        // Player 1 Movement
+        FXGL.getInput().addAction(new UserAction("Right") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(Player1AnimationComponent.class).moveRight();
+            }
+        }, KeyCode.D);
+        FXGL.getInput().addAction(new UserAction("Left") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(Player1AnimationComponent.class).moveLeft();
+            }
+        }, KeyCode.A);
+        FXGL.getInput().addAction(new UserAction("Up") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(Player1AnimationComponent.class).moveUp();
+            }
+        }, KeyCode.W);
+        FXGL.getInput().addAction(new UserAction("Down") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(Player1AnimationComponent.class).moveDown();
+            }
+        }, KeyCode.S);
+
+        // Player 2 Movement
+        FXGL.getInput().addAction(new UserAction("Right2") {
+            @Override
+            protected void onAction() {
+                player2.getComponent(Player2AnimationComponent.class).moveRight();
+            }
+        }, KeyCode.L);
+        FXGL.getInput().addAction(new UserAction("Left2") {
+            @Override
+            protected void onAction() {
+                player2.getComponent(Player2AnimationComponent.class).moveLeft();
+            }
+        }, KeyCode.J);
+        FXGL.getInput().addAction(new UserAction("Up2") {
+            @Override
+            protected void onAction() {
+                player2.getComponent(Player2AnimationComponent.class).moveUp();
+            }
+        }, KeyCode.I);
+        FXGL.getInput().addAction(new UserAction("Down2") {
+            @Override
+            protected void onAction() {
+                player2.getComponent(Player2AnimationComponent.class).moveDown();
+            }
+        }, KeyCode.K);
     }
+
+
+    //Collision Handler
+    @Override
+    protected void initPhysics() {
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.OBSTACLE) {
+
+            // order of types is the same as passed into the constructor
+            @Override
+            protected void onCollisionBegin(Entity player, Entity obstacle) {
+
+
+            }
+            @Override
+            protected void onCollisionEnd(Entity player, Entity obstacle) {
+
+            }
+
+        });
+    }
+
+    //EntityTypes for Collision Handler
+    public enum EntityType {
+        PLAYER, OBSTACLE
+    }
+
+
+
+
+
+
+
+
+
 }
