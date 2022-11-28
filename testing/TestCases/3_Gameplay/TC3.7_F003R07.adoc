@@ -1,0 +1,19 @@
+== TC3.7 : F003R07 : Benutzer/in  kann Objekte, die angeklickt werden können, deutlich sehen ==
+
+=== Beschreibung: === 
+Jedes anklickbare Objekt soll als solches erkennbar sein. Wenn die Figur vor dem Objekt steht, soll eine Meldung erscheinen mit "Zum öffnen Bestätigen".
+
+=== Annahmen und Voraussetzungen: === 
+In der Software sind Objekte implementiert, die angeklickt werden können. 
+
+=== Testdaten: ===
+Anklickbare Objekte
+
+=== Auszuführende Schritte: ===
+    
+    * Figur bewegt sich zu einem anklickbaren Objekt hin.
+    * Eine Meldung erscheint mit "Zum öffnen Bestätigen".
+        
+=== Erwartetes Ergebnis: === 
+
+    * Falls der Button 1 gedrückt wird, so reagiert das Objekt. 

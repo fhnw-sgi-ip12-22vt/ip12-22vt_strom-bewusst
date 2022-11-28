@@ -1,0 +1,26 @@
+== <TestID> : <AnforderungsID> : <Anforderung> ==
+
+=== Beschreibung: === 
+<Beschreibung>: +
+
+    * <Aufzählungspunkte>
+
+=== Annahmen und Voraussetzungen: === 
+<Annahme>
+
+=== Testdaten: ===
+<Testdaten>
+
+=== Auszuführende Schritte: ===
+    
+    * <Aufzählungspunkte>:
+        ** <Aufzählungspunkte> 
+
+    * <Aufzählungspunkte>:
+        
+=== Erwartetes Ergebnis: === 
+
+    * <Aufzählungspunkte>: + 
+    ** <Aufzählungspunkte>
+
+    * <Aufzählungspunkte> +

@@ -1,0 +1,24 @@
+== TC3.8 : F003R08 : Benutzer/in kann mit Objekten interagieren ==
+
+=== Beschreibung: === 
+
+
+=== Annahmen und Voraussetzungen: === 
+<Annahme>
+
+=== Testdaten: ===
+<Testdaten>
+
+=== Auszuführende Schritte: ===
+    
+    * <Aufzählungspunkte>:
+        ** <Aufzählungspunkte> 
+
+    * <Aufzählungspunkte>:
+        
+=== Erwartetes Ergebnis: === 
+
+    * <Aufzählungspunkte>: + 
+    ** <Aufzählungspunkte>
+
+    * <Aufzählungspunkte> +
