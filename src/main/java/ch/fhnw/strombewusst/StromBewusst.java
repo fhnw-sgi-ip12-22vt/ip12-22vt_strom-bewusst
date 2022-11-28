@@ -10,7 +10,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.input.KeyCode;
-import org.jetbrains.annotations.NotNull;
+
 
 public class StromBewusst extends GameApplication {
     private static final int PLAYER_SPEED = 5;
@@ -33,7 +33,6 @@ public class StromBewusst extends GameApplication {
         settings.setWidth(1280);
         settings.setHeight(720);
         settings.setSceneFactory(new SceneFactory() {
-            @NotNull
             @Override
             public FXGLMenu newMainMenu() {
                 return new MainMenu();
