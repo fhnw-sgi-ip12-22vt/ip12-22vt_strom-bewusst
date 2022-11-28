@@ -1,26 +1,19 @@
 == TC1.3 : F001R03 : Benutzer/in kann Mit Joystick zwischen gewählten Optionen schalten ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Auf dem Bildschirm gibt es verschiedene Objekte, die ausgewählt werden können. 
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Der Joystick ist in der Hardware verbaut, die Eingaben werden von der Software erkannt.
 
 === Testdaten: ===
-<Testdaten>
+Standpunkte der Objekte, Druck auf den Joystick
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * In einer Situation im Spiel wo verschiedene Objekte angewählt werden können.
+    * Durch navigieren werden andere Objekte gewählt. 
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Die Auswahl springt vom alten Objekt zum neuen Objekt.

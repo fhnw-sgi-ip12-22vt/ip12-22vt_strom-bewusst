@@ -1,26 +1,19 @@
 == TC1.2 : F001R02 : Benutzer/in kann mit Joystick Figur Horizontal , Vertikal  und Diagonal bewegen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Mit dem Joystick kann die Figur in die entsprechende Richtung navigiert werden, indem diese sich horizontal, vertikal und diagonal bewegen kann.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Die Eingaben des Joysticks werden erkannt und die Software lässt die Figuren bewegen.  
 
 === Testdaten: ===
-<Testdaten>
+Standpunkt der Figur, Druck auf den Joystick
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Die Figur befindet sich im Raum.
+    * Joystick wird horizontal, vertikal und diagonal bewegt. 
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Die Figuren bewegen sich horizontal, vertikal und diagonal auf dem Bildschirm.

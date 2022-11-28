@@ -1,26 +1,20 @@
 == TC1.5 : F001R05 : Benutzer/in kann mit Button 2 Auswahl abbrechen  ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Wurde eine Auswahl bestätigt, so kann diese wieder rückgängig gemacht werden indem der Button 2 gedrückt wird.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Button 2 ist in der Hardware verbaut und die Eingabe wird von der Software erkannt.
 
 === Testdaten: ===
-<Testdaten>
+Druck auf den Button
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Der Stecker wird in eine Steckdose eingesteckt.
+    * Der Button 1 wird gedrückt.
+    * Der Button 2 wird gedrückt.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Die markierte Eingabe ist nun nicht mehr markiert.
