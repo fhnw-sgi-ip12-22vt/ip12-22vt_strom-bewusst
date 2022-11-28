@@ -13,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 public class StromBewusst extends GameApplication {
     private static final int PLAYER_SPEED = 5;
     private Entity player;
+    private Entity desk;
+    private Entity emptyRoom;
 
     public static void main(String[] args) {
         launch(args);
@@ -40,7 +42,9 @@ public class StromBewusst extends GameApplication {
     protected void initGame() {
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
 
+        emptyRoom = FXGL.spawn("emptyRoom");
         player = FXGL.spawn("player", FXGL.getAppCenter());
+        desk = FXGL.spawn("desk");
     }
 
     @Override
