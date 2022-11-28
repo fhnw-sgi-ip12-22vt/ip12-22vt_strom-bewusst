@@ -9,7 +9,8 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
         return FXGL.entityBuilder(data)
-                .view(new Rectangle(30, 30, Color.RED))
+                .viewWithBBox(new Rectangle(30, 30, Color.RED))
+                .with(new PlayerComponent())
                 .buildAndAttach();
     }
 }

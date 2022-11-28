@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import org.jetbrains.annotations.NotNull;
 
 public class StromBewusst extends GameApplication {
+    private static final int PLAYER_SPEED = 5;
     private Entity player;
 
     public static void main(String[] args) {
@@ -44,9 +45,9 @@ public class StromBewusst extends GameApplication {
 
     @Override
     protected void initInput() {
-        FXGL.onKey(KeyCode.W, () -> player.translateY(-5));
-        FXGL.onKey(KeyCode.A, () -> player.translateX(-5));
-        FXGL.onKey(KeyCode.S, () -> player.translateY(5));
-        FXGL.onKey(KeyCode.D, () -> player.translateX(5));
+        FXGL.onKey(KeyCode.W, () -> player.getComponent(PlayerComponent.class).up(PLAYER_SPEED));
+        FXGL.onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left(PLAYER_SPEED));
+        FXGL.onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).down(PLAYER_SPEED));
+        FXGL.onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right(PLAYER_SPEED));
     }
 }
