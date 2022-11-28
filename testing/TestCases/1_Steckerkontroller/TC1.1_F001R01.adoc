@@ -1,26 +1,20 @@
 == TC1.1 : F001R01 : Benutzer/in kann mit Steckdose Rätsel lösen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Wenn ein Rätsel begonnen wird, dann kann dieses mit dem Steckerkontroller gelöst oder abgebrochen werden.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Der Steckerkontroller ist gebaut, Eingaben werden von der Software erkannt und Rätsel sind implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Rätsel
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Benutzer/in hat ein Rätsel geöffnet.
+    * Die Aufgaben werden nun mit der Steckdose und den Buttons gelöst.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Es folgt die Auflösung des Rätsels.
+    * Das Rätselfenster schliesst sich.
