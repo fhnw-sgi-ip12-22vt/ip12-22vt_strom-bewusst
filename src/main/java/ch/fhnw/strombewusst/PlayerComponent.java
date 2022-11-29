@@ -10,7 +10,7 @@ import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
 public class PlayerComponent extends Component {
-    private static final int PLAYER_SPEED = 200;
+    private static final int PLAYER_SPEED = 300;
     private PhysicsComponent physics;
 
     private final AnimatedTexture texture;
