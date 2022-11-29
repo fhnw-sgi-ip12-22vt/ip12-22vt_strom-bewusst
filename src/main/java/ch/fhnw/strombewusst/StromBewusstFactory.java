@@ -65,4 +65,13 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .build();
     }
+
+    @Spawns("message")
+    public Entity newMessage(SpawnData data){
+        return entityBuilder(data)
+                .type(EntityType.MESSAGE)
+                .viewWithBBox("msg1.png")
+                .with(new CollidableComponent(true))
+                .buildAndAttach();
+    }
 }

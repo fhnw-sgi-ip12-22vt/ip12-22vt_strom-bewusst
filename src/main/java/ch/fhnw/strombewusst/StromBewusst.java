@@ -179,5 +179,28 @@ public class StromBewusst extends GameApplication {
                 b.getComponent(PhysicsComponent.class).setVelocityY(0);
             }
         });
+
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
+            Entity message1,message2;
+            @Override
+            protected void onCollisionBegin(Entity player, Entity desk){
+                if(player == player1){
+                    message1 = FXGL.spawn("message",920,20);
+                }
+                else{
+                    message2 = FXGL.spawn("message",920,360);
+                }
+
+            }
+
+            protected void onCollisionEnd(Entity player, Entity desk) {
+                if(player == player1){
+                    message1.removeFromWorld();
+                }
+                else{
+                    message2.removeFromWorld();
+                }
+            }
+        });
     }
 }

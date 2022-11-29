@@ -54,6 +54,6 @@ public class LeaderboardSubScene extends SubScene {
         backHBox.setAlignment(Pos.CENTER);
         backHBox.setTranslateY(getAppHeight() - 140);
 
-        getContentRoot().getChildren().addAll(bg, titleHBox, leaderboardHBox, backHBox);
+        getContentRoot().getChildren().addAll(bg,titleHBox, leaderboardHBox, backHBox);
     }
 }
