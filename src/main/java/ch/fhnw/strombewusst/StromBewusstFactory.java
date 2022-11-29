@@ -43,4 +43,15 @@ public class StromBewusstFactory implements EntityFactory {
                 .zIndex(1)
                 .buildAndAttach();
     }
+
+    @Spawns("wall")
+    public Entity newWall(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.STATIC);
+
+        return FXGL.entityBuilder(data)
+                .with(physics)
+                .bbox(new HitBox(BoundingShape.box(data.get("width"), data.get("height"))))
+                .buildAndAttach();
+    }
 }

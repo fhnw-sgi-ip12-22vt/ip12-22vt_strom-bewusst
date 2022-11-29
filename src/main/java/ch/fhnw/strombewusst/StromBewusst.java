@@ -48,6 +48,11 @@ public class StromBewusst extends GameApplication {
     protected void initGame() {
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
 
+        FXGL.spawn("wall", new SpawnData(0, 0).put("width", 0d).put("height", (double)FXGL.getAppHeight()));
+        FXGL.spawn("wall", new SpawnData(0, 0).put("width", (double)FXGL.getAppWidth()).put("height", 0d));
+        FXGL.spawn("wall", new SpawnData(FXGL.getAppWidth(), 0).put("width", 0d).put("height", (double)FXGL.getAppHeight()));
+        FXGL.spawn("wall", new SpawnData(0, FXGL.getAppHeight()).put("width", (double)FXGL.getAppWidth()).put("height", 0d));
+
         FXGL.spawn("emptyRoom");
         player1 = FXGL.spawn("player", new SpawnData(FXGL.getAppCenter()).put("playerNum",1));
         player2 = FXGL.spawn("player", new SpawnData(100,100).put("playerNum",2));
