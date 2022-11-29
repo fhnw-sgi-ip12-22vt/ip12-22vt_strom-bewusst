@@ -8,6 +8,7 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import javafx.geometry.Point2D;
 
 public class StromBewusstFactory implements EntityFactory {
     @Spawns("emptyRoom")
@@ -38,7 +39,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DESK)
                 .view("desk.png")
-                .bbox(new HitBox(BoundingShape.box(40, 10)))
+                .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
