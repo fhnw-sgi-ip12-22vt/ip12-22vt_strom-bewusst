@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
-import com.almasb.fxgl.dsl.FXGL;
+import static com.almasb.fxgl.dsl.FXGL.*;
+
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
@@ -11,15 +12,15 @@ import javafx.scene.layout.VBox;
 
 public class LeaderboardSubScene extends SubScene {
     LeaderboardSubScene() {
-        Texture bg = FXGL.getAssetLoader().loadTexture("background/mainmenu.png");
-        bg.setFitWidth(FXGL.getAppWidth());
-        bg.setFitHeight(FXGL.getAppHeight());
+        Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
+        bg.setFitWidth(getAppWidth());
+        bg.setFitHeight(getAppHeight());
 
         Label title = new Label("Leaderboard");
         title.getStyleClass().add("title");
 
         HBox titleHBox = new HBox(title);
-        titleHBox.setPrefWidth(FXGL.getAppWidth());
+        titleHBox.setPrefWidth(getAppWidth());
         titleHBox.setAlignment(Pos.CENTER);
         titleHBox.setTranslateY(50);
 
@@ -30,7 +31,7 @@ public class LeaderboardSubScene extends SubScene {
 
         HBox leaderboardHBox = new HBox(100, leaderboardNames, leaderboardScores);
         leaderboardHBox.setAlignment(Pos.CENTER);
-        leaderboardHBox.setPrefWidth(FXGL.getAppWidth());
+        leaderboardHBox.setPrefWidth(getAppWidth());
         leaderboardHBox.setTranslateY(200);
 
         for (int i = 10; i > 0; i--) {
@@ -46,12 +47,12 @@ public class LeaderboardSubScene extends SubScene {
         Button btnBack = new Button("Back");
         btnBack.getStyleClass().add("main_menu_button");
         btnBack.setStyle("-fx-text-fill: black;");
-        btnBack.setOnAction(e -> FXGL.getSceneService().popSubScene());
+        btnBack.setOnAction(e -> getSceneService().popSubScene());
 
         HBox backHBox = new HBox(btnBack);
-        backHBox.setPrefWidth(FXGL.getAppWidth());
+        backHBox.setPrefWidth(getAppWidth());
         backHBox.setAlignment(Pos.CENTER);
-        backHBox.setTranslateY(FXGL.getAppHeight() - 140);
+        backHBox.setTranslateY(getAppHeight() - 140);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, leaderboardHBox, backHBox);
     }

@@ -1,12 +1,13 @@
 package ch.fhnw.strombewusst;
 
+import static com.almasb.fxgl.dsl.FXGL.*;
+
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
-import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
@@ -46,61 +47,65 @@ public class StromBewusst extends GameApplication {
 
     @Override
     protected void initGame() {
-        FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
+        getGameWorld().addEntityFactory(new StromBewusstFactory());
 
-        FXGL.spawn("wall", new SpawnData(0, 0).put("width", 0d).put("height", (double)FXGL.getAppHeight()));
-        FXGL.spawn("wall", new SpawnData(0, 0).put("width", (double)FXGL.getAppWidth()).put("height", 0d));
-        FXGL.spawn("wall", new SpawnData(FXGL.getAppWidth(), 0).put("width", 0d).put("height", (double)FXGL.getAppHeight()));
-        FXGL.spawn("wall", new SpawnData(0, FXGL.getAppHeight()).put("width", (double)FXGL.getAppWidth()).put("height", 0d));
+        spawn("wall", new SpawnData(0, 0).put("width", 0d).put("height", (double) getAppHeight()));
+        spawn("wall", new SpawnData(0, 0).put("width", (double) getAppWidth()).put("height", 0d));
+        spawn("wall", new SpawnData(getAppWidth(), 0).put("width", 0d).put("height", (double) getAppHeight()));
+        spawn("wall", new SpawnData(0, getAppHeight()).put("width", (double) getAppWidth()).put("height", 0d));
 
-        FXGL.spawn("emptyRoom");
-        player1 = FXGL.spawn("player", new SpawnData(FXGL.getAppCenter()).put("playerNum",1));
-        player2 = FXGL.spawn("player", new SpawnData(100,100).put("playerNum",2));
-        FXGL.spawn("desk",100,200);
-        FXGL.spawn("desk",200,200);
-        FXGL.spawn("desk",300,200);
-        FXGL.spawn("desk",400,200);
+        spawn("emptyRoom");
+        player1 = spawn("player", new SpawnData(getAppCenter()).put("playerNum", 1));
+        player2 = spawn("player", new SpawnData(100, 100).put("playerNum", 2));
+        spawn("desk", 100, 200);
+        spawn("desk", 200, 200);
+        spawn("desk", 300, 200);
+        spawn("desk", 400, 200);
     }
 
     @Override
     protected void initInput() {
 
         // player1 Movement
-        FXGL.getInput().addAction(new UserAction("player1 Right") {
+        getInput().addAction(new UserAction("player1 Right") {
             @Override
             protected void onAction() {
                 player1.getComponent(PlayerComponent.class).moveRight();
             }
+
             @Override
             protected void onActionEnd() {
                 player1.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.D);
-        FXGL.getInput().addAction(new UserAction("player1 Left") {
+        getInput().addAction(new UserAction("player1 Left") {
             @Override
             protected void onAction() {
                 player1.getComponent(PlayerComponent.class).moveLeft();
             }
+
             @Override
             protected void onActionEnd() {
                 player1.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.A);
-        FXGL.getInput().addAction(new UserAction("player1 Up") {
+        getInput().addAction(new UserAction("player1 Up") {
             @Override
             protected void onAction() {
                 player1.getComponent(PlayerComponent.class).moveUp();
             }
+
             @Override
             protected void onActionEnd() {
                 player1.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.W);
-        FXGL.getInput().addAction(new UserAction("player1 Down") {
+        getInput().addAction(new UserAction("player1 Down") {
             @Override
             protected void onAction() {
                 player1.getComponent(PlayerComponent.class).moveDown();
             }
+
             @Override
             protected void onActionEnd() {
                 player1.getComponent(PlayerComponent.class).stopMovingY();
@@ -108,41 +113,45 @@ public class StromBewusst extends GameApplication {
         }, KeyCode.S);
 
         // player2 Movement
-        FXGL.getInput().addAction(new UserAction("player2 Right") {
+        getInput().addAction(new UserAction("player2 Right") {
             @Override
             protected void onAction() {
                 player2.getComponent(PlayerComponent.class).moveRight();
             }
+
             @Override
             protected void onActionEnd() {
                 player2.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.L);
-        FXGL.getInput().addAction(new UserAction("player2 Left") {
+        getInput().addAction(new UserAction("player2 Left") {
             @Override
             protected void onAction() {
                 player2.getComponent(PlayerComponent.class).moveLeft();
             }
+
             @Override
             protected void onActionEnd() {
                 player2.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.J);
-        FXGL.getInput().addAction(new UserAction("player2 Up") {
+        getInput().addAction(new UserAction("player2 Up") {
             @Override
             protected void onAction() {
                 player2.getComponent(PlayerComponent.class).moveUp();
             }
+
             @Override
             protected void onActionEnd() {
                 player2.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.I);
-        FXGL.getInput().addAction(new UserAction("player2 Down") {
+        getInput().addAction(new UserAction("player2 Down") {
             @Override
             protected void onAction() {
                 player2.getComponent(PlayerComponent.class).moveDown();
             }
+
             @Override
             protected void onActionEnd() {
                 player2.getComponent(PlayerComponent.class).stopMovingY();
@@ -154,10 +163,10 @@ public class StromBewusst extends GameApplication {
     //Collision Handler
     @Override
     protected void initPhysics() {
-        PhysicsWorld physicsWorld = FXGL.getPhysicsWorld();
+        PhysicsWorld physicsWorld = getPhysicsWorld();
         physicsWorld.setGravity(0, 0);
 
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.PLAYER) {
+        physicsWorld.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.PLAYER) {
             @Override
             protected void onCollisionEnd(Entity a, Entity b) {
                 super.onCollisionEnd(a, b);

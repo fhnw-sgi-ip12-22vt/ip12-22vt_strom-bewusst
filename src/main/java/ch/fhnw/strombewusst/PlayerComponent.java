@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst;
 
-import com.almasb.fxgl.dsl.FXGL;
+import static com.almasb.fxgl.dsl.FXGL.*;
+
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.texture.AnimatedTexture;
@@ -17,7 +18,7 @@ public class PlayerComponent extends Component {
 
     public PlayerComponent(int playerNum) {
         animIdle = new AnimationChannel(
-                FXGL.image("player" + playerNum + ".png"),
+                image("player" + playerNum + ".png"),
                 4,
                 64,
                 64,
@@ -26,7 +27,7 @@ public class PlayerComponent extends Component {
                 1
         );
         animWalk = new AnimationChannel(
-                FXGL.image("player" + playerNum + ".png"),
+                image("player" + playerNum + ".png"),
                 4,
                 64,
                 64,
@@ -78,6 +79,7 @@ public class PlayerComponent extends Component {
     public void stopMovingX() {
         physics.setVelocityX(0);
     }
+
     public void stopMovingY() {
         physics.setVelocityY(0);
     }
