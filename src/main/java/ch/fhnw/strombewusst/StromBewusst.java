@@ -9,16 +9,12 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.input.KeyCode;
 
 
 public class StromBewusst extends GameApplication {
-    private static final int PLAYER_SPEED = 5;
     private Entity player1;
     private Entity player2;
-    private Entity desk;
-    private Entity emptyRoom;
 
     public static void main(String[] args) {
         launch(args);
@@ -45,13 +41,13 @@ public class StromBewusst extends GameApplication {
     protected void initGame() {
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
 
-        emptyRoom = FXGL.spawn("emptyRoom");
+        FXGL.spawn("emptyRoom");
         player1 = FXGL.spawn("player", new SpawnData(FXGL.getAppCenter()).put("playerNum",1));
         player2 = FXGL.spawn("player", new SpawnData(100,100).put("playerNum",2));
-        desk = FXGL.spawn("desk",100,200);
-        desk = FXGL.spawn("desk",200,200);
-        desk = FXGL.spawn("desk",300,200);
-        desk = FXGL.spawn("desk",400,200);
+        FXGL.spawn("desk",100,200);
+        FXGL.spawn("desk",200,200);
+        FXGL.spawn("desk",300,200);
+        FXGL.spawn("desk",400,200);
     }
 
     @Override
@@ -61,25 +57,41 @@ public class StromBewusst extends GameApplication {
         FXGL.getInput().addAction(new UserAction("player1 Right") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerAnimationComponent.class).moveRight();
+                player1.getComponent(PlayerComponent.class).moveRight();
+            }
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.D);
         FXGL.getInput().addAction(new UserAction("player1 Left") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerAnimationComponent.class).moveLeft();
+                player1.getComponent(PlayerComponent.class).moveLeft();
+            }
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.A);
         FXGL.getInput().addAction(new UserAction("player1 Up") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerAnimationComponent.class).moveUp();
+                player1.getComponent(PlayerComponent.class).moveUp();
+            }
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.W);
         FXGL.getInput().addAction(new UserAction("player1 Down") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerAnimationComponent.class).moveDown();
+                player1.getComponent(PlayerComponent.class).moveDown();
+            }
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.S);
 
@@ -87,25 +99,41 @@ public class StromBewusst extends GameApplication {
         FXGL.getInput().addAction(new UserAction("player2 Right") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerAnimationComponent.class).moveRight();
+                player2.getComponent(PlayerComponent.class).moveRight();
+            }
+            @Override
+            protected void onActionEnd() {
+                player2.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.L);
         FXGL.getInput().addAction(new UserAction("player2 Left") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerAnimationComponent.class).moveLeft();
+                player2.getComponent(PlayerComponent.class).moveLeft();
+            }
+            @Override
+            protected void onActionEnd() {
+                player2.getComponent(PlayerComponent.class).stopMovingX();
             }
         }, KeyCode.J);
         FXGL.getInput().addAction(new UserAction("player2 Up") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerAnimationComponent.class).moveUp();
+                player2.getComponent(PlayerComponent.class).moveUp();
+            }
+            @Override
+            protected void onActionEnd() {
+                player2.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.I);
         FXGL.getInput().addAction(new UserAction("player2 Down") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerAnimationComponent.class).moveDown();
+                player2.getComponent(PlayerComponent.class).moveDown();
+            }
+            @Override
+            protected void onActionEnd() {
+                player2.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.K);
     }
@@ -114,33 +142,8 @@ public class StromBewusst extends GameApplication {
     //Collision Handler
     @Override
     protected void initPhysics() {
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.OBSTACLE) {
-
-            // order of types is the same as passed into the constructor
-            @Override
-            protected void onCollisionBegin(Entity player, Entity obstacle) {
-                player.getComponent(PlayerAnimationComponent.class).setColliding(true);
-            }
-            @Override
-            protected void onCollisionEnd(Entity player, Entity obstacle) {
-                player.getComponent(PlayerAnimationComponent.class).setColliding(false);
-
-            }
-
-        });
+        FXGL.getPhysicsWorld().setGravity(0, 0);
     }
-
-    //EntityTypes for Collision Handler
-    public enum EntityType {
-        PLAYER, OBSTACLE
-    }
-
-
-
-
-
-
-
 
 
 }
