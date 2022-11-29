@@ -14,7 +14,7 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("emptyRoom")
     public Entity spawnBackground(SpawnData data) {
         return entityBuilder(data)
-                .view("emptyroom.png")
+                .view("emptyroom-with-sidebar.png")
                 .zIndex(-100)
                 .buildAndAttach();
     }

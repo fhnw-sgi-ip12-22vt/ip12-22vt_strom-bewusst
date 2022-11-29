@@ -50,19 +50,19 @@ public class StromBewusst extends GameApplication {
     protected void initGame() {
         getGameWorld().addEntityFactory(new StromBewusstFactory());
 
-        spawn("wall", new SpawnData(0, 0).put("width", 0d).put("height", (double) getAppHeight()));
-        spawn("wall", new SpawnData(0, 0).put("width", (double) getAppWidth()).put("height", 0d));
-        spawn("wall", new SpawnData(getAppWidth(), 0).put("width", 0d).put("height", (double) getAppHeight()));
-        spawn("wall", new SpawnData(0, getAppHeight()).put("width", (double) getAppWidth()).put("height", 0d));
+        spawn("wall", new SpawnData(20, 0).put("width", 0d).put("height", (double) getAppHeight()));
+        spawn("wall", new SpawnData(0, 70).put("width", (double) getAppWidth()).put("height", 0d));
+        spawn("wall", new SpawnData(890, 0).put("width", 0d).put("height", (double) getAppHeight()));
+        spawn("wall", new SpawnData(0, getAppHeight()-30).put("width", (double) getAppWidth()).put("height", 0d));
 
         spawn("emptyRoom");
         player1 = spawn("player", new SpawnData(getAppCenter()).put("playerNum", 1));
         player2 = spawn("player", new SpawnData(100, 100).put("playerNum", 2));
-        FXGL.spawn("desk",240,400);
-        FXGL.spawn("desk",440,400);
-        FXGL.spawn("desk",640,400);
-        FXGL.spawn("desk",840,400);
-        FXGL.spawn("desk",1040,400);
+        FXGL.spawn("desk",103,360);
+        FXGL.spawn("desk",264,360);
+        FXGL.spawn("desk",425,360);
+        FXGL.spawn("desk",586,360);
+        FXGL.spawn("desk",747,360);
     }
 
     @Override
