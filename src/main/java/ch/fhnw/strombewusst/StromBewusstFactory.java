@@ -18,27 +18,17 @@ public class StromBewusstFactory implements EntityFactory {
                 .buildAndAttach();
       }
 
-    @Spawns("player1")
-    public Entity player1(SpawnData data) {
+    @Spawns("player")
+    public Entity player(SpawnData data) {
         return FXGL.entityBuilder(data)
                 .type(StromBewusst.EntityType.PLAYER)
-                .with(new Player1AnimationComponent())
+                .with(new PlayerAnimationComponent(data.get("playerNum")))
                 .bbox(new HitBox(BoundingShape.box(64,64)))
                 .with(new CollidableComponent(true))
                 .zIndex(100)
                 .buildAndAttach();
     }
 
-    @Spawns("player2")
-    public Entity player2(SpawnData data) {
-        return FXGL.entityBuilder(data)
-                .type(StromBewusst.EntityType.PLAYER)
-                .with(new Player2AnimationComponent())
-                .bbox(new HitBox(BoundingShape.box(64,64)))
-                .with(new CollidableComponent(true))
-                .zIndex(100)
-                .buildAndAttach();
-    }
 
     @Spawns("desk")
     public Entity desk(SpawnData data) {

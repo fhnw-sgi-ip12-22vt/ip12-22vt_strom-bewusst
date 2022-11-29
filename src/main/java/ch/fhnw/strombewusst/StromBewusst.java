@@ -7,6 +7,7 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.input.KeyCode;
@@ -45,8 +46,8 @@ public class StromBewusst extends GameApplication {
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
 
         emptyRoom = FXGL.spawn("emptyRoom");
-        player1 = FXGL.spawn("player1", FXGL.getAppCenter());
-        player2 = FXGL.spawn("player2", 100, 100);
+        player1 = FXGL.spawn("player", new SpawnData(FXGL.getAppCenter()).put("playerNum",1));
+        player2 = FXGL.spawn("player", new SpawnData(100,100).put("playerNum",2));
         desk = FXGL.spawn("desk");
     }
 
@@ -60,55 +61,55 @@ public class StromBewusst extends GameApplication {
         FXGL.onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right(PLAYER_SPEED));
     }*/
 
-        // Player 1 Movement
-        FXGL.getInput().addAction(new UserAction("Right") {
+        // player1 Movement
+        FXGL.getInput().addAction(new UserAction("player1 Right") {
             @Override
             protected void onAction() {
-                player1.getComponent(Player1AnimationComponent.class).moveRight();
+                player1.getComponent(PlayerAnimationComponent.class).moveRight();
             }
         }, KeyCode.D);
-        FXGL.getInput().addAction(new UserAction("Left") {
+        FXGL.getInput().addAction(new UserAction("player1 Left") {
             @Override
             protected void onAction() {
-                player1.getComponent(Player1AnimationComponent.class).moveLeft();
+                player1.getComponent(PlayerAnimationComponent.class).moveLeft();
             }
         }, KeyCode.A);
-        FXGL.getInput().addAction(new UserAction("Up") {
+        FXGL.getInput().addAction(new UserAction("player1 Up") {
             @Override
             protected void onAction() {
-                player1.getComponent(Player1AnimationComponent.class).moveUp();
+                player1.getComponent(PlayerAnimationComponent.class).moveUp();
             }
         }, KeyCode.W);
-        FXGL.getInput().addAction(new UserAction("Down") {
+        FXGL.getInput().addAction(new UserAction("player1 Down") {
             @Override
             protected void onAction() {
-                player1.getComponent(Player1AnimationComponent.class).moveDown();
+                player1.getComponent(PlayerAnimationComponent.class).moveDown();
             }
         }, KeyCode.S);
 
-        // Player 2 Movement
-        FXGL.getInput().addAction(new UserAction("Right2") {
+        // player2 Movement
+        FXGL.getInput().addAction(new UserAction("player2 Right") {
             @Override
             protected void onAction() {
-                player2.getComponent(Player2AnimationComponent.class).moveRight();
+                player2.getComponent(PlayerAnimationComponent.class).moveRight();
             }
         }, KeyCode.L);
-        FXGL.getInput().addAction(new UserAction("Left2") {
+        FXGL.getInput().addAction(new UserAction("player2 Left") {
             @Override
             protected void onAction() {
-                player2.getComponent(Player2AnimationComponent.class).moveLeft();
+                player2.getComponent(PlayerAnimationComponent.class).moveLeft();
             }
         }, KeyCode.J);
-        FXGL.getInput().addAction(new UserAction("Up2") {
+        FXGL.getInput().addAction(new UserAction("player2 Up") {
             @Override
             protected void onAction() {
-                player2.getComponent(Player2AnimationComponent.class).moveUp();
+                player2.getComponent(PlayerAnimationComponent.class).moveUp();
             }
         }, KeyCode.I);
-        FXGL.getInput().addAction(new UserAction("Down2") {
+        FXGL.getInput().addAction(new UserAction("player2 Down") {
             @Override
             protected void onAction() {
-                player2.getComponent(Player2AnimationComponent.class).moveDown();
+                player2.getComponent(PlayerAnimationComponent.class).moveDown();
             }
         }, KeyCode.K);
     }
@@ -122,6 +123,7 @@ public class StromBewusst extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity obstacle) {
+
 
 
             }
