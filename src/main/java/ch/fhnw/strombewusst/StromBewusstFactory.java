@@ -16,7 +16,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .view("emptyroom-with-sidebar.png")
                 .zIndex(-100)
-                .buildAndAttach();
+                .build();
     }
 
     @Spawns("player")
@@ -31,7 +31,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(40, 64)))
                 .with(new CollidableComponent(true))
                 .zIndex(100)
-                .buildAndAttach();
+                .build();
     }
 
     @Spawns("desk")
@@ -43,7 +43,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
-                .buildAndAttach();
+                .build();
     }
 
     @Spawns("wall")
@@ -54,7 +54,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .with(physics)
                 .bbox(new HitBox(BoundingShape.box(data.get("width"), data.get("height"))))
-                .buildAndAttach();
+                .build();
     }
 
     @Spawns("keyPrompt")
