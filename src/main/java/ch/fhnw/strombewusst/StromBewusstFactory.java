@@ -46,6 +46,30 @@ public class StromBewusstFactory implements EntityFactory {
                 .build();
     }
 
+    @Spawns("main-desk")
+    public Entity newMainDesk(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.DESK)
+                .view("main-desk.png")
+                .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(80, 10)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .zIndex(1)
+                .buildAndAttach();
+    }
+
+    @Spawns("door")
+    public Entity newDoor(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.DESK)
+                .view("door.png")
+                .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(64, 100)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .zIndex(1)
+                .buildAndAttach();
+    }
+
     @Spawns("wall")
     public Entity newWall(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();

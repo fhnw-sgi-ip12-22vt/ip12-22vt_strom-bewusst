@@ -8,6 +8,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
@@ -57,11 +58,27 @@ public class StromBewusst extends GameApplication {
         spawn("emptyRoom");
         player1 = spawn("player", new SpawnData(getAppCenter()).put("playerNum", 1));
         player2 = spawn("player", new SpawnData(100, 100).put("playerNum", 2));
-        spawn("desk",103,360);
-        spawn("desk",264,360);
-        spawn("desk",425,360);
-        spawn("desk",586,360);
-        spawn("desk",747,360);
+
+        FXGL.spawn("main-desk", 264,75);
+        FXGL.spawn("door",618,6);
+
+        FXGL.spawn("desk",103,267);
+        FXGL.spawn("desk",264,267);
+        FXGL.spawn("desk",425,267);
+        FXGL.spawn("desk",586,267);
+        FXGL.spawn("desk",747,267);
+
+        FXGL.spawn("desk",103,405);
+        FXGL.spawn("desk",264,405);
+        FXGL.spawn("desk",425,405);
+        FXGL.spawn("desk",586,405);
+        FXGL.spawn("desk",747,405);
+
+        FXGL.spawn("desk",103,543);
+        FXGL.spawn("desk",264,543);
+        FXGL.spawn("desk",425,543);
+        FXGL.spawn("desk",586,543);
+        FXGL.spawn("desk",747,543);
     }
 
     @Override
@@ -159,6 +176,7 @@ public class StromBewusst extends GameApplication {
             }
         }, KeyCode.K);
     }
+
 
     //Collision Handler
     @Override
