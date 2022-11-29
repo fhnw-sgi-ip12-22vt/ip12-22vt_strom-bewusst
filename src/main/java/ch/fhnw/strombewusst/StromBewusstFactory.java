@@ -28,7 +28,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .type(EntityType.PLAYER)
                 .with(physics)
                 .with(new PlayerComponent(data.get("playerNum")))
-                .bbox(new HitBox(BoundingShape.box(64,64)))
+                .bbox(new HitBox(BoundingShape.box(40,64)))
                 .with(new CollidableComponent(true))
                 .zIndex(100)
                 .buildAndAttach();

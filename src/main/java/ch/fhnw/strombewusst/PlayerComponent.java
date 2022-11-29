@@ -19,7 +19,7 @@ public class PlayerComponent extends Component {
         animIdle = new AnimationChannel(
                 FXGL.image("player" + playerNum + ".png"),
                 4,
-                64,
+                40,
                 64,
                 Duration.seconds(1),
                 1,
@@ -28,7 +28,7 @@ public class PlayerComponent extends Component {
         animWalk = new AnimationChannel(
                 FXGL.image("player" + playerNum + ".png"),
                 4,
-                64,
+                40,
                 64,
                 Duration.seconds(1),
                 0,
