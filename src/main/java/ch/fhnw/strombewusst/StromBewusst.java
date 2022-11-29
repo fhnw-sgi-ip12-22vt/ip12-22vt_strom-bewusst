@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
+import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
@@ -28,6 +29,9 @@ public class StromBewusst extends GameApplication {
         settings.setTitle("Strom Bewusst");
         settings.setVersion("0.1_BETA");
         settings.getCSSList().add("main.css");
+
+        settings.setApplicationMode(ApplicationMode.DEVELOPER);
+        settings.setDeveloperMenuEnabled(true);
 
         settings.setMainMenuEnabled(true);
         settings.setWidth(1280);
@@ -160,6 +164,4 @@ public class StromBewusst extends GameApplication {
             }
         });
     }
-
-
 }
