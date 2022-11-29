@@ -178,15 +178,15 @@ public class StromBewusst extends GameApplication {
             }
         });
 
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
             Entity message1,message2;
             @Override
             protected void onCollisionBegin(Entity player, Entity desk){
                 if(player == player1){
-                    message1 = FXGL.spawn("message",920,20);
+                    message1 = spawn("message",920,20);
                 }
                 else{
-                    message2 = FXGL.spawn("message",920,360);
+                    message2 = spawn("message",920,360);
                 }
 
             }
