@@ -8,6 +8,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
@@ -57,10 +58,11 @@ public class StromBewusst extends GameApplication {
         spawn("emptyRoom");
         player1 = spawn("player", new SpawnData(getAppCenter()).put("playerNum", 1));
         player2 = spawn("player", new SpawnData(100, 100).put("playerNum", 2));
-        spawn("desk", 100, 200);
-        spawn("desk", 200, 200);
-        spawn("desk", 300, 200);
-        spawn("desk", 400, 200);
+        FXGL.spawn("desk",240,400);
+        FXGL.spawn("desk",440,400);
+        FXGL.spawn("desk",640,400);
+        FXGL.spawn("desk",840,400);
+        FXGL.spawn("desk",1040,400);
     }
 
     @Override
