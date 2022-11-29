@@ -9,6 +9,9 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.physics.CollisionHandler;
+import com.almasb.fxgl.physics.PhysicsComponent;
+import com.almasb.fxgl.physics.PhysicsWorld;
 import javafx.scene.input.KeyCode;
 
 
@@ -142,7 +145,20 @@ public class StromBewusst extends GameApplication {
     //Collision Handler
     @Override
     protected void initPhysics() {
-        FXGL.getPhysicsWorld().setGravity(0, 0);
+        PhysicsWorld physicsWorld = FXGL.getPhysicsWorld();
+        physicsWorld.setGravity(0, 0);
+
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.PLAYER) {
+            @Override
+            protected void onCollisionEnd(Entity a, Entity b) {
+                super.onCollisionEnd(a, b);
+                // resetting velocity so pushed players don't keep moving after collision
+                a.getComponent(PhysicsComponent.class).setVelocityX(0);
+                a.getComponent(PhysicsComponent.class).setVelocityY(0);
+                b.getComponent(PhysicsComponent.class).setVelocityX(0);
+                b.getComponent(PhysicsComponent.class).setVelocityY(0);
+            }
+        });
     }
 
 
