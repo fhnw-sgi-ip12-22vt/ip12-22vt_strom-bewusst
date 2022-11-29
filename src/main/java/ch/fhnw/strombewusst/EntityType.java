@@ -1,6 +1,6 @@
 package ch.fhnw.strombewusst;
 
 public enum EntityType {
-    PLAYER, DESK
+    PLAYER, DESK,KEY_PROMPT
 }
 

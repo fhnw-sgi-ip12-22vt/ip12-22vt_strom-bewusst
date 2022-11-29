@@ -44,10 +44,11 @@ public class StromBewusst extends GameApplication {
         FXGL.spawn("emptyRoom");
         player1 = FXGL.spawn("player", new SpawnData(FXGL.getAppCenter()).put("playerNum",1));
         player2 = FXGL.spawn("player", new SpawnData(100,100).put("playerNum",2));
-        FXGL.spawn("desk",100,200);
-        FXGL.spawn("desk",200,200);
-        FXGL.spawn("desk",300,200);
-        FXGL.spawn("desk",400,200);
+        FXGL.spawn("desk",240,400);
+        FXGL.spawn("desk",440,400);
+        FXGL.spawn("desk",640,400);
+        FXGL.spawn("desk",840,400);
+        FXGL.spawn("desk",1040,400);
     }
 
     @Override
