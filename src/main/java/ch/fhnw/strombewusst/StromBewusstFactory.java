@@ -35,7 +35,6 @@ public class StromBewusstFactory implements EntityFactory {
         boolean collision = true;
         return FXGL.entityBuilder(data)
                 .type(StromBewusst.EntityType.OBSTACLE)
-                .at(300,300)
                 .viewWithBBox("desk.png")
                 .with(new CollidableComponent(true))
                 .zIndex(1)

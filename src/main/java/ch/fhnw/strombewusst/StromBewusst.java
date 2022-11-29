@@ -48,18 +48,14 @@ public class StromBewusst extends GameApplication {
         emptyRoom = FXGL.spawn("emptyRoom");
         player1 = FXGL.spawn("player", new SpawnData(FXGL.getAppCenter()).put("playerNum",1));
         player2 = FXGL.spawn("player", new SpawnData(100,100).put("playerNum",2));
-        desk = FXGL.spawn("desk");
+        desk = FXGL.spawn("desk",100,200);
+        desk = FXGL.spawn("desk",200,200);
+        desk = FXGL.spawn("desk",300,200);
+        desk = FXGL.spawn("desk",400,200);
     }
 
     @Override
     protected void initInput() {
-
-        //Samuel
-       /* FXGL.onKey(KeyCode.W, () -> player.getComponent(PlayerComponent.class).up(PLAYER_SPEED));
-        FXGL.onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left(PLAYER_SPEED));
-        FXGL.onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).down(PLAYER_SPEED));
-        FXGL.onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right(PLAYER_SPEED));
-    }*/
 
         // player1 Movement
         FXGL.getInput().addAction(new UserAction("player1 Right") {
@@ -123,6 +119,8 @@ public class StromBewusst extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity obstacle) {
+
+
 
 
 
