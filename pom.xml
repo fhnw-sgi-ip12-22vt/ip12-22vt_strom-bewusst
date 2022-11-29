@@ -11,8 +11,6 @@
 
     <!-- BUILD PROPERTIES -->
     <properties>
-        <!-- The class that will be started, choose one and only one -->
-
         <launcher.class>com.pi4j.mvc/ch.fhnw.strombewusst.StromBewusst</launcher.class>
 
         <!-- Setup for the RaspPi -->
