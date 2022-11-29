@@ -119,14 +119,11 @@ public class StromBewusst extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity obstacle) {
-
-
-
-
-
+                player.getComponent(PlayerAnimationComponent.class).setColliding(true);
             }
             @Override
             protected void onCollisionEnd(Entity player, Entity obstacle) {
+                player.getComponent(PlayerAnimationComponent.class).setColliding(false);
 
             }
 

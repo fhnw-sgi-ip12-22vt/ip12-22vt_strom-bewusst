@@ -36,12 +36,19 @@ public class PlayerAnimationComponent extends Component {
         //Bewegung
         entity.translateX(speedX * tpf);
         if(colliding){
-            entity.translateX((-(speedX*tpf)));
+            entity.translateX((-((speedX)*tpf)));
+
+
+
         }
+
         entity.translateY(speedY * tpf);
         if(colliding){
-            entity.translateY((-(speedY*tpf)));
+            entity.translateY((-((speedY)*tpf)));
+
+
         }
+
 
 
         //Sprite Animation
@@ -91,12 +98,9 @@ public class PlayerAnimationComponent extends Component {
         speedY = 150;
     }
 
-    public void stop(){speedX=0;speedY=0;}
-
-    public void setColliding(){
-        colliding=true;
+    public void setColliding(boolean value){
+        colliding=value;
     }
-
 }
 
 
