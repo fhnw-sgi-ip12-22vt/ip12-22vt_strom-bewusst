@@ -72,7 +72,7 @@ public class StromBewusst extends GameApplication {
 
         FXGL.spawn("main-desk", 264,75);
         FXGL.spawn("door",618,6);
-/*
+
         FXGL.spawn("desk",new SpawnData(103,267).put("deskNum",0));
         FXGL.spawn("desk",new SpawnData(264,267).put("deskNum",1));
         FXGL.spawn("desk",new SpawnData(425,267).put("deskNum",2));
@@ -89,14 +89,7 @@ public class StromBewusst extends GameApplication {
         FXGL.spawn("desk",new SpawnData(264,543).put("deskNum",11));
         FXGL.spawn("desk",new SpawnData(425,543).put("deskNum",12));
         FXGL.spawn("desk",new SpawnData(586,543).put("deskNum",13));
-        FXGL.spawn("desk",new SpawnData(747,543).put("deskNum",14));*/
-
-        for(int i =0; i<3;i++){
-            for (int j=0; j<5;j++)
-                FXGL.spawn("desk", new SpawnData(161*j+103,138*i+267).put("deskNum",i*j+j));
-        }
-
-
+        FXGL.spawn("desk",new SpawnData(747,543).put("deskNum",14));
     }
 
     /**
