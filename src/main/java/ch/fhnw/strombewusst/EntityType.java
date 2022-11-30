@@ -5,6 +5,6 @@ package ch.fhnw.strombewusst;
  * collisions.
  */
 public enum EntityType {
-    PLAYER, DESK, KEY_PROMPT, MESSAGE, DOOR
+    PLAYER, DESK, MAINDESK, KEY_PROMPT, MESSAGE, DOOR
 }
 

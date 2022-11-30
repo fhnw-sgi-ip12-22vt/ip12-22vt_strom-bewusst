@@ -20,7 +20,7 @@ public class PlayerDoorHandler extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity a, Entity b) {
-        desk = FXGL.spawn("desk",0,0);
+        desk = FXGL.spawn("main-desk",0,0);
     }
     protected void onCollisionEnd(Entity a, Entity b) {
         desk.removeFromWorld();

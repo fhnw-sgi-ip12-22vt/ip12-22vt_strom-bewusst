@@ -53,7 +53,7 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("main-desk")
     public Entity newMainDesk(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.DESK)
+                .type(EntityType.MAINDESK)
                 .view("main-desk.png")
                 .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(80, 10)))
                 .with(new PhysicsComponent())
