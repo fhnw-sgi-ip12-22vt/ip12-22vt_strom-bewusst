@@ -15,6 +15,8 @@ import javafx.scene.layout.VBox;
  * "Leaderboard" button is pressed.
  */
 public class LeaderboardSubScene extends SubScene {
+    Button btnBack;
+
     LeaderboardSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
         bg.setFitWidth(getAppWidth());
@@ -48,7 +50,7 @@ public class LeaderboardSubScene extends SubScene {
             leaderboardScores.getChildren().add(s);
         }
 
-        Button btnBack = new Button("Back");
+        btnBack = new Button("Back");
         btnBack.getStyleClass().add("main_menu_button");
         btnBack.setStyle("-fx-text-fill: black;");
         btnBack.setOnAction(e -> getSceneService().popSubScene());
@@ -58,6 +60,13 @@ public class LeaderboardSubScene extends SubScene {
         backHBox.setAlignment(Pos.CENTER);
         backHBox.setTranslateY(getAppHeight() - 140);
 
-        getContentRoot().getChildren().addAll(bg,titleHBox, leaderboardHBox, backHBox);
+        getContentRoot().getChildren().addAll(bg, titleHBox, leaderboardHBox, backHBox);
+    }
+
+    @Override
+    public void onUpdate(double tpf) {
+        if (!(btnBack.isFocused())) {
+            btnBack.requestFocus();
+        }
     }
 }
