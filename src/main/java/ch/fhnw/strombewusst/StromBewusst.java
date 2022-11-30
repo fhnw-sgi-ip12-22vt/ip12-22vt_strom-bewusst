@@ -70,24 +70,31 @@ public class StromBewusst extends GameApplication {
 
         FXGL.spawn("main-desk", 264,75);
         FXGL.spawn("door",618,6);
+/*
+        FXGL.spawn("desk",new SpawnData(103,267).put("deskNum",0));
+        FXGL.spawn("desk",new SpawnData(264,267).put("deskNum",1));
+        FXGL.spawn("desk",new SpawnData(425,267).put("deskNum",2));
+        FXGL.spawn("desk",new SpawnData(586,267).put("deskNum",3));
+        FXGL.spawn("desk",new SpawnData(747,267).put("deskNum",4));
 
-        FXGL.spawn("desk",103,267);
-        FXGL.spawn("desk",264,267);
-        FXGL.spawn("desk",425,267);
-        FXGL.spawn("desk",586,267);
-        FXGL.spawn("desk",747,267);
+        FXGL.spawn("desk",new SpawnData(103,405).put("deskNum",5));
+        FXGL.spawn("desk",new SpawnData(264,405).put("deskNum",6));
+        FXGL.spawn("desk",new SpawnData(425,405).put("deskNum",7));
+        FXGL.spawn("desk",new SpawnData(586,405).put("deskNum",8));
+        FXGL.spawn("desk",new SpawnData(747,405).put("deskNum",9));
 
-        FXGL.spawn("desk",103,405);
-        FXGL.spawn("desk",264,405);
-        FXGL.spawn("desk",425,405);
-        FXGL.spawn("desk",586,405);
-        FXGL.spawn("desk",747,405);
+        FXGL.spawn("desk",new SpawnData(103,543).put("deskNum",10));
+        FXGL.spawn("desk",new SpawnData(264,543).put("deskNum",11));
+        FXGL.spawn("desk",new SpawnData(425,543).put("deskNum",12));
+        FXGL.spawn("desk",new SpawnData(586,543).put("deskNum",13));
+        FXGL.spawn("desk",new SpawnData(747,543).put("deskNum",14));*/
 
-        FXGL.spawn("desk",103,543);
-        FXGL.spawn("desk",264,543);
-        FXGL.spawn("desk",425,543);
-        FXGL.spawn("desk",586,543);
-        FXGL.spawn("desk",747,543);
+        for(int i =0; i<3;i++){
+            for (int j=0; j<5;j++)
+                FXGL.spawn("desk", new SpawnData(161*j+103,138*i+267).put("deskNum",i*j+j));
+        }
+
+
     }
 
     /**
@@ -205,7 +212,7 @@ public class StromBewusst extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity desk){
                 if(player == player1){
-                    message1 = spawn("message",920,20);
+                    message1 = spawn("message",new SpawnData(920,20).put("msgNum",desk.getComponent(DeskComponent.class).getDeskNum()));
                 }
                 else{
                     message2 = spawn("message",920,360);

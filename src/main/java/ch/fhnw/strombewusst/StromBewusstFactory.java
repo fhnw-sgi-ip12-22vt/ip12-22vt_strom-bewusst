@@ -44,6 +44,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("desk.png")
                 .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
+                .with(new DeskComponent(data.get("deskNum")))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
@@ -95,6 +96,8 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("message")
     public Entity newMessage(SpawnData data){
+
+
         return entityBuilder(data)
                 .type(EntityType.MESSAGE)
                 .viewWithBBox("msg1.png")
