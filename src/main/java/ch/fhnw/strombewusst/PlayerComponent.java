@@ -9,6 +9,9 @@ import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
+/**
+ * This class handles the behaviour of player entities. This includes movement and animation.
+ */
 public class PlayerComponent extends Component {
     private static final int PLAYER_SPEED = 300;
     private PhysicsComponent physics;

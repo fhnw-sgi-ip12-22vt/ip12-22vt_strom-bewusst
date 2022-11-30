@@ -11,6 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * This class defines the layout of the main menu.
+ */
 public class MainMenu extends FXGLMenu {
     public MainMenu() {
         super(MenuType.MAIN_MENU);
@@ -28,6 +31,7 @@ public class MainMenu extends FXGLMenu {
         titleHBox.setTranslateY(50);
 
         Button btnPlay = new Button("Play");
+        // fireNewGame() clears the Scene and calls initGame(), to spawn all entities.
         btnPlay.setOnAction(e -> fireNewGame());
         btnPlay.getStyleClass().add("main_menu_button");
 

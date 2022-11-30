@@ -17,7 +17,9 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import javafx.scene.input.KeyCode;
 
-
+/**
+ * This is the main class of our game, the methods of this class initialize the game.
+ */
 public class StromBewusst extends GameApplication {
     private Entity player1;
     private Entity player2;
@@ -46,6 +48,10 @@ public class StromBewusst extends GameApplication {
         });
     }
 
+    /**
+     * This method initializes the game (after the "Play" Button on the Leaderboard is pressed).
+     * It spawns the players and entities.
+     */
     @Override
     protected void initGame() {
         getGameWorld().addEntityFactory(new StromBewusstFactory());
@@ -81,9 +87,11 @@ public class StromBewusst extends GameApplication {
         FXGL.spawn("desk",747,543);
     }
 
+    /**
+     * This method initializes the input. It gets executed *before* initGame.
+     */
     @Override
     protected void initInput() {
-
         // player1 Movement
         getInput().addAction(new UserAction("player1 Right") {
             @Override
@@ -178,7 +186,9 @@ public class StromBewusst extends GameApplication {
     }
 
 
-    //Collision Handler
+    /**
+     * This method initializes the physics engine that is used to handle collisions.
+     */
     @Override
     protected void initPhysics() {
         PhysicsWorld physicsWorld = getPhysicsWorld();
@@ -196,7 +206,7 @@ public class StromBewusst extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
+        physicsWorld.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
             Entity message1,message2;
             @Override
             protected void onCollisionBegin(Entity player, Entity desk){
@@ -209,6 +219,7 @@ public class StromBewusst extends GameApplication {
 
             }
 
+            @Override
             protected void onCollisionEnd(Entity player, Entity desk) {
                 if(player == player1){
                     message1.removeFromWorld();

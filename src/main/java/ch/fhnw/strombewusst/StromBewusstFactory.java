@@ -10,6 +10,9 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import javafx.geometry.Point2D;
 
+/**
+ * This class defines our entities. The methods in this class get called by FXGL when using FXGL.spawn()
+ */
 public class StromBewusstFactory implements EntityFactory {
     @Spawns("emptyRoom")
     public Entity spawnBackground(SpawnData data) {

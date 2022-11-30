@@ -10,6 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * This class defines the layout of our leaderboard sub-scene. It gets rendered on top of the main menu when the
+ * "Leaderboard" button is pressed.
+ */
 public class LeaderboardSubScene extends SubScene {
     LeaderboardSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
