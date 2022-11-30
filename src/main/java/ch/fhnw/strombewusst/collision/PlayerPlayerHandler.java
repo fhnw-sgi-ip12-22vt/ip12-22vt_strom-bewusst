@@ -1,11 +1,12 @@
-package ch.fhnw.strombewusst;
+package ch.fhnw.strombewusst.collision;
 
+import ch.fhnw.strombewusst.EntityType;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsComponent;
 
-public class PlayerCollisionHandler extends CollisionHandler {
-    public PlayerCollisionHandler() {
+public class PlayerPlayerHandler extends CollisionHandler {
+    public PlayerPlayerHandler() {
         super(EntityType.PLAYER, EntityType.PLAYER);
     }
 

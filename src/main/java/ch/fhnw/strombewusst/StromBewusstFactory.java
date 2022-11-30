@@ -66,7 +66,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DOOR)
                 .view("door.png")
-                .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(64, 100)))
+                .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(64, 50)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)

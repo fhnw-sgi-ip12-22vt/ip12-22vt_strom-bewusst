@@ -2,6 +2,8 @@ package ch.fhnw.strombewusst;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
+import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
@@ -9,21 +11,12 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
-import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import com.almasb.fxgl.ui.ProgressBar;
-import javafx.beans.binding.Bindings;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 
 import java.util.Map;
 
@@ -67,13 +60,13 @@ public class StromBewusst extends GameApplication {
         getGameWorld().addEntityFactory(new StromBewusstFactory());
 
         spawn("wall", new SpawnData(20, 0).put("width", 0d).put("height", (double) getAppHeight()));
-        spawn("wall", new SpawnData(0, 70).put("width", (double) getAppWidth()).put("height", 0d));
+        spawn("wall", new SpawnData(0, 50).put("width", (double) getAppWidth()).put("height", 0d));
         spawn("wall", new SpawnData(890, 0).put("width", 0d).put("height", (double) getAppHeight()));
         spawn("wall", new SpawnData(0, getAppHeight()-30).put("width", (double) getAppWidth()).put("height", 0d));
 
         spawn("emptyRoom");
-        player1 = spawn("player", new SpawnData(getAppCenter()).put("playerNum", 1));
-        player2 = spawn("player", new SpawnData(100, 100).put("playerNum", 2));
+        player1 = spawn("player", new SpawnData(566,92).put("playerNum", 1));
+        player2 = spawn("player", new SpawnData(694, 92).put("playerNum", 2));
 
         FXGL.spawn("main-desk", 264,75);
         FXGL.spawn("door",618,6);
@@ -204,8 +197,8 @@ public class StromBewusst extends GameApplication {
         PhysicsWorld physicsWorld = getPhysicsWorld();
         physicsWorld.setGravity(0, 0);
 
-        physicsWorld.addCollisionHandler(new PlayerCollisionHandler());
-
+        physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
+        physicsWorld.addCollisionHandler(new PlayerDoorHandler());
 
         physicsWorld.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
             Entity message1,message2;
