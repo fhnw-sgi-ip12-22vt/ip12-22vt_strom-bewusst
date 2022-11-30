@@ -1,4 +1,4 @@
-package ch.fhnw.strombewusst;
+package ch.fhnw.strombewusst.components;
 import com.almasb.fxgl.entity.component.Component;
 
 public class DeskComponent extends Component {

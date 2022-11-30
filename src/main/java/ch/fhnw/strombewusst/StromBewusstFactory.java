@@ -2,6 +2,8 @@ package ch.fhnw.strombewusst;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+import ch.fhnw.strombewusst.components.DeskComponent;
+import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.entity.*;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;

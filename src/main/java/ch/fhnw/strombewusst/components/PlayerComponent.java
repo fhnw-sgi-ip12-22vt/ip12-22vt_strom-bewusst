@@ -1,4 +1,4 @@
-package ch.fhnw.strombewusst;
+package ch.fhnw.strombewusst.components;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 

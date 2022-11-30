@@ -4,6 +4,8 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
+import ch.fhnw.strombewusst.components.DeskComponent;
+import ch.fhnw.strombewusst.components.PlayerComponent;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
