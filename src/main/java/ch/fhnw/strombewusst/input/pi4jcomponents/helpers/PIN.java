@@ -1,4 +1,4 @@
-package ch.fhnw.strombewusst.ControllerComponents.helpers;
+package ch.fhnw.strombewusst.input.pi4jcomponents.helpers;
 
 public enum PIN {
     SDA1(2),

@@ -1,4 +1,4 @@
-package ch.fhnw.strombewusst.ControllerComponents;
+package ch.fhnw.strombewusst.input.pi4jcomponents;
 
 import java.util.logging.Logger;
 

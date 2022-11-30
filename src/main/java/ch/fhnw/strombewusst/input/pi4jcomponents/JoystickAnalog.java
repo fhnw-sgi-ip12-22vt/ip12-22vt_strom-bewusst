@@ -1,7 +1,7 @@
-package ch.fhnw.strombewusst.ControllerComponents;
+package ch.fhnw.strombewusst.input.pi4jcomponents;
 
 import com.pi4j.context.Context;
-import ch.fhnw.strombewusst.ControllerComponents.helpers.PIN;
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import java.util.function.Consumer;
 
 public class JoystickAnalog extends Component{

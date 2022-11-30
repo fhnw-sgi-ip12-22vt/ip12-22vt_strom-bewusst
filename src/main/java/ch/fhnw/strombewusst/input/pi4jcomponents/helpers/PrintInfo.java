@@ -1,4 +1,4 @@
-package ch.fhnw.strombewusst.ControllerComponents.helpers;
+package ch.fhnw.strombewusst.input.pi4jcomponents.helpers;
 
 import com.pi4j.context.Context;
 import com.pi4j.platform.Platform;

@@ -2,12 +2,11 @@ package ch.fhnw.strombewusst;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
-import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import ch.fhnw.strombewusst.input.Player1Controller;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
@@ -18,7 +17,6 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import javafx.scene.input.KeyCode;
 
@@ -99,6 +97,7 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initInput() {
+        Player1Controller p1Controller = new Player1Controller();
         // player1 Movement
         getInput().addAction(new UserAction("player1 Right") {
             @Override
@@ -203,7 +202,6 @@ public class StromBewusst extends GameApplication {
 
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());
-        physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
     }
 

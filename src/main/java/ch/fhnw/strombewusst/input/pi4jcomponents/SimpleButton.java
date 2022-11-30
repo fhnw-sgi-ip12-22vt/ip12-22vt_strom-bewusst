@@ -1,6 +1,6 @@
-package ch.fhnw.strombewusst.ControllerComponents;
+package ch.fhnw.strombewusst.input.pi4jcomponents;
 import com.pi4j.context.Context;
-import ch.fhnw.strombewusst.ControllerComponents.helpers.PIN;
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import com.pi4j.io.gpio.digital.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
