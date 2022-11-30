@@ -2,9 +2,9 @@ package ch.fhnw.strombewusst;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-import ch.fhnw.strombewusst.ControllerComponents.Ads1115;
-import ch.fhnw.strombewusst.ControllerComponents.JoystickAnalog;
+import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
+import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
@@ -20,12 +20,9 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import com.pi4j.Pi4J;
-import com.pi4j.context.Context;
 import javafx.scene.input.KeyCode;
-import java.util.Map;
-import ch.fhnw.strombewusst.ControllerComponents.helpers.PIN;
 
+import java.util.Map;
 
 /**
  * This is the main class of our game, the methods of this class initialize the game.
@@ -33,8 +30,6 @@ import ch.fhnw.strombewusst.ControllerComponents.helpers.PIN;
 public class StromBewusst extends GameApplication {
     private Entity player1;
     private Entity player2;
-
-    private Context pi4j;
 
     public static void main(String[] args) {
         launch(args);
@@ -71,32 +66,32 @@ public class StromBewusst extends GameApplication {
         spawn("wall", new SpawnData(20, 0).put("width", 0d).put("height", (double) getAppHeight()));
         spawn("wall", new SpawnData(0, 50).put("width", (double) getAppWidth()).put("height", 0d));
         spawn("wall", new SpawnData(890, 0).put("width", 0d).put("height", (double) getAppHeight()));
-        spawn("wall", new SpawnData(0, getAppHeight() - 30).put("width", (double) getAppWidth()).put("height", 0d));
+        spawn("wall", new SpawnData(0, getAppHeight()-30).put("width", (double) getAppWidth()).put("height", 0d));
 
         spawn("emptyRoom");
-        player1 = spawn("player", new SpawnData(566, 92).put("playerNum", 1));
+        player1 = spawn("player", new SpawnData(566,92).put("playerNum", 1));
         player2 = spawn("player", new SpawnData(694, 92).put("playerNum", 2));
 
-        FXGL.spawn("main-desk", 264, 75);
-        FXGL.spawn("door", 618, 6);
+        FXGL.spawn("main-desk", 264,75);
+        FXGL.spawn("door",618,6);
 
-        FXGL.spawn("desk", new SpawnData(103, 267).put("deskNum", 0));
-        FXGL.spawn("desk", new SpawnData(264, 267).put("deskNum", 1));
-        FXGL.spawn("desk", new SpawnData(425, 267).put("deskNum", 2));
-        FXGL.spawn("desk", new SpawnData(586, 267).put("deskNum", 3));
-        FXGL.spawn("desk", new SpawnData(747, 267).put("deskNum", 4));
+        FXGL.spawn("desk",new SpawnData(103,267).put("deskNum",0));
+        FXGL.spawn("desk",new SpawnData(264,267).put("deskNum",1));
+        FXGL.spawn("desk",new SpawnData(425,267).put("deskNum",2));
+        FXGL.spawn("desk",new SpawnData(586,267).put("deskNum",3));
+        FXGL.spawn("desk",new SpawnData(747,267).put("deskNum",4));
 
-        FXGL.spawn("desk", new SpawnData(103, 405).put("deskNum", 5));
-        FXGL.spawn("desk", new SpawnData(264, 405).put("deskNum", 6));
-        FXGL.spawn("desk", new SpawnData(425, 405).put("deskNum", 7));
-        FXGL.spawn("desk", new SpawnData(586, 405).put("deskNum", 8));
-        FXGL.spawn("desk", new SpawnData(747, 405).put("deskNum", 9));
+        FXGL.spawn("desk",new SpawnData(103,405).put("deskNum",5));
+        FXGL.spawn("desk",new SpawnData(264,405).put("deskNum",6));
+        FXGL.spawn("desk",new SpawnData(425,405).put("deskNum",7));
+        FXGL.spawn("desk",new SpawnData(586,405).put("deskNum",8));
+        FXGL.spawn("desk",new SpawnData(747,405).put("deskNum",9));
 
-        FXGL.spawn("desk", new SpawnData(103, 543).put("deskNum", 10));
-        FXGL.spawn("desk", new SpawnData(264, 543).put("deskNum", 11));
-        FXGL.spawn("desk", new SpawnData(425, 543).put("deskNum", 12));
-        FXGL.spawn("desk", new SpawnData(586, 543).put("deskNum", 13));
-        FXGL.spawn("desk", new SpawnData(747, 543).put("deskNum", 14));
+        FXGL.spawn("desk",new SpawnData(103,543).put("deskNum",10));
+        FXGL.spawn("desk",new SpawnData(264,543).put("deskNum",11));
+        FXGL.spawn("desk",new SpawnData(425,543).put("deskNum",12));
+        FXGL.spawn("desk",new SpawnData(586,543).put("deskNum",13));
+        FXGL.spawn("desk",new SpawnData(747,543).put("deskNum",14));
     }
 
     /**
@@ -105,10 +100,6 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initInput() {
         // player1 Movement
-        pi4j = Pi4J.newAutoContext();
-        Ads1115 ads1115 = new Ads1115(pi4j, 0x01, Ads1115.GAIN.GAIN_4_096V, Ads1115.ADDRESS.GND, 4);
-        JoystickAnalog controller1 = new JoystickAnalog(pi4j, ads1115, 0, 1, 3.3, true, PIN.D6);
-
         getInput().addAction(new UserAction("player1 Right") {
             @Override
             protected void onAction() {
@@ -119,7 +110,7 @@ public class StromBewusst extends GameApplication {
             protected void onActionEnd() {
                 player1.getComponent(PlayerComponent.class).stopMovingX();
             }
-        }, KeyCode.H);
+        }, KeyCode.D);
         getInput().addAction(new UserAction("player1 Left") {
             @Override
             protected void onAction() {
@@ -212,29 +203,8 @@ public class StromBewusst extends GameApplication {
 
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());
-
-        physicsWorld.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK) {
-            Entity message1, message2;
-
-            @Override
-            protected void onCollisionBegin(Entity player, Entity desk) {
-                if (player == player1) {
-                    message1 = spawn("message", new SpawnData(920, 20).put("msgNum", desk.getComponent(DeskComponent.class).getDeskNum()));
-                } else {
-                    message2 = spawn("message", new SpawnData(920, 360).put("msgNum", desk.getComponent(DeskComponent.class).getDeskNum()));
-                }
-
-            }
-
-            @Override
-            protected void onCollisionEnd(Entity player, Entity desk) {
-                if (player == player1) {
-                    message1.removeFromWorld();
-                } else {
-                    message2.removeFromWorld();
-                }
-            }
-        });
+        physicsWorld.addCollisionHandler(new PlayerDeskHandler());
+        physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
     }
 
     @Override
@@ -249,5 +219,10 @@ public class StromBewusst extends GameApplication {
         vars.put("shield", 0);
         vars.put("hasShield", false);
     }
+@Override
+protected void initUI(){
+
+
 }
 
+}
