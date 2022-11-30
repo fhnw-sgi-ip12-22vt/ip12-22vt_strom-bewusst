@@ -215,7 +215,7 @@ public class StromBewusst extends GameApplication {
                     message1 = spawn("message",new SpawnData(920,20).put("msgNum",desk.getComponent(DeskComponent.class).getDeskNum()));
                 }
                 else{
-                    message2 = spawn("message",920,360);
+                    message2 = spawn("message",new SpawnData(920,360).put("msgNum", desk.getComponent(DeskComponent.class).getDeskNum()));
                 }
 
             }
