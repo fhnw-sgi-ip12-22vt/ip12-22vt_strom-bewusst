@@ -9,13 +9,23 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import com.almasb.fxgl.ui.ProgressBar;
+import javafx.beans.binding.Bindings;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+
+import java.util.Map;
 
 /**
  * This is the main class of our game, the methods of this class initialize the game.
@@ -194,17 +204,8 @@ public class StromBewusst extends GameApplication {
         PhysicsWorld physicsWorld = getPhysicsWorld();
         physicsWorld.setGravity(0, 0);
 
-        physicsWorld.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.PLAYER) {
-            @Override
-            protected void onCollisionEnd(Entity a, Entity b) {
-                super.onCollisionEnd(a, b);
-                // resetting velocity so pushed players don't keep moving after collision
-                a.getComponent(PhysicsComponent.class).setVelocityX(0);
-                a.getComponent(PhysicsComponent.class).setVelocityY(0);
-                b.getComponent(PhysicsComponent.class).setVelocityX(0);
-                b.getComponent(PhysicsComponent.class).setVelocityY(0);
-            }
-        });
+        physicsWorld.addCollisionHandler(new PlayerCollisionHandler());
+
 
         physicsWorld.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
             Entity message1,message2;
@@ -230,4 +231,23 @@ public class StromBewusst extends GameApplication {
             }
         });
     }
+
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("score", 0);
+        vars.put("level", 0);
+        vars.put("bullets", 999);
+        vars.put("laser", 50);
+        vars.put("rockets", 10);
+        vars.put("heat", 0);
+        vars.put("overheating", false);
+        vars.put("shield", 0);
+        vars.put("hasShield", false);
+    }
+@Override
+protected void initUI(){
+
+
+}
+
 }
