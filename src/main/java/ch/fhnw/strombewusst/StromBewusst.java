@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.components.DeskComponent;
@@ -201,30 +202,7 @@ public class StromBewusst extends GameApplication {
 
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());
-
-        physicsWorld.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.DESK){
-            Entity message1,message2;
-            @Override
-            protected void onCollisionBegin(Entity player, Entity desk){
-                if(player == player1){
-                    message1 = spawn("message",new SpawnData(920,20).put("msgNum",desk.getComponent(DeskComponent.class).getDeskNum()));
-                }
-                else{
-                    message2 = spawn("message",new SpawnData(920,360).put("msgNum", desk.getComponent(DeskComponent.class).getDeskNum()));
-                }
-
-            }
-
-            @Override
-            protected void onCollisionEnd(Entity player, Entity desk) {
-                if(player == player1){
-                    message1.removeFromWorld();
-                }
-                else{
-                    message2.removeFromWorld();
-                }
-            }
-        });
+        physicsWorld.addCollisionHandler(new PlayerDeskHandler());
     }
 
     @Override

@@ -14,12 +14,14 @@ import javafx.util.Duration;
  */
 public class PlayerComponent extends Component {
     private static final int PLAYER_SPEED = 300;
-    private PhysicsComponent physics;
 
+    private int playerNum;
+    private PhysicsComponent physics;
     private final AnimatedTexture texture;
     private final AnimationChannel animIdle, animWalk;
 
     public PlayerComponent(int playerNum) {
+        this.playerNum = playerNum;
         animIdle = new AnimationChannel(
                 image("player" + playerNum + ".png"),
                 4,
@@ -85,6 +87,10 @@ public class PlayerComponent extends Component {
 
     public void stopMovingY() {
         physics.setVelocityY(0);
+    }
+
+    public int getPlayerNum(){
+        return playerNum;
     }
 }
 
