@@ -78,6 +78,17 @@ public class StromBewusstFactory implements EntityFactory {
                 .buildAndAttach();
     }
 
+    @Spawns("prev-door")
+    public Entity newPrevDoor(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.PREVDOOR)
+                .view("prev-door.png")
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .zIndex(1)
+                .buildAndAttach();
+    }
+
     @Spawns("wall")
     public Entity newWall(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();

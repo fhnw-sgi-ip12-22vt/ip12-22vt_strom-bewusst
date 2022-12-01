@@ -7,6 +7,7 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -31,7 +32,7 @@ public class PlayerMainDeskHandler extends CollisionHandler {
 
         protected void onCollisionBegin(Entity player, Entity desk){
         question = entityBuilder()
-                .at(desk.getX()-30, desk.getY())
+                .at(desk.getX()+10, desk.getY()-40)
                 .view("Q.png")
                 .buildAndAttach();
         player.getComponent(PlayerComponent.class).setIsNearDesk(true);

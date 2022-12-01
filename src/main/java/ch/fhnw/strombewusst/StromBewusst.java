@@ -16,6 +16,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
+import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
@@ -32,9 +33,17 @@ import java.util.Map;
 public class StromBewusst extends GameApplication {
     private Entity player1;
     private Entity player2;
+    private int room = 0;
 
     public static void main(String[] args) {
         launch(args);
+
+    }
+
+    public void setNextRoom() {
+        room++;
+        getGameWorld().getEntitiesCopy().forEach(Entity::removeFromWorld);
+        initGame();
     }
 
     @Override
@@ -49,6 +58,8 @@ public class StromBewusst extends GameApplication {
         settings.setMainMenuEnabled(true);
         settings.setWidth(1280);
         settings.setHeight(720);
+
+
         settings.setSceneFactory(new SceneFactory() {
             @Override
             public FXGLMenu newMainMenu() {
@@ -63,37 +74,63 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(new StromBewusstFactory());
 
-        spawn("wall", new SpawnData(20, 0).put("width", 0d).put("height", (double) getAppHeight()));
-        spawn("wall", new SpawnData(0, 50).put("width", (double) getAppWidth()).put("height", 0d));
-        spawn("wall", new SpawnData(890, 0).put("width", 0d).put("height", (double) getAppHeight()));
-        spawn("wall", new SpawnData(0, getAppHeight()-30).put("width", (double) getAppWidth()).put("height", 0d));
+        //spawn start room
+        if (room == 0) {
+            //start room must add Factory. following rooms not
+            getGameWorld().addEntityFactory(new StromBewusstFactory());
 
-        spawn("emptyRoom");
-        player1 = spawn("player", new SpawnData(566,92).put("playerNum", 1));
-        player2 = spawn("player", new SpawnData(694, 92).put("playerNum", 2));
+            //spawn game boundaries & background
+            spawn("wall", new SpawnData(20, 0).put("width", 0d).put("height", (double) getAppHeight()));
+            spawn("wall", new SpawnData(0, 50).put("width", (double) getAppWidth()).put("height", 0d));
+            spawn("wall", new SpawnData(890, 0).put("width", 0d).put("height", (double) getAppHeight()));
+            spawn("wall", new SpawnData(0, getAppHeight() - 30).put("width", (double) getAppWidth()).put("height", 0d));
+            spawn("emptyRoom");
 
-        FXGL.spawn("main-desk", 264,75);
-        FXGL.spawn("door",618,6);
+            //spawn players
+            player1 = spawn("player", new SpawnData(566, 92).put("playerNum", 1));
+            player2 = spawn("player", new SpawnData(694, 92).put("playerNum", 2));
 
-        FXGL.spawn("desk",new SpawnData(103,267).put("deskNum",0));
-        FXGL.spawn("desk",new SpawnData(264,267).put("deskNum",1));
-        FXGL.spawn("desk",new SpawnData(425,267).put("deskNum",2));
-        FXGL.spawn("desk",new SpawnData(586,267).put("deskNum",3));
-        FXGL.spawn("desk",new SpawnData(747,267).put("deskNum",4));
+            //spawn room elements
+            FXGL.spawn("main-desk", 264, 75);
+            FXGL.spawn("door", 618, 6);
 
-        FXGL.spawn("desk",new SpawnData(103,405).put("deskNum",5));
-        FXGL.spawn("desk",new SpawnData(264,405).put("deskNum",6));
-        FXGL.spawn("desk",new SpawnData(425,405).put("deskNum",7));
-        FXGL.spawn("desk",new SpawnData(586,405).put("deskNum",8));
-        FXGL.spawn("desk",new SpawnData(747,405).put("deskNum",9));
+            FXGL.spawn("desk", new SpawnData(103, 267).put("deskNum", 0));
+            FXGL.spawn("desk", new SpawnData(264, 267).put("deskNum", 1));
+            FXGL.spawn("desk", new SpawnData(425, 267).put("deskNum", 2));
+            FXGL.spawn("desk", new SpawnData(586, 267).put("deskNum", 3));
+            FXGL.spawn("desk", new SpawnData(747, 267).put("deskNum", 4));
 
-        FXGL.spawn("desk",new SpawnData(103,543).put("deskNum",10));
-        FXGL.spawn("desk",new SpawnData(264,543).put("deskNum",11));
-        FXGL.spawn("desk",new SpawnData(425,543).put("deskNum",12));
-        FXGL.spawn("desk",new SpawnData(586,543).put("deskNum",13));
-        FXGL.spawn("desk",new SpawnData(747,543).put("deskNum",14));
+            FXGL.spawn("desk", new SpawnData(103, 405).put("deskNum", 5));
+            FXGL.spawn("desk", new SpawnData(264, 405).put("deskNum", 6));
+            FXGL.spawn("desk", new SpawnData(425, 405).put("deskNum", 7));
+            FXGL.spawn("desk", new SpawnData(586, 405).put("deskNum", 8));
+            FXGL.spawn("desk", new SpawnData(747, 405).put("deskNum", 9));
+
+            FXGL.spawn("desk", new SpawnData(103, 543).put("deskNum", 10));
+            FXGL.spawn("desk", new SpawnData(264, 543).put("deskNum", 11));
+            FXGL.spawn("desk", new SpawnData(425, 543).put("deskNum", 12));
+            FXGL.spawn("desk", new SpawnData(586, 543).put("deskNum", 13));
+            FXGL.spawn("desk", new SpawnData(747, 543).put("deskNum", 14));
+        }
+
+        //spawn end room
+        if (room == 1) {
+            //spawn game boundaries & background
+            spawn("wall", new SpawnData(20, 0).put("width", 0d).put("height", (double) getAppHeight()));
+            spawn("wall", new SpawnData(0, 50).put("width", (double) getAppWidth()).put("height", 0d));
+            spawn("wall", new SpawnData(890, 0).put("width", 0d).put("height", (double) getAppHeight()));
+            spawn("wall", new SpawnData(0, getAppHeight() - 30).put("width", (double) getAppWidth()).put("height", 0d));
+            spawn("emptyRoom");
+
+            //spawn players
+            player1 = spawn("player", new SpawnData(603, 625).put("playerNum", 1));
+            player2 = spawn("player", new SpawnData(656, 625).put("playerNum", 2));
+
+            //spawn room elements
+            FXGL.spawn("prev-door", 618, getAppHeight() - 127);
+        }
+
     }
 
     /**
@@ -198,11 +235,35 @@ public class StromBewusst extends GameApplication {
             protected void onAction() {
                 boolean p1 = player1.getComponent(PlayerComponent.class).getIsNearDesk();
                 boolean p2 = player2.getComponent(PlayerComponent.class).getIsNearDesk();
-                if(p1||p2){
+                if (p1 || p2) {
                     getSceneService().pushSubScene(new PuzzleSubScene());
                 }
             }
         }, KeyCode.Q);
+
+        onKeyDown(KeyCode.F, () -> {
+            var lines = getAssetLoader().loadText("example—cutscene1.txt");
+            var cutscene = new Cutscene(lines);
+            getCutsceneService().startCutscene(cutscene);
+        });
+
+
+        getInput().addAction(new UserAction("next room") {
+            @Override
+            protected void onAction() {
+                boolean p1 = player1.getComponent(PlayerComponent.class).getIsNearDoor();
+                boolean p2 = player2.getComponent(PlayerComponent.class).getIsNearDoor();
+                if (p1 || p2) {
+                    getGameScene().getViewport().fade(() -> {
+                        setNextRoom();
+
+
+                    });
+                }
+            }
+        }, KeyCode.R);
+
+
     }
 
 
@@ -220,22 +281,5 @@ public class StromBewusst extends GameApplication {
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
     }
 
-    @Override
-    protected void initGameVars(Map<String, Object> vars) {
-        vars.put("score", 0);
-        vars.put("level", 0);
-        vars.put("bullets", 999);
-        vars.put("laser", 50);
-        vars.put("rockets", 10);
-        vars.put("heat", 0);
-        vars.put("overheating", false);
-        vars.put("shield", 0);
-        vars.put("hasShield", false);
-    }
-@Override
-protected void initUI(){
-
-
-}
 
 }

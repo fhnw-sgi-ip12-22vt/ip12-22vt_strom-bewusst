@@ -18,6 +18,7 @@ public class PlayerComponent extends Component {
     private int playerNum;
 
     private boolean isNearDesk;
+    private boolean isNearDoor;
     private PhysicsComponent physics;
     private final AnimatedTexture texture;
     private final AnimationChannel animIdle, animWalk;
@@ -101,6 +102,14 @@ public class PlayerComponent extends Component {
 
     public boolean getIsNearDesk(){
         return isNearDesk;
+    }
+
+    public boolean getIsNearDoor(){
+        return isNearDoor;
+    }
+
+    public void setIsNearDoor(boolean value) {
+        this.isNearDoor = value;
     }
 }
 
