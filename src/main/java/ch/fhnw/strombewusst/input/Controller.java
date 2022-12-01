@@ -15,6 +15,7 @@ import com.pi4j.plugin.pigpio.provider.serial.PiGpioSerialProvider;
 import com.pi4j.plugin.pigpio.provider.spi.PiGpioSpiProvider;
 import com.pi4j.plugin.raspberrypi.platform.RaspberryPiPlatform;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,15 @@ public class Controller {
             )
             .build();
 
-    protected final static Ads1115 ads1115 = new Ads1115(pi4jContext, 0x01, Ads1115.GAIN.GAIN_4_096V, Ads1115.ADDRESS.GND, 4);
+    protected static Ads1115 ads1115;
+
+    static {
+        try {
+            ads1115 = new Ads1115(pi4jContext, 0x01, Ads1115.GAIN.GAIN_4_096V, Ads1115.ADDRESS.GND, 4);
+        } catch (Exception ignored) {
+            ads1115 = null;
+        }
+    }
 
     public JoystickAnalog joystick;
 
@@ -49,7 +58,7 @@ public class Controller {
     private List<Runnable> onJoystickDownTasks = new ArrayList<>();
     private List<Runnable> onJoystickVerticalIdleTasks = new ArrayList<>();
 
-    public Controller(int channelXAxis, int channelYAxis, PIN pin) {
+    public Controller(int channelXAxis, int channelYAxis, PIN pin) throws InvocationTargetException {
         joystick = new JoystickAnalog(pi4jContext, ads1115, channelXAxis, channelYAxis, 3.3, true, pin);
 
         joystick.xOnMove(this::handleXMove);
