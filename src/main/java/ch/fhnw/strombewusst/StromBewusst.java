@@ -2,13 +2,17 @@ package ch.fhnw.strombewusst;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
+import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import ch.fhnw.strombewusst.input.Controller;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
+import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
+import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
@@ -227,6 +231,17 @@ public class StromBewusst extends GameApplication {
                 player2.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.K);
+
+        getInput().addAction(new UserAction("open puzzle") {
+            @Override
+            protected void onAction() {
+                boolean p1 = player1.getComponent(PlayerComponent.class).getIsNearDesk();
+                boolean p2 = player2.getComponent(PlayerComponent.class).getIsNearDesk();
+                if(p1||p2){
+                    getSceneService().pushSubScene(new PuzzleSubScene());
+                }
+            }
+        }, KeyCode.Q);
     }
 
 
@@ -240,6 +255,7 @@ public class StromBewusst extends GameApplication {
 
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());
+        physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
     }
 

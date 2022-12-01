@@ -17,7 +17,7 @@ public class PuzzleSubScene extends SubScene {
     Button btnBack;
 
     public PuzzleSubScene() {
-        Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
+        Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
@@ -31,7 +31,7 @@ public class PuzzleSubScene extends SubScene {
 
         btnBack = new Button("Back");
         btnBack.getStyleClass().add("main_menu_button");
-        btnBack.setStyle("-fx-text-fill: black;");
+        btnBack.setStyle("-fx-text-fill: white;");
         btnBack.setOnAction(e -> getSceneService().popSubScene());
 
         HBox backHBox = new HBox(btnBack);
@@ -40,12 +40,5 @@ public class PuzzleSubScene extends SubScene {
         backHBox.setTranslateY(getAppHeight() - 140);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, backHBox);
-    }
-
-    @Override
-    public void onUpdate(double tpf) {
-        if (!(btnBack.isFocused())) {
-            btnBack.requestFocus();
-        }
     }
 }
