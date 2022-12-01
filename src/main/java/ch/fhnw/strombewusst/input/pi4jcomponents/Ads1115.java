@@ -1,8 +1,8 @@
-package ch.fhnw.strombewusst.ControllerComponents;
+package ch.fhnw.strombewusst.input.pi4jcomponents;
 
 import com.pi4j.config.exception.ConfigException;
 import com.pi4j.context.Context;
-import ch.fhnw.strombewusst.ControllerComponents.helpers.ContinuousMeasuringException;
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.ContinuousMeasuringException;
 import com.pi4j.io.i2c.I2C;
 import com.pi4j.io.i2c.I2CConfig;
 

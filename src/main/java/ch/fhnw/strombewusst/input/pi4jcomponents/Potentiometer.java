@@ -1,7 +1,7 @@
-package ch.fhnw.strombewusst.ControllerComponents;
+package ch.fhnw.strombewusst.input.pi4jcomponents;
 
 import com.pi4j.config.exception.ConfigException;
-import ch.fhnw.strombewusst.ControllerComponents.helpers.ContinuousMeasuringException;
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.ContinuousMeasuringException;
 import java.util.function.Consumer;
 
 public class Potentiometer extends Component {

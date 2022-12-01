@@ -1,7 +1,7 @@
-package ch.fhnw.strombewusst.ControllerComponents;
+package ch.fhnw.strombewusst.input.pi4jcomponents;
 
 import com.pi4j.context.Context;
-import ch.fhnw.strombewusst.ControllerComponents.helpers.PIN;
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import java.util.function.Consumer;
 
 public class JoystickAnalog extends Component{
@@ -84,14 +84,14 @@ public class JoystickAnalog extends Component{
      *
      * @param pi4j        Pi4J context
      * @param ads1115     ads object
-     * @param chanelXAxis analog potentiometer x-axis
-     * @param chanelYAxis analog potentiometer y-axis
+     * @param channelXAxis analog potentiometer x-axis
+     * @param channelYAxis analog potentiometer y-axis
      * @param maxVoltage  max voltage expects on analog input x- and y-axis
      * @param normalized0to1 normalization axis if true -> normalization from 0 to 1 if false -> normalization from -1 to 1
      * @param push        additional push button on joystick
      */
-    public JoystickAnalog(Context pi4j, Ads1115 ads1115, int chanelXAxis, int chanelYAxis, double maxVoltage, boolean normalized0to1, PIN push) {
-        this(new Potentiometer(ads1115, chanelXAxis, maxVoltage), new Potentiometer(ads1115, chanelYAxis, maxVoltage), normalized0to1, new SimpleButton(pi4j, push, true));
+    public JoystickAnalog(Context pi4j, Ads1115 ads1115, int channelXAxis, int channelYAxis, double maxVoltage, boolean normalized0to1, PIN push) {
+        this(new Potentiometer(ads1115, channelXAxis, maxVoltage), new Potentiometer(ads1115, channelYAxis, maxVoltage), normalized0to1, new SimpleButton(pi4j, push, true));
     }
 
     /**

@@ -14,7 +14,6 @@ import javafx.scene.layout.HBox;
  * player gets to the main desk in the room button is pressed.
  */
 public class PuzzleSubScene extends SubScene {
-    Button btnBack;
 
     public PuzzleSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
@@ -29,9 +28,9 @@ public class PuzzleSubScene extends SubScene {
         titleHBox.setAlignment(Pos.CENTER);
         titleHBox.setTranslateY(50);
 
-        btnBack = new Button("Back");
+        Button btnBack = new Button("Back");
         btnBack.getStyleClass().add("main_menu_button");
-        btnBack.setStyle("-fx-text-fill: white;");
+        btnBack.setStyle("-fx-text-fill: black;");
         btnBack.setOnAction(e -> getSceneService().popSubScene());
 
         HBox backHBox = new HBox(btnBack);

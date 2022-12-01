@@ -8,8 +8,8 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 
 public class PlayerDoorHandler extends CollisionHandler {
-
     private Entity desk;
+
     public PlayerDoorHandler() {
         super(EntityType.PLAYER, EntityType.DOOR);
     }
@@ -21,7 +21,4 @@ public class PlayerDoorHandler extends CollisionHandler {
     protected void onCollisionEnd(Entity player, Entity door) {
 
     }
-
-
-
 }

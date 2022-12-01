@@ -15,7 +15,6 @@ import javafx.scene.shape.Rectangle;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class PlayerMainDeskHandler extends CollisionHandler {
-
     public PlayerMainDeskHandler() {
         super(EntityType.PLAYER, EntityType.MAINDESK);
     }
@@ -28,9 +27,7 @@ public class PlayerMainDeskHandler extends CollisionHandler {
         }
     };
 
-
-
-        protected void onCollisionBegin(Entity player, Entity desk){
+    protected void onCollisionBegin(Entity player, Entity desk) {
         question = entityBuilder()
                 .at(desk.getX()+10, desk.getY()-40)
                 .view("Q.png")
@@ -38,7 +35,7 @@ public class PlayerMainDeskHandler extends CollisionHandler {
         player.getComponent(PlayerComponent.class).setIsNearDesk(true);
     }
 
-    protected void onCollisionEnd(Entity player, Entity desk){
+    protected void onCollisionEnd(Entity player, Entity desk) {
         player.getComponent(PlayerComponent.class).setIsNearDesk(false);
         question.removeFromWorld();
     }

@@ -19,6 +19,4 @@ public class PlayerPlayerHandler extends CollisionHandler {
         b.getComponent(PhysicsComponent.class).setVelocityX(0);
         b.getComponent(PhysicsComponent.class).setVelocityY(0);
     }
-
-
 }
