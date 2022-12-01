@@ -31,7 +31,7 @@ public class PuzzleSubScene extends SubScene {
 
         btnBack = new Button("Back");
         btnBack.getStyleClass().add("main_menu_button");
-        btnBack.setStyle("-fx-text-fill: white;");
+        btnBack.setStyle("-fx-text-fill: black;");
         btnBack.setOnAction(e -> getSceneService().popSubScene());
 
         HBox backHBox = new HBox(btnBack);
