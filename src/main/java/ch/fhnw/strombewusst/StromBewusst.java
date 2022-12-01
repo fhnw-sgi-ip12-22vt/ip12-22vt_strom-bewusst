@@ -18,7 +18,6 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
-import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
@@ -75,26 +74,26 @@ public class StromBewusst extends GameApplication {
         player1 = spawn("player", new SpawnData(566,92).put("playerNum", 1));
         player2 = spawn("player", new SpawnData(694, 92).put("playerNum", 2));
 
-        FXGL.spawn("main-desk", 264,75);
-        FXGL.spawn("door",618,6);
+        spawn("main-desk", 264,75);
+        spawn("door",618,6);
 
-        FXGL.spawn("desk",new SpawnData(103,267).put("deskNum",0));
-        FXGL.spawn("desk",new SpawnData(264,267).put("deskNum",1));
-        FXGL.spawn("desk",new SpawnData(425,267).put("deskNum",2));
-        FXGL.spawn("desk",new SpawnData(586,267).put("deskNum",3));
-        FXGL.spawn("desk",new SpawnData(747,267).put("deskNum",4));
+        spawn("desk",new SpawnData(103,267).put("deskNum",0));
+        spawn("desk",new SpawnData(264,267).put("deskNum",1));
+        spawn("desk",new SpawnData(425,267).put("deskNum",2));
+        spawn("desk",new SpawnData(586,267).put("deskNum",3));
+        spawn("desk",new SpawnData(747,267).put("deskNum",4));
 
-        FXGL.spawn("desk",new SpawnData(103,405).put("deskNum",5));
-        FXGL.spawn("desk",new SpawnData(264,405).put("deskNum",6));
-        FXGL.spawn("desk",new SpawnData(425,405).put("deskNum",7));
-        FXGL.spawn("desk",new SpawnData(586,405).put("deskNum",8));
-        FXGL.spawn("desk",new SpawnData(747,405).put("deskNum",9));
+        spawn("desk",new SpawnData(103,405).put("deskNum",5));
+        spawn("desk",new SpawnData(264,405).put("deskNum",6));
+        spawn("desk",new SpawnData(425,405).put("deskNum",7));
+        spawn("desk",new SpawnData(586,405).put("deskNum",8));
+        spawn("desk",new SpawnData(747,405).put("deskNum",9));
 
-        FXGL.spawn("desk",new SpawnData(103,543).put("deskNum",10));
-        FXGL.spawn("desk",new SpawnData(264,543).put("deskNum",11));
-        FXGL.spawn("desk",new SpawnData(425,543).put("deskNum",12));
-        FXGL.spawn("desk",new SpawnData(586,543).put("deskNum",13));
-        FXGL.spawn("desk",new SpawnData(747,543).put("deskNum",14));
+        spawn("desk",new SpawnData(103,543).put("deskNum",10));
+        spawn("desk",new SpawnData(264,543).put("deskNum",11));
+        spawn("desk",new SpawnData(425,543).put("deskNum",12));
+        spawn("desk",new SpawnData(586,543).put("deskNum",13));
+        spawn("desk",new SpawnData(747,543).put("deskNum",14));
     }
 
     /**
@@ -244,7 +243,6 @@ public class StromBewusst extends GameApplication {
         }, KeyCode.Q);
     }
 
-
     /**
      * This method initializes the physics engine that is used to handle collisions.
      */
@@ -271,10 +269,4 @@ public class StromBewusst extends GameApplication {
         vars.put("shield", 0);
         vars.put("hasShield", false);
     }
-@Override
-protected void initUI(){
-
-
-}
-
 }

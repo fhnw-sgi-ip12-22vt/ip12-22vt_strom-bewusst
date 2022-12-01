@@ -15,10 +15,11 @@ import javafx.util.Duration;
 public class PlayerComponent extends Component {
     private static final int PLAYER_SPEED = 300;
 
-    private int playerNum;
+    private final int playerNum;
 
     private boolean isNearDesk;
     private PhysicsComponent physics;
+
     private final AnimatedTexture texture;
     private final AnimationChannel animIdle, animWalk;
 
