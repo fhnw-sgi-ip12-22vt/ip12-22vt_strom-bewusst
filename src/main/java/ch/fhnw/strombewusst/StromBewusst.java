@@ -6,7 +6,8 @@ import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.components.PlayerComponent;
-import ch.fhnw.strombewusst.input.Player1Controller;
+import ch.fhnw.strombewusst.input.Controller;
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
@@ -97,7 +98,44 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initInput() {
-        Player1Controller p1Controller = new Player1Controller();
+        // Initializing the controllers, their input gets processed and the appropriate keypresses get "simulated"
+        // By simulating the keypresses, the programm can be worked on locally by using WASD, but can be controlled
+        // in production with the controller.
+        try {
+            Controller p1Controller = new Controller(0, 1, PIN.D17);
+            Controller p2Controller = new Controller(2, 3, PIN.D6);
+
+            p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.D));
+            p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.A));
+            p1Controller.onJoystickHorizontalIdle(() -> {
+                getInput().mockKeyRelease(KeyCode.A);
+                getInput().mockKeyRelease(KeyCode.D);
+            });
+
+            p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.W));
+            p1Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.S));
+            p1Controller.onJoystickVerticalIdle(() -> {
+                getInput().mockKeyRelease(KeyCode.W);
+                getInput().mockKeyRelease(KeyCode.S);
+            });
+
+            p2Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.L));
+            p2Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.J));
+            p2Controller.onJoystickHorizontalIdle(() -> {
+                getInput().mockKeyRelease(KeyCode.L);
+                getInput().mockKeyRelease(KeyCode.J);
+            });
+
+            p2Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.I));
+            p2Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.K));
+            p2Controller.onJoystickVerticalIdle(() -> {
+                getInput().mockKeyRelease(KeyCode.I);
+                getInput().mockKeyRelease(KeyCode.K);
+            });
+        } catch (Exception ignored) {
+            System.out.println("failed to initialize controller, proceeding");
+        }
+
         // player1 Movement
         getInput().addAction(new UserAction("player1 Right") {
             @Override
