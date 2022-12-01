@@ -108,33 +108,4 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .build();
     }
-
-
-    @Spawns("message")
-    public Entity newMessage(SpawnData data){
-        HashMap<Integer,String> msgMap = new HashMap<>(){
-            {
-                put(0,"msg1.png");
-                put(1,"msg2.png");
-                put(2,"msg1.png");
-                put(3,"msg2.png");
-                put(4,"msg1.png");
-                put(5,"msg2.png");
-                put(6,"msg1.png");
-                put(7,"msg2.png");
-                put(8,"msg1.png");
-                put(9,"msg2.png");
-                put(10,"msg1.png");
-                put(11,"msg2.png");
-                put(12,"msg1.png");
-                put(13,"msg2.png");
-                put(14,"msg1.png");
-            }
-        };
-        return entityBuilder(data)
-                .type(EntityType.MESSAGE)
-                .viewWithBBox(msgMap.get(data.get("msgNum")))
-                .with(new CollidableComponent(true))
-                .build();
-    }
 }

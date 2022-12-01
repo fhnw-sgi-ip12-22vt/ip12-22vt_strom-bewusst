@@ -4,6 +4,12 @@
     -fx-font-size: 60px;
 }
 
+.message{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
 .main_menu_button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
