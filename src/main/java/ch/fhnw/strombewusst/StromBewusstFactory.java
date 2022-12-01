@@ -63,7 +63,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
-                .buildAndAttach();
+                .build();
     }
 
     @Spawns("door")
@@ -75,7 +75,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
-                .buildAndAttach();
+                .build();
     }
 
     @Spawns("wall")
@@ -124,6 +124,6 @@ public class StromBewusstFactory implements EntityFactory {
                 .type(EntityType.MESSAGE)
                 .viewWithBBox(msgMap.get(data.get("msgNum")))
                 .with(new CollidableComponent(true))
-                .buildAndAttach();
+                .build();
     }
 }

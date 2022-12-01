@@ -15,7 +15,6 @@ import com.pi4j.plugin.pigpio.provider.serial.PiGpioSerialProvider;
 import com.pi4j.plugin.pigpio.provider.spi.PiGpioSpiProvider;
 import com.pi4j.plugin.raspberrypi.platform.RaspberryPiPlatform;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,19 +57,16 @@ public class Controller {
     private List<Runnable> onJoystickDownTasks = new ArrayList<>();
     private List<Runnable> onJoystickVerticalIdleTasks = new ArrayList<>();
 
-    public Controller(int channelXAxis, int channelYAxis, PIN pin) throws InvocationTargetException {
+    public Controller(int channelXAxis, int channelYAxis, PIN pin) {
         joystick = new JoystickAnalog(pi4jContext, ads1115, channelXAxis, channelYAxis, 3.3, true, pin);
 
         joystick.xOnMove(this::handleXMove);
         joystick.yOnMove(this::handleYMove);
 
-        //joystick.xOnMove(System.out::println);
-        //joystick.xOnMove(System.out::println);
-
         try {
             joystick.calibrateJoystick();
         } catch (ContinuousMeasuringException ignored) {
-            System.out.println("cont. measuring exception, ignoring");
+            System.out.println("ContinuousMeasuringException, ignoring");
         }
         joystick.start(0.05, 10);
     }
@@ -103,21 +99,58 @@ public class Controller {
         }
     }
 
+    /**
+     * Method to register Tasks to be run when the Joystick is moved to the right
+     *
+     * @param task the task to be run
+     */
     public void onJoystickRight(Runnable task) {
         onJoystickRightTasks.add(task);
     }
+
+    /**
+     * Method to register Tasks to be run when the Joystick is moved to the left
+     *
+     * @param task the task to be run
+     */
     public void onJoystickLeft(Runnable task) {
         onJoystickLeftTasks.add(task);
     }
+
+    /**
+     * Method to register Tasks to be run when the Joystick returns to the horizontal middle
+     * The vertical position is ignored, so the Joystick could still be moved up or down
+     *
+     * @param task the task to be run
+     */
     public void onJoystickHorizontalIdle(Runnable task) {
         onJoystickHorizontalIdleTasks.add(task);
     }
+
+    /**
+     * Method to register Tasks to be run when the Joystick is moved up
+     *
+     * @param task the task to be run
+     */
     public void onJoystickUp(Runnable task) {
         onJoystickUpTasks.add(task);
     }
+
+    /**
+     * Method to register Tasks to be run when the Joystick is moved down
+     *
+     * @param task the task to be run
+     */
     public void onJoystickDown(Runnable task) {
         onJoystickDownTasks.add(task);
     }
+
+    /**
+     * Method to register Tasks to be run when the Joystick returns to the vertical middle
+     * The horizontal position is ignored, so the Joystick could still be moved to the right or left
+     *
+     * @param task the task to be run
+     */
     public void onJoystickVerticalIdle(Runnable task) {
         onJoystickVerticalIdleTasks.add(task);
     }
