@@ -130,6 +130,11 @@ public class StromBewusst extends GameApplication {
 
             //spawn room elements
             FXGL.spawn("prev-door", 618, getAppHeight() - 127);
+            FXGL.spawn("door", 618, 6);
+        }
+
+        if(room==2){
+            getSceneService().pushSubScene(new EndGameScene());
         }
 
     }
