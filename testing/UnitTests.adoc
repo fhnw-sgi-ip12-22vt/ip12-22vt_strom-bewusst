@@ -1,0 +1,48 @@
+= Tests zu Requirements
+
+In der folgenden Tabelle wird dargestellt, welche Requirements durch welche Tests (Unit-Test und manuelle Tests) abgedeckt sind:
+
+|===
+|Requirement(s) | Test(s) | Bemerkungen
+
+|F03.UC-001
+|link:TestCases/1_Steckerkontroller/TC1.2_F001R02.adoc[F001R02]
+link:https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/pi4j-template-javafx/-/blob/master/src/test/java/com/pi4j/mvc/templateapp/view/pui/SomePUITest.java[SomePUITest.java(Methode testLED)]
+|Das ist ein Beispiel, das sicherlich falsch ist.
+
+|Column 1, row 2
+|Column 2, row 2
+|Column 3, row 2
+
+|Column 1, row 3
+|Column 2, row 3
+|Column 3, row 3
+
+|Column 1, row 4
+|Column 2, row 4
+|Column 3, row 4
+
+|Column 1, row 5
+|Column 2, row 5
+|Column 3, row 5
+
+|Column 1, row 6
+|Column 2, row 6
+|Column 3, row 6
+
+|Column 1, row 7
+|Column 2, row 7
+|Column 3, row 7
+
+|Column 1, row 8
+|Column 2, row 8
+|Column 3, row 8
+
+|Column 1, row 9
+|Column 2, row 9
+|Column 3, row 9
+
+|Column 1, row 10
+|Column 2, row 10
+|Column 3, row 10
+|===
