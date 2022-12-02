@@ -139,20 +139,16 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void nextQuiz(){
-        if(count>4){
+        if(quizNum>questBucket.quest.length-2){
             getSceneService().popSubScene();
         }
         else{
-        count++;
-        //if(count%3==0){
             clearQuiz();
             quizNum++;
-            currentQuiz = buildQuiz(quizNum);}
-
-            //System.out.println("Hi");
-        //}
-
+            currentQuiz = buildQuiz(quizNum);
+        }
     }
+
     HBox[] buildQuiz(int i){
         HBox questionHBox = buildTextbox(i,0);
         HBox firstHBox = buildTextbox(i,1);
