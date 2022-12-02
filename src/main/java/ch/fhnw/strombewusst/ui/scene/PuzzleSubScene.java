@@ -4,6 +4,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
 
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -34,6 +35,7 @@ public class PuzzleSubScene extends SubScene {
 
     int quizNum;
     HBox[] currentQuiz;
+    int count;
     public PuzzleSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
@@ -65,57 +67,46 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void inputs(){
+
         getInput().addAction(new UserAction("Green1 Button") {
             @Override
-            protected void onAction() {
-                clearQuiz();
-                quizNum++;
-                buildQuiz(quizNum);
+            protected void onActionBegin() {
+                nextQuiz();
             }
         }, KeyCode.DIGIT5);
 
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
-            protected void onAction() {
-                clearQuiz();
-                quizNum++;
-                buildQuiz(quizNum);
+            protected void onActionBegin() {
+                nextQuiz();
             }
         }, KeyCode.DIGIT4);
 
         getInput().addAction(new UserAction("Blue1 Button") {
             @Override
-            protected void onAction() {
-                clearQuiz();
-                quizNum++;
-                buildQuiz(quizNum);
+            protected void onActionBegin() {
+                nextQuiz();
             }
         }, KeyCode.DIGIT6);
 
         getInput().addAction(new UserAction("Green2 Button") {
             @Override
-            protected void onAction() {
-                clearQuiz();
-                quizNum++;
-                buildQuiz(quizNum);
+            protected void onActionBegin() {
+                nextQuiz();
             }
         }, KeyCode.DIGIT8);
 
         getInput().addAction(new UserAction("Red2 Button") {
             @Override
-            protected void onAction() {
-                clearQuiz();
-                quizNum++;
-                buildQuiz(quizNum);
+            protected void onActionBegin() {
+                nextQuiz();
             }
         }, KeyCode.DIGIT7);
 
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
-            protected void onAction() {
-                clearQuiz();
-                quizNum++;
-                buildQuiz(quizNum);
+            protected void onActionBegin() {
+                nextQuiz();
             }
         }, KeyCode.DIGIT9);
     }
@@ -145,6 +136,18 @@ public class PuzzleSubScene extends SubScene {
 
     void clearQuiz(){
         getContentRoot().getChildren().removeAll(currentQuiz[0],currentQuiz[1],currentQuiz[2],currentQuiz[3]);
+    }
+
+    void nextQuiz(){
+        count++;
+        //if(count%3==0){
+            clearQuiz();
+            quizNum++;
+            currentQuiz = buildQuiz(quizNum);
+
+            //System.out.println("Hi");
+        //}
+
     }
     HBox[] buildQuiz(int i){
         HBox questionHBox = buildTextbox(i,0);
