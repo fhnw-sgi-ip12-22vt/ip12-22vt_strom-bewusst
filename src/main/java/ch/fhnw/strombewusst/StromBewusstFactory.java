@@ -70,7 +70,7 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newDoor(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DOOR)
-                .view("door.png")
+                .view("door"+data.get("state")+".png")
                 .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(64, 50)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
@@ -82,7 +82,7 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newPrevDoor(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.PREVDOOR)
-                .view("prev-door.png")
+                .view("prev-door0.png")
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
@@ -107,5 +107,13 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new CollidableComponent(true))
                 .build();
+    }
+
+    @Spawns("plug")
+    public Entity newPlug(SpawnData data){
+        return entityBuilder(data)
+                .view("plug-red.png")
+                .build();
+
     }
 }

@@ -34,6 +34,7 @@ import java.util.Map;
 public class StromBewusst extends GameApplication {
     private Entity player1;
     private Entity player2;
+    private Entity door1;
     private int room = 0;
 
     public static void main(String[] args) {
@@ -47,8 +48,8 @@ public class StromBewusst extends GameApplication {
         initGame();
     }
 
-    public void resetRooms(){
-        room=0;
+    public void resetRooms() {
+        room = 0;
     }
 
     @Override
@@ -134,10 +135,10 @@ public class StromBewusst extends GameApplication {
 
             //spawn room elements
             FXGL.spawn("prev-door", 618, getAppHeight() - 127);
-            FXGL.spawn("door", 618, 6);
+            door1 = FXGL.spawn("door", new SpawnData(618, 6).put("state",0));
         }
 
-        if(room==2){
+        if (room == 2) {
             getSceneService().pushSubScene(new EndGameScene());
             resetRooms();
         }

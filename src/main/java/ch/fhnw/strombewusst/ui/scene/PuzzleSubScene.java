@@ -1,21 +1,16 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
-import static com.almasb.fxgl.dsl.FXGL.getInput;
 
-import ch.fhnw.strombewusst.components.PlayerComponent;
-import com.almasb.fxgl.cutscene.Cutscene;
+import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-
-import java.util.HashMap;
 
 /**
  * This class defines the layout of our puzzle sub-scene. It gets rendered on top of the main menu when the
@@ -33,8 +28,23 @@ public class PuzzleSubScene extends SubScene {
     private final int thirdBoxY = 550;
     private Questbucket questBucket;
 
-    int quizNum;
+    public String getAnswerP1() {
+        return answerP1;
+    }
+
+    public String getAnswerP2() {
+        return answerP2;
+    }
+
+    private String answerP1;
+    private String answerP2;
+
+
+    int questionNum;
     HBox[] currentQuiz;
+    Texture textureAnswerP1;
+    Texture textureAnswerP2;
+
     public PuzzleSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
@@ -59,56 +69,125 @@ public class PuzzleSubScene extends SubScene {
 
         getContentRoot().getChildren().addAll(bg,backHBox,inputsHBox);
         questBucket = new Questbucket();
-        quizNum = 0;
-        currentQuiz = buildQuiz(quizNum);
+        questionNum = 0;
+        currentQuiz = buildQuiz(questionNum);
         inputs();
 
     }
 
     void inputs(){
 
-        getInput().addAction(new UserAction("Green1 Button") {
-            @Override
-            protected void onActionBegin() {
-                nextQuiz();
-            }
-        }, KeyCode.DIGIT5);
-
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {
-                nextQuiz();
+                getContentRoot().getChildren().removeAll(textureAnswerP1);
+                textureAnswerP1 = getAssetLoader().loadTexture("plug-red.png");
+                textureAnswerP1.setTranslateX(1012);
+                textureAnswerP1.setTranslateY(136);
+                getContentRoot().getChildren().addAll(textureAnswerP1);
+                answerP1="RED";
             }
         }, KeyCode.DIGIT4);
+
+        getInput().addAction(new UserAction("Green1 Button") {
+            @Override
+            protected void onActionBegin() {
+                getContentRoot().getChildren().removeAll(textureAnswerP1);
+                textureAnswerP1 = getAssetLoader().loadTexture("plug-green.png");
+                textureAnswerP1.setTranslateX(1012);
+                textureAnswerP1.setTranslateY(136);
+                getContentRoot().getChildren().addAll(textureAnswerP1);
+                answerP1="GREEN";
+            }
+        }, KeyCode.DIGIT5);
+
+
 
         getInput().addAction(new UserAction("Blue1 Button") {
             @Override
             protected void onActionBegin() {
-                nextQuiz();
+                getContentRoot().getChildren().removeAll(textureAnswerP1);
+                textureAnswerP1 = getAssetLoader().loadTexture("plug-blue.png");
+                textureAnswerP1.setTranslateX(1012);
+                textureAnswerP1.setTranslateY(136);
+                getContentRoot().getChildren().addAll(textureAnswerP1);
+                answerP1="BLUE";
+
             }
         }, KeyCode.DIGIT6);
-
-        getInput().addAction(new UserAction("Green2 Button") {
-            @Override
-            protected void onActionBegin() {
-                nextQuiz();
-            }
-        }, KeyCode.DIGIT8);
 
         getInput().addAction(new UserAction("Red2 Button") {
             @Override
             protected void onActionBegin() {
-                nextQuiz();
+                getContentRoot().getChildren().removeAll(textureAnswerP2);
+                textureAnswerP2 = getAssetLoader().loadTexture("plug-red.png");
+                textureAnswerP2.setTranslateX(1012);
+                textureAnswerP2.setTranslateY(487);
+                getContentRoot().getChildren().addAll(textureAnswerP2);
+                answerP2="RED";
             }
         }, KeyCode.DIGIT7);
+
+
+        getInput().addAction(new UserAction("Green2 Button") {
+            @Override
+            protected void onActionBegin() {
+                getContentRoot().getChildren().removeAll(textureAnswerP2);
+                textureAnswerP2 = getAssetLoader().loadTexture("plug-green.png");
+                textureAnswerP2.setTranslateX(1012);
+                textureAnswerP2.setTranslateY(487);
+                getContentRoot().getChildren().addAll(textureAnswerP2);
+                answerP2="GREEN";
+            }
+        }, KeyCode.DIGIT8);
+
+
 
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
             protected void onActionBegin() {
-                nextQuiz();
+                getContentRoot().getChildren().removeAll(textureAnswerP2);
+                textureAnswerP2 = getAssetLoader().loadTexture("plug-blue.png");
+                textureAnswerP2.setTranslateX(1012);
+                textureAnswerP2.setTranslateY(487);
+                getContentRoot().getChildren().addAll(textureAnswerP2);
+                answerP2="BLUE";
+
             }
         }, KeyCode.DIGIT9);
+
+        getInput().addAction(new UserAction("resetAnswers") {
+            @Override
+            protected void onActionBegin() {
+                resetAnswers();
+
+            }
+        }, KeyCode.E);
+
+        getInput().addAction(new UserAction("checkAnswers") {
+            @Override
+            protected void onActionBegin() {
+                if(getAnswerP1().equals(questBucket.quest[questionNum][4])&&getAnswerP2().equals(questBucket.quest[questionNum][4])){
+                    System.out.println("correct");
+                    nextQuestion();
+                }
+                else{
+                    System.out.println("false");
+                    resetAnswers();
+
+                }
+            }
+        }, KeyCode.Q);
+
+
     }
+
+    private void resetAnswers() {
+        answerP2="";
+        answerP1="";
+        getContentRoot().getChildren().removeAll(textureAnswerP1,textureAnswerP2);
+    }
+
 
     HBox buildTextbox(int quest,int num){
         Text box = new Text(questBucket.quest[quest][num]);
@@ -134,17 +213,18 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void clearQuiz(){
-        getContentRoot().getChildren().removeAll(currentQuiz[0],currentQuiz[1],currentQuiz[2],currentQuiz[3]);
+        getContentRoot().getChildren().removeAll(currentQuiz[0],currentQuiz[1],currentQuiz[2],currentQuiz[3],textureAnswerP1,textureAnswerP2);
     }
 
-    void nextQuiz(){
-        if(quizNum>questBucket.quest.length-2){
+    void nextQuestion(){
+        if(questionNum >questBucket.quest.length-2){
+
             getSceneService().popSubScene();
         }
         else{
             clearQuiz();
-            quizNum++;
-            currentQuiz = buildQuiz(quizNum);
+            questionNum++;
+            currentQuiz = buildQuiz(questionNum);
         }
     }
 
