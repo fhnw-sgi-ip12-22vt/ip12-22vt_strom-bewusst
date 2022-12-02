@@ -139,11 +139,15 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void nextQuiz(){
+        if(count>4){
+            getSceneService().popSubScene();
+        }
+        else{
         count++;
         //if(count%3==0){
             clearQuiz();
             quizNum++;
-            currentQuiz = buildQuiz(quizNum);
+            currentQuiz = buildQuiz(quizNum);}
 
             //System.out.println("Hi");
         //}
