@@ -1,5 +1,6 @@
 package ch.fhnw.strombewusst;
 
+import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;

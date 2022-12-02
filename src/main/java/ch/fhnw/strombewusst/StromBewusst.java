@@ -47,6 +47,10 @@ public class StromBewusst extends GameApplication {
         initGame();
     }
 
+    public void resetRooms(){
+        room=0;
+    }
+
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setTitle("Strom Bewusst");
@@ -135,6 +139,7 @@ public class StromBewusst extends GameApplication {
 
         if(room==2){
             getSceneService().pushSubScene(new EndGameScene());
+            resetRooms();
         }
 
     }
