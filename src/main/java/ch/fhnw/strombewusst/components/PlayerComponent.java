@@ -19,6 +19,7 @@ public class PlayerComponent extends Component {
 
     private boolean isNearDesk;
     private boolean isNearDoor;
+
     private PhysicsComponent physics;
 
     private final AnimatedTexture texture;
@@ -68,21 +69,42 @@ public class PlayerComponent extends Component {
     }
 
     public void moveRight() {
-        physics.setVelocityX(PLAYER_SPEED);
+        if (physics.isMovingY()){
+           physics.setVelocityX(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+        } else {
+            physics.setVelocityX(PLAYER_SPEED);
+        }
         getEntity().setScaleX(1);
     }
 
     public void moveLeft() {
-        physics.setVelocityX(-PLAYER_SPEED);
+        if (physics.isMovingY()){
+            physics.setVelocityX(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+        } else {
+            physics.setVelocityX(-PLAYER_SPEED);
+        }
+
         getEntity().setScaleX(-1);
     }
 
+
     public void moveUp() {
-        physics.setVelocityY(-PLAYER_SPEED);
+        if (physics.isMovingX()){
+            physics.setVelocityY(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+        } else {
+            physics.setVelocityY(-PLAYER_SPEED);
+        }
+
+
     }
 
     public void moveDown() {
-        physics.setVelocityY(PLAYER_SPEED);
+        if (physics.isMovingX()){
+            physics.setVelocityY(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+        } else {
+            physics.setVelocityY(PLAYER_SPEED);
+        }
+
     }
 
     public void stopMovingX() {
@@ -112,7 +134,11 @@ public class PlayerComponent extends Component {
     public void setIsNearDoor(boolean value) {
         this.isNearDoor = value;
     }
+
+
 }
+
+
 
 
 
