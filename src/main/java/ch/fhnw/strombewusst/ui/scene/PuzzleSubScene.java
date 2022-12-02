@@ -1,13 +1,16 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
+import static com.almasb.fxgl.dsl.FXGL.getInput;
 
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
@@ -27,75 +30,165 @@ public class PuzzleSubScene extends SubScene {
     private final int secondBoxY = 425;
     private final int thirdBoxX = 260;
     private final int thirdBoxY = 550;
+    private Questbucket questBucket;
+
+    int quizNum;
+    HBox[] currentQuiz;
     public PuzzleSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
-        getContentRoot().getChildren().addAll(bg);
-        buildQuiz();
+        Button btnBack = new Button("Back");
+        btnBack.getStyleClass().add("main_menu_button");
+        btnBack.setStyle("-fx-text-fill: black;");
+        btnBack.setOnAction(e -> getSceneService().popSubScene());
+
+        HBox backHBox = new HBox(btnBack);
+        backHBox.setPrefWidth(getAppWidth());
+        backHBox.setAlignment(Pos.CENTER);
+        backHBox.setTranslateY(getAppHeight() - 90);
+
+        String inputs = "PLAYER 1 \nROT: 4 \nGRÜN: 5 \nBLAU: 6 \n \nPLAYER 2 \nROT: 7 \nGRÜN: 8 \nBLAU: 9";
+        Text playerInputs = new Text(inputs);
+        playerInputs.getStyleClass().add("message");
+        HBox inputsHBox = new HBox(playerInputs);
+        inputsHBox.setTranslateX(950);
+        inputsHBox.setTranslateY(25);
+
+        getContentRoot().getChildren().addAll(bg,backHBox,inputsHBox);
+        questBucket = new Questbucket();
+        quizNum = 0;
+        currentQuiz = buildQuiz(quizNum);
+        inputs();
+
     }
 
-    void buildQuiz(){
-        String questionString = "Welche Option entspricht der Einheit Watt ?";
-        String firstString =  "(Newton * Meter) / Sekunde";
-        String secondString = "(Sekunde * Meter) / Newton";
-        String thirdString = "(Newton * Sekunde) / Meter";
+    void inputs(){
+        getInput().addAction(new UserAction("Green1 Button") {
+            @Override
+            protected void onAction() {
+                clearQuiz();
+                quizNum++;
+                buildQuiz(quizNum);
+            }
+        }, KeyCode.DIGIT5);
 
-        Text question = new Text(questionString);
-        question.getStyleClass().add("message");
-        HBox questionHBox = new HBox(question);
-        questionHBox.setTranslateX(mainBoxX);
-        questionHBox.setTranslateY(mainBoxY);
+        getInput().addAction(new UserAction("Red1 Button") {
+            @Override
+            protected void onAction() {
+                clearQuiz();
+                quizNum++;
+                buildQuiz(quizNum);
+            }
+        }, KeyCode.DIGIT4);
 
-        Text first = new Text(firstString);
-        first.getStyleClass().add("message");
-        HBox firstHBox = new HBox(first);
-        firstHBox.setTranslateX(firstBoxX);
-        firstHBox.setTranslateY(firstBoxY);
+        getInput().addAction(new UserAction("Blue1 Button") {
+            @Override
+            protected void onAction() {
+                clearQuiz();
+                quizNum++;
+                buildQuiz(quizNum);
+            }
+        }, KeyCode.DIGIT6);
 
-        Text second = new Text(secondString);
-        second.getStyleClass().add("message");
-        HBox secondHBox = new HBox(second);
-        secondHBox.setTranslateX(secondBoxX);
-        secondHBox.setTranslateY(secondBoxY);
+        getInput().addAction(new UserAction("Green2 Button") {
+            @Override
+            protected void onAction() {
+                clearQuiz();
+                quizNum++;
+                buildQuiz(quizNum);
+            }
+        }, KeyCode.DIGIT8);
 
-        Text third = new Text(thirdString);
-        third.getStyleClass().add("message");
-        HBox thirdHBox = new HBox(third);
-        thirdHBox.setTranslateX(thirdBoxX);
-        thirdHBox.setTranslateY(thirdBoxY);
+        getInput().addAction(new UserAction("Red2 Button") {
+            @Override
+            protected void onAction() {
+                clearQuiz();
+                quizNum++;
+                buildQuiz(quizNum);
+            }
+        }, KeyCode.DIGIT7);
 
-        getContentRoot().getChildren().addAll(questionHBox,firstHBox,secondHBox,thirdHBox);
+        getInput().addAction(new UserAction("Blue2 Button") {
+            @Override
+            protected void onAction() {
+                clearQuiz();
+                quizNum++;
+                buildQuiz(quizNum);
+            }
+        }, KeyCode.DIGIT9);
+    }
+
+    HBox buildTextbox(int quest,int num){
+        Text box = new Text(questBucket.quest[quest][num]);
+        box.getStyleClass().add("message");
+        HBox boxHBox = new HBox(box);
+        if(num == 0){
+            boxHBox.setTranslateX(mainBoxX);
+            boxHBox.setTranslateY(mainBoxY);
+        }
+        else if(num == 1){
+            boxHBox.setTranslateX(firstBoxX);
+            boxHBox.setTranslateY(firstBoxY);
+        }
+        else if(num == 2){
+            boxHBox.setTranslateX(secondBoxX);
+            boxHBox.setTranslateY(secondBoxY);
+        }
+        else{
+            boxHBox.setTranslateX(thirdBoxX);
+            boxHBox.setTranslateY(thirdBoxY);
+        }
+        return boxHBox;
+    }
+
+    void clearQuiz(){
+        getContentRoot().getChildren().removeAll(currentQuiz[0],currentQuiz[1],currentQuiz[2],currentQuiz[3]);
+    }
+    HBox[] buildQuiz(int i){
+        HBox questionHBox = buildTextbox(i,0);
+        HBox firstHBox = buildTextbox(i,1);
+        HBox secondHBox = buildTextbox(i,2);
+        HBox thirdHBox = buildTextbox(i,3);
+        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox);
+        HBox[] result = {questionHBox,firstHBox,secondHBox,thirdHBox};
+        return result;
     }
 
 }
-class Textbucket {
-    public String questionString1 = "Welche Option entspricht der Einheit Watt ?";
-    public String firstString1 =  "(Newton * Meter) / Sekunde";
-    public String secondString1 = "(Sekunde * Meter) / Newton";
-    public String thirdString1 = "(Newton * Sekunde) / Meter";
+class Questbucket {
+    private String questionString1 = "Welche Option entspricht der Einheit Watt ?";
+    private String firstString1 =  "(Newton * Meter) / Sekunde";
+    private String secondString1 = "(Sekunde * Meter) / Newton";
+    private String thirdString1 = "(Newton * Sekunde) / Meter";
 
-    public String questionString2 = "Welche Option entspricht der Einheit Watt ?";
-    public String firstString2 =  "(Newton * Meter) / Sekunde";
-    public String secondString2 = "(Sekunde * Meter) / Newton";
-    public String thirdString2 = "(Newton * Sekunde) / Meter";
+    private String questionString2 = "Was verbraucht am meisten Strom von diesen 4 Haushaltsgeräten? ";
+    private String firstString2 =  "Wasserkocher";
+    private String secondString2 = "Haarföhn";
+    private String thirdString2 = "Handy laden";
 
-    public String questionString3 = "Welche Option entspricht der Einheit Watt ?";
-    public String firstString3 =  "(Newton * Meter) / Sekunde";
-    public String secondString3 = "(Sekunde * Meter) / Newton";
-    public String thirdString3 = "(Newton * Sekunde) / Meter";
+    private String questionString3 = "Warum ist der Stromverbrauch in einer Wohnung im Mehrfamilienhaus  niedriger als im Einfamilienhaus?";
+    private String firstString3 =  "Weil in Mehrfamilienhäuser die Dusche geteilt wird.";
+    private String secondString3 = "Weil die Nebenkosten bei Mehrfamilienhäuser auf alle Mieter verteilt werden.";
+    private String thirdString3 = "Weil Einfamilienhäuser im Durchschnitt mehr Haushältgeräte besitzen.";
 
-    public String questionString4 = "Welche Option entspricht der Einheit Watt ?";
-    public String firstString4 =  "(Newton * Meter) / Sekunde";
-    public String secondString4 = "(Sekunde * Meter) / Newton";
-    public String thirdString4 = "(Newton * Sekunde) / Meter";
+    private String questionString4 = "Wann in der Woche ist der Strom am günstigsten?";
+    private String firstString4 =  "Freitag um 19:00";
+    private String secondString4 = "Samstag um 12:00";
+    private String thirdString4 = "Es gibt günstigere Tage";
 
-    public String questionString5 = "Welche Option entspricht der Einheit Watt ?";
-    public String firstString5 =  "(Newton * Meter) / Sekunde";
-    public String secondString5 = "(Sekunde * Meter) / Newton";
-    public String thirdString5 = "(Newton * Sekunde) / Meter";
+    private String questionString5 = "Wieviel kostet der Strom in einem Jahr bei einer Familie, die 3’500kwH in diesem Jahr verbraucht hat?";
+    private String firstString5 =  "735 Franken";
+    private String secondString5 = "835 Franken";
+    private String thirdString5 = "635 Franken";
 
+    private String questionString6 = "Geschirrspülmaschine oder von Hand spülen: Was spart mehr Strom?";
+    private String firstString6 =  "Geschirrspülmaschine";
+    private String secondString6 = "Von Hand spülen";
+    private String thirdString6 = "Beide verbrauchen gleichviel Strom";
+
+    public String[][] quest = {{questionString1,firstString1,secondString1,thirdString1},{questionString2,firstString2,secondString2,thirdString2},{questionString3,firstString3,secondString3,thirdString3},{questionString4,firstString4,secondString4,thirdString4},{questionString5,firstString5,secondString5,thirdString5},{questionString6,firstString6,secondString6,thirdString6}};
 }
 
 

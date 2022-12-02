@@ -311,8 +311,6 @@ public class StromBewusst extends GameApplication {
                 }
             }
         }, KeyCode.R);
-
-
     }
 
     /**

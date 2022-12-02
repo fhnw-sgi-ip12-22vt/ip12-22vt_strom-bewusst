@@ -20,12 +20,6 @@ public class PlayerMainDeskHandler extends CollisionHandler {
     }
 
     Entity question;
-    UserAction action = new UserAction("player1 Down") {
-        @Override
-        protected void onAction() {
-            getSceneService().pushSubScene(new PuzzleSubScene());
-        }
-    };
 
     protected void onCollisionBegin(Entity player, Entity desk) {
         question = entityBuilder()
