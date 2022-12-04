@@ -9,27 +9,27 @@
 |===
 |Testcase |Status|Bemerkungen
 
-|Spieler kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.1_R003.1-01.adoc[TC 1.1]
+|Benutzer/in  kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/3_Gameplay/TC3.01_F003R01.adoc[TC 1.1]
 |Erfolgreich
-|Die Figur bewegt sich in grossen Stücken nach links oder rechts. Wir müssen hier beachten, dass alle anklickbare Objekte auch von der Figur erreicht werden können. Steht die Figur zum Beispiel links vom Rätselobjekt und bewegt sich einmal nach rechts, dann sollte nun das Rätsel angewählt werden können.
+|Die Figur bewegt sich in grossen Stücken nach links oder rechts. Wir müssen hier beachten, dass alle anklickbare Objekte auch von der Figur erreicht werden können. Steht die Figur zum Beispiel links vom Rätselobjekt und bewegt sich einmal nach rechts, dann sollte nun das Rätsel angewählt werden können. Statt der Joystick wurde hier die Tastatur benutzt. 
 
-|Bei Objekten im Raum steht der Spieler vor dem Objekt https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.2_R003.1-02.adoc[TC 1.2]
+|Benutzer/in steht bei Objekten im Raum vor dem Objekt. (Grafisch)https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/3_Gameplay/TC3.02_F003R02.adoc[TC 1.2]
 |Gescheitert
 |Als Testobjekt wurde ein Tisch im ersten Raum verwendet. Wenn die Figur nach vorne navigiert wird, so wird der Tisch von der Figur überdeckt. Erwartet wird, dass die Figur vor dem Tisch stoppt und nicht über den Tisch navigiert werden kann. 
 
-|Der Spieler bewegt sich fliessend, heisst nicht ruckartig https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.3_R003.1-03.adoc[TC 1.3]
+|Benutzer/in kann sich fliessend bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/3_Gameplay/TC3.03_F003R03.adoc[TC 1.3]
 |Erfolgreich
 |Die Figuren bewegen sich elegant in alle Richtungen auf dem Display.
 
-|Der Spieler kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.4_R003.1-04.adoc[TC 1.4]
+|Benutzer/in  kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/3_Gameplay/TC3.04_F003R04.adoc[TC 1.4]
 |Erfolgreich
 |Die Figur wird bei allen 4 Wänden gestoppt und kann diese nicht passieren.  
 
-|Beide Spieler können sich gleichzeitig bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.5_R003.1-05.adoc[TC 1.5]
+|Beide Benutzer/in  können sich gleichzeitig bewegen. https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/3_Gameplay/TC3.05_F003R05.adoc[TC 1.5]
 |Erfolgreich
 |Zwei Eingaben werden gleichzeitig erkannt und ausgeführt. Beide Figuren können jeder der vier Richtungen einschlagen. Beide bewegen sich fliessend, es wird keine zusätzliche Verzögerung festgestellt.
 
-|Die Eingabeverzögerung ist maximal eine halbe Sekunde https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/1_FreiesBewegenImRaum/TC1.6_R003.1-06.adoc[TC 1.6]
+|Benutzer/in hat eine Eingabeverzögerung <0.5s https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/3_Gameplay/TC3.06_F003R06.adoc[TC 1.6]
 |Erfolgreich
 |Gemessen wurde mit einer Stopuhr. Figuren und Rätsel erfüllen die Anforderung. Wir haben momentan noch keine Textfelder, welche aus mehr als einem Textfenster bestehen. Alle Textfelder haben nur ein Fenster. 
 
