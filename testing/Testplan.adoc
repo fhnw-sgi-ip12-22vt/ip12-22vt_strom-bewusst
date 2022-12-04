@@ -13,13 +13,6 @@
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
-|27.11.2022
-|Prototyp Rätsel
-|Testcase
-|
-|
-
-
 |2.12.2022
 |Klassen und Methoden (Räume)
 |Testscript
