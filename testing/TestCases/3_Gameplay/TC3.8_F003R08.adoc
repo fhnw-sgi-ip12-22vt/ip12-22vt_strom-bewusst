@@ -1,24 +1,19 @@
 == TC3.8 : F003R08 : Benutzer/in kann mit Objekten interagieren ==
 
 === Beschreibung: === 
-
+Objekte reagieren wie vorgesehen auf die Inpute der Spieler.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Im Sourcecode sind alle Objekte, die auf Input reagieren sollen, als solche erfasst.
 
 === Testdaten: ===
-<Testdaten>
+Objekte, mit denen interagiert werden kann.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figur befindet sich in der Nähe des Objekts
+    * Mit dem Button 1 kann das Objekt geöffnet werden.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * In der Subszene kann nun mit Eingaben die Anzeige verändert werden.

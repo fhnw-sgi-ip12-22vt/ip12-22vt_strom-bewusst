@@ -1,0 +1,18 @@
+== TC3.14 : F003R14 : Benutzer/in kann die Story über ein Textfeld lesen ==
+
+=== Beschreibung: === 
+Die Story wird mit Textfelder übermittelt immer dann wenn die Figuren einen neuen Raum betreten.
+
+=== Annahmen und Voraussetzungen: === 
+Die Story ist im Spiel implementiert.
+
+=== Testdaten: ===
+Alle Räume
+
+=== Auszuführende Schritte: ===
+    
+    * Figuren befinden sich zum ersten Mal in dem jeweiligen Raum.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Es erscheint automatisch ein Textfeld, welches die Story beschreibt.

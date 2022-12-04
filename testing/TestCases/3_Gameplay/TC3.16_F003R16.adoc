@@ -1,0 +1,18 @@
+== TC3.16 : F003R16 : Benutzer/in erhält zu  Beginn des Spiels ein Tutorial ==
+
+=== Beschreibung: === 
+Beim Start des Spiels werden die Benutzer in das Spiel eingeführt.
+
+=== Annahmen und Voraussetzungen: === 
+Einführung ist im Code implementiert.
+
+=== Testdaten: ===
+Einführung
+
+=== Auszuführende Schritte: ===
+    
+    * Das Spiel wird gestartet, indem im Mainmenu auf Play gedrückt wird.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Die Einführung erscheint und deckt die Eingaben und Vorgehen im Spiel ab.

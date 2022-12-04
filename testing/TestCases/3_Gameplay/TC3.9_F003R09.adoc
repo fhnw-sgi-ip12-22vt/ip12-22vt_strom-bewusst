@@ -1,26 +1,19 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC3.9 : F003R09 : Benutzer/in kann durch Text scrollen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Textfelder, die nicht auf einem einzigen Textfeld platz haben, sollen mit einem Button umgeblättert werden können.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Die Textfelder sind im Code implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Überall wo Text im Spiel vorkommt.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Textfeld ist offen
+    * Der Button 1 wird nun gedrückt.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Der Text wird weitergeführt, indem der nächste Textblock gezeigt wird.

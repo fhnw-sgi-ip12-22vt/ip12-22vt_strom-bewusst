@@ -1,0 +1,18 @@
+== TC3.15 : F003R15 : Benutzer/in  kann Notizzettel mit Hinweisen im Raum finden und lesen ==
+
+=== Beschreibung: === 
+In dem Raum sind Zettel verteilt. Sind die Figuren in der Nähe, so können Informationen gesammelt werden um dann die Rätsel zu lösen.
+
+=== Annahmen und Voraussetzungen: === 
+Zettel und die dazugehörige Informationen sind im Code implementiert.
+
+=== Testdaten: ===
+Zettel im Raum.
+
+=== Auszuführende Schritte: ===
+    
+    * Figuren laufen zum Zettel.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Informationen können von einem Textfeld entnommen werden.

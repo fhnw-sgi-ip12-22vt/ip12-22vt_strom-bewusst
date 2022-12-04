@@ -1,26 +1,19 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC3.11 : F003R11 : Benutzer/in geht in den nächsten Raum, wenn die Tür angeklickt wird ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+In jedem Raum ist eine Tür zum nächsten Raum. Durch eine Eingabe kann der Benutzer/in in den nächsten Raum gelangen, wenn dieser vor der Tür steht.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Die Tür wird grafisch dargestellt und die jeweilige Eingabe um die Tür zu öffnen ist im Code implementiert. 
 
 === Testdaten: ===
-<Testdaten>
+Türe in den Räumen.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figur steht vor der Tür
+    * Die Eingabe um die Tür zu öffnen wird gedrückt.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Der alte Raum verschwindet, die Figuren befinden sich nun im neuen Raum.

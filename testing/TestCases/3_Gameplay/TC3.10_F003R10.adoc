@@ -1,26 +1,19 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC3.10 : F003R10 : Benutzer/in  soll mit Objekte innerhalb einer halben Sekunde nach dem klicken interagieren können. ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Alle interaktive Objekte sollen auf die Eingaben des Benutzers innerhalb einer halben Sekunde reagieren.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Hardware und Software reagieren miteinander innerhalb einer halben Sekunde. Im Code sind die jeweiligen Objekte implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Alle Objekte, mit denen interagiert werden können.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Ein Objekt,z.B Rätsel wird angeklickt.
+    * Die Antwort wird mit dem Kontroller eingegeben.
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Innerhalb einer halben Sekunde wird die Wahl auf dem Bildschirm angezeigt.

@@ -1,0 +1,30 @@
+== TC3.13 : F003R13 : Benutzer/in kann Türe nutzen nach dem lösen des Rätsels ==
+
+=== Beschreibung: === 
+Die Türe ist erst geöffnet, wenn das Rätsel beim "Main Desk" gelöst ist.
+
+=== Annahmen und Voraussetzungen: === 
+Rätsel und Türe sind im Code implementiert. Ausserdem wird die Türe entsperrt, wenn das Rätsel gelöst wurde.
+
+=== Testdaten: ===
+Rätsel und Türen in den Räumen.
+
+=== Auszuführende Schritte: ===
+    
+    Fall 1
+    * Benutzer/innen lösen das Rätsel
+    * Die Figuren gehen nun vor die Türe
+    * Die Eingabe wird gedrückt um die Türe zu passieren
+
+    Fall 2
+    * Benutzer/innen lösen das Rätsel nicht
+    * Die Figuren gehen nun vor die Türe 
+    * Die Eingabe wird gedrückt um die Türe zu passieren
+
+=== Erwartetes Ergebnis: === 
+    
+    Fall 1
+    * Die Figuren befinden sich im nächsten Raum
+
+    Fall 2
+    * Die Figuren befinden sich noch im selben Raum

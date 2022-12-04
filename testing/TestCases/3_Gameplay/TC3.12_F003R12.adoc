@@ -1,26 +1,21 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC3.12 : F003R12 : Benutzer/in  kann Türe  nur "one-way" nutzen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Nachdem eine Türe benutzt wurde, kann diese im aktuellen Spieldurchlauf nicht mehr benutzt werden.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Die Tür wird grafisch dargestellt und die jeweilige Eingabe um die Tür zu öffnen ist im Code implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Türen in den Räumen.
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Figur steht vor einer Tür
+    * Die Türe wird benutzt
+    * Figur ist im nächsten Raum
+    * Die Türe wird nochmals angeklickt
         
 === Erwartetes Ergebnis: === 
 
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+    * Es passiert nichts
