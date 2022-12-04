@@ -118,3 +118,5 @@ Objekt/Tätigkeit, welche bestätigt wird. (Welches Objekt im Raum, welcher Farb
 
 |===
 
+Link für Junit Beispiel: link:https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/pi4j-template-javafx/-/blob/master/src/test/java/com/pi4j/mvc/templateapp/view/pui/SomePUITest.java[SomePUITest.java(Methode testLED)]
+
