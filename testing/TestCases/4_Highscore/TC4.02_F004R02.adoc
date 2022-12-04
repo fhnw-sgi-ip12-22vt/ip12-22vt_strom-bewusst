@@ -1,0 +1,18 @@
+== TC4.02 : F004R02 : Benutzer/in wird nach Ablauf des Timers(5min) zum Start des Raumes zurückgesetzt ==
+
+=== Beschreibung: === 
+Wenn der Timer auf 0:00 ist, so müssen die Spieler das Spiel im ersten Raum wieder von neuem beginnen.
+
+=== Annahmen und Voraussetzungen: === 
+Im Code ist implementiert was passiert, wenn der Timer bei 0:00 ist.
+
+=== Testdaten: ===
+Timer, Räume
+
+=== Auszuführende Schritte: ===
+    
+    * Der Timer ist bei 0:01
+    * Der Timer geht über auf 0:00
+        
+=== Erwartetes Ergebnis: === 
+Beide Figuren stehen wieder im ersten Raum. 

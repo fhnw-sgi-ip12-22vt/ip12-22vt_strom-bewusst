@@ -1,0 +1,19 @@
+== TC4.01 : F004R01 : Benutzer/in lässt einen Timer starten (Rechts vom Bildschirm)  ==
+
+=== Beschreibung: === 
+Sobald das Spiel beginnt sieht man unten rechts vom Bildschirm einen Timer, der die verbrauchte Zeit angibt. 
+
+=== Annahmen und Voraussetzungen: === 
+Der Timer ist im Code implementiert.
+
+=== Testdaten: ===
+Timer
+
+=== Auszuführende Schritte: ===
+    
+    * Im Hauptmenü wird die Option Play gewählt. 
+    * Nach dem Tutorial befinden sich die Figuren im ersten Raum.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Der Timer startet bei 5min und zählt abwerts.

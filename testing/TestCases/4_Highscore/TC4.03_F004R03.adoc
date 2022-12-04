@@ -1,0 +1,19 @@
+== TC4.03 : F004R03 : Benutzer/in lässt für jeden Raum einen separaten Timer starten ==
+
+=== Beschreibung: === 
+Wenn die Figuren einen neuen Raum betreten dann beginnt der Timer wieder bei 5:00
+
+=== Annahmen und Voraussetzungen: === 
+Im Code ist implementiert, was der Timer macht sobald einen Tür erfolgreich benutzt wurde
+
+=== Testdaten: ===
+Türe und Timer
+
+=== Auszuführende Schritte: ===
+    
+    * Die Spieler/innen haben das Rätsel gelöst
+    * Die Tür zum nächsten Raum wird geöffnet
+        
+=== Erwartetes Ergebnis: === 
+
+    * Der Timer zählt von 5:00 runter
