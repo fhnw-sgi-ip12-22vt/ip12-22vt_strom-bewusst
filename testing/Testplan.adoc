@@ -13,64 +13,28 @@
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
-|2.12.2022
-|Klassen und Methoden (Räume)
+|11.12.2022
+|Software MVP
+|Testcase
+|Gameplay
+|
+
+|14.12.2022
+|Steckerkontroller MVP, Konsole MVP
+|Testcase
+|Steckerkontroller, Gameplay
+|
+
+|14.12.2022
+|Steckerkontroller MVP, Konsole MVP
 |Testscript
-|
-|
-
-|2.12.2022
-|Klassen und Methoden (Bewegung)
-|Testscript
-|
+|Steckerkontroller, Gameplay
 |
 
-|2.12.2022
-|Klassen und Methoden (Steuerung/Mechanik)
-|Testscript
-|
-|
-
-|9.12.2022
-|Konsole
+|18.12.2022
+|Software MVP
 |Testcase
-|
-|
-
-|9.12.2022
-|Kontroller
-|Testcase
-|
-|
-
-|9.12.2022
-|Elektronik
-|Testcase
-|
-|
-
-|9.12.2022
-|Steuerung/Mechanik
-|Testcase
-|
-|
-
-|16.12.2022
-|Bewegung
-|Testcase
-|
-|
-
-|16.12.2022
-|Räume
-|Testcase
-|
-|
-
-|16.12.2022
-|Rätsel
-|Testcase
-|
+|Highscore, RätselQuiz
 |
 
 |===
