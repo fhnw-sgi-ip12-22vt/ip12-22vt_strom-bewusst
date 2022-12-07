@@ -1,26 +1,19 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC2.03 : F002R03 : Benutzer/in kann Schätzfragen mit dem Joystick eingeben ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Fragen sollen auch nummerisch beantwortet werden. Der Joystick kann nach oben oder unten gedrückt werden, dabei verändert sich die Zahl auf dem Bildschirm.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Eingaben mit dem Joystick werden im Quizrätsel erkannt.
 
 === Testdaten: ===
-<Testdaten>
+Joystick und Schätzungsfragen
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Benutzer/innen spielen das Quizrätsel
+    * Eine Schätzungsfrage taucht auf
+    * Der Joystick wird nach oben oder unten gedrückt
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die Zahl wird erhöht beim Drücken nach oben, beziehungsweise verringert bei Drücken nach unten.

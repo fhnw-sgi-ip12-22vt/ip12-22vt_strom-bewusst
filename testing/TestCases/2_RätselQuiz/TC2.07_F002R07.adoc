@@ -1,26 +1,17 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC2.07 : F002R07 : Benutzer/in kann Rätsel über Stromverbrauch, Stromsparren oder kW/h-Angaben pro Gerät lösen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Es sollen nur Inhalte über die Themen Stromverbrauch, Stromsparren oder kW/H abgefragt werden.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Fragen drehen sich um die drei erwähnten Themen und sind im Quiz implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Quizrätsel
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * * Benutzer/innen spielen das Quiz
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die Fragen können mit den gesammelten Informationen gelöst werden. Es gibt keine Frage, die nicht mindestens einem Thema der dreien zugeordnet werden kann.

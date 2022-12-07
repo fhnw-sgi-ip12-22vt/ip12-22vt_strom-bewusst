@@ -1,26 +1,19 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC2.05 : F002R05 : Benutzer/in kann Eingabe von Stecker mit einem Button bestätigen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Nachdem eine Antwort mit dem Stecker gewählt worden ist soll diese mit dem Button 1 bestätigt werden. Erst dann erfolgt die Auflösung. 
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Eingaben von Button 1 und Steckdose werden im Quiz erkannt.
 
 === Testdaten: ===
-<Testdaten>
+Quizrätsel, Button 1, Steckdosen
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Eine Quizfrage erscheint
+    * Die Antwort wird mit dem Stecker gewählt
+    * Die Auswahl wird mit dem Button 1 bestätigt
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die Auflösung erscheint, Punkte werden vergeben. Dann folgt die nächste Frage. 

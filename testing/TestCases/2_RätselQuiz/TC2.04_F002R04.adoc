@@ -1,26 +1,19 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC2.04 : F002R04 : Benutzer/in lässt Die Reihenfolge der Fragen  pro Durchlauf zufällig anzeigen ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Die Fragen sollen in einer zufälligen Reihenfolge erscheinen. 
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Im Code sind Fragen für das Quizrätsel implementiert. Die Fragen können während des Quizdurchlaufs dargestellt werden. 
 
 === Testdaten: ===
-<Testdaten>
+Quizrätsel
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Das Quiz wird einmal durchgespielt
+    * Die Reihenfolge der Fragen werden notiert
+    * Ein zweiter Durchlauf wird vorgenommen, auch hier wird die Reihenfolge notiert
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die Wahrscheinlichkeit soll sehr gering sein (bewusst intuitiv), dass es sich um die gleiche Reihenfolge handelt.

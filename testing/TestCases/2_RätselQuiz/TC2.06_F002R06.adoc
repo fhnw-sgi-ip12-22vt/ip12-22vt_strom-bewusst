@@ -1,26 +1,17 @@
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== TC2.06 : F002R06 : Benutzer/in lässt Fragen anzeigen, die inhaltlich an die Jugendliche angepasst sind ==
 
 === Beschreibung: === 
-<Beschreibung>: +
-
-    * <Aufzählungspunkte>
+Die Fragen sollen nicht zu schwierig aber auch nicht zu einfach lösbar sein.
 
 === Annahmen und Voraussetzungen: === 
-<Annahme>
+Fragen wurden an das Schwierigkeitslevel der Jugendlichen angepasst und ins Quiz implementiert.
 
 === Testdaten: ===
-<Testdaten>
+Quizrätsel
 
 === Auszuführende Schritte: ===
     
-    * <Aufzählungspunkte>:
-        ** <Aufzählungspunkte> 
-
-    * <Aufzählungspunkte>:
+    * Benutzer/innen spielen das Quiz
         
 === Erwartetes Ergebnis: === 
-
-    * <Aufzählungspunkte>: + 
-    ** <Aufzählungspunkte>
-
-    * <Aufzählungspunkte> +
+Die Fragen können mit den gesammelten Informationen gelöst werden. 
