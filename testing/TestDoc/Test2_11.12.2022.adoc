@@ -9,71 +9,71 @@
 |===
 |Link Testcase |Status|Bemerkungen
 
-| Benutzer/in  kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.01_F003R01.adoc[T3.01]
+| Benutzer/in  kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.01_F003R01.adoc[TC3.01]
 |
 |
 
-|Benutzer/in steht bei Objekten im Raum vor dem Objekt (Grafisch) https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.02_F003R02.adoc[T3.02]
+|Benutzer/in steht bei Objekten im Raum vor dem Objekt (Grafisch) https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.02_F003R02.adoc[TC3.02]
 |
 |
 
-| Benutzer/in kann sich fliessend bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.03_F003R03.adoc[T3.03]
+| Benutzer/in kann sich fliessend bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.03_F003R03.adoc[TC3.03]
 |
 |
 
-| Benutzer/in  kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.04_F003R04.adoc[T3.04]
+| Benutzer/in  kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.04_F003R04.adoc[TC3.04]
 |
 |
 
-| Beide Benutzer/in  können sich gleichzeitig bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.05_F003R05.adoc[T3.05]
+| Beide Benutzer/in  können sich gleichzeitig bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.05_F003R05.adoc[TC3.05]
 |
 |
 
-| Benutzer/in hat eine Eingabeverzögerung < 0.5s https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.06_F003R06.adoc[T3.06]
+| Benutzer/in hat eine Eingabeverzögerung < 0.5s https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.06_F003R06.adoc[TC3.06]
 |
 |
 
-| Benutzer/in  kann Objekte, die angeklickt werden können, deutlich sehen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.07_F003R07.adoc[T3.07]
+| Benutzer/in  kann Objekte, die angeklickt werden können, deutlich sehen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.07_F003R07.adoc[TC3.07]
 |
 |
 
-| Benutzer/in kann mit Objekten interagieren https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.08_F003R08.adoc[T3.08]
+| Benutzer/in kann mit Objekten interagieren https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.08_F003R08.adoc[TC3.08]
 |
 |
 
-| Benutzer/in kann durch Text scrollen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.09_F003R09.adoc[T3.09]
+| Benutzer/in kann durch Text scrollen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.09_F003R09.adoc[TC3.09]
 |
 |
 
-| Benutzer/in  soll mit Objekte innerhalb einer halben Sekunde nach dem klicken interagieren können. https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.10_F003R10.adoc[T3.10]
+| Benutzer/in  soll mit Objekte innerhalb einer halben Sekunde nach dem klicken interagieren können. https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.10_F003R10.adoc[TC3.10]
 |
 |
 
-| Benutzer/in geht in den nächsten Raum, wenn die Tür angeklickt wird https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.11_F003R11.adoc[T3.11]
+| Benutzer/in geht in den nächsten Raum, wenn die Tür angeklickt wird https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.11_F003R11.adoc[TC3.11]
 |
 |
 
-| Benutzer/in  kann Türe  nur "one-way" nutzen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.12_F003R12.adoc[T3.12]
+| Benutzer/in  kann Türe  nur "one-way" nutzen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.12_F003R12.adoc[TC3.12]
 |
 |
 
-| Benutzer/in kann Türe nutzen nach dem lösen des Rätsels https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.13_F003R13.adoc[T3.13]
+| Benutzer/in kann Türe nutzen nach dem lösen des Rätsels https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.13_F003R13.adoc[TC3.13]
 |
 |
 
-| Benutzer/in kann die Story über ein Textfeld lesen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.14_F003R14.adoc[T3.14]
+| Benutzer/in kann die Story über ein Textfeld lesen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.14_F003R14.adoc[TC3.14]
 |
 |
 
-| Benutzer/in  kann Notizzettel mit Hinweisen im Raum finden und lesen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.15_F003R15.adoc[T3.15]
+| Benutzer/in  kann Notizzettel mit Hinweisen im Raum finden und lesen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.15_F003R15.adoc[TC3.15]
 |
 |
 
-| Benutzer/in erhält zu  Beginn des Spiels ein Tutorial https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.16_F003R16.adoc[T3.16]
+| Benutzer/in erhält zu  Beginn des Spiels ein Tutorial https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.16_F003R16.adoc[TC3.16]
 |
 |
 
-| Benutzer/in kann das Spiel über ein Hauptmenü beginnen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.17_F003R17.adoc[T3.17]
+| Benutzer/in kann das Spiel über ein Hauptmenü beginnen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.17_F003R17.adoc[TC3.17]
 |
 |
 
