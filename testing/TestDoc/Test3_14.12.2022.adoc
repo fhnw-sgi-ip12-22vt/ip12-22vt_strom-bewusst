@@ -1,13 +1,34 @@
-=== Test: 2 ===
+=== Test: 3 ===
 
 [%autowidth]
 |===
-|Datum | 11.12.2022
+|Datum | 14.12.2022
 |Verantwortlich | Mlinar Damjan
 |===
 
 |===
 |Link Testcase |Status|Bemerkungen
+
+| Benutzer/in kann mit Steckdose Rätsel lösen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/1_Steckerkontroller/TC1.01_F001R01.adoc[T1.01]
+|
+|
+
+| Benutzer/in kann mit Joystick Figur Horizontal , Vertikal  und Diagonal bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/1_Steckerkontroller/TC1.02_F001R02.adoc[T1.02]
+|
+|
+
+| Benutzer/in kann Mit Joystick zwischen gewählten Optionen schalten https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/1_Steckerkontroller/TC1.03_F001R03.adoc[T1.03]
+|
+|
+
+| Benutzer/in kann mit Button 1 Auswahl bestätigen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/1_Steckerkontroller/TC1.04_F001R04.adoc[T1.04]
+|
+|
+
+| Benutzer/in kann mit Button 2 Auswahl abbrechen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/1_Steckerkontroller/TC1.05_F001R05.adoc[T1.05]
+|
+|
+
 
 | Benutzer/in  kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.01_F003R01.adoc[T3.01]
 |
