@@ -1,8 +1,6 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
-
-import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -45,6 +43,7 @@ public class PuzzleSubScene extends SubScene {
     Texture textureAnswerP1;
     Texture textureAnswerP2;
 
+
     public PuzzleSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
@@ -72,11 +71,9 @@ public class PuzzleSubScene extends SubScene {
         questionNum = 0;
         currentQuiz = buildQuiz(questionNum);
         inputs();
-
     }
 
     void inputs(){
-
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {

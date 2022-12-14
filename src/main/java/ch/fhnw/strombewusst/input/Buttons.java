@@ -58,7 +58,7 @@ public class Buttons {
     private List<Runnable> obenDown = new ArrayList<>();
     private  List<Runnable> untenDown = new ArrayList<>();
 
-    public Buttons(PIN links, PIN oben, PIN rechts, PIN mitte, PIN unten) {
+    public Buttons(PIN links, PIN unten, PIN rechts, PIN mitte, PIN oben) {
         SteckdoseLinks = new SimpleButton(pi4jContext,links, false);
         SteckdoseLinks.onDown(() -> {
             for (Runnable task : linksDown) {
