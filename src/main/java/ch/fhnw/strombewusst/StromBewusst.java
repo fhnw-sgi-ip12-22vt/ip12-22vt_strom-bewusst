@@ -7,6 +7,7 @@ import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import ch.fhnw.strombewusst.input.Buttons;
 import ch.fhnw.strombewusst.input.Controller;
 import ch.fhnw.strombewusst.input.KeyPressHandler;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
@@ -235,7 +236,16 @@ public class StromBewusst extends GameApplication {
             }
         }, KeyCode.K);
 
-        getInput().addAction(new UserAction("open puzzle") {
+        try {
+            Buttons p1Buttons = new Buttons(PIN.D5, PIN.D6, PIN.D26, PIN.D21, PIN.D20);
+            p1Buttons.obenDown(() -> getInput().mockKeyPress(KeyCode.D));
+            p1Buttons.untenDown(() -> getInput().mockKeyPress(KeyCode.R));
+        } catch (Exception ignored) {
+        System.out.println("failed to initialize buttons, proceeding");
+    }
+
+
+    getInput().addAction(new UserAction("open puzzle") {
             @Override
             protected void onAction() {
                 boolean p1 = player1.getComponent(PlayerComponent.class).getIsNearDesk();

@@ -14,6 +14,9 @@ import com.pi4j.plugin.pigpio.provider.serial.PiGpioSerialProvider;
 import com.pi4j.plugin.pigpio.provider.spi.PiGpioSpiProvider;
 import com.pi4j.plugin.raspberrypi.platform.RaspberryPiPlatform;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Buttons {
     protected final static PiGpio piGpio = PiGpio.newNativeInstance();
@@ -43,18 +46,67 @@ public class Buttons {
             ads1115 = null;
         }
     }
-    private final SimpleButton button;
-    protected static final long DEFAULT_DEBOUNCE = 10000;
+    private SimpleButton SteckdoseLinks;
+    private SimpleButton SteckdoseMitte;
+    private SimpleButton SteckdoseRechts;
+    private SimpleButton ButtonOben;
+    private SimpleButton ButtonUnten;
 
-    public Buttons(PIN pin) {
-      button = new SimpleButton(pi4jContext, pin, Boolean.FALSE, DEFAULT_DEBOUNCE);
+    private List<Runnable> linksDown = new ArrayList<>();
+    private List<Runnable> rechtsDown = new ArrayList<>();
+    private List<Runnable> mitteDown = new ArrayList<>();
+    private List<Runnable> obenDown = new ArrayList<>();
+    private  List<Runnable> untenDown = new ArrayList<>();
+
+    public Buttons(PIN links, PIN oben, PIN rechts, PIN mitte, PIN unten) {
+        SteckdoseLinks = new SimpleButton(pi4jContext,links, false);
+        SteckdoseLinks.onDown(() -> {
+            for (Runnable task : linksDown) {
+                task.run();
+            }
+        });
+        SteckdoseRechts = new SimpleButton(pi4jContext,rechts, false);
+        SteckdoseRechts.onDown(() -> {
+            for (Runnable task : rechtsDown) {
+            task.run();
+            }
+        });
+        SteckdoseMitte = new SimpleButton(pi4jContext,mitte, false);
+        SteckdoseMitte.onDown(() -> {
+            for (Runnable task : mitteDown) {
+                task.run();
+            }
+        });
+        ButtonOben = new SimpleButton(pi4jContext,oben, false);
+        ButtonOben.onDown(() -> {
+            for (Runnable task : obenDown) {
+                task.run();
+            }
+        });
+        ButtonUnten = new SimpleButton(pi4jContext,unten, false);
+        ButtonUnten.onDown(() -> {
+            for (Runnable task : untenDown) {
+                task.run();
+            }
+        });
     }
-    public void pressed(Runnable tasks) {
-        if (button.isDown()){
-            button.onUp(tasks);
-        } else {
-            button.onDown(tasks);
-        }
+
+
+    public void linksDown(Runnable tasks){
+        linksDown.add(tasks);
+    }
+    public void rechtsDown(Runnable tasks) {
+        rechtsDown.add(tasks);
+    }
+    public void mitteDown(Runnable tasks){
+        mitteDown.add(tasks);
+    }
+    public void obenDown(Runnable tasks) {
+        obenDown.add(tasks);
+    }
+    public void untenDown(Runnable tasks) {
+        untenDown.add(tasks);
     }
 }
+
 
