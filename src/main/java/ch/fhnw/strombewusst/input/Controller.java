@@ -50,12 +50,12 @@ public class Controller {
 
     public JoystickAnalog joystick;
 
-    private List<Runnable> onJoystickRightTasks = new ArrayList<>();
-    private List<Runnable> onJoystickLeftTasks = new ArrayList<>();
-    private List<Runnable> onJoystickHorizontalIdleTasks = new ArrayList<>();
-    private List<Runnable> onJoystickUpTasks = new ArrayList<>();
-    private List<Runnable> onJoystickDownTasks = new ArrayList<>();
-    private List<Runnable> onJoystickVerticalIdleTasks = new ArrayList<>();
+    private final List<Runnable> onJoystickRightTasks = new ArrayList<>();
+    private final List<Runnable> onJoystickLeftTasks = new ArrayList<>();
+    private final List<Runnable> onJoystickHorizontalIdleTasks = new ArrayList<>();
+    private final List<Runnable> onJoystickUpTasks = new ArrayList<>();
+    private final List<Runnable> onJoystickDownTasks = new ArrayList<>();
+    private final List<Runnable> onJoystickVerticalIdleTasks = new ArrayList<>();
 
     public Controller(int channelXAxis, int channelYAxis, PIN pin) {
         joystick = new JoystickAnalog(pi4jContext, ads1115, channelXAxis, channelYAxis, 3.3, true, pin);
@@ -68,7 +68,7 @@ public class Controller {
         } catch (ContinuousMeasuringException ignored) {
             System.out.println("ContinuousMeasuringException, ignoring");
         }
-        joystick.start(0.05, 10);
+        joystick.start(0.05, 15);
     }
 
     private void handleXMove(double value) {
