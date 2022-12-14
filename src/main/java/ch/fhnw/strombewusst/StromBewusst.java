@@ -37,7 +37,6 @@ public class StromBewusst extends GameApplication {
 
     public static void main(String[] args) {
         launch(args);
-
     }
 
     public void setNextRoom() {
@@ -62,7 +61,6 @@ public class StromBewusst extends GameApplication {
         settings.setMainMenuEnabled(true);
         settings.setWidth(1280);
         settings.setHeight(720);
-
 
         settings.setSceneFactory(new SceneFactory() {
             @Override
@@ -244,7 +242,6 @@ public class StromBewusst extends GameApplication {
         System.out.println("failed to initialize buttons, proceeding");
     }
 
-
     getInput().addAction(new UserAction("open puzzle") {
             @Override
             protected void onAction() {
@@ -261,7 +258,6 @@ public class StromBewusst extends GameApplication {
             var cutscene = new Cutscene(lines);
             getCutsceneService().startCutscene(cutscene);
         });
-
 
         getInput().addAction(new UserAction("next room") {
             @Override
@@ -288,6 +284,4 @@ public class StromBewusst extends GameApplication {
         physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
     }
-
-
 }
