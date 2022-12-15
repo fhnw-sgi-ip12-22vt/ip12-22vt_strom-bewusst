@@ -155,15 +155,15 @@ public class StromBewusst extends GameApplication {
             Controller p1Controller = new Controller(0, 1, PIN.D17);
             Controller p2Controller = new Controller(2, 3, PIN.D6);
 
-            p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.D));
-            p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.A));
+            p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.A));
+            p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.D));
             p1Controller.onJoystickHorizontalIdle(() -> {
                 getInput().mockKeyRelease(KeyCode.A);
                 getInput().mockKeyRelease(KeyCode.D);
             });
 
-            p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.W));
-            p1Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.S));
+            p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.S));
+            p1Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.W));
             p1Controller.onJoystickVerticalIdle(() -> {
                 getInput().mockKeyRelease(KeyCode.W);
                 getInput().mockKeyRelease(KeyCode.S);
