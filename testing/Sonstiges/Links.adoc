@@ -1,0 +1,28 @@
+
+|===
+|Testcase |Link zum Sourcecode
+
+|Benutzer/in kann mit Joystick Figur Horizontal , Vertikal  und Diagonal bewegen.
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/main/java/ch/fhnw/strombewusst/StromBewusst.java#L150[StromBewusst Line 150]
+
+|Benutzer/in steht bei Objekten im Raum vor dem Objekt (Grafisch)
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/main/java/ch/fhnw/strombewusst/StromBewusstFactory.java#L45[StromBewusstFactory Line 45]
+
+|Benutzer/in  kann sich nicht aus dem Raum bewegen
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/main/java/ch/fhnw/strombewusst/StromBewusstFactory.java#L93[StromBewusstFactory Line 93]
+
+|Benutzer/in hat eine Eingabeverzögerung < 0.5s
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/main/java/ch/fhnw/strombewusst/StromBewusst.java#L252[StromBewusst Line 252]
+
+|Benutzer/in geht in den nächsten Raum, wenn die Tür angeklickt wird
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/main/java/ch/fhnw/strombewusst/StromBewusst.java#L279[StromBewusst Line 279]
+
+|Benutzer/in  kann Türe  nur "one-way" nutzen
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/main/java/ch/fhnw/strombewusst/StromBewusstFactory.java#L82[StromBewusstFactory Line 82]
+
+|Benutzer/in  kann Notizzettel mit Hinweisen im Raum finden und lesen
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/main/java/ch/fhnw/strombewusst/collision/PlayerDeskHandler.java#L56[PlayerDeskHandler Line 56]
+
+
+
+|===
