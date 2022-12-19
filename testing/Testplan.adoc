@@ -9,31 +9,31 @@
 
 |13.11.2022
 |Prototyp Räume
-|Testcase
+|Manueller Test
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
 |09.12.2022
 |Software MVP
-|Testcase
+|Manueller Test
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test2_09.12.2022.adoc[Test 2]
 
 |18.12.2022
 |Steckerkontroller MVP, Konsole MVP
-|Testcase
+|Manueller Test
 |Steckerkontroller, Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test3_18.12.2022.adoc[Test 3]
 
-|(ausstehend)
+|(ausstehend, voraussichtlich 30.12.2022)
 |Steckerkontroller MVP, Konsole MVP
-|Testscript
+|JUnit Test
 |Steckerkontroller
 |
 
-|(ausstehend)
+|(ausstehend, voraussichtlich 06.01.2023)
 |Software MVP
-|Testcase
+|Manueller Test
 |Highscore, RätselQuiz
 |
 
@@ -44,63 +44,63 @@
 |===
 | Datum |Testobjekt | Testart | Was getestet wird |Testdokument
 
-|10.2.2023
+|(ausstehend, voraussichtlich 10.2.2023)
 |Klassen und Methoden (Räume)
-|Testscript
+|JUnit Test
 |
 |
 
-|10.2.2023
+|(ausstehend, voraussichtlich 10.2.2023)
 |Klassen und Methoden (Bewegung)
-|Testscript
+|JUnit Test
 |
 |
 
-|10.2.2023
+|(ausstehend, voraussichtlich 10.2.2023)
 |Klassen und Methoden (Steuerung/Mechanik)
-|Testscript
+|JUnit Test
 |
 |
 
-|24.2.2023
+|(ausstehend, voraussichtlich 24.2.2023)
 |Konsole
-|Testcase
+|Manueller Test
 |
 |
 
-|24.2.2023
+|(ausstehend, voraussichtlich 24.2.2023)
 |Kontroller
-|Testcase
+|Manueller Test
 |
 |
 
-|24.2.2023
+|(ausstehend, voraussichtlich 24.2.2023)
 |Elektronik
-|Testcase
+|Manueller Test
 |
 |
 
-|24.2.2023
+|(ausstehend, voraussichtlich 24.2.2023)
 |Steuerung/Mechanik
-|Testcase
+|Manueller Test
 |
 |
 
-|11.3.2023
+|(ausstehend, voraussichtlich 11.3.2023)
 |Bewegung
-|Testcase
+|Manueller Test
 |
 |
 
-|11.3.2023
+|(ausstehend, voraussichtlich 11.3.2023)
 |Räume
-|Testcase
+|Manueller Test
 |
 |
 
-|11.3.2023
+|(ausstehend, voraussichtlich 11.3.2023)
 |Rätsel
-|Testcase
+|Manueller Test
 |
 |
 
@@ -111,63 +111,63 @@
 |===
 | Datum |Testobjekt | Testart | Was getestet wird |Testdokument
 
-|31.3.2023
+|(ausstehend, voraussichtlich 31.3.2023)
 |Klassen und Methoden (Räume)
-|Testscript
+|JUnit Test
 |
 |
 
-|31.3.2023
+|(ausstehend, voraussichtlich 31.3.2023)
 |Klassen und Methoden (Bewegung)
-|Testscript
+|JUnit Test
 |
 |
 
-|31.3.2023
+|(ausstehend, voraussichtlich 31.3.2023)
 |Klassen und Methoden (Steuerung/Mechanik)
-|Testscript
+|JUnit Test
 |
 |
 
-|7.4.2023
+|(ausstehend, voraussichtlich 7.4.2023)
 |Konsole
-|Testcase
+|Manueller Test
 |
 |
 
-|7.4.2023
+|(ausstehend, voraussichtlich 7.4.2023)
 |Kontroller
-|Testcase
+|Manueller Test
 |
 |
 
-|7.4.2023
+|(ausstehend, voraussichtlich 7.4.2023)
 |Elektronik
-|Testcase
+|Manueller Test
 |
 |
 
-|7.4.2023
+|(ausstehend, voraussichtlich 7.4.2023)
 |Steuerung/Mechanik
-|Testcase
+|Manueller Test
 |
 |
 
-|14.4.2023
+|(ausstehend, voraussichtlich 14.4.2023)
 |Bewegung
-|Testcase
+|Manueller Test
 |
 |
 
-|14.4.2023
+|(ausstehend, voraussichtlich 14.4.2023)
 |Räume
-|Testcase
+|Manueller Test
 |
 |
 
-|14.4.2023
+|(ausstehend, voraussichtlich 14.4.2023)
 |Rätsel
-|Testcase
+|Manueller Test
 |
 |
 
