@@ -1,4 +1,4 @@
-== TC4.05 : F004R05 : Benutzer/in kann einen Namen fürs Leaderboard generieren lassen ==
+== TC4.05 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F004R05[F004R05] : Benutzer/in kann einen Namen fürs Leaderboard generieren lassen ==
 
 === Beschreibung: === 
 Nachdem Spiel kann der Punktestand in eine Rangliste übernommen werden. Dabei kann ein Namen neben dem Punktestand in die Rangliste aufgenommen werden.

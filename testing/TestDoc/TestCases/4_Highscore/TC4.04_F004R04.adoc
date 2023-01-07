@@ -1,4 +1,4 @@
-== TC4.04 : F004R04 : Benutzer/in kann Punkteanzahl am Ende sehen ==
+== TC4.04 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F004R04[F004R04] : Benutzer/in kann Punkteanzahl am Ende sehen ==
 
 === Beschreibung: === 
 Der erreichte Punktestand soll ersichtlich sein, sobald das Spiel beendet wurde.

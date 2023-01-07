@@ -1,4 +1,4 @@
-== TC3.12 : F003R12 : Benutzer/in  kann Türe  nur "one-way" nutzen ==
+== TC3.12 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R12[F003R12] : Benutzer/in  kann Türe  nur "one-way" nutzen ==
 
 === Beschreibung: === 
 Nachdem eine Türe benutzt wurde, kann diese im aktuellen Spieldurchlauf nicht mehr benutzt werden.

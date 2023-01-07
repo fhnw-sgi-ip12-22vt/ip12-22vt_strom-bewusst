@@ -1,4 +1,4 @@
-== TC3.15 : F003R15 : Benutzer/in  kann Notizzettel mit Hinweisen im Raum finden und lesen ==
+== TC3.15 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R15[F003R15] : Benutzer/in  kann Notizzettel mit Hinweisen im Raum finden und lesen ==
 
 === Beschreibung: === 
 In dem Raum sind Zettel verteilt. Sind die Figuren in der Nähe, so können Informationen gesammelt werden um dann die Rätsel zu lösen.

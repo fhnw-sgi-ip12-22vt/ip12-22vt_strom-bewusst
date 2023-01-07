@@ -1,4 +1,4 @@
-== TC4.03 : F004R03 : Benutzer/in lässt für jeden Raum einen separaten Timer starten ==
+== TC4.03 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F004R03[F004R03] : Benutzer/in lässt für jeden Raum einen separaten Timer starten ==
 
 === Beschreibung: === 
 Wenn die Figuren einen neuen Raum betreten dann beginnt der Timer wieder bei 5:00

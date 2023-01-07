@@ -1,4 +1,4 @@
-== TC1.1 : F001R01 : Benutzer/in kann mit Steckdose Rätsel lösen ==
+== TC1.1 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R01[F001R01] : Benutzer/in kann mit Steckdose Rätsel lösen ==
 
 === Beschreibung: === 
 Wenn ein Rätsel begonnen wird, dann kann dieses mit dem Steckerkontroller gelöst oder abgebrochen werden.

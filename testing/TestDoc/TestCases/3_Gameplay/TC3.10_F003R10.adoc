@@ -1,4 +1,4 @@
-== TC3.10 : F003R10 : Benutzer/in  soll mit Objekte innerhalb einer halben Sekunde nach dem klicken interagieren können. ==
+== TC3.10 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R10[F003R10] : Benutzer/in  soll mit Objekte innerhalb einer halben Sekunde nach dem klicken interagieren können. ==
 
 === Beschreibung: === 
 Alle interaktive Objekte sollen auf die Eingaben des Benutzers innerhalb einer halben Sekunde reagieren.

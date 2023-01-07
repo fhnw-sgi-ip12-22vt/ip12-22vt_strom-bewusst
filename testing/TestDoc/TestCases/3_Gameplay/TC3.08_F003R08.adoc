@@ -1,4 +1,4 @@
-== TC3.8 : F003R08 : Benutzer/in kann mit Objekten interagieren ==
+== TC3.8 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R08[F003R08] : Benutzer/in kann mit Objekten interagieren ==
 
 === Beschreibung: === 
 Objekte reagieren wie vorgesehen auf die Inpute der Spieler.

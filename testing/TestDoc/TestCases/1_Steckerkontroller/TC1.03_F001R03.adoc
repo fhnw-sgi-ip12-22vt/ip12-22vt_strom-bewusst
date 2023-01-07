@@ -1,4 +1,4 @@
-== TC1.3 : F001R03 : Benutzer/in kann Mit Joystick zwischen gewählten Optionen schalten ==
+== TC1.3 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R03[F001R03] : Benutzer/in kann Mit Joystick zwischen gewählten Optionen schalten ==
 
 === Beschreibung: === 
 Auf dem Bildschirm gibt es verschiedene Objekte, die ausgewählt werden können. 

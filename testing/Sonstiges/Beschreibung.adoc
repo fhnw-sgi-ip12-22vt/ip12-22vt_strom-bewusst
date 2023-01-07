@@ -72,7 +72,7 @@ Objekt/Tätigkeit, welche bestätigt wird. (Welches Objekt im Raum, welcher Farb
 
 == TEMPLATE TESTCASE ==
 
-== <TestID> : <AnforderungsID> : <Anforderung> ==
+== <TestID> : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R01[<AnforderungsID>] : <Anforderung> ==
 
 === Beschreibung: === 
 <Beschreibung>: +

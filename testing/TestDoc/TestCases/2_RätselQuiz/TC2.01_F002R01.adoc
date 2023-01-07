@@ -1,4 +1,4 @@
-== TC2.01 : F002R01 : Benutzer/in lässt die gleiche Anzahl Multiple Choice Antworten wie die Anzahl Steckdosen pro Spieler anzeigen ==
+== TC2.01 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R01[F002R01] : Benutzer/in lässt die gleiche Anzahl Multiple Choice Antworten wie die Anzahl Steckdosen pro Spieler anzeigen ==
 
 === Beschreibung: === 
 Jede Steckdose soll einer Antwortmöglichkeit auf dem Screen entsprechen.

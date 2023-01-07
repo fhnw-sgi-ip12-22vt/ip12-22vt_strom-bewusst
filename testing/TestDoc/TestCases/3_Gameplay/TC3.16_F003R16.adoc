@@ -1,4 +1,4 @@
-== TC3.16 : F003R16 : Benutzer/in erhält zu  Beginn des Spiels ein Tutorial ==
+== TC3.16 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R16[F003R16] : Benutzer/in erhält zu  Beginn des Spiels ein Tutorial ==
 
 === Beschreibung: === 
 Beim Start des Spiels werden die Benutzer in das Spiel eingeführt.

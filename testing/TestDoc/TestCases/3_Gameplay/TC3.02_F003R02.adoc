@@ -1,4 +1,4 @@
-== TC3.2 : F003R02 : Benutzer/in steht bei Objekten im Raum vor dem Objekt (Grafisch) ==
+== TC3.2 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R02[F003R02] : Benutzer/in steht bei Objekten im Raum vor dem Objekt (Grafisch) ==
 
 === Beschreibung: === 
 Figuren sollen nicht von Objekten im Raum überdeckt werden. Nehmen wir als Beispiel einen Tisch, dann ist um den Tisch herum eine Zone. Die Figuren können nicht in diese Zone, weil sie ansonsten vom Tisch überdeckt werden oder sie den Tisch überdecken.  

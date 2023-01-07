@@ -1,4 +1,4 @@
-== TC1.4 : F001R04 : Benutzer/in kann mit Button 1 Auswahl bestätigen ==
+== TC1.4 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R04[F001R04] : Benutzer/in kann mit Button 1 Auswahl bestätigen ==
 
 === Beschreibung: === 
 Die Auswahl wird gewählt, indem der Stecker in die Steckdose gesteckt wird. Um die Auswahl festzulegen, wird mit dem ersten Button die Auswahl bestätigt. 

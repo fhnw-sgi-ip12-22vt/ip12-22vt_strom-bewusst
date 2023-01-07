@@ -1,4 +1,4 @@
-== TC2.04 : F002R04 : Benutzer/in lässt Die Reihenfolge der Fragen  pro Durchlauf zufällig anzeigen ==
+== TC2.04 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R04[F002R04] : Benutzer/in lässt Die Reihenfolge der Fragen  pro Durchlauf zufällig anzeigen ==
 
 === Beschreibung: === 
 Die Fragen sollen in einer zufälligen Reihenfolge erscheinen. 

@@ -1,4 +1,4 @@
-== TC3.14 : F003R14 : Benutzer/in kann die Story über ein Textfeld lesen ==
+== TC3.14 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R14[F003R14] : Benutzer/in kann die Story über ein Textfeld lesen ==
 
 === Beschreibung: === 
 Die Story wird mit Textfelder übermittelt immer dann wenn die Figuren einen neuen Raum betreten.

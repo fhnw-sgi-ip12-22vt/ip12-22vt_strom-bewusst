@@ -1,4 +1,4 @@
-== TC1.5 : F001R05 : Benutzer/in kann mit Button 2 Auswahl abbrechen  ==
+== TC1.5 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R05[F001R05] : Benutzer/in kann mit Button 2 Auswahl abbrechen  ==
 
 === Beschreibung: === 
 Wurde eine Auswahl bestätigt, so kann diese wieder rückgängig gemacht werden indem der Button 2 gedrückt wird.

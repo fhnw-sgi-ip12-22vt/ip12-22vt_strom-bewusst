@@ -1,4 +1,4 @@
-== TC3.17 : F003R17 : Benutzer/in kann das Spiel über ein Hauptmenü beginnen ==
+== TC3.17 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R17[F003R17] : Benutzer/in kann das Spiel über ein Hauptmenü beginnen ==
 
 === Beschreibung: === 
 Im Hauptmenu kann eine Eingabe getätigt werden, so dass das Spiel gestartet wird.

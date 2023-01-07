@@ -1,4 +1,4 @@
-== TC4.01 : F004R01 : Benutzer/in lässt einen Timer starten (Rechts vom Bildschirm)  ==
+== TC4.01 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F004R01[F004R01] : Benutzer/in lässt einen Timer starten (Rechts vom Bildschirm)  ==
 
 === Beschreibung: === 
 Sobald das Spiel beginnt sieht man unten rechts vom Bildschirm einen Timer, der die verbrauchte Zeit angibt. 

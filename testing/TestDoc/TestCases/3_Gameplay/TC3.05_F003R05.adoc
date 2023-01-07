@@ -1,4 +1,4 @@
-== TC3.5 : F003R05 : Beide Benutzer/in  können sich gleichzeitig bewegen ==
+== TC3.5 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R05[F003R05] : Beide Benutzer/in  können sich gleichzeitig bewegen ==
 
 === Beschreibung: === 
 Die Figuren im Raum sollen sich zur gleichen Zeit bewegen können.

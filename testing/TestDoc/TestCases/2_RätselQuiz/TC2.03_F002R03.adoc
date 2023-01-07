@@ -1,4 +1,4 @@
-== TC2.03 : F002R03 : Benutzer/in kann Schätzfragen mit dem Joystick eingeben ==
+== TC2.03 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R03[F002R03] : Benutzer/in kann Schätzfragen mit dem Joystick eingeben ==
 
 === Beschreibung: === 
 Fragen sollen auch nummerisch beantwortet werden. Der Joystick kann nach oben oder unten gedrückt werden, dabei verändert sich die Zahl auf dem Bildschirm.

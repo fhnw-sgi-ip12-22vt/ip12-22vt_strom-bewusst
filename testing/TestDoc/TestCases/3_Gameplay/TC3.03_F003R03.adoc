@@ -1,4 +1,4 @@
-== TC3.3 : F003R03 :  Benutzer/in kann sich fliessend bewegen ==
+== TC3.3 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R03[F003R03] :  Benutzer/in kann sich fliessend bewegen ==
 
 === Beschreibung: === 
 Die Navigation der Figur soll so animiert sein, dass sich die Figur zum neuen Ort hinbewegt und nicht einfach die Position des neuen Orts einnimmt.

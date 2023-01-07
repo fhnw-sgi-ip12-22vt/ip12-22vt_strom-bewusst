@@ -1,4 +1,4 @@
-== TC2.07 : F002R07 : Benutzer/in kann Rätsel über Stromverbrauch, Stromsparren oder kW/h-Angaben pro Gerät lösen ==
+== TC2.07 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R07[F002R07] : Benutzer/in kann Rätsel über Stromverbrauch, Stromsparren oder kW/h-Angaben pro Gerät lösen ==
 
 === Beschreibung: === 
 Es sollen nur Inhalte über die Themen Stromverbrauch, Stromsparren oder kW/H abgefragt werden.

@@ -1,4 +1,4 @@
-== TC3.7 : F003R07 : Benutzer/in  kann Objekte, die angeklickt werden können, deutlich sehen ==
+== TC3.7 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R07[F003R07] : Benutzer/in  kann Objekte, die angeklickt werden können, deutlich sehen ==
 
 === Beschreibung: === 
 Jedes anklickbare Objekt soll als solches erkennbar sein. Wenn die Figur vor dem Objekt steht, soll eine Meldung erscheinen mit "Zum öffnen Bestätigen".

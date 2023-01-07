@@ -1,4 +1,4 @@
-== TC3.13 : F003R13 : Benutzer/in kann Türe nutzen nach dem lösen des Rätsels ==
+== TC3.13 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R13[F003R13] : Benutzer/in kann Türe nutzen nach dem lösen des Rätsels ==
 
 === Beschreibung: === 
 Die Türe ist erst geöffnet, wenn das Rätsel beim "Main Desk" gelöst ist.

@@ -1,4 +1,4 @@
-== TC4.02 : F004R02 : Benutzer/in wird nach Ablauf des Timers(5min) zum Start des Raumes zurückgesetzt ==
+== TC4.02 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F004R02[F004R02] : Benutzer/in wird nach Ablauf des Timers(5min) zum Start des Raumes zurückgesetzt ==
 
 === Beschreibung: === 
 Wenn der Timer auf 0:00 ist, so müssen die Spieler das Spiel im ersten Raum wieder von neuem beginnen.

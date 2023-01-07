@@ -1,4 +1,4 @@
-== TC3.11 : F003R11 : Benutzer/in geht in den nächsten Raum, wenn die Tür angeklickt wird ==
+== TC3.11 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R11[F003R11] : Benutzer/in geht in den nächsten Raum, wenn die Tür angeklickt wird ==
 
 === Beschreibung: === 
 In jedem Raum ist eine Tür zum nächsten Raum. Durch eine Eingabe kann der Benutzer/in in den nächsten Raum gelangen, wenn dieser vor der Tür steht.
