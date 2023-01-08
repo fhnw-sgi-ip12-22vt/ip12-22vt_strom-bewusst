@@ -74,9 +74,9 @@ public class Controller {
     private void handleXMove(double value) {
         List<Runnable> tasks;
         if (value > 0.75) {
-            tasks = onJoystickRightTasks;
-        } else if (value < 0.25) {
             tasks = onJoystickLeftTasks;
+        } else if (value < 0.25) {
+            tasks = onJoystickRightTasks;
         } else {
             tasks = onJoystickHorizontalIdleTasks;
         }
@@ -88,9 +88,9 @@ public class Controller {
     private void handleYMove(double value) {
         List<Runnable> tasks;
         if (value > 0.75) {
-            tasks = onJoystickDownTasks;
-        } else if (value < 0.25) {
             tasks = onJoystickUpTasks;
+        } else if (value < 0.25) {
+            tasks = onJoystickDownTasks;
         } else {
             tasks = onJoystickVerticalIdleTasks;
         }

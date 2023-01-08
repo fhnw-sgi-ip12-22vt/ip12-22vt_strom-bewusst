@@ -9,7 +9,6 @@ import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import ch.fhnw.strombewusst.input.Buttons;
 import ch.fhnw.strombewusst.input.Controller;
-import ch.fhnw.strombewusst.input.KeyPressHandler;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
@@ -24,7 +23,6 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import javafx.scene.SubScene;
 import javafx.scene.input.KeyCode;
 
 /**
@@ -155,15 +153,15 @@ public class StromBewusst extends GameApplication {
             Controller p1Controller = new Controller(0, 1, PIN.D17);
             Controller p2Controller = new Controller(2, 3, PIN.D6);
 
-            p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.A));
-            p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.D));
+            p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.D));
+            p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.A));
             p1Controller.onJoystickHorizontalIdle(() -> {
                 getInput().mockKeyRelease(KeyCode.A);
                 getInput().mockKeyRelease(KeyCode.D);
             });
 
-            p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.S));
-            p1Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.W));
+            p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.W));
+            p1Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.S));
             p1Controller.onJoystickVerticalIdle(() -> {
                 getInput().mockKeyRelease(KeyCode.W);
                 getInput().mockKeyRelease(KeyCode.S);
@@ -186,21 +184,51 @@ public class StromBewusst extends GameApplication {
             System.out.println("failed to initialize controller, proceeding");
         }
 
-        KeyPressHandler player1Right = new KeyPressHandler(getInput(), KeyCode.D, "player1 Right");
-        player1Right.onAction(() -> player1.getComponent(PlayerComponent.class).moveRight());
-        player1Right.onActionEnd(() -> player1.getComponent(PlayerComponent.class).stopMovingX());
+        // player1 Movement
+        getInput().addAction(new UserAction("player1 Right") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(PlayerComponent.class).moveRight();
+            }
 
-        KeyPressHandler player1Left = new KeyPressHandler(getInput(), KeyCode.A, "player1 Left");
-        player1Left.onAction(() -> player1.getComponent(PlayerComponent.class).moveLeft());
-        player1Left.onActionEnd(() -> player1.getComponent(PlayerComponent.class).stopMovingX());
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingX();
+            }
+        }, KeyCode.D);
+        getInput().addAction(new UserAction("player1 Left") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(PlayerComponent.class).moveLeft();
+            }
 
-        KeyPressHandler player1Up = new KeyPressHandler(getInput(), KeyCode.W, "player1 Up");
-        player1Up.onAction(() -> player1.getComponent(PlayerComponent.class).moveUp());
-        player1Up.onActionEnd(() -> player1.getComponent(PlayerComponent.class).stopMovingY());
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingX();
+            }
+        }, KeyCode.A);
+        getInput().addAction(new UserAction("player1 Up") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(PlayerComponent.class).moveUp();
+            }
 
-        KeyPressHandler player1Down = new KeyPressHandler(getInput(), KeyCode.S, "player1 Down");
-        player1Down.onAction(() -> player1.getComponent(PlayerComponent.class).moveDown());
-        player1Down.onActionEnd(() -> player1.getComponent(PlayerComponent.class).stopMovingY());
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingY();
+            }
+        }, KeyCode.W);
+        getInput().addAction(new UserAction("player1 Down") {
+            @Override
+            protected void onAction() {
+                player1.getComponent(PlayerComponent.class).moveDown();
+            }
+
+            @Override
+            protected void onActionEnd() {
+                player1.getComponent(PlayerComponent.class).stopMovingY();
+            }
+        }, KeyCode.S);
 
         // player2 Movement
         getInput().addAction(new UserAction("player2 Right") {
