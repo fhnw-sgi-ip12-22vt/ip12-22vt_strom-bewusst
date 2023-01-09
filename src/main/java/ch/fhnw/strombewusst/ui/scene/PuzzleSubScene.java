@@ -1,6 +1,10 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
+import static com.almasb.fxgl.dsl.FXGL.getInput;
+
+import ch.fhnw.strombewusst.input.Buttons;
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -38,10 +42,12 @@ public class PuzzleSubScene extends SubScene {
     private String answerP2;
 
 
+
     int questionNum;
     HBox[] currentQuiz;
     Texture textureAnswerP1;
     Texture textureAnswerP2;
+
 
 
     public PuzzleSubScene() {
@@ -274,19 +280,3 @@ class Questbucket {
     public String[][] quest = {{questionString1,firstString1,secondString1,thirdString1,answer1},{questionString2,firstString2,secondString2,thirdString2,answer2},{questionString3,firstString3,secondString3,thirdString3,answer3},{questionString4,firstString4,secondString4,thirdString4,answer4},{questionString5,firstString5,secondString5,thirdString5,answer5},{questionString6,firstString6,secondString6,thirdString6,answer6}};
 }
 
-
-/*
-Text title = new Text("TEST");
-        title.getStyleClass().add("message");
-        HBox messageHBox = new HBox(title);
-        messageHBox.setTranslateX(thirdBoxX);
-        messageHBox.setTranslateY(thirdBoxY);
- */
-        /*Button btnBack = new Button("CLICK");
-        btnBack.setStyle("-fx-text-fill: black;");
-        btnBack.setOnAction(e -> getSceneService().popSubScene());
-
-        HBox backHBox = new HBox(btnBack);
-        backHBox.setPrefWidth(getAppWidth());
-        backHBox.setAlignment(Pos.CENTER);
-        backHBox.setTranslateY(getAppHeight() - 140);*/

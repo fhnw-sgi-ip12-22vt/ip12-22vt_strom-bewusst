@@ -34,6 +34,8 @@ public class StromBewusst extends GameApplication {
     private Entity door1;
     private int room = 0;
 
+    private Buttons p1Buttons;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -277,15 +279,13 @@ public class StromBewusst extends GameApplication {
         }, KeyCode.K);
 
         try {
-            Buttons p1Buttons = new Buttons(PIN.D5, PIN.D6, PIN.D26, PIN.D21, PIN.D20);
+            p1Buttons = new Buttons(PIN.D5, PIN.D6, PIN.D26, PIN.D21, PIN.D20);
             p1Buttons.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
             p1Buttons.untenDown(() -> getInput().mockKeyPress(KeyCode.R));
-            p1Buttons.linksDown(()-> getInput().mockKeyPress(KeyCode.DIGIT4));
-            p1Buttons.mitteDown(()-> getInput().mockKeyPress(KeyCode.DIGIT5));
-            p1Buttons.rechtsDown(()-> getInput().mockKeyPress(KeyCode.DIGIT6));
+            p1Buttons.linksDown(()->System.out.println("Hello from Steckdose"));
         } catch (Exception ignored) {
-        System.out.println("failed to initialize buttons, proceeding");
-    }
+            System.out.println("failed to initialize buttons, proceeding");
+        }
 
     getInput().addAction(new UserAction("open puzzle") {
             @Override
