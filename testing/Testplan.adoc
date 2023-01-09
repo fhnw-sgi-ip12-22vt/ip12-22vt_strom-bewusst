@@ -1,8 +1,7 @@
-//Für Informationen: https://de.parasoft.com/blog/how-to-write-test-cases-for-software-examples-tutorial/ 
 
 = Testplan =
 
-== Construction 1 : 18.11.2022 - 23.12.2022 == 
+//== Construction 1 : 18.11.2022 - 23.12.2022 == 
 
 |===
 | Datum |Testobjekt | Testart | Was getestet wird |Testdokument
@@ -25,13 +24,13 @@
 |Steckerkontroller, Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test3_18.12.2022.adoc[Test 3]
 
-|(ausstehend, voraussichtlich 30.12.2022)
-|Steckerkontroller MVP, Konsole MVP
+|09.01.2023
+|Software MVP
 |JUnit Test
-|Steckerkontroller
-|
+|RätselQuiz
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/ch/fhnw/strombewusst/QuizLogicTest.java[Test 4]
 
-|(ausstehend, voraussichtlich 06.01.2023)
+|(ausstehend, voraussichtlich 30.04.2023)
 |Software MVP
 |Manueller Test
 |Highscore, RätselQuiz
@@ -39,6 +38,7 @@
 
 |===
 
+////
 == Construction 2 : 23.12.2022 - 17.3.2023 == 
 
 |===
@@ -172,5 +172,4 @@
 |
 
 |===
-
-
+//// 
