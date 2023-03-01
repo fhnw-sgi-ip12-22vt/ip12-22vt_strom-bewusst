@@ -163,7 +163,9 @@ public class StromBewusst extends GameApplication {
             });
 
             p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.W));
+            // p1Controller.onJoystickUp(MainMenu::focusPreviousNode);
             p1Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.S));
+            // p1Controller.onJoystickDown(MainMenu::focusNextNode);
             p1Controller.onJoystickVerticalIdle(() -> {
                 getInput().mockKeyRelease(KeyCode.W);
                 getInput().mockKeyRelease(KeyCode.S);
