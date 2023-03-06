@@ -1,0 +1,19 @@
+== TC3.5 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R05[F003R05] : Beide Benutzer/in  können sich gleichzeitig bewegen ==
+
+=== Beschreibung: === 
+Die Figuren im Raum sollen sich zur gleichen Zeit bewegen können.
+
+=== Annahmen und Voraussetzungen: === 
+Das System kann zwei Eingaben gleichzeitig verarbeiten. Im Code ist die Navigation der Figuren implementiert.
+
+=== Testdaten: ===
+Zwei Figuren mit ihren x und y Koordinaten.
+
+=== Auszuführende Schritte: ===
+    
+    * Zwei Figuren stehen nebeneindander im Raum.
+    * Die erste Figur wird nach oben/unten/links/rechts navigiert.
+    * Die zweite Figur wird zur selben Zeit nach oben/unten/links/rechts navigiert. 
+
+=== Erwartetes Ergebnis: === 
+Die erste Figur bewegt sich nach oben/unten/links/rechts. Zur selben Zeit bewegt sich die zweite Figur nach oben/unten/links/rechts.

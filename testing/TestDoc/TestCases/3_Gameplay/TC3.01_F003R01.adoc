@@ -1,0 +1,18 @@
+== TC3.1 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R01[F003R01] : Benutzer/in  kann sich horizontal und vertikal bewegen mit dem Joystick ==
+
+=== Beschreibung: === 
+Figuren auf dem Bildschirm bewegen sich horizontal und vertikal wenn der Joystick in diese Richtung gedrückt wird.
+
+=== Annahmen und Voraussetzungen: === 
+Der Joystick muss stabil im Kontroller verbaut sein und vom System als Eingabe erkannt werden.
+
+=== Testdaten: ===
+Die x und y Koordinaten stimmen mit der Position der Figuren überein. 
+
+=== Auszuführende Schritte: ===
+    
+    * Figur steht im Raum.
+    * Der Joystick wird nach oben/unten/rechts/links gedrückt.
+        
+=== Erwartetes Ergebnis: === 
+Die Software reagiert auf die Eingabe und verschiebt die Figuren auf dem Display in die Richtung, in die der Joystick gedrückt wird.   

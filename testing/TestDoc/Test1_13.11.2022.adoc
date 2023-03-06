@@ -1,0 +1,36 @@
+=== Test 1 ===
+
+[%autowidth]
+|===
+|Datum | 13.11.2022
+|Verantwortlich | Mlinar Damjan
+|===
+
+|===
+|Testcase |Status|Bemerkungen
+
+|Benutzer/in  kann sich horizontal und vertikal bewegen mit dem Joystick https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.01_F003R01.adoc[TC 3.01]
+|Erfolgreich
+|Die Figur bewegt sich in grossen Stücken nach links oder rechts. Wir müssen hier beachten, dass alle anklickbare Objekte auch von der Figur erreicht werden können. Steht die Figur zum Beispiel links vom Rätselobjekt und bewegt sich einmal nach rechts, dann sollte nun das Rätsel angewählt werden können. Statt der Joystick wurde hier die Tastatur benutzt. 
+
+|Benutzer/in steht bei Objekten im Raum vor dem Objekt. (Grafisch)https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.02_F003R02.adoc[TC 3.02]
+|Gescheitert
+|Als Testobjekt wurde ein Tisch im ersten Raum verwendet. Wenn die Figur nach vorne navigiert wird, so wird der Tisch von der Figur überdeckt. Erwartet wird, dass die Figur vor dem Tisch stoppt und nicht über den Tisch navigiert werden kann. 
+
+|Benutzer/in kann sich fliessend bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.03_F003R03.adoc[TC 3.03]
+|Erfolgreich
+|Die Figuren bewegen sich elegant in alle Richtungen auf dem Display.
+
+|Benutzer/in  kann sich nicht aus dem Raum bewegen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.04_F003R04.adoc[TC 3.04]
+|Erfolgreich
+|Die Figur wird bei allen 4 Wänden gestoppt und kann diese nicht passieren.  
+
+|Beide Benutzer/in  können sich gleichzeitig bewegen. https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.05_F003R05.adoc[TC 3.05]
+|Erfolgreich
+|Zwei Eingaben werden gleichzeitig erkannt und ausgeführt. Beide Figuren können jeder der vier Richtungen einschlagen. Beide bewegen sich fliessend, es wird keine zusätzliche Verzögerung festgestellt.
+
+|Benutzer/in hat eine Eingabeverzögerung <0.5s https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/3_Gameplay/TC3.06_F003R06.adoc[TC 3.06]
+|Erfolgreich
+|Gemessen wurde mit einer Stopuhr. Figuren und Rätsel erfüllen die Anforderung. Wir haben momentan noch keine Textfelder, welche aus mehr als einem Textfenster bestehen. Alle Textfelder haben nur ein Fenster. 
+
+|===

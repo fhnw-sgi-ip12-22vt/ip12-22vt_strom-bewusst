@@ -1,0 +1,28 @@
+== TC3.6 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R06[F003R06] : Benutzer/in hat eine Eingabeverzögerung < 0.5s ==
+
+=== Beschreibung: === 
+Jede Eingabe wird vom System erkannt, ausgeführt und auf dem Display angezeigt. Dies soll maximal eine halbe Sekunde dauern.
+
+=== Annahmen und Voraussetzungen: === 
+Eingaben von der Hardware werden erkannt und in der Software ausgeführt. Figuren, Rätsel und Textfenster können mit der Eingabe bedient werden. 
+
+=== Testdaten: ===
+Figuren, Rätsel, Textfenster.    
+
+=== Auszuführende Schritte: ===
+    
+    * Figuren:
+        ** Figur steht im Raum.
+        ** Figur wird mit dem Joystick bewegt. 
+    * Rätsel:
+        ** Spieler hat ein Rätselfenster geöffnet. 
+        ** Stecker ist eingesteckt und Bestätigungsbutton wird gedrückt.
+    * Textfelder:
+        ** Textfeld ist offen. 
+        ** Um weiterzulesen wird der Bestätigungsbutton gedrückt.
+        
+=== Erwartetes Ergebnis: === 
+    
+    * Figur bewegt sich innerhalb von maximal einer halben Sekunde.
+    * Wahl im Rätsel wird innerhalb von maximal einer halben Sekunde angezeigt. 
+    * Neuer Text wird innerhalb von maximal einer halben Sekunde angezeigt.

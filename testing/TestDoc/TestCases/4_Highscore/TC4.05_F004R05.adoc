@@ -1,0 +1,19 @@
+== TC4.05 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F004R05[F004R05] : Benutzer/in kann einen Namen fürs Leaderboard generieren lassen ==
+
+=== Beschreibung: === 
+Nachdem Spiel kann der Punktestand in eine Rangliste übernommen werden. Dabei kann ein Namen neben dem Punktestand in die Rangliste aufgenommen werden.
+
+=== Annahmen und Voraussetzungen: === 
+Rangliste, Punktevergabe und Punktespeicherung ist im Spiel implementiert. 
+
+=== Testdaten: ===
+Rangliste
+
+=== Auszuführende Schritte: ===
+    
+    * In der Scene mit "Geschaft, euer Punktestand ist: " wird die Rangliste gewählt.
+    * Die Spieler/innen können nun einen vorgefertigten Namen wählen.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Beide haben je einen Namen gewählt. Diese werden miteinander kombiniert und in die Rangliste übernommen.

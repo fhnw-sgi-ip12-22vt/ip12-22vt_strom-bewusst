@@ -1,0 +1,18 @@
+== TC2.01 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R01[F002R01] : Benutzer/in lässt die gleiche Anzahl Multiple Choice Antworten wie die Anzahl Steckdosen pro Spieler anzeigen ==
+
+=== Beschreibung: === 
+Jede Steckdose soll einer Antwortmöglichkeit auf dem Screen entsprechen.
+
+=== Annahmen und Voraussetzungen: === 
+Quizrätsel ist soweit implementiert das mindestens der Hintergrund angezeigt wird. 
+
+=== Testdaten: ===
+Quizrätsel Hintergrundscreen
+
+=== Auszuführende Schritte: ===
+    
+    * Figuren stehen vor dem "Main Desk"
+    * Figuren öffnen das Quiz mit Button 1
+        
+=== Erwartetes Ergebnis: === 
+Die erste Frage wird angezeigt mit drei Antwortmöglichkeiten. Eine Antwort für jeweils blaue, grüne und rote Steckdose.

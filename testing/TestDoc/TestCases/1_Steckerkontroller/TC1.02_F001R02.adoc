@@ -1,0 +1,19 @@
+== TC1.2 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R02[F001R02] : Benutzer/in kann mit Joystick Figur Horizontal , Vertikal  und Diagonal bewegen ==
+
+=== Beschreibung: === 
+Mit dem Joystick kann die Figur in die entsprechende Richtung navigiert werden, indem diese sich horizontal, vertikal und diagonal bewegen kann.
+
+=== Annahmen und Voraussetzungen: === 
+Die Eingaben des Joysticks werden erkannt und die Software lässt die Figuren bewegen.  
+
+=== Testdaten: ===
+Standpunkt der Figur, Druck auf den Joystick
+
+=== Auszuführende Schritte: ===
+    
+    * Die Figur befindet sich im Raum.
+    * Joystick wird horizontal, vertikal und diagonal bewegt. 
+        
+=== Erwartetes Ergebnis: === 
+
+    * Die Figuren bewegen sich horizontal, vertikal und diagonal auf dem Bildschirm.

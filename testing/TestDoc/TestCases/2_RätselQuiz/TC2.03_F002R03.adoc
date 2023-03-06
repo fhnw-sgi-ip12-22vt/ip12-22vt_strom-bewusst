@@ -1,0 +1,19 @@
+== TC2.03 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R03[F002R03] : Benutzer/in kann Schätzfragen mit dem Joystick eingeben ==
+
+=== Beschreibung: === 
+Fragen sollen auch nummerisch beantwortet werden. Der Joystick kann nach oben oder unten gedrückt werden, dabei verändert sich die Zahl auf dem Bildschirm.
+
+=== Annahmen und Voraussetzungen: === 
+Eingaben mit dem Joystick werden im Quizrätsel erkannt.
+
+=== Testdaten: ===
+Joystick und Schätzungsfragen
+
+=== Auszuführende Schritte: ===
+    
+    * Benutzer/innen spielen das Quizrätsel
+    * Eine Schätzungsfrage taucht auf
+    * Der Joystick wird nach oben oder unten gedrückt
+        
+=== Erwartetes Ergebnis: === 
+Die Zahl wird erhöht beim Drücken nach oben, beziehungsweise verringert bei Drücken nach unten.

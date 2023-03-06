@@ -1,0 +1,20 @@
+== TC1.1 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R01[F001R01] : Benutzer/in kann mit Steckdose Rätsel lösen ==
+
+=== Beschreibung: === 
+Wenn ein Rätsel begonnen wird, dann kann dieses mit dem Steckerkontroller gelöst oder abgebrochen werden.
+
+=== Annahmen und Voraussetzungen: === 
+Der Steckerkontroller ist gebaut, Eingaben werden von der Software erkannt und Rätsel sind implementiert.
+
+=== Testdaten: ===
+Rätsel
+
+=== Auszuführende Schritte: ===
+    
+    * Benutzer/in hat ein Rätsel geöffnet.
+    * Die Aufgaben werden nun mit der Steckdose und den Buttons gelöst.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Es folgt die Auflösung des Rätsels.
+    * Das Rätselfenster schliesst sich.

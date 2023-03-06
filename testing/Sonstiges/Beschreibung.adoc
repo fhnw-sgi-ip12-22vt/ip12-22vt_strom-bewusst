@@ -1,0 +1,124 @@
+== BESCHREIBUNG ==
+
+=== Schritt 1: Anforderung ===
+
+Hier sollte die Anforderung zusammen mit der ID stehen.
+
+=== Schritt 2: Testbeschreibung ===
+
+Diese Beschreibung sollte detailliert beschreiben, welche Einheit beziehungsweise Funktion getestet oder verifiziert wird.
+
+=== Schritt 3: Annahmen und Voraussetzungen ===
+
+Dies beinhaltet alle Bedingungen, die vor der Ausführung des Testfalls erfüllt sein müssen. 
+
+=== Schritt 4: Testdaten ===
+
+Dies bezieht sich auf die Variablen und ihre Werte im Testfall. 
+
+=== Schritt 5: Auszuführende Schritte ===
+
+Dies sollten leicht wiederholbare Schritte sein, wie sie aus Sicht des Endbenutzers ausgeführt werden. Ein Testfall für die Anmeldung bei einem E-Mail-Server kann beispielsweise die folgenden Schritte umfassen:
+
+    * Öffnen Sie die E-Mail-Server-Webseite.
+    * Geben Sie den Benutzernamen ein.
+    * Passwort eingeben.
+    * Klicken Sie auf "Enter" oder "Login".
+
+=== Schritt 6: erwartetes Ergebnis ===
+
+Dies zeigt das Ergebnis an, das nach der Ausführung des Testfallschritts erwartet wird.
+
+== BEISPIEL ==
+
+== TC1.1 : R001.1-05 : Mit Button 1 Auswahl bestätigen ==
+
+=== Beschreibung: === 
+Der Bestätigungsbutton wird während dem ganzen Spiel benutzt, um folgende Aktionen zu bestätigen: +
+
+    * Objekte im Raum anklicken
+    * Um weiteren Textdialog zu lesen 
+    * Die Wahl der Farbblöcke in den Rätsel werden bestätigt 
+
+=== Annahmen und Voraussetzungen: === 
+Damit der Bestätigungsbutton funktioniert, muss dieser stabil im Kontroller verbaut sein. Zudem muss die Betätigung vom Spiel erkannt werden. 
+
+=== Testdaten: ===
+Objekt/Tätigkeit, welche bestätigt wird. (Welches Objekt im Raum, welcher Farbblock im Rätsel, welcher Textdialog zum weiterlesen)
+
+=== Auszuführende Schritte: ===
+    
+    * Objekte im Raum anklicken:
+        ** Figur steht vor dem Objekt. 
+        ** Es wird angezeigt, dass das Objekt angeklickt werden kann.
+
+    * Um weiteren Textdialog zu lesen:
+        ** Textfeld ist geöffnet, unten steht "Zum weiterlesen/beenden Bestätigungsbutton drücken"
+
+    * Die Wahl der Farbblöcke in den Rätsel werden bestätigt:
+        ** Spieler wählt den Farbblock mit dem Einstecken des Steckers in die entsprechende Steckdose. Spezialfall Schätzungsfrage erfolgt die Eingabe mit Joystick.
+        ** Die Wahl wird mit dem Bestätigungsbutton bestätigt.   
+
+=== Erwartetes Ergebnis: === 
+
+    * Objekte im Raum anklicken: + 
+    ** Wird der Bestätigungsbutton gedrückt, wird die entsprechend gewünschte Aktion ausgeführt.
+
+    * Um weiteren Textdialog zu lesen: +
+    ** Textdialog wird weitergeführt oder verschwindet, falls dieser fertig ist. Figur kann sich nun wieder frei im Raum bewegen.
+
+    * Die Wahl der Farbblöcke in den Rätsel werden bestätigt: +
+    ** Auf dem Bildschirm wird die Auswahl markiert und das Rätsel wird fortgeführt.
+
+== TEMPLATE TESTCASE ==
+
+== <TestID> : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R01[<AnforderungsID>] : <Anforderung> ==
+
+=== Beschreibung: === 
+<Beschreibung>: +
+
+    * <Aufzählungspunkte>
+
+=== Annahmen und Voraussetzungen: === 
+<Annahme>
+
+=== Testdaten: ===
+<Testdaten>
+
+=== Auszuführende Schritte: ===
+    
+    * <Aufzählungspunkte>:
+        ** <Aufzählungspunkte> 
+
+    * <Aufzählungspunkte>:
+        
+=== Erwartetes Ergebnis: === 
+
+    * <Aufzählungspunkte>: + 
+    ** <Aufzählungspunkte>
+
+    * <Aufzählungspunkte> +
+
+== TEMPLATE TESTDOKUMENT ==
+
+=== Test: <Nummer> ===
+
+[%autowidth]
+|===
+|Datum | <dd.mm.yyy>
+|Verantwortlich | <Nachname Vorname>
+|===
+
+|===
+|Link Testcase |Status|Bemerkungen
+
+|<Anforderung> https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestCases/Beschreibung.adoc[<TestCase>]
+|<Status>
+|<Bemerkung>
+
+|===
+
+Link für Junit Beispiel: link:https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/pi4j-template-javafx/-/blob/master/src/test/java/com/pi4j/mvc/templateapp/view/pui/SomePUITest.java[SomePUITest.java(Methode testLED)]
+
+Link für weitere Informationen https://de.parasoft.com/blog/how-to-write-test-cases-for-software-examples-tutorial/[how-to-write-test-cases-for-software-examples-tutorial] 
+

@@ -1,0 +1,19 @@
+== TC3.4 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R04[F003R04] : Benutzer/in  kann sich nicht aus dem Raum bewegen ==
+
+=== Beschreibung: === 
+Die Figur stoppt bei den Wänden im Raum. Die Figur kann den Raum nur durch die Tür verlassen.
+
+=== Annahmen und Voraussetzungen: === 
+Im Code wurden Wände als Objekte mit Zonenbereich implementiert. Diese Zone können die Figuren nicht betreten. 
+
+=== Testdaten: ===
+Wandobjekt mit Zonenbereich.
+
+=== Auszuführende Schritte: ===
+    
+    * Figur steht vor der Wand.
+    * Die Figur wird in Richtung der Wand navigiert.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Figur stoppt vor der Wand.

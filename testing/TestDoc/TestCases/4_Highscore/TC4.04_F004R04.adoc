@@ -1,0 +1,18 @@
+== TC4.04 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F004R04[F004R04] : Benutzer/in kann Punkteanzahl am Ende sehen ==
+
+=== Beschreibung: === 
+Der erreichte Punktestand soll ersichtlich sein, sobald das Spiel beendet wurde.
+
+=== Annahmen und Voraussetzungen: === 
+Rangliste, Punktevergabe und Punktespeicherung ist im Spiel implementiert.
+
+=== Testdaten: ===
+Rangliste
+
+=== Auszuführende Schritte: ===
+    
+    * Spieler/innen befinden sich im letzten Raum
+    * Die Ausgangstür wird benutzt 
+        
+=== Erwartetes Ergebnis: === 
+Es folgt eine Scene mit der Überschrift "Geschaft, euer Punktestand ist: " mit dem entsprechenden Punktestand.

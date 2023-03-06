@@ -1,0 +1,19 @@
+== TC2.02 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R02[F002R02] : Benutzer/in kann Richtig-Falsch Antworten immer mit der ersten Steckdose(Richtig) und der letzten Steckdose(Falsch) beantworten ==
+
+=== Beschreibung: === 
+Für "Richtig" wird die Steckdose benutzt, die sich als erstes neben dem Joystick befindet. Für die Antwort "Falsch" wird jeweils die Steckdose benutzt, die sich neben dem schmalen Rand befindet.  
+
+=== Annahmen und Voraussetzungen: === 
+Die Steckdosen-Eingaben vom Steckerkontroller werden vom Code erkannt. Das Rätsel ist mit Richtig-Falsch-Fragen implementiert. 
+
+=== Testdaten: ===
+Steckerdosen im Steckerkontroller und Richtig-Falsch-Frage
+
+=== Auszuführende Schritte: ===
+    
+    * Benutzer/innen spielen das Quizrätsel
+    * Eine Richtig-Falsch Frage taucht auf
+        
+=== Erwartetes Ergebnis: === 
+    * Es gibt zwei Antwortmöglichkeiten mit der entsprechenden Steckdosenfarbe.
+    * Für Eingabe "Richtig" bzw "Falsch" stimmt die Eingabe mit dem Stecker mit der Anzeige auf dem Screen überein.
