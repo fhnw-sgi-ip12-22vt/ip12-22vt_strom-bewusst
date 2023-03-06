@@ -1,6 +1,7 @@
 [[section-design-decisions]]
 == Architekturentscheidungen
 
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -27,3 +28,14 @@ Siehe https://docs.arc42.org/section-9/[Architekturentscheidungen] in der arc42 
 Dort finden Sie Links und Beispiele zum Thema ADR.
 
 ****
+////
+
+=== Libraries
+- *FXGL* +
+FXGL erlaubte uns extrem schnell einen funktionierenden Prototypen zu entwickeln, schränkt das Development aber in gewissen Entscheidungen ein (viele Funktionen werden schon von der Library zur Verfügung gestellt, aber sind teilweise nur schwer anpassbar).
+- *Pi4J Example Components* +
+Die Pi4J Example Components Library verfügt über eine breite Auswahl an Klassen für die Kommunikation mit Hardwarekomponenten. Die Library wurde in der FHNW entwickelt wodurch wir bei Problemen schnell und einfach Support erhalten.
+
+=== Architektur Patterns
+- *MVC* +
+Wir richten uns bei der Architektur grob am Model-View-Controller Pattern, jedoch erschwert FXGL teilweise eine 100% saubere Trennung der Klassen.

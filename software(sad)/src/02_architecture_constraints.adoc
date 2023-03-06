@@ -36,6 +36,7 @@ Raspberry Pi
 
 .Libraries +
 * Pi4J (Java API für Raspberry Pi)
+** Pi4J Example Components
 * JUnit (Test-Framework)
-* JavaFX (Java Grafiklibrary)
+* FXGL (Java Gamelibrary)
 ****
