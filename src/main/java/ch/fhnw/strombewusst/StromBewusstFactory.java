@@ -4,6 +4,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.*;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
@@ -18,9 +19,17 @@ import javafx.geometry.Point2D;
  */
 public class StromBewusstFactory implements EntityFactory {
     @Spawns("emptyRoom")
-    public Entity spawnBackground(SpawnData data) {
+    public Entity newRoom(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.STATIC);
+
         return entityBuilder(data)
                 .view("emptyroom-with-sidebar.png")
+                .with(physics)
+                .bbox(new HitBox(new Point2D(20, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+                .bbox(new HitBox(new Point2D(0, 50), BoundingShape.box(FXGL.getAppWidth(), 0)))
+                .bbox(new HitBox(new Point2D(890, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+                .bbox(new HitBox(new Point2D(0, 690), BoundingShape.box(FXGL.getAppWidth(), 0)))
                 .zIndex(-100)
                 .build();
     }
@@ -107,17 +116,6 @@ public class StromBewusstFactory implements EntityFactory {
                 .type(EntityType.PREVDOOR)
                 .view("prev-door.png")
                 .zIndex(1)
-                .build();
-    }
-
-    @Spawns("wall")
-    public Entity newWall(SpawnData data) {
-        PhysicsComponent physics = new PhysicsComponent();
-        physics.setBodyType(BodyType.STATIC);
-
-        return entityBuilder(data)
-                .with(physics)
-                .bbox(new HitBox(BoundingShape.box(data.get("width"), data.get("height"))))
                 .build();
     }
 

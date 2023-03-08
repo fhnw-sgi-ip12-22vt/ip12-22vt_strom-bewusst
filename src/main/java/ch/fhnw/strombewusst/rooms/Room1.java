@@ -8,9 +8,6 @@ import com.almasb.fxgl.entity.level.Level;
 
 import java.util.List;
 
-import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
-import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
-
 public class Room1 implements Room {
     private final Entity player1;
     private final Entity player2;
@@ -30,19 +27,12 @@ public class Room1 implements Room {
         door = world.create("door", new SpawnData(618, 6));
 
         entities = List.of(
-            //players
             player1,
             player2,
 
-            // walls and room
-            world.create("wall", new SpawnData(20, 0).put("width", 0d).put("height", (double) getAppHeight())),
-            world.create("wall", new SpawnData(0, 50).put("width", (double) getAppWidth()).put("height", 0d)),
-            world.create("wall", new SpawnData(890, 0).put("width", 0d).put("height", (double) getAppHeight())),
-            world.create("wall", new SpawnData(0, getAppHeight() - 30).put("width", (double) getAppWidth()).put("height", 0d)),
             world.create("emptyRoom", new SpawnData()),
             door,
 
-            // desks
             world.create("main-desk", new SpawnData(264, 75)),
             world.create("desk", new SpawnData(103, 267).put("deskNum", 0)),
             world.create("desk", new SpawnData(264, 267).put("deskNum", 1)),
