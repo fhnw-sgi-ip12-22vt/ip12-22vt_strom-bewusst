@@ -40,15 +40,20 @@ public class PlayerDeskHandler extends CollisionHandler {
             messageHBox2.setTranslateY(380);
             getSceneService().getCurrentScene().addChild(messageHBox2);
         }
-
     }
 
     @Override
     protected void onCollisionEnd(Entity player, Entity desk) {
-        if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-            getSceneService().getCurrentScene().removeChild(messageHBox1);
-        } else {
-            getSceneService().getCurrentScene().removeChild(messageHBox2);
+        try {
+            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+                getSceneService().getCurrentScene().removeChild(messageHBox1);
+            } else {
+                getSceneService().getCurrentScene().removeChild(messageHBox2);
+            }
+        } catch (IllegalArgumentException ignored) {
+            // Bugfix, don't crash when switching rooms while other player is
+            // colliding with desk
+            // TODO: fully remove the textbox in this edge case
         }
     }
 }
