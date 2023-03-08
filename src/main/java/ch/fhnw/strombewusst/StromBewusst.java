@@ -58,7 +58,7 @@ public class StromBewusst extends GameApplication {
         }
         else {
             level = 0;
-            getGameController().gotoGameMenu();
+            getGameController().gotoMainMenu();
             getSceneService().pushSubScene(new EndGameScene());
         }
     }
