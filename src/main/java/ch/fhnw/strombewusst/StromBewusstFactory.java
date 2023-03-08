@@ -53,6 +53,19 @@ public class StromBewusstFactory implements EntityFactory {
                 .build();
     }
 
+    @Spawns("empty-desk")
+    public Entity newEmptyDesk(SpawnData data) {
+        return entityBuilder(data)
+            .type(EntityType.DESK)
+            .view("empty-desk.png")
+            .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(40, 10)))
+            .with(new PhysicsComponent())
+            .with(new DeskComponent(data.get("deskNum")))
+            .with(new CollidableComponent(true))
+            .zIndex(1)
+            .build();
+    }
+
     @Spawns("main-desk")
     public Entity newMainDesk(SpawnData data) {
         return entityBuilder(data)
@@ -63,6 +76,18 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
+    }
+
+    @Spawns("bookshelf")
+    public Entity newBookshelf(SpawnData data) {
+        return entityBuilder(data)
+            .type(EntityType.BOOKSHELF)
+            .view("bookshelf.png")
+            .bbox(new HitBox(new Point2D(12, 40), BoundingShape.box(80, 20)))
+            .with(new PhysicsComponent())
+            .with(new CollidableComponent(true))
+            .zIndex(1)
+            .build();
     }
 
     @Spawns("door")
