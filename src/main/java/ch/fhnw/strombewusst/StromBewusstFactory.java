@@ -106,10 +106,8 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.PREVDOOR)
                 .view("prev-door.png")
-                .with(new PhysicsComponent())
-                .with(new CollidableComponent(true))
                 .zIndex(1)
-                .buildAndAttach();
+                .build();
     }
 
     @Spawns("wall")
@@ -137,6 +135,5 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .view("plug-red.png")
                 .build();
-
     }
 }
