@@ -12,7 +12,6 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import javafx.geometry.Point2D;
 
-import java.util.HashMap;
 
 /**
  * This class defines our entities. The methods in this class get called by FXGL when using FXGL.spawn()
@@ -72,7 +71,6 @@ public class StromBewusstFactory implements EntityFactory {
                 .type(EntityType.DOOR)
                 .view("door.png")
                 .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(64, 50)))
-                .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();

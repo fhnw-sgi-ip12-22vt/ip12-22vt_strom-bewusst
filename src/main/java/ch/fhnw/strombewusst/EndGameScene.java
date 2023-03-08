@@ -1,6 +1,5 @@
 package ch.fhnw.strombewusst;
 
-import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
@@ -34,8 +33,6 @@ public class EndGameScene extends SubScene{
         endHBox.setPrefWidth(getAppWidth());
         endHBox.setAlignment(Pos.CENTER);
         endHBox.setTranslateY(getAppHeight() - 140);
-
-
 
         getContentRoot().getChildren().addAll(bg, titleHBox, endHBox);
     }

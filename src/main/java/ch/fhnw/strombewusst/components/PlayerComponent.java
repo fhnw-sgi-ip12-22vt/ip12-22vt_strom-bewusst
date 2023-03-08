@@ -18,7 +18,6 @@ public class PlayerComponent extends Component {
     private final int playerNum;
 
     private boolean isNearDesk;
-    private boolean isNearDoor;
 
     private PhysicsComponent physics;
 
@@ -70,7 +69,7 @@ public class PlayerComponent extends Component {
 
     public void moveRight() {
         if (physics.isMovingY()){
-           physics.setVelocityX(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+           physics.setVelocityX(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
         } else {
             physics.setVelocityX(PLAYER_SPEED);
         }
@@ -79,32 +78,28 @@ public class PlayerComponent extends Component {
 
     public void moveLeft() {
         if (physics.isMovingY()){
-            physics.setVelocityX(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+            physics.setVelocityX(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
         } else {
             physics.setVelocityX(-PLAYER_SPEED);
         }
-
         getEntity().setScaleX(-1);
     }
 
 
     public void moveUp() {
         if (physics.isMovingX()){
-            physics.setVelocityY(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+            physics.setVelocityY(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
         } else {
             physics.setVelocityY(-PLAYER_SPEED);
         }
-
-
     }
 
     public void moveDown() {
         if (physics.isMovingX()){
-            physics.setVelocityY(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2));
+            physics.setVelocityY(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
         } else {
             physics.setVelocityY(PLAYER_SPEED);
         }
-
     }
 
     public void stopMovingX() {
@@ -126,16 +121,6 @@ public class PlayerComponent extends Component {
     public boolean getIsNearDesk(){
         return isNearDesk;
     }
-
-    public boolean getIsNearDoor(){
-        return isNearDoor;
-    }
-
-    public void setIsNearDoor(boolean value) {
-        this.isNearDoor = value;
-    }
-
-
 }
 
 
