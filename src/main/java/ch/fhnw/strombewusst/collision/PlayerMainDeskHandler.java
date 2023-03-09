@@ -2,17 +2,10 @@ package ch.fhnw.strombewusst.collision;
 
 import ch.fhnw.strombewusst.EntityType;
 import ch.fhnw.strombewusst.components.PlayerComponent;
-import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
-import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
-import javafx.geometry.Point2D;
-import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
+import static com.almasb.fxgl.dsl.FXGL.entityBuilder;
 
 public class PlayerMainDeskHandler extends CollisionHandler {
     public PlayerMainDeskHandler() {
@@ -23,7 +16,7 @@ public class PlayerMainDeskHandler extends CollisionHandler {
 
     protected void onCollisionBegin(Entity player, Entity desk) {
         question = entityBuilder()
-                .at(desk.getX()+10, desk.getY()-40)
+                .at(desk.getX() + 10, desk.getY() - 40)
                 .view("Q.png")
                 .buildAndAttach();
         player.getComponent(PlayerComponent.class).setIsNearDesk(true);

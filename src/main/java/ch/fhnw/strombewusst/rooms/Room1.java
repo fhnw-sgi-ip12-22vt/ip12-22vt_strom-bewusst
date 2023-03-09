@@ -27,34 +27,34 @@ public class Room1 implements Room {
         door = world.create("door", new SpawnData(618, 6));
 
         entities = List.of(
-            player1,
-            player2,
+                player1,
+                player2,
 
-            world.create("emptyRoom", new SpawnData()),
-            door,
+                world.create("emptyRoom", new SpawnData()),
+                door,
 
-            world.create("main-desk", new SpawnData(264, 75)),
-            world.create("desk", new SpawnData(103, 267).put("deskNum", 0)),
-            world.create("desk", new SpawnData(264, 267).put("deskNum", 1)),
-            world.create("desk", new SpawnData(425, 267).put("deskNum", 2)),
-            world.create("desk", new SpawnData(586, 267).put("deskNum", 3)),
-            world.create("desk", new SpawnData(747, 267).put("deskNum", 4)),
-            world.create("desk", new SpawnData(103, 405).put("deskNum", 5)),
-            world.create("desk", new SpawnData(264, 405).put("deskNum", 6)),
-            world.create("desk", new SpawnData(425, 405).put("deskNum", 7)),
-            world.create("desk", new SpawnData(586, 405).put("deskNum", 8)),
-            world.create("desk", new SpawnData(747, 405).put("deskNum", 9)),
-            world.create("desk", new SpawnData(103, 543).put("deskNum", 10)),
-            world.create("desk", new SpawnData(264, 543).put("deskNum", 11)),
-            world.create("desk", new SpawnData(425, 543).put("deskNum", 12)),
-            world.create("desk", new SpawnData(586, 543).put("deskNum", 13)),
-            world.create("desk", new SpawnData(747, 543).put("deskNum", 14)),
+                world.create("main-desk", new SpawnData(264, 75)),
+                world.create("desk", new SpawnData(103, 267).put("deskNum", 0)),
+                world.create("desk", new SpawnData(264, 267).put("deskNum", 1)),
+                world.create("desk", new SpawnData(425, 267).put("deskNum", 2)),
+                world.create("desk", new SpawnData(586, 267).put("deskNum", 3)),
+                world.create("desk", new SpawnData(747, 267).put("deskNum", 4)),
+                world.create("desk", new SpawnData(103, 405).put("deskNum", 5)),
+                world.create("desk", new SpawnData(264, 405).put("deskNum", 6)),
+                world.create("desk", new SpawnData(425, 405).put("deskNum", 7)),
+                world.create("desk", new SpawnData(586, 405).put("deskNum", 8)),
+                world.create("desk", new SpawnData(747, 405).put("deskNum", 9)),
+                world.create("desk", new SpawnData(103, 543).put("deskNum", 10)),
+                world.create("desk", new SpawnData(264, 543).put("deskNum", 11)),
+                world.create("desk", new SpawnData(425, 543).put("deskNum", 12)),
+                world.create("desk", new SpawnData(586, 543).put("deskNum", 13)),
+                world.create("desk", new SpawnData(747, 543).put("deskNum", 14)),
 
-            world.create("empty-desk", new SpawnData(830, 75).put("deskNum", 15)),
-            world.create("empty-desk", new SpawnData(773, 75).put("deskNum", 16)),
-            world.create("empty-desk", new SpawnData(716, 75).put("deskNum", 17)),
+                world.create("empty-desk", new SpawnData(830, 75).put("deskNum", 15)),
+                world.create("empty-desk", new SpawnData(773, 75).put("deskNum", 16)),
+                world.create("empty-desk", new SpawnData(716, 75).put("deskNum", 17)),
 
-            world.create("bookshelf", new SpawnData(150,18))
+                world.create("bookshelf", new SpawnData(150, 18))
 
         );
     }

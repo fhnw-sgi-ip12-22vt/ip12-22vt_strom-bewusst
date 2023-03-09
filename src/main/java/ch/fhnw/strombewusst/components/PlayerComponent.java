@@ -48,6 +48,14 @@ public class PlayerComponent extends Component {
         texture = new AnimatedTexture(animIdle);
     }
 
+    public PlayerComponent() {
+        playerNum = 0;
+
+        texture = null;
+        animIdle = null;
+        animWalk = null;
+    }
+
     @Override
     public void onAdded() {
         entity.getTransformComponent().setScaleOrigin(new Point2D(32, 32));
@@ -68,8 +76,8 @@ public class PlayerComponent extends Component {
     }
 
     public void moveRight() {
-        if (physics.isMovingY()){
-           physics.setVelocityX(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
+        if (physics.isMovingY()) {
+            physics.setVelocityX(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
             physics.setVelocityX(PLAYER_SPEED);
         }
@@ -77,8 +85,8 @@ public class PlayerComponent extends Component {
     }
 
     public void moveLeft() {
-        if (physics.isMovingY()){
-            physics.setVelocityX(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
+        if (physics.isMovingY()) {
+            physics.setVelocityX(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
             physics.setVelocityX(-PLAYER_SPEED);
         }
@@ -87,16 +95,16 @@ public class PlayerComponent extends Component {
 
 
     public void moveUp() {
-        if (physics.isMovingX()){
-            physics.setVelocityY(-Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
+        if (physics.isMovingX()) {
+            physics.setVelocityY(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
             physics.setVelocityY(-PLAYER_SPEED);
         }
     }
 
     public void moveDown() {
-        if (physics.isMovingX()){
-            physics.setVelocityY(Math.sqrt(PLAYER_SPEED*PLAYER_SPEED/2f));
+        if (physics.isMovingX()) {
+            physics.setVelocityY(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
             physics.setVelocityY(PLAYER_SPEED);
         }
@@ -110,15 +118,15 @@ public class PlayerComponent extends Component {
         physics.setVelocityY(0);
     }
 
-    public int getPlayerNum(){
+    public int getPlayerNum() {
         return playerNum;
     }
 
-    public void setIsNearDesk(boolean is){
+    public void setIsNearDesk(boolean is) {
         this.isNearDesk = is;
     }
 
-    public boolean getIsNearDesk(){
+    public boolean getIsNearDesk() {
         return isNearDesk;
     }
 }

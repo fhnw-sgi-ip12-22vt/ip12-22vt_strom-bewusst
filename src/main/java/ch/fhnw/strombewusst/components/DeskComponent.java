@@ -1,15 +1,16 @@
 package ch.fhnw.strombewusst.components;
+
 import com.almasb.fxgl.entity.component.Component;
 
 public class DeskComponent extends Component {
 
     private int deskNum;
 
-    public DeskComponent(int deskNum){
+    public DeskComponent(int deskNum) {
         this.deskNum = deskNum;
     }
 
-    public int getDeskNum(){
+    public int getDeskNum() {
         return deskNum;
     }
 }

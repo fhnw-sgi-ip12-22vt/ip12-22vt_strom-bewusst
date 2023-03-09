@@ -9,8 +9,8 @@ import javafx.scene.layout.HBox;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-public class EndGameScene extends SubScene{
-    Button btnEnd;
+public class EndGameScene extends SubScene {
+    private final Button btnEnd;
 
     EndGameScene() {
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");

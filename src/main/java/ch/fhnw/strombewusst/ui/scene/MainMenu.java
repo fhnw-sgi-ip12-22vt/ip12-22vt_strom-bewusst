@@ -1,7 +1,5 @@
 package ch.fhnw.strombewusst.ui.scene;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.texture.Texture;
@@ -16,6 +14,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
+import static com.almasb.fxgl.dsl.FXGL.getSceneService;
+
 /**
  * This class defines the layout of the main menu.
  */
@@ -26,7 +27,20 @@ public class MainMenu extends FXGLMenu {
             if (getSceneService().getCurrentScene() instanceof MainMenu) {
                 Node node = s.focusOwnerProperty().get();
 
-                node.fireEvent(new KeyEvent(null, null, KeyEvent.KEY_PRESSED, "", "", KeyCode.UP, false, false, false, false));
+                KeyEvent event = new KeyEvent(
+                        null,
+                        null,
+                        KeyEvent.KEY_PRESSED,
+                        "",
+                        "",
+                        KeyCode.UP,
+                        false,
+                        false,
+                        false,
+                        false
+                );
+
+                node.fireEvent(event);
             }
         });
     }
@@ -36,7 +50,20 @@ public class MainMenu extends FXGLMenu {
             if (getSceneService().getCurrentScene() instanceof MainMenu) {
                 Node node = s.focusOwnerProperty().get();
 
-                node.fireEvent(new KeyEvent(null, null, KeyEvent.KEY_PRESSED, "", "", KeyCode.DOWN, false, false, false, false));
+                KeyEvent event = new KeyEvent(
+                        null,
+                        null,
+                        KeyEvent.KEY_PRESSED,
+                        "",
+                        "",
+                        KeyCode.DOWN,
+                        false,
+                        false,
+                        false,
+                        false
+                );
+
+                node.fireEvent(event);
             }
         });
     }

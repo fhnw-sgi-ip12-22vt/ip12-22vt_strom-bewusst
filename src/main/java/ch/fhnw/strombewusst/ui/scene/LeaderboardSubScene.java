@@ -1,7 +1,5 @@
 package ch.fhnw.strombewusst.ui.scene;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
@@ -9,6 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
+import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
+import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
+import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 /**
  * This class defines the layout of our leaderboard sub-scene. It gets rendered on top of the main menu when the

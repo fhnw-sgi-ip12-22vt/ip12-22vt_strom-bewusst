@@ -25,7 +25,7 @@ public class Controller {
             .add(new RaspberryPiPlatform() {
                 @Override
                 protected String[] getProviders() {
-                    return new String[]{};
+                    return new String[] {};
                 }
             })
             .add(

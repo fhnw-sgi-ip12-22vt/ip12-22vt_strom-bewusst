@@ -48,15 +48,14 @@ public class StromBewusst extends GameApplication {
     private void nextLevel() {
         level++;
         if (level <= rooms.length) {
-            Room room = rooms[level-1];
+            Room room = rooms[level - 1];
 
             player1 = room.getPlayer1();
             player2 = room.getPlayer2();
             door = room.getDoor();
 
             getGameWorld().setLevel(room.getLevel());
-        }
-        else {
+        } else {
             level = 0;
             getGameController().gotoMainMenu();
             getSceneService().pushSubScene(new EndGameScene());
@@ -238,12 +237,12 @@ public class StromBewusst extends GameApplication {
             p1Buttons = new Buttons(PIN.D5, PIN.D6, PIN.D26, PIN.D21, PIN.D20);
             p1Buttons.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
             p1Buttons.untenDown(() -> getInput().mockKeyPress(KeyCode.R));
-            p1Buttons.linksDown(()->System.out.println("Hello from Steckdose"));
+            p1Buttons.linksDown(() -> System.out.println("Hello from Steckdose"));
         } catch (Exception ignored) {
             System.out.println("failed to initialize buttons, proceeding");
         }
 
-    getInput().addAction(new UserAction("open puzzle") {
+        getInput().addAction(new UserAction("open puzzle") {
             @Override
             protected void onAction() {
                 boolean p1 = player1.getComponent(PlayerComponent.class).getIsNearDesk();

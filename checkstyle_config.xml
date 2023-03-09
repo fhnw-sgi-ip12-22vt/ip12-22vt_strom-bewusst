@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+	<property name="charset" value="UTF-8"/>
+	<property name="severity" value="warning" />
+
+	<module name="BeforeExecutionExclusionFileFilter">
+		<property name="fileNamePattern" value="module\-info\.java$"/>
+	</module>
+
+	<!-- Note: Exclude code analysis in the view-package and non-java files.  -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value=".*"/>
+		<property name="files" value=".+\.(?:txt|xml|csv|sh|xlsx|html|sql|eot|ttf|woff|css|png)$"/>
+	</module>
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value=".*"/>
+		<property name="files" value="ch.fhnw.strombewusst.input.pi4jcomponents"/>
+	</module>
+
+	<module name="TreeWalker">
+		<property name="tabWidth" value="4" />
+		<module name="JavadocMethod">
+			<property name="accessModifiers" value="public" />
+		</module>
+		<module name="JavadocType">
+			<property name="excludeScope" value="private" />
+			<property name="scope" value="protected" />
+		</module>
+		<module name="JavadocVariable">
+			<property name="excludeScope" value="private" />
+			<property name="scope" value="protected" />
+		</module>
+		<module name="JavadocStyle">
+			<property name="scope" value="package" />
+			<property name="excludeScope" value="private" />
+		</module>
+		<module name="ConstantName" />
+		<module name="LocalFinalVariableName" />
+		<module name="LocalVariableName" />
+		<module name="MemberName" />
+		<module name="MethodName" />
+		<module name="PackageName" />
+		<module name="ParameterName" />
+		<module name="StaticVariableName" />
+		<module name="TypeName" />
+		<module name="AvoidStarImport" />
+		<module name="IllegalImport" />
+		<module name="RedundantImport" />
+		<module name="UnusedImports" />
+		<module name="Indentation">
+			<property name="caseIndent" value="0" />
+		</module>
+		<module name="MethodLength">
+			<property name="max" value="150" />
+			<property name="tokens" value="METHOD_DEF" />
+		</module>
+		<module name="ParameterNumber" />
+		<module name="EmptyForIteratorPad" />
+		<module name="MethodParamPad" />
+		<module name="NoWhitespaceAfter" />
+		<module name="NoWhitespaceBefore" />
+		<module name="OperatorWrap" />
+		<module name="ParenPad" />
+		<module name="TypecastParenPad" />
+		<module name="WhitespaceAfter" />
+		<module name="WhitespaceAround" />
+		<module name="ModifierOrder" />
+		<module name="RedundantModifier" />
+		<module name="AvoidNestedBlocks" />
+		<module name="EmptyBlock" />
+		<module name="LeftCurly" />
+		<module name="NeedBraces" />
+		<module name="RightCurly" />
+		<module name="EmptyStatement" />
+		<module name="EqualsHashCode" />
+		<module name="IllegalInstantiation" />
+		<module name="InnerAssignment" />
+		<module name="MissingSwitchDefault" />
+		<module name="SimplifyBooleanExpression" />
+		<module name="SimplifyBooleanReturn" />
+		<module name="FinalClass" />
+		<module name="HideUtilityClassConstructor" />
+		<module name="InterfaceIsType" />
+		<module name="VisibilityModifier" />
+		<module name="ArrayTypeStyle" />
+		<module name="TodoComment" />
+		<module name="UpperEll" />
+        <module name="SingleSpaceSeparator"/>
+		<!-- disable metrics
+		<module name="CyclomaticComplexity"/>
+		-->
+	</module>
+	<module name="FileLength" />
+	<module name="LineLength">
+		<property name="max" value="120" />
+	</module>
+	<module name="NewlineAtEndOfFile">
+		<property name="lineSeparator" value="lf_cr_crlf" />
+	</module>
+	<module name="Translation" />
+	<module name="FileTabCharacter">
+	    <property name="eachLine" value="true"/>
+		<property name="fileExtensions" value="java" />
+	</module>
+</module>

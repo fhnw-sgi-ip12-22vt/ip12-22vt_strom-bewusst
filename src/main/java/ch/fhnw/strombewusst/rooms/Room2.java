@@ -25,7 +25,7 @@ public class Room2 implements Room {
 
         player1 = world.create("player", new SpawnData(603, 625).put("playerNum", 1));
         player2 = world.create("player", new SpawnData(656, 625).put("playerNum", 2));
-        door = world.create("door", new SpawnData(618, 6).put("state",0));
+        door = world.create("door", new SpawnData(618, 6).put("state", 0));
 
         entities = List.of(
             player1,

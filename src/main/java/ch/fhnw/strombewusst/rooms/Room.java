@@ -5,7 +5,10 @@ import com.almasb.fxgl.entity.level.Level;
 
 public interface Room {
     Entity getPlayer1();
+
     Entity getPlayer2();
+
     Entity getDoor();
+
     Level getLevel();
 }

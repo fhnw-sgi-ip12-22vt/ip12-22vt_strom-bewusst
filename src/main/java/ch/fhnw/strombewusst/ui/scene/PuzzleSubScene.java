@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
+
 import ch.fhnw.strombewusst.QuizLogic;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -31,7 +32,6 @@ public class PuzzleSubScene extends SubScene {
     private Texture textureAnswerP2;
 
 
-
     public PuzzleSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
@@ -54,13 +54,13 @@ public class PuzzleSubScene extends SubScene {
         inputsHBox.setTranslateX(950);
         inputsHBox.setTranslateY(25);
 
-        getContentRoot().getChildren().addAll(bg,backHBox,inputsHBox);
+        getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox);
         quiz = new QuizLogic(0);
         currentQuiz = buildQuiz(0);
         inputs();
     }
 
-    void inputs(){
+    void inputs() {
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {
@@ -84,7 +84,6 @@ public class PuzzleSubScene extends SubScene {
                 quiz.setAnswerP1("GREEN");
             }
         }, KeyCode.DIGIT5);
-
 
 
         getInput().addAction(new UserAction("Blue1 Button") {
@@ -126,7 +125,6 @@ public class PuzzleSubScene extends SubScene {
         }, KeyCode.DIGIT8);
 
 
-
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
             protected void onActionBegin() {
@@ -143,21 +141,20 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 quiz.resetAnswers();
-                getContentRoot().getChildren().removeAll(textureAnswerP1,textureAnswerP2);
+                getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
             }
         }, KeyCode.E);
 
         getInput().addAction(new UserAction("checkAnswers") {
             @Override
             protected void onActionBegin() {
-                if(quiz.checkAnswer()){
+                if (quiz.checkAnswer()) {
                     System.out.println("correct");
                     nextQuestion();
-                }
-                else{
+                } else {
                     System.out.println("false");
                     quiz.resetAnswers();
-                    getContentRoot().getChildren().removeAll(textureAnswerP1,textureAnswerP2);
+                    getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
                 }
             }
         }, KeyCode.Q);
@@ -165,51 +162,49 @@ public class PuzzleSubScene extends SubScene {
 
     }
 
-    HBox buildTextbox(int question,int num){
-        Text box = new Text(quiz.getText(question,num));
+    HBox buildTextbox(int question, int num) {
+        Text box = new Text(quiz.getText(question, num));
         box.getStyleClass().add("message");
         HBox boxHBox = new HBox(box);
-        if(num == 0){
+        if (num == 0) {
             boxHBox.setTranslateX(mainBoxX);
             boxHBox.setTranslateY(mainBoxY);
-        }
-        else if(num == 1){
+        } else if (num == 1) {
             boxHBox.setTranslateX(firstBoxX);
             boxHBox.setTranslateY(firstBoxY);
-        }
-        else if(num == 2){
+        } else if (num == 2) {
             boxHBox.setTranslateX(secondBoxX);
             boxHBox.setTranslateY(secondBoxY);
-        }
-        else{
+        } else {
             boxHBox.setTranslateX(thirdBoxX);
             boxHBox.setTranslateY(thirdBoxY);
         }
         return boxHBox;
     }
 
-    void clearQuiz(){
-        getContentRoot().getChildren().removeAll(currentQuiz[0],currentQuiz[1],currentQuiz[2],currentQuiz[3],textureAnswerP1,textureAnswerP2);
+    void clearQuiz() {
+        getContentRoot().getChildren()
+                .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1,
+                        textureAnswerP2);
     }
 
-    void nextQuestion(){
-        if(quiz.quizDone()){
+    void nextQuestion() {
+        if (quiz.quizDone()) {
             getSceneService().popSubScene();
-        }
-        else{
+        } else {
             clearQuiz();
             quiz.incQuestNum();
             currentQuiz = buildQuiz(quiz.getQustNum());
         }
     }
 
-    HBox[] buildQuiz(int i){
-        HBox questionHBox = buildTextbox(i,0);
-        HBox firstHBox = buildTextbox(i,1);
-        HBox secondHBox = buildTextbox(i,2);
-        HBox thirdHBox = buildTextbox(i,3);
+    HBox[] buildQuiz(int i) {
+        HBox questionHBox = buildTextbox(i, 0);
+        HBox firstHBox = buildTextbox(i, 1);
+        HBox secondHBox = buildTextbox(i, 2);
+        HBox thirdHBox = buildTextbox(i, 3);
         getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox);
-        HBox[] result = {questionHBox,firstHBox,secondHBox,thirdHBox};
+        HBox[] result = {questionHBox, firstHBox, secondHBox, thirdHBox};
         return result;
     }
 
