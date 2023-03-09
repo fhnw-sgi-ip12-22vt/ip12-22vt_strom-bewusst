@@ -30,7 +30,7 @@ public class PlayerComponent extends Component {
                 image("player" + playerNum + ".png"),
                 4,
                 42,
-                64,
+                70,
                 Duration.seconds(1),
                 1,
                 1
@@ -39,7 +39,7 @@ public class PlayerComponent extends Component {
                 image("player" + playerNum + ".png"),
                 4,
                 42,
-                64,
+                70,
                 Duration.seconds(1),
                 0,
                 3
