@@ -15,6 +15,7 @@ import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import javafx.geometry.Point2D;
 
 import static com.almasb.fxgl.dsl.FXGL.entityBuilder;
+import static com.almasb.fxgl.dsl.FXGL.random;
 
 
 /**
@@ -94,9 +95,10 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("bookshelf")
     public Entity newBookshelf(SpawnData data) {
+        int rnd = random(1,3);
         return entityBuilder(data)
                 .type(EntityType.BOOKSHELF)
-                .view("bookshelf.png")
+                .view("bookshelf"+rnd+".png")
                 .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box( 95, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
