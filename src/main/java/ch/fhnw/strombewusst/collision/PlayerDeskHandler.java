@@ -130,7 +130,10 @@ class Textbucket {
             put(11, "Keine Info momentan");
             put(12, note6);
             put(13, "Keine Info momentan");
-            put(14, note7);
+            put(14, note7);/*
+            put(15, "Keine Info momentan");
+            put(16, "Keine Info momentan");
+            put(17, "Keine Info momentan");*/
         }
     };
 }

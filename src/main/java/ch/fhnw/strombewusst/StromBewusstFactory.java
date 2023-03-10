@@ -23,18 +23,20 @@ import static com.almasb.fxgl.dsl.FXGL.entityBuilder;
 public class StromBewusstFactory implements EntityFactory {
     @Spawns("emptyRoom")
     public Entity newRoom(SpawnData data) {
+        String textureName = data.get("textureName");
+
         PhysicsComponent physics = new PhysicsComponent();
         physics.setBodyType(BodyType.STATIC);
 
         return entityBuilder(data)
-                .view("emptyroom-with-sidebar.png")
-                .with(physics)
-                .bbox(new HitBox(new Point2D(20, 0), BoundingShape.box(0, FXGL.getAppHeight())))
-                .bbox(new HitBox(new Point2D(0, 50), BoundingShape.box(FXGL.getAppWidth(), 0)))
-                .bbox(new HitBox(new Point2D(890, 0), BoundingShape.box(0, FXGL.getAppHeight())))
-                .bbox(new HitBox(new Point2D(0, 690), BoundingShape.box(FXGL.getAppWidth(), 0)))
-                .zIndex(-100)
-                .build();
+            .view(textureName)
+            .with(physics)
+            .bbox(new HitBox(new Point2D(20, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+            .bbox(new HitBox(new Point2D(0, 50), BoundingShape.box(FXGL.getAppWidth(), 0)))
+            .bbox(new HitBox(new Point2D(890, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+            .bbox(new HitBox(new Point2D(0, 690), BoundingShape.box(FXGL.getAppWidth(), 0)))
+            .zIndex(-100)
+            .build();
     }
 
     @Spawns("player")
@@ -57,7 +59,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DESK)
                 .view("desk.png")
-                .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(40, 10)))
+                .bbox(new HitBox(new Point2D(6, -2), BoundingShape.box(52, 10)))
                 .with(new PhysicsComponent())
                 .with(new DeskComponent(data.get("deskNum")))
                 .with(new CollidableComponent(true))
@@ -70,7 +72,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DESK)
                 .view("empty-desk.png")
-                .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(40, 10)))
+                .bbox(new HitBox(new Point2D(6, -2), BoundingShape.box(52, 10)))
                 .with(new PhysicsComponent())
                 .with(new DeskComponent(data.get("deskNum")))
                 .with(new CollidableComponent(true))
@@ -83,7 +85,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.MAINDESK)
                 .view("main-desk.png")
-                .bbox(new HitBox(new Point2D(12, 0), BoundingShape.box(80, 10)))
+                .bbox(new HitBox(new Point2D(6, 0), BoundingShape.box(90, 10)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
@@ -95,7 +97,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.BOOKSHELF)
                 .view("bookshelf.png")
-                .bbox(new HitBox(new Point2D(12, 40), BoundingShape.box(80, 20)))
+                .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box( 95, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)

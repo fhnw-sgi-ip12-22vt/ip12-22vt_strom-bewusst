@@ -31,7 +31,7 @@ public class Room2 implements Room {
             player1,
             player2,
 
-            world.create("emptyRoom", new SpawnData()),
+            world.create("emptyRoom", new SpawnData().put("textureName", "room2-with-sidebar.png")),
             door,
             world.create("prev-door", new SpawnData(618, FXGL.getAppHeight() - 127))
         );
