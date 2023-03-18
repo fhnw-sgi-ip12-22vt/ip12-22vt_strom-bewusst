@@ -20,7 +20,7 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 public class LeaderboardSubScene extends SubScene {
     Button btnBack;
 
-    LeaderboardSubScene() {
+    public LeaderboardSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
