@@ -6,7 +6,6 @@ import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.components.PlayerComponent;
-import ch.fhnw.strombewusst.input.Buttons;
 import ch.fhnw.strombewusst.input.Controller;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.rooms.Room;
@@ -33,8 +32,6 @@ public class StromBewusst extends GameApplication {
     private Entity player2;
     private Entity door;
     private int level = 0;
-
-    private Buttons p1Buttons;
 
     private Room[] rooms;
 
@@ -105,15 +102,19 @@ public class StromBewusst extends GameApplication {
         // By simulating the keypresses, the programm can be worked on locally by using WASD, but can be controlled
         // in production with the controller.
         try {
-            p1Controller = new Controller(0, 1, PIN.D17);
-            p2Controller = new Controller(2, 3, PIN.D6);
+            p1Controller = new Controller(0, 1, PIN.D17, PIN.D5, PIN.D21, PIN.D26, PIN.D20, PIN.D6);
+            //p2Controller = new Controller(2, 3, PIN.D6);
 
-            p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.D));
-            p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.A));
-            p1Controller.onJoystickHorizontalIdle(() -> {
-                getInput().mockKeyRelease(KeyCode.A);
-                getInput().mockKeyRelease(KeyCode.D);
-            });
+            //p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.D));
+            //p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.A));
+            //p1Controller.onJoystickHorizontalIdle(() -> {
+            //    getInput().mockKeyRelease(KeyCode.A);
+            //    getInput().mockKeyRelease(KeyCode.D);
+            //});
+            p1Controller.onJoystickRight(() -> System.out.println("DEBUG: P1 RIGHT"));
+            p1Controller.onJoystickLeft(() -> System.out.println("DEBUG: P1 LEFT"));
+            p1Controller.onJoystickHorizontalIdle(() -> System.out.println("DEBUG: P1 HORIZONTAL IDLE"));
+
 
             p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.W));
             // p1Controller.onJoystickUp(MainMenu::focusPreviousNode);
@@ -124,6 +125,14 @@ public class StromBewusst extends GameApplication {
                 getInput().mockKeyRelease(KeyCode.S);
             });
 
+            p1Controller.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
+            p1Controller.untenDown(() -> getInput().mockKeyPress(KeyCode.R));
+            p1Controller.linksDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
+            p1Controller.mitteDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
+            p1Controller.rechtsDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
+            p1Controller.obenDown(() -> System.out.println("DEBUG: P1 UPPER DOWN"));
+            p1Controller.untenDown(() -> System.out.println("DEBUG: P1 LOWER DOWN"));
+/*
             p2Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.L));
             p2Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.J));
             p2Controller.onJoystickHorizontalIdle(() -> {
@@ -136,9 +145,9 @@ public class StromBewusst extends GameApplication {
             p2Controller.onJoystickVerticalIdle(() -> {
                 getInput().mockKeyRelease(KeyCode.I);
                 getInput().mockKeyRelease(KeyCode.K);
-            });
+            });*/
         } catch (Exception ignored) {
-            System.out.println("failed to initialize controller, proceeding");
+            throw new RuntimeException(ignored);
         }
 
         // player1 Movement
@@ -232,15 +241,6 @@ public class StromBewusst extends GameApplication {
                 player2.getComponent(PlayerComponent.class).stopMovingY();
             }
         }, KeyCode.K);
-
-        try {
-            p1Buttons = new Buttons(PIN.D5, PIN.D6, PIN.D26, PIN.D21, PIN.D20);
-            p1Buttons.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
-            p1Buttons.untenDown(() -> getInput().mockKeyPress(KeyCode.R));
-            p1Buttons.linksDown(() -> System.out.println("Hello from Steckdose"));
-        } catch (Exception ignored) {
-            System.out.println("failed to initialize buttons, proceeding");
-        }
 
         getInput().addAction(new UserAction("open puzzle") {
             @Override

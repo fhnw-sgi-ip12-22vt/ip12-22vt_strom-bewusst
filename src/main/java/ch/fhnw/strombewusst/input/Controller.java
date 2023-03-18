@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst.input;
 
 import ch.fhnw.strombewusst.input.pi4jcomponents.Ads1115;
 import ch.fhnw.strombewusst.input.pi4jcomponents.JoystickAnalog;
+import ch.fhnw.strombewusst.input.pi4jcomponents.SimpleButton;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.ContinuousMeasuringException;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import com.pi4j.Pi4J;
@@ -19,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    protected final static PiGpio piGpio = PiGpio.newNativeInstance();
-    protected final static Context pi4jContext = Pi4J.newContextBuilder()
+    protected final static PiGpio PI_GPIO = PiGpio.newNativeInstance();
+    protected final static Context PI4J_CONTEXT = Pi4J.newContextBuilder()
             .noAutoDetect()
             .add(new RaspberryPiPlatform() {
                 @Override
@@ -29,26 +30,32 @@ public class Controller {
                 }
             })
             .add(
-                    PiGpioDigitalInputProvider.newInstance(piGpio),
-                    PiGpioDigitalOutputProvider.newInstance(piGpio),
-                    PiGpioPwmProvider.newInstance(piGpio),
-                    PiGpioSerialProvider.newInstance(piGpio),
-                    PiGpioSpiProvider.newInstance(piGpio),
+                    PiGpioDigitalInputProvider.newInstance(PI_GPIO),
+                    PiGpioDigitalOutputProvider.newInstance(PI_GPIO),
+                    PiGpioPwmProvider.newInstance(PI_GPIO),
+                    PiGpioSerialProvider.newInstance(PI_GPIO),
+                    PiGpioSpiProvider.newInstance(PI_GPIO),
                     LinuxFsI2CProvider.newInstance()
             )
             .build();
 
-    protected static Ads1115 ads1115;
+    private static Ads1115 ads1115;
 
     static {
         try {
-            ads1115 = new Ads1115(pi4jContext, 0x01, Ads1115.GAIN.GAIN_4_096V, Ads1115.ADDRESS.GND, 4);
+            ads1115 = new Ads1115(PI4J_CONTEXT, 0x01, Ads1115.GAIN.GAIN_4_096V, Ads1115.ADDRESS.GND, 4);
         } catch (Exception ignored) {
             ads1115 = null;
         }
     }
 
-    public JoystickAnalog joystick;
+    private final JoystickAnalog joystick;
+
+    private final SimpleButton steckdoseLinks;
+    private final SimpleButton steckdoseMitte;
+    private final SimpleButton steckdoseRechts;
+    private final SimpleButton buttonOben;
+    private final SimpleButton buttonUnten;
 
     private final List<Runnable> onJoystickRightTasks = new ArrayList<>();
     private final List<Runnable> onJoystickLeftTasks = new ArrayList<>();
@@ -57,8 +64,15 @@ public class Controller {
     private final List<Runnable> onJoystickDownTasks = new ArrayList<>();
     private final List<Runnable> onJoystickVerticalIdleTasks = new ArrayList<>();
 
-    public Controller(int channelXAxis, int channelYAxis, PIN pin) {
-        joystick = new JoystickAnalog(pi4jContext, ads1115, channelXAxis, channelYAxis, 3.3, true, pin);
+    private final List<Runnable> onButtonLinksDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonRechtsDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonMitteDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonObenDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonUntenDownTasks = new ArrayList<>();
+
+    public Controller(int channelXAxis, int channelYAxis, PIN pin,
+                      PIN links, PIN mitte, PIN rechts, PIN oben, PIN unten) {
+        joystick = new JoystickAnalog(PI4J_CONTEXT, ads1115, channelXAxis, channelYAxis, 3.3, true, pin);
 
         joystick.xOnMove(this::handleXMove);
         joystick.yOnMove(this::handleYMove);
@@ -69,6 +83,37 @@ public class Controller {
             System.out.println("ContinuousMeasuringException, ignoring");
         }
         joystick.start(0.05, 15);
+
+        steckdoseLinks = new SimpleButton(PI4J_CONTEXT, links, false);
+        steckdoseLinks.onDown(() -> {
+            for (Runnable task : onButtonLinksDownTasks) {
+                task.run();
+            }
+        });
+        steckdoseRechts = new SimpleButton(PI4J_CONTEXT, rechts, false);
+        steckdoseRechts.onDown(() -> {
+            for (Runnable task : onButtonRechtsDownTasks) {
+                task.run();
+            }
+        });
+        steckdoseMitte = new SimpleButton(PI4J_CONTEXT, mitte, false);
+        steckdoseMitte.onDown(() -> {
+            for (Runnable task : onButtonMitteDownTasks) {
+                task.run();
+            }
+        });
+        buttonOben = new SimpleButton(PI4J_CONTEXT, oben, false);
+        buttonOben.onDown(() -> {
+            for (Runnable task : onButtonObenDownTasks) {
+                task.run();
+            }
+        });
+        buttonUnten = new SimpleButton(PI4J_CONTEXT, unten, false);
+        buttonUnten.onDown(() -> {
+            for (Runnable task : onButtonUntenDownTasks) {
+                task.run();
+            }
+        });
     }
 
     private void handleXMove(double value) {
@@ -153,5 +198,25 @@ public class Controller {
      */
     public void onJoystickVerticalIdle(Runnable task) {
         onJoystickVerticalIdleTasks.add(task);
+    }
+
+    public void linksDown(Runnable tasks) {
+        onButtonLinksDownTasks.add(tasks);
+    }
+
+    public void rechtsDown(Runnable tasks) {
+        onButtonRechtsDownTasks.add(tasks);
+    }
+
+    public void mitteDown(Runnable tasks) {
+        onButtonMitteDownTasks.add(tasks);
+    }
+
+    public void obenDown(Runnable tasks) {
+        onButtonObenDownTasks.add(tasks);
+    }
+
+    public void untenDown(Runnable tasks) {
+        onButtonUntenDownTasks.add(tasks);
     }
 }
