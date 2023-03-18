@@ -28,8 +28,8 @@ import javafx.scene.input.KeyCode;
  * This is the main class of our game, the methods of this class initialize the game.
  */
 public class StromBewusst extends GameApplication {
-    private Entity player1;
-    private Entity player2;
+    protected Entity player1;
+    protected Entity player2;
     private Entity door;
     private int level = 0;
 
@@ -105,25 +105,13 @@ public class StromBewusst extends GameApplication {
             p1Controller = new Controller(0, 1, PIN.D17, PIN.D5, PIN.D21, PIN.D26, PIN.D20, PIN.D6);
             //p2Controller = new Controller(2, 3, PIN.D6);
 
-            //p1Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.D));
-            //p1Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.A));
-            //p1Controller.onJoystickHorizontalIdle(() -> {
-            //    getInput().mockKeyRelease(KeyCode.A);
-            //    getInput().mockKeyRelease(KeyCode.D);
-            //});
-            p1Controller.onJoystickRight(() -> System.out.println("DEBUG: P1 RIGHT"));
-            p1Controller.onJoystickLeft(() -> System.out.println("DEBUG: P1 LEFT"));
-            p1Controller.onJoystickHorizontalIdle(() -> System.out.println("DEBUG: P1 HORIZONTAL IDLE"));
+            p1Controller.onJoystickRight(() -> InputHandler.handlePlayerRight(player1));
+            p1Controller.onJoystickLeft(() -> InputHandler.handlePlayerLeft(player1));
+            p1Controller.onJoystickHorizontalIdle(() -> InputHandler.handlePlayerHorizontalIdle(player1));
 
-
-            p1Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.W));
-            // p1Controller.onJoystickUp(MainMenu::focusPreviousNode);
-            p1Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.S));
-            // p1Controller.onJoystickDown(MainMenu::focusNextNode);
-            p1Controller.onJoystickVerticalIdle(() -> {
-                getInput().mockKeyRelease(KeyCode.W);
-                getInput().mockKeyRelease(KeyCode.S);
-            });
+            p1Controller.onJoystickUp(() -> InputHandler.handlePlayerUp(player1));
+            p1Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player1));
+            p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
 
             p1Controller.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
             p1Controller.untenDown(() -> getInput().mockKeyPress(KeyCode.R));
@@ -147,52 +135,52 @@ public class StromBewusst extends GameApplication {
                 getInput().mockKeyRelease(KeyCode.K);
             });*/
         } catch (Exception ignored) {
-            throw new RuntimeException(ignored);
+            System.out.println("failed to initialize controller, proceeding");
         }
 
         // player1 Movement
         getInput().addAction(new UserAction("player1 Right") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerComponent.class).moveRight();
+                InputHandler.handlePlayerRight(player1);
             }
 
             @Override
             protected void onActionEnd() {
-                player1.getComponent(PlayerComponent.class).stopMovingX();
+                InputHandler.handlePlayerHorizontalIdle(player1);
             }
         }, KeyCode.D);
         getInput().addAction(new UserAction("player1 Left") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerComponent.class).moveLeft();
+                InputHandler.handlePlayerLeft(player1);
             }
 
             @Override
             protected void onActionEnd() {
-                player1.getComponent(PlayerComponent.class).stopMovingX();
+                InputHandler.handlePlayerHorizontalIdle(player1);
             }
         }, KeyCode.A);
         getInput().addAction(new UserAction("player1 Up") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerComponent.class).moveUp();
+                InputHandler.handlePlayerUp(player1);
             }
 
             @Override
             protected void onActionEnd() {
-                player1.getComponent(PlayerComponent.class).stopMovingY();
+                InputHandler.handlePlayerVerticalIdle(player1);
             }
         }, KeyCode.W);
         getInput().addAction(new UserAction("player1 Down") {
             @Override
             protected void onAction() {
-                player1.getComponent(PlayerComponent.class).moveDown();
+                InputHandler.handlePlayerDown(player1);
             }
 
             @Override
             protected void onActionEnd() {
-                player1.getComponent(PlayerComponent.class).stopMovingY();
+                InputHandler.handlePlayerVerticalIdle(player1);
             }
         }, KeyCode.S);
 
@@ -200,45 +188,45 @@ public class StromBewusst extends GameApplication {
         getInput().addAction(new UserAction("player2 Right") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerComponent.class).moveRight();
+                InputHandler.handlePlayerRight(player2);
             }
 
             @Override
             protected void onActionEnd() {
-                player2.getComponent(PlayerComponent.class).stopMovingX();
+                InputHandler.handlePlayerHorizontalIdle(player2);
             }
         }, KeyCode.L);
         getInput().addAction(new UserAction("player2 Left") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerComponent.class).moveLeft();
+                InputHandler.handlePlayerLeft(player2);
             }
 
             @Override
             protected void onActionEnd() {
-                player2.getComponent(PlayerComponent.class).stopMovingX();
+                InputHandler.handlePlayerHorizontalIdle(player2);
             }
         }, KeyCode.J);
         getInput().addAction(new UserAction("player2 Up") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerComponent.class).moveUp();
+                InputHandler.handlePlayerUp(player2);
             }
 
             @Override
             protected void onActionEnd() {
-                player2.getComponent(PlayerComponent.class).stopMovingY();
+                InputHandler.handlePlayerVerticalIdle(player2);
             }
         }, KeyCode.I);
         getInput().addAction(new UserAction("player2 Down") {
             @Override
             protected void onAction() {
-                player2.getComponent(PlayerComponent.class).moveDown();
+                InputHandler.handlePlayerDown(player2);
             }
 
             @Override
             protected void onActionEnd() {
-                player2.getComponent(PlayerComponent.class).stopMovingY();
+                InputHandler.handlePlayerVerticalIdle(player2);
             }
         }, KeyCode.K);
 
