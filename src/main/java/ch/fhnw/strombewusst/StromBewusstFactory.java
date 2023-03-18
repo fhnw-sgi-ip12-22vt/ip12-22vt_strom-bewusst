@@ -30,14 +30,14 @@ public class StromBewusstFactory implements EntityFactory {
         physics.setBodyType(BodyType.STATIC);
 
         return entityBuilder(data)
-            .view(textureName)
-            .with(physics)
-            .bbox(new HitBox(new Point2D(20, 0), BoundingShape.box(0, FXGL.getAppHeight())))
-            .bbox(new HitBox(new Point2D(0, 50), BoundingShape.box(FXGL.getAppWidth(), 0)))
-            .bbox(new HitBox(new Point2D(890, 0), BoundingShape.box(0, FXGL.getAppHeight())))
-            .bbox(new HitBox(new Point2D(0, 690), BoundingShape.box(FXGL.getAppWidth(), 0)))
-            .zIndex(-100)
-            .build();
+                .view(textureName)
+                .with(physics)
+                .bbox(new HitBox(new Point2D(20, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+                .bbox(new HitBox(new Point2D(0, 50), BoundingShape.box(FXGL.getAppWidth(), 0)))
+                .bbox(new HitBox(new Point2D(890, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+                .bbox(new HitBox(new Point2D(0, 690), BoundingShape.box(FXGL.getAppWidth(), 0)))
+                .zIndex(-100)
+                .build();
     }
 
     @Spawns("player")
@@ -95,11 +95,11 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("bookshelf")
     public Entity newBookshelf(SpawnData data) {
-        int rnd = random(1,3);
+        int rnd = random(1, 3);
         return entityBuilder(data)
                 .type(EntityType.BOOKSHELF)
-                .view("bookshelf"+rnd+".png")
-                .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box( 95, 20)))
+                .view("bookshelf" + rnd + ".png")
+                .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box(95, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
