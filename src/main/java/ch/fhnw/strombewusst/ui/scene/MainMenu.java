@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.texture.Texture;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -65,6 +66,14 @@ public class MainMenu extends FXGLMenu {
 
                 node.fireEvent(event);
             }
+        });
+    }
+    public static void confirmSelectedNode() {
+        Platform.runLater(() -> {
+            Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
+            Node node = s.focusOwnerProperty().get();
+
+            node.fireEvent(new ActionEvent());
         });
     }
 

@@ -114,7 +114,7 @@ public class StromBewusst extends GameApplication {
             p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
 
             p1Controller.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
-            p1Controller.untenDown(() -> getInput().mockKeyPress(KeyCode.R));
+            p1Controller.untenDown(InputHandler::handleSelect);
             p1Controller.linksDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
             p1Controller.mitteDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
             p1Controller.rechtsDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));

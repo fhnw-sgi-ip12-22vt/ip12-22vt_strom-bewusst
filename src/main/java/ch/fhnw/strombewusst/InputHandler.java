@@ -1,9 +1,11 @@
 package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.scene.Scene;
 
 public class InputHandler {
     public static void handlePlayerRight(Entity player) {
@@ -55,6 +57,13 @@ public class InputHandler {
     public static void handlePlayerHorizontalIdle(Entity player) {
         if (player != null) {
             player.getComponent(PlayerComponent.class).stopMovingX();
+        }
+    }
+
+    public static void handleSelect() {
+        Scene currentScene = FXGL.getSceneService().getCurrentScene();
+        if (currentScene instanceof MainMenu || currentScene instanceof LeaderboardSubScene) {
+            MainMenu.confirmSelectedNode();
         }
     }
 }
