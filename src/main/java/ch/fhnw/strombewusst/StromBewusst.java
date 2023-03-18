@@ -22,14 +22,18 @@ import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
+
+import java.util.List;
 
 /**
  * This is the main class of our game, the methods of this class initialize the game.
  */
 public class StromBewusst extends GameApplication {
-    protected Entity player1;
-    protected Entity player2;
+    private Entity player1;
+    private Entity player2;
     private Entity door;
     private int level = 0;
 
@@ -44,6 +48,14 @@ public class StromBewusst extends GameApplication {
 
     private void nextLevel() {
         level++;
+
+        // BUGFIX: clear HBoxes on level change, so Desk info boxes don't persist
+        List<Node> nodes = getSceneService().getCurrentScene().getContentRoot().getChildren();
+        List<Node> hBoxes = nodes.stream().filter((n) -> n instanceof HBox).toList();
+        for (Node n : hBoxes) {
+            getSceneService().getCurrentScene().removeChild(n);
+        }
+
         if (level <= rooms.length) {
             Room room = rooms[level - 1];
 
