@@ -1,4 +1,4 @@
-package ch.fhnw.strombewusst;
+package ch.fhnw.strombewusst.ui.scene;
 
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -9,10 +9,10 @@ import javafx.scene.layout.HBox;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-public class EndGameScene extends SubScene {
+public class EndGameSubScene extends SubScene {
     private final Button btnEnd;
 
-    EndGameScene() {
+    public EndGameSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
@@ -35,6 +35,13 @@ public class EndGameScene extends SubScene {
         endHBox.setTranslateY(getAppHeight() - 140);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, endHBox);
+    }
+
+    @Override
+    public void onUpdate(double tpf) {
+        if (!(btnEnd.isFocused())) {
+            btnEnd.requestFocus();
+        }
     }
 }
 

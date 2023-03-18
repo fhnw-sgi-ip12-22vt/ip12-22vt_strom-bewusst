@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.dsl.FXGL;
@@ -62,7 +63,9 @@ public class InputHandler {
 
     public static void handleSelect() {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
-        if (currentScene instanceof MainMenu || currentScene instanceof LeaderboardSubScene) {
+        if (currentScene instanceof MainMenu
+                || currentScene instanceof LeaderboardSubScene
+                || currentScene instanceof EndGameSubScene) {
             MainMenu.confirmSelectedNode();
         }
     }

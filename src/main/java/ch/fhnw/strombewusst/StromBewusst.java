@@ -11,6 +11,7 @@ import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.rooms.Room;
 import ch.fhnw.strombewusst.rooms.Room1;
 import ch.fhnw.strombewusst.rooms.Room2;
+import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
 import com.almasb.fxgl.app.ApplicationMode;
@@ -67,7 +68,7 @@ public class StromBewusst extends GameApplication {
         } else {
             level = 0;
             getGameController().gotoMainMenu();
-            getSceneService().pushSubScene(new EndGameScene());
+            getSceneService().pushSubScene(new EndGameSubScene());
         }
     }
 
