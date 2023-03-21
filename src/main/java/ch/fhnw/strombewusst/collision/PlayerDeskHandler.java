@@ -5,7 +5,6 @@ import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
-import javafx.application.Platform;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
@@ -46,13 +45,14 @@ public class PlayerDeskHandler extends CollisionHandler {
     protected void onCollisionEnd(Entity player, Entity desk) {
         try {
             if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-                Platform.runLater(() -> getSceneService().getCurrentScene().removeChild(messageHBox1));
+                getSceneService().getCurrentScene().removeChild(messageHBox1);
             } else {
-                Platform.runLater(() -> getSceneService().getCurrentScene().removeChild(messageHBox2));
+                getSceneService().getCurrentScene().removeChild(messageHBox2);
             }
         } catch (IllegalArgumentException ignored) {
-            // Bugfix, don't crash when switching rooms while other player is colliding with desk
-            // This edge-case is handled in the StromBewusst nextLevel method.
+            // Bugfix, don't crash when switching rooms while other player is
+            // colliding with desk
+            // TODO: fully remove the textbox in this edge case
         }
     }
 }
@@ -130,7 +130,7 @@ class Textbucket {
             put(11, "Keine Info momentan");
             put(12, note6);
             put(13, "Keine Info momentan");
-            put(14, note7); /*
+            put(14, note7);/*
             put(15, "Keine Info momentan");
             put(16, "Keine Info momentan");
             put(17, "Keine Info momentan");*/
