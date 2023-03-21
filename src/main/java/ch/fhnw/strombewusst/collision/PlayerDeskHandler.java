@@ -72,6 +72,7 @@ class Textbucket {
 
     private String note3 =  "Eine Familie verbraucht pro Jahr  \n " +
                             "ca 4000kwh an Strom";
+
     private String note4 =  "Heutzutage gibt es nur sehr \n " +
                             "wenige Sachen,die kein Strom  \n benötigen";
 
@@ -88,37 +89,46 @@ class Textbucket {
                             "Herz funktionieren wie bei einem Antrieb \n " +
                             "durch kleine elektrische Impulse";
 
-    private String note8 = """
-            Das Treibhausgas CO2 wird\s
-            hauptsächlich durch Fossile\s
-            Energien in die Luft verbreitet""";
+    private String note8 =  "Das Treibhausgas CO2 wird \n" +
+                            "hauptsächlich durch Fossile Energien \n" +
+                            "in die Luft verbreitet";
+
     private String note9 =  "Benjamin Franklin hat 1752 mit \n " +
                             "einem Drachen einen Blitz abgefangen \n " +
                             "und damit bewiesen das Blitze elektrisch sind.";
+
     private String note10 = "Das Treibhausgas CO2 wird \n" +
                             "hauptsächlich durch Fossile \n " +
                             "Energien in die Luft verbreitet";
+
     private String note11 = "Strom entsteht durch Bewegung. \n " +
-            "Kraftwerke utzen dies aus indem sie durch Ressource\n" +
-            "Turbinen antreiben";
+                            "Kraftwerke utzen dies aus indem sie \n " +
+                            "durch Ressourcen Turbinen antreiben";
+
     private String note12 = "In der Schweiz sind aktuell 1300 \n " +
-    "Wasserkraftwerke aktiv und produzieren ca. 57% des Stroms. \n" +
-            "Damit ist die Wasserkraft die wichtigste Stromquelle";
+                            "Wasserkraftwerke aktiv und produzieren ca.\n" +
+                            "57% des Stroms. Damit ist die Wasserkraft die \n" +
+                            "wichtigste Stromquelle";
+
     private String note13 = "Strom besteht aus vielen kleinen Elektronen \n" +
-            "die wie ein Fluss durch die Haushalte geht";
+                            "die wie ein Fluss durch die Haushalte geht";
+
     private String note14 = "Im Vergleich zu anderen Ländern \n" +
-            " hat die Schweiz sehr wenige Windkraftanlagen";
+                            "hat die Schweiz sehr wenige Windkraftanlagen";
+
     private String note15 = "Metalle und Salzwasser haben \n" +
-            "die Eigenschaft Strom zu leiten.";
+                            "die Eigenschaft Strom zu leiten.";
+
     private String note16 = "Wenn ein Wasserkraftwerk \n" +
-            "nachts zu viel Strom erzeugen sollte, kann \n" +
-            " dieser genutzt werden, um neuen Strom für \n" +
-            "den nächsten Tag zu erzeugen. ";
+                            "nachts zu viel Strom erzeugen sollte, kann \n" +
+                            "dieser genutzt werden, um neuen Strom für \n" +
+                            "den nächsten Tag zu erzeugen. ";
+
     private String note17 = "Ein Kochherd gehört mit \n" +
-            " zu den grössten Stromfressern. Deshalb  \n" +
-            "sollte man immer mir Deckel kochen damit \n" +
-            "sich das Essen schneller erhitzt und Energie \n" +
-            "gespart werden kann";
+                            "zu den grössten Stromfressern. Deshalb  \n" +
+                            "sollte man immer mir Deckel kochen damit \n" +
+                            "sich das Essen schneller erhitzt und Energie \n" +
+                            "gespart werden kann";
 
     protected HashMap<Integer, String> textMap = new HashMap<>() {
         {
