@@ -5,8 +5,6 @@ import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
-import javafx.application.Platform;
-import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
@@ -17,10 +15,11 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 public class PlayerDeskHandler extends CollisionHandler {
 
     private HBox messageHBox1, messageHBox2;
-    private final Textbucket bucket = new Textbucket();
+    private final Textbucket bucket;
 
     public PlayerDeskHandler() {
         super(EntityType.PLAYER, EntityType.DESK);
+        bucket = new Textbucket();
     }
 
     @Override
@@ -45,16 +44,15 @@ public class PlayerDeskHandler extends CollisionHandler {
     @Override
     protected void onCollisionEnd(Entity player, Entity desk) {
         try {
-            if (!player.getComponent(PlayerComponent.class).getIsNearDesk()) {
-                if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-                    Platform.runLater(() -> getSceneService().getCurrentScene().removeChild(messageHBox1));
-                } else {
-                    Platform.runLater(() -> getSceneService().getCurrentScene().removeChild(messageHBox2));
-                }
+            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+                getSceneService().getCurrentScene().removeChild(messageHBox1);
+            } else {
+                getSceneService().getCurrentScene().removeChild(messageHBox2);
             }
         } catch (IllegalArgumentException ignored) {
-            // Bugfix, don't crash when switching rooms while other player is colliding with desk
-            // This edge-case is handled in the StromBewusst nextLevel method.
+            // Bugfix, don't crash when switching rooms while other player is
+            // colliding with desk
+            // TODO: fully remove the textbox in this edge case
         }
     }
 }
