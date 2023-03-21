@@ -5,6 +5,7 @@ import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
+import javafx.application.Platform;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
