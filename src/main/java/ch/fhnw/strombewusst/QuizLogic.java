@@ -56,7 +56,10 @@ public class QuizLogic {
     }
 
     public boolean checkAnswer() {
-        return getAnswerP1().equals(quest[questionNum][4]) && getAnswerP2().equals(quest[questionNum][4]);
+        if (!(getAnswerP1() == null) || !(getAnswerP2() == null)) {
+            return getAnswerP1().equals(quest[questionNum][4]) && getAnswerP2().equals(quest[questionNum][4]);
+        }
+        return false;
     }
 
     public boolean quizDone() {
