@@ -24,6 +24,11 @@ public class PlayerDeskHandler extends CollisionHandler {
         bucket = new Textbucket();
     }
 
+    public PlayerDeskHandler(EntityType player, EntityType type) {
+        super(player, type);
+        this.bucket = new Textbucket();
+    }
+
     @Override
     protected void onCollisionBegin(Entity player, Entity desk) {
         int deskNum = desk.getComponent(DeskComponent.class).getDeskNum();

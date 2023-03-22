@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.components.DeskComponent;
+import ch.fhnw.strombewusst.components.FridgeComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -8,7 +9,6 @@ import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.components.CollidableComponent;
-import com.almasb.fxgl.inventory.Inventory;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
@@ -147,7 +147,12 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newFridge(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.FRIDGE)
-                .view("Kühlschrank v1.png")
+                .view("Kühlschrank.png")
+                .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box(95, 20)))
+                .with(new PhysicsComponent())
+                .with(new FridgeComponent(data.get("fridge")))
+                .with(new CollidableComponent(true))
+                .zIndex(1)
                 .build();
     }
 
@@ -155,14 +160,16 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newStove(SpawnData data){
         return entityBuilder(data)
                 .type(EntityType.STOVE)
-                .view("Electroherd v1.png")
+                .view("Electroherd.png")
+                .zIndex(1)
                 .build();
     }
     @Spawns("washing-machine")
     public Entity newWasher(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.WASHER)
-                .view("Waschmaschine v1.png")
+                .view("Waschmaschine.png")
+                .zIndex(1)
                 .build();
     }
 
@@ -170,7 +177,8 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newPS5(SpawnData data){
         return entityBuilder(data)
                 .type(EntityType.PS5)
-                .view("PS5 v1.png")
+                .view("PS5.png")
+                .zIndex(1)
                 .build();
     }
 
@@ -178,21 +186,21 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newMicrowave(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.MICROWAVE)
-                .view("Mikrowelle v1.png")
+                .view("Mikrowelle.png")
                 .build();
     }
     @Spawns("television")
     public Entity newTelevision(SpawnData data){
         return entityBuilder(data)
                 .type(EntityType.TELEVISION)
-                .view("Fernseher v1.png")
+                .view("Fernseher.png")
                 .build();
     }
     @Spawns("router")
     public Entity newRouter(SpawnData data){
         return entityBuilder(data)
                 .type(EntityType.ROUTER)
-                .view("WLAN Router v1.png")
+                .view("WLAN-Router.png")
                 .build();
     }
 

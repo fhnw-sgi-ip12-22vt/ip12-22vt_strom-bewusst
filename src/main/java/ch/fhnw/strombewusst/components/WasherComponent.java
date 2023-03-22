@@ -1,11 +1,11 @@
 package ch.fhnw.strombewusst.components;
 
-import com.almasb.fxgl.entity.component.Component;;
+import com.almasb.fxgl.entity.component.Component;
 
-public class LampComponent extends Component {
+public class WasherComponent extends Component {
 
     private final int sequenceNumber;
-    public LampComponent(int sequenceNumber){
+    public WasherComponent(int sequenceNumber) {
         this.sequenceNumber = sequenceNumber;
     }
 

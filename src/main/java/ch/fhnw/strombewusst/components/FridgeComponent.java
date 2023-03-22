@@ -1,13 +1,16 @@
 package ch.fhnw.strombewusst.components;
 
-import ch.fhnw.strombewusst.input.pi4jcomponents.Component;
-import com.almasb.fxgl.texture.Texture;
-import javafx.scene.text.Text;
+import com.almasb.fxgl.entity.component.Component;
 
 public class FridgeComponent extends Component {
 
-    public FridgeComponent() {
+    private final int sequenceNumber;
+    public FridgeComponent(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+    }
 
+    public int getSequenceNumber(){
+        return sequenceNumber;
     }
 
 }

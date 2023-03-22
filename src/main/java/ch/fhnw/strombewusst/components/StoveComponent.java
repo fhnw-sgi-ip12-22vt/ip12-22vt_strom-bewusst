@@ -1,9 +1,14 @@
 package ch.fhnw.strombewusst.components;
 
-import ch.fhnw.strombewusst.input.pi4jcomponents.Component;
+import com.almasb.fxgl.entity.component.Component;
 
 public class StoveComponent extends Component {
-    public StoveComponent(){
 
+    private final int sequenceNumber;
+    public StoveComponent(int sequenceNumber){
+        this.sequenceNumber = sequenceNumber;
+    }
+    public int getSequenceNumber(){
+        return sequenceNumber;
     }
 }

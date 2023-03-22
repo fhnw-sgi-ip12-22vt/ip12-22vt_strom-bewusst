@@ -1,9 +1,15 @@
 package ch.fhnw.strombewusst.components;
 
-import ch.fhnw.strombewusst.input.pi4jcomponents.Component;
+import com.almasb.fxgl.entity.component.Component;
 
 public class RouterComponent extends Component {
-    public RouterComponent(){
 
+    private final int sequenceNumber;
+    public RouterComponent(int sequenceNumber){
+        this.sequenceNumber = sequenceNumber;
+    }
+
+    public int getSequenceNumber(){
+        return sequenceNumber;
     }
 }

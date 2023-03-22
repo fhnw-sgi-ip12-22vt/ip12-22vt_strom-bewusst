@@ -1,10 +1,15 @@
 package ch.fhnw.strombewusst.components;
 
-import ch.fhnw.strombewusst.input.pi4jcomponents.Component;
+import com.almasb.fxgl.entity.component.Component;
 
 public class TelevisionComponent extends Component {
 
-    public TelevisionComponent(){
+    private final int sequenceNumber;
+    public TelevisionComponent(int sequenceNumber){
+        this.sequenceNumber = sequenceNumber;
+    }
 
+    public int getSequenceNumber(){
+        return sequenceNumber;
     }
 }
