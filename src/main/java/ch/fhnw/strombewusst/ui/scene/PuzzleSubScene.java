@@ -27,7 +27,6 @@ public class PuzzleSubScene extends SubScene {
     private final int secondBoxY = 425;
     private final int thirdBoxX = 260;
     private final int thirdBoxY = 550;
-    private QuizLogic quiz;
     private HBox[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
@@ -58,9 +57,8 @@ public class PuzzleSubScene extends SubScene {
         inputsHBox.setTranslateY(25);
 
         getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox);
-        quiz = new QuizLogic(10);
-        quiz.incQuestNum();
-        currentQuiz = buildQuiz(quiz.getQustNum());
+
+        currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
         inputs();
     }
 
@@ -73,7 +71,7 @@ public class PuzzleSubScene extends SubScene {
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                quiz.setAnswerP1("RED");
+                StromBewusst.QUIZ.setAnswerP1("RED");
             }
         }, KeyCode.DIGIT4);
 
@@ -85,7 +83,7 @@ public class PuzzleSubScene extends SubScene {
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                quiz.setAnswerP1("GREEN");
+                StromBewusst.QUIZ.setAnswerP1("GREEN");
             }
         }, KeyCode.DIGIT5);
 
@@ -98,7 +96,7 @@ public class PuzzleSubScene extends SubScene {
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                quiz.setAnswerP1("BLUE");
+                StromBewusst.QUIZ.setAnswerP1("BLUE");
 
             }
         }, KeyCode.DIGIT6);
@@ -111,7 +109,7 @@ public class PuzzleSubScene extends SubScene {
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                quiz.setAnswerP2("RED");
+                StromBewusst.QUIZ.setAnswerP2("RED");
             }
         }, KeyCode.DIGIT7);
 
@@ -124,7 +122,7 @@ public class PuzzleSubScene extends SubScene {
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                quiz.setAnswerP2("GREEN");
+                StromBewusst.QUIZ.setAnswerP2("GREEN");
             }
         }, KeyCode.DIGIT8);
 
@@ -137,14 +135,14 @@ public class PuzzleSubScene extends SubScene {
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                quiz.setAnswerP2("BLUE");
+                StromBewusst.QUIZ.setAnswerP2("BLUE");
             }
         }, KeyCode.DIGIT9);
 
         getInput().addAction(new UserAction("resetAnswers") {
             @Override
             protected void onActionBegin() {
-                quiz.resetAnswers();
+                StromBewusst.QUIZ.resetAnswers();
                 getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
             }
         }, KeyCode.E);
@@ -155,7 +153,7 @@ public class PuzzleSubScene extends SubScene {
 
                 if(answerPopUp!=null){getContentRoot().getChildren().removeAll(answerPopUp);}
 
-                if (quiz.checkAnswer()) {
+                if (StromBewusst.QUIZ.checkAnswer()) {
                     StromBewusst.SCORE.increaseScore(1);
                     System.out.println(StromBewusst.SCORE.getScore());
 
@@ -171,7 +169,7 @@ public class PuzzleSubScene extends SubScene {
                     answerPopUp.setTranslateY(100);
                     getContentRoot().getChildren().addAll(answerPopUp);
 
-                    quiz.resetAnswers();
+                    StromBewusst.QUIZ.resetAnswers();
                     getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
                 }
             }
@@ -181,7 +179,7 @@ public class PuzzleSubScene extends SubScene {
     }
 
     HBox buildTextbox(int question, int num) {
-        Text box = new Text(quiz.getText(question, num));
+        Text box = new Text(StromBewusst.QUIZ.getText(question, num));
         box.getStyleClass().add("message");
         HBox boxHBox = new HBox(box);
         if (num == 0) {
@@ -207,13 +205,13 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void nextQuestion() {
-        if (quiz.quizDone()) {
-            StromBewusst.unlockDoor();
+        if (StromBewusst.QUIZ.quizDone()) {
+            StromBewusst.QUIZ.unlockDoor();
             getSceneService().popSubScene();
         } else {
             clearQuiz();
-            quiz.incQuestNum();
-            currentQuiz = buildQuiz(quiz.getQustNum());
+            StromBewusst.QUIZ.nextQuestion();
+            currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
         }
     }
 
