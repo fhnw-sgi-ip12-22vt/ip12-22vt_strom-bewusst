@@ -1,6 +1,10 @@
 package ch.fhnw.strombewusst;
 
 
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class QuizLogic {
     private String questionString1 = "Wie viel Energie kann man mit Fahrrad fahren ca. herstellen?";
     private String firstString1 = "1kwh";
@@ -184,8 +188,13 @@ public class QuizLogic {
     private String answerP2;
     private int questionNum;
 
-    public QuizLogic(int questionNum) {
-        this.questionNum = questionNum;
+    private int size;
+
+    private Set<Integer> questSet = new HashSet<>();
+
+    public QuizLogic(int size) {
+        this.size = size;
+        buildSet();
     }
 
     public boolean checkAnswer() {
@@ -195,12 +204,15 @@ public class QuizLogic {
         return false;
     }
 
-    public boolean quizDone() {
-        return questionNum > quest.length - 2;
-    }
+    public boolean quizDone() {return questSet.isEmpty();}
 
     public void incQuestNum() {
-        this.questionNum++;
+        for(int i = 0; i < quest.length; i++){
+            if(questSet.remove(i)){
+                questionNum = i;
+                break;
+            }
+        }
     }
 
     public void resetAnswers() {
@@ -230,6 +242,16 @@ public class QuizLogic {
 
     public int getQustNum() {
         return questionNum;
+    }
+
+    public void buildSet(){
+        Random random = new Random();
+        int x;
+        for(int i = 0; i < size; i++){
+            x = random.nextInt(quest.length);
+            while(questSet.contains(x)){x=random.nextInt(quest.length);}
+            questSet.add(x);
+        }
     }
 }
 

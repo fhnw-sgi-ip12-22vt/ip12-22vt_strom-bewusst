@@ -58,8 +58,9 @@ public class PuzzleSubScene extends SubScene {
         inputsHBox.setTranslateY(25);
 
         getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox);
-        quiz = new QuizLogic(0);
-        currentQuiz = buildQuiz(0);
+        quiz = new QuizLogic(10);
+        quiz.incQuestNum();
+        currentQuiz = buildQuiz(quiz.getQustNum());
         inputs();
     }
 
