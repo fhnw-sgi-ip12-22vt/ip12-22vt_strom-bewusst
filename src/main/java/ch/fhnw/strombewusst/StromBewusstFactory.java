@@ -58,7 +58,7 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("desk")
     public Entity newDesk(SpawnData data) {
-        int rnd = random(1, 5);
+        int rnd = random(1, 7);
         return entityBuilder(data)
                 .type(EntityType.DESK)
                 .view("desk"+ rnd +".png")
