@@ -3,10 +3,12 @@ package ch.fhnw.strombewusst.collision;
 import ch.fhnw.strombewusst.EntityType;
 import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.HashMap;
 
@@ -45,14 +47,16 @@ public class PlayerDeskHandler extends CollisionHandler {
     protected void onCollisionEnd(Entity player, Entity desk) {
         try {
             if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-                getSceneService().getCurrentScene().removeChild(messageHBox1);
+                // BUGFIX: Use FXGL.runOnce without any delay, to prevent a wrong-thread crash if this method gets
+                //         called from outside the FXGL / JavaFX environment (which happens when using the physical
+                //         controller instead of WASD)
+                FXGL.runOnce(() -> getSceneService().getCurrentScene().removeChild(messageHBox1), Duration.ZERO);
             } else {
-                getSceneService().getCurrentScene().removeChild(messageHBox2);
+                FXGL.runOnce(() -> getSceneService().getCurrentScene().removeChild(messageHBox2), Duration.ZERO);
             }
         } catch (IllegalArgumentException ignored) {
-            // Bugfix, don't crash when switching rooms while other player is
-            // colliding with desk
-            // TODO: fully remove the textbox in this edge case
+            // Reference to textbox was lost, this happens on level changes.
+            // The text-boxes get explicitly cleared in StromBewusst.nextLevel(), so we can ignore this.
         }
     }
 }
@@ -130,7 +134,7 @@ class Textbucket {
             put(11, "Keine Info momentan");
             put(12, note6);
             put(13, "Keine Info momentan");
-            put(14, note7);/*
+            put(14, note7); /*
             put(15, "Keine Info momentan");
             put(16, "Keine Info momentan");
             put(17, "Keine Info momentan");*/
