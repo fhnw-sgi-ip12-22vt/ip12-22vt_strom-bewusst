@@ -3,6 +3,7 @@ package ch.fhnw.strombewusst.ui.scene;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.QuizLogic;
+import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -30,6 +31,8 @@ public class PuzzleSubScene extends SubScene {
     private HBox[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
+
+    private Texture answerPopUp;
 
 
     public PuzzleSubScene() {
@@ -148,11 +151,25 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("checkAnswers") {
             @Override
             protected void onActionBegin() {
+
+                if(answerPopUp!=null){getContentRoot().getChildren().removeAll(answerPopUp);}
+
                 if (quiz.checkAnswer()) {
-                    System.out.println("correct");
+                    StromBewusst.SCORE.increaseScore(1);
+                    System.out.println(StromBewusst.SCORE.getScore());
+
+                    answerPopUp = getAssetLoader().loadTexture("richtig.png");
+                    answerPopUp.setTranslateX(640);
+                    answerPopUp.setTranslateY(100);
+                    getContentRoot().getChildren().addAll(answerPopUp);
+
                     nextQuestion();
                 } else {
-                    System.out.println("false");
+                    answerPopUp = getAssetLoader().loadTexture("falsch.png");
+                    answerPopUp.setTranslateX(640);
+                    answerPopUp.setTranslateY(100);
+                    getContentRoot().getChildren().addAll(answerPopUp);
+
                     quiz.resetAnswers();
                     getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
                 }

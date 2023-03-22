@@ -38,6 +38,8 @@ public class StromBewusst extends GameApplication {
     private Entity door;
     private int level = 0;
 
+    public static final Score SCORE = new Score();
+
     private Room[] rooms;
 
     private Controller p1Controller;
