@@ -62,82 +62,97 @@ public class PlayerDeskHandler extends CollisionHandler {
 }
 
 class Textbucket {
-    private String note0 = "Der Stromverbrauch in einer\n"
-            + "Wohnung im Mehrfamilienhaus\n"
-            + "ist durchschnittlich fast 30 Prozent\n"
-            + "niedriger als im Einfamilienhaus.\n"
-            + "Warum? In einem Eigenheim sorgen\n"
-            + "beispielsweise Garten und Garage für\n"
-            + "höhere Kosten, denn in einem\n"
-            + "Mehrfamilienhaus werden diese Punkte\n"
-            + "als Nebenkosten auf alle Mieter*innen\n"
-            + "umgelegt.";
+    private String note0 =  "Der durchschnittliche Mensch \n" +
+                            " kannmit einem Fahrrad ca. 200 Watt an \n" +
+                            "Strom erzeugen.";
 
-    private String note1 = "Hochtarif gilt von Montag bis\n"
-            + "Freitag von 7 bis 20 Uhr und\n"
-            + "am Samstag von 7 bis 13 Uhr. In der\n"
-            + "übrigen Zeit gilt Niedertarif. Je nach\n"
-            + "Stromprodukt kostet eine Kilowattstunde\n"
-            + "im Hochtarif bis zu 22 Rappen und im\n"
-            + "Niedertarif nur 16 Rappen. Grund dafür\n"
-            + "ist die unterschiedliche Nachfrage\n"
-            + "nach Strom.";
+    private String note1 =  "Handys verbrauchen nicht so viel Strom \n" +
+                            "wie man meint.";
 
-    private String note2 = "Watt ist eine Einheit für Leistung,\n"
-            + "mit welcher die pro Sekunde verbrauchte\n"
-            + "Energie eines Geräts bezeichnet wird.\n"
-            + "(ein Watt = 1 Joule pro Sekunde)";
+    private String note2 =  "Watt ist eine Einheit für Leistung,\n"
+            +               "mit welcher die pro Sekunde verbrauchte\n"
+            +               "Energie eines Geräts bezeichnet wird.\n";
 
-    private String note3 = "Ein Joule ist gleich der Energie, die\n"
-            + "benötigt wird, um über die Strecke\n"
-            + "von einem Meter die Kraft von einem\n"
-            + "Newton aufzuwenden.";
+    private String note3 =  "Eine Familie verbraucht pro Jahr  \n " +
+                            "ca 4000kwh an Strom";
 
-    private String note4 = "Unter Kraft versteht man eine\n"
-            + "Einwirkung auf einen Körper.\n"
-            + "Die Geschwindigkeit des Körpers\n"
-            + "wird vergrössrt.";
+    private String note4 =  "Heutzutage gibt es nur sehr \n " +
+                            "wenige Sachen,die kein Strom  \n benötigen";
 
-    private String note5 = "Ein Haushalt in der Schweiz bezahlt\n"
-            + "im Jahr 2022 durchschnittlich 21 Rappen\n"
-            + "pro Kilowattstunde.";
+    private String note5 =  "In der Strom Erzeugung werden \n " +
+                            "Erneuerbare Ressourcen wie Wind, \n" +
+                            "Sonne und Wasser immer beliebter im \n" +
+                            "Gegensatz zu Fossilen Ressourcen wie \n" +
+                            "Holz, Öl und Kohle";
 
-    private String note6 = "Ein guter Geschirrspüler verbraucht\n"
-            + "zum Spülen von 12 Teller nur etwa\n"
-            + "10 Liter Wasser und 0,85 Kilowattstunden\n"
-            + "Strom. Beim Spülen von Hand sind\n"
-            + "je nach Technik durchschnittlich 70 Liter\n"
-            + "notwendig. Hinzu kommen 1,8 kWh\n"
-            + "für das Erwärmen des Wassers.";
+    private String note6 =  "Stromäste sind sehr wichtig \n" +
+                            "für das Stromnetz der Schweiz";
 
-    private String note7 = "Stromverbrauch von diversen Geräten:\n"
-            + "Mikrowelle: ~1300W\n"
-            + "Wasserkocher: ~1800W\n"
-            + "Toaster: ~800W\n"
-            + "Hany laden: ~8W\n"
-            + "Haarföhn ~1200W\n"
-            + "Laptop laden: ~60W";
+    private String note7 =  "Unser Gehirn und unser \n" +
+                            "Herz funktionieren wie bei einem Antrieb \n " +
+                            "durch kleine elektrische Impulse";
+
+    private String note8 =  "Das Treibhausgas CO2 wird \n" +
+                            "hauptsächlich durch Fossile Energien \n" +
+                            "in die Luft verbreitet";
+
+    private String note9 =  "Benjamin Franklin hat 1752 mit \n " +
+                            "einem Drachen einen Blitz abgefangen \n " +
+                            "und damit bewiesen das Blitze elektrisch sind.";
+
+    private String note10 = "Das Treibhausgas CO2 wird \n" +
+                            "hauptsächlich durch Fossile \n " +
+                            "Energien in die Luft verbreitet";
+
+    private String note11 = "Strom entsteht durch Bewegung. \n " +
+                            "Kraftwerke utzen dies aus indem sie \n " +
+                            "durch Ressourcen Turbinen antreiben";
+
+    private String note12 = "In der Schweiz sind aktuell 1300 \n " +
+                            "Wasserkraftwerke aktiv und produzieren ca.\n" +
+                            "57% des Stroms. Damit ist die Wasserkraft die \n" +
+                            "wichtigste Stromquelle";
+
+    private String note13 = "Strom besteht aus vielen kleinen Elektronen \n" +
+                            "die wie ein Fluss durch die Haushalte geht";
+
+    private String note14 = "Im Vergleich zu anderen Ländern \n" +
+                            "hat die Schweiz sehr wenige Windkraftanlagen";
+
+    private String note15 = "Metalle und Salzwasser haben \n" +
+                            "die Eigenschaft Strom zu leiten.";
+
+    private String note16 = "Wenn ein Wasserkraftwerk \n" +
+                            "nachts zu viel Strom erzeugen sollte, kann \n" +
+                            "dieser genutzt werden, um neuen Strom für \n" +
+                            "den nächsten Tag zu erzeugen. ";
+
+    private String note17 = "Ein Kochherd gehört mit \n" +
+                            "zu den grössten Stromfressern. Deshalb  \n" +
+                            "sollte man immer mir Deckel kochen damit \n" +
+                            "sich das Essen schneller erhitzt und Energie \n" +
+                            "gespart werden kann";
 
     protected HashMap<Integer, String> textMap = new HashMap<>() {
         {
             put(0, note0);
-            put(1, "Keine Info momentan");
-            put(2, note1);
-            put(3, "Keine Info momentan");
-            put(4, note2);
-            put(5, "Keine Info momentan");
-            put(6, note3);
-            put(7, "Keine Info momentan");
-            put(8, note4);
-            put(9, "Keine Info momentan");
-            put(10, note5);
-            put(11, "Keine Info momentan");
-            put(12, note6);
-            put(13, "Keine Info momentan");
-            put(14, note7); /*
-            put(15, "Keine Info momentan");
-            put(16, "Keine Info momentan");
-            put(17, "Keine Info momentan");*/
+            put(1, note1);
+            put(2, note2);
+            put(3, note3);
+            put(4, note4);
+            put(5, note5);
+            put(6, note6);
+            put(7, note7);
+            put(8, note8);
+            put(9, note9);
+            put(10, note10);
+            put(11, note11);
+            put(12, note12);
+            put(13, note13);
+            put(14, note14);
+            put(15, note15);
+            put(16, note16);
+            put(17, note17);
         }
     };
 }
