@@ -8,6 +8,7 @@ import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.inventory.Inventory;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
@@ -101,6 +102,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("bookshelf" + rnd + ".png")
                 .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box(95, 20)))
                 .with(new PhysicsComponent())
+                .with(new DeskComponent(data.get("deskNum")))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
@@ -141,4 +143,73 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("plug-red.png")
                 .build();
     }
+    @Spawns("fridge")
+    public Entity newFridge(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.FRIDGE)
+                .view("Kühlschrank v1.png")
+                .build();
+    }
+
+    @Spawns("stove")
+    public Entity newStove(SpawnData data){
+        return entityBuilder(data)
+                .type(EntityType.STOVE)
+                .view("Electroherd v1.png")
+                .build();
+    }
+    @Spawns("washing-machine")
+    public Entity newWasher(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.WASHER)
+                .view("Waschmaschine v1.png")
+                .build();
+    }
+
+    @Spawns("ps5")
+    public Entity newPS5(SpawnData data){
+        return entityBuilder(data)
+                .type(EntityType.PS5)
+                .view("PS5 v1.png")
+                .build();
+    }
+
+    @Spawns("microwave")
+    public Entity newMicrowave(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.MICROWAVE)
+                .view("Mikrowelle v1.png")
+                .build();
+    }
+    @Spawns("television")
+    public Entity newTelevision(SpawnData data){
+        return entityBuilder(data)
+                .type(EntityType.TELEVISION)
+                .view("Fernseher v1.png")
+                .build();
+    }
+    @Spawns("router")
+    public Entity newRouter(SpawnData data){
+        return entityBuilder(data)
+                .type(EntityType.ROUTER)
+                .view("WLAN Router v1.png")
+                .build();
+    }
+
+    @Spawns("lamp")
+    public Entity newLamp(SpawnData data){
+        return entityBuilder(data)
+                .type(EntityType.LAMP)
+                .view("")
+                .build();
+    }
+
+    @Spawns("smartphone")
+    public Entity newSmartphone(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.SMARTPHONE)
+                .view("")
+                .build();
+    }
+
 }
