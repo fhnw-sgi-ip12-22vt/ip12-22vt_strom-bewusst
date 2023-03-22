@@ -67,6 +67,7 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
+                cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-red.png");
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
@@ -79,6 +80,7 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
+                cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-green.png");
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
@@ -92,6 +94,7 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
+                cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-blue.png");
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
@@ -105,6 +108,7 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
+                cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-red.png");
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
@@ -118,6 +122,7 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
+                cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-green.png");
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
@@ -131,6 +136,7 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
+                cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-blue.png");
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
@@ -151,21 +157,19 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
 
-                if(answerPopUp!=null){getContentRoot().getChildren().removeAll(answerPopUp);}
-
                 if (StromBewusst.QUIZ.checkAnswer()) {
                     StromBewusst.SCORE.increaseScore(1);
                     System.out.println(StromBewusst.SCORE.getScore());
 
                     answerPopUp = getAssetLoader().loadTexture("richtig.png");
-                    answerPopUp.setTranslateX(640);
+                    answerPopUp.setTranslateX(990);
                     answerPopUp.setTranslateY(100);
                     getContentRoot().getChildren().addAll(answerPopUp);
 
                     nextQuestion();
                 } else {
                     answerPopUp = getAssetLoader().loadTexture("falsch.png");
-                    answerPopUp.setTranslateX(640);
+                    answerPopUp.setTranslateX(990);
                     answerPopUp.setTranslateY(100);
                     getContentRoot().getChildren().addAll(answerPopUp);
 
@@ -176,6 +180,13 @@ public class PuzzleSubScene extends SubScene {
         }, KeyCode.Q);
 
 
+    }
+
+    void cleanPopUp(){
+        if(answerPopUp!=null){
+            getContentRoot().getChildren().removeAll(answerPopUp);
+            answerPopUp = null;
+        }
     }
 
     HBox buildTextbox(int question, int num) {
