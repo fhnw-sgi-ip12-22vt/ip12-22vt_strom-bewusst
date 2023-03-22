@@ -188,6 +188,8 @@ public class QuizLogic {
     private String answerP2;
     private int questionNum;
 
+    private boolean doorOpen = false;
+
     private int size;
 
     private Set<Integer> questSet = new HashSet<>();
@@ -195,7 +197,10 @@ public class QuizLogic {
     public QuizLogic(int size) {
         this.size = size;
         buildSet();
+        nextQuestion();
     }
+
+    public void unlockDoor(){this.doorOpen=true;}
 
     public boolean checkAnswer() {
         if (!(getAnswerP1() == null) || !(getAnswerP2() == null)) {
@@ -206,7 +211,7 @@ public class QuizLogic {
 
     public boolean quizDone() {return questSet.isEmpty();}
 
-    public void incQuestNum() {
+    public void nextQuestion() {
         for(int i = 0; i < quest.length; i++){
             if(questSet.remove(i)){
                 questionNum = i;
@@ -253,6 +258,8 @@ public class QuizLogic {
             questSet.add(x);
         }
     }
+
+    public boolean getDoorOpen(){return doorOpen;}
 }
 
 

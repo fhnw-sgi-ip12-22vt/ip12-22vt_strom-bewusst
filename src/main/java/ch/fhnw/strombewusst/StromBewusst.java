@@ -39,6 +39,7 @@ public class StromBewusst extends GameApplication {
     private int level = 0;
 
     public static final Score SCORE = new Score();
+    public static final QuizLogic QUIZ = new QuizLogic(10);
 
     private Room[] rooms;
 
@@ -267,7 +268,7 @@ public class StromBewusst extends GameApplication {
             protected void onAction() {
                 boolean p1 = player1.isColliding(door);
                 boolean p2 = player2.isColliding(door);
-                if (p1 || p2) {
+                if ((p1 || p2) && QUIZ.getDoorOpen()) {
                     getGameScene().getViewport().fade(() -> nextLevel());
                 }
             }
