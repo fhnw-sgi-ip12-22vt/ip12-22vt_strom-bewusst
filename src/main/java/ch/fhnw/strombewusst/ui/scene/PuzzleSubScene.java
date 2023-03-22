@@ -208,6 +208,7 @@ public class PuzzleSubScene extends SubScene {
 
     void nextQuestion() {
         if (quiz.quizDone()) {
+            StromBewusst.unlockDoor();
             getSceneService().popSubScene();
         } else {
             clearQuiz();
