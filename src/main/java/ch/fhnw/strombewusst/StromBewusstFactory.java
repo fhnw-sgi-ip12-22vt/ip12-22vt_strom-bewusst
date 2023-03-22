@@ -58,9 +58,10 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("desk")
     public Entity newDesk(SpawnData data) {
+        int rnd = random(1, 5);
         return entityBuilder(data)
                 .type(EntityType.DESK)
-                .view("desk.png")
+                .view("desk"+ rnd +".png")
                 .bbox(new HitBox(new Point2D(6, -2), BoundingShape.box(52, 10)))
                 .with(new PhysicsComponent())
                 .with(new DeskComponent(data.get("deskNum")))
