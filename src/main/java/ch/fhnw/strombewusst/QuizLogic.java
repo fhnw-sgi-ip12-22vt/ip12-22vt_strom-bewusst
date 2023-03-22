@@ -188,8 +188,8 @@ public class QuizLogic {
     private String answerP2;
     private int questionNum;
 
-    private boolean doorOpen = false;
-
+    //private boolean doorOpen = false;
+    private boolean doorOpen = true; //for development of room 2
     private int size;
 
     private Set<Integer> questSet = new HashSet<>();
