@@ -180,7 +180,6 @@ public class QuizLogic {
             {questionString25, firstString25, secondString25, thirdString25, answer25}
     };
 
-
     private String answerP1;
     private String answerP2;
     private int questionNum;
