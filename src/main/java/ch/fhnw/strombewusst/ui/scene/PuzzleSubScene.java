@@ -35,7 +35,7 @@ public class PuzzleSubScene extends SubScene {
 
 
     public PuzzleSubScene() {
-        Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
+        Texture bg = getAssetLoader().loadTexture("background/puzzlebackground2.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
