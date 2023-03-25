@@ -129,13 +129,13 @@ public class StromBewusst extends GameApplication {
             p1Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player1));
             p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
 
-            p1Controller.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
-            p1Controller.untenDown(() -> InputHandler.handleSelect(player1));
-            p1Controller.linksDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
-            p1Controller.mitteDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
-            p1Controller.rechtsDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
-            p1Controller.obenDown(() -> System.out.println("DEBUG: P1 UPPER DOWN"));
-            p1Controller.untenDown(() -> System.out.println("DEBUG: P1 LOWER DOWN"));
+            p1Controller.onButtonUpperDown(() -> getInput().mockKeyPress(KeyCode.Q));
+            p1Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player1));
+            p1Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
+            p1Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
+            p1Controller.onButtonRightDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
+            p1Controller.onButtonUpperDown(() -> System.out.println("DEBUG: P1 UPPER DOWN"));
+            p1Controller.onButtonLowerDown(() -> System.out.println("DEBUG: P1 LOWER DOWN"));
 /*
             p2Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.L));
             p2Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.J));
