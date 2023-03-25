@@ -3,6 +3,7 @@ package ch.fhnw.strombewusst;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
+import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
 import ch.fhnw.strombewusst.input.Controller;
@@ -267,5 +268,6 @@ public class StromBewusst extends GameApplication {
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
+        physicsWorld.addCollisionHandler(new PlayerDoorHandler());
     }
 }

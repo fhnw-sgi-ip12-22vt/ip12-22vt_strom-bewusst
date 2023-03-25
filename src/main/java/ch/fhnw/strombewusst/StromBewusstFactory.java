@@ -13,10 +13,14 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import com.almasb.fxgl.texture.AnimatedTexture;
+import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.geometry.Point2D;
+import javafx.util.Duration;
 
 import static com.almasb.fxgl.dsl.FXGL.entityBuilder;
 import static com.almasb.fxgl.dsl.FXGL.random;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 
 
 /**
@@ -53,6 +57,23 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(40, 64)))
                 .with(new CollidableComponent(true))
                 .zIndex(100)
+                .build();
+    }
+
+    @Spawns("buttonicon")
+    public Entity newButtonIcon(SpawnData data) {
+        AnimationChannel animation = new AnimationChannel(
+                image("red-button-icon.png"),
+                2, 32, 32,
+                Duration.seconds(1), 0, 1
+        );
+        AnimatedTexture texture = new AnimatedTexture(animation);
+        texture.loopAnimationChannel(animation);
+        texture.loop();
+
+        return entityBuilder(data)
+                .view(texture)
+                .zIndex(10)
                 .build();
     }
 
@@ -220,5 +241,4 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("")
                 .build();
     }
-
 }
