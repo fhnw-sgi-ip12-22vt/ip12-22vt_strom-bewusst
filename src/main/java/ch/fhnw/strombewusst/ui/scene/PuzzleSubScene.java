@@ -3,6 +3,7 @@ package ch.fhnw.strombewusst.ui.scene;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.QuizLogic;
+import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -26,10 +27,11 @@ public class PuzzleSubScene extends SubScene {
     private final int secondBoxY = 425;
     private final int thirdBoxX = 260;
     private final int thirdBoxY = 550;
-    private QuizLogic quiz;
     private HBox[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
+
+    private Texture answerPopUp;
 
 
     public PuzzleSubScene() {
@@ -55,8 +57,8 @@ public class PuzzleSubScene extends SubScene {
         inputsHBox.setTranslateY(25);
 
         getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox);
-        quiz = new QuizLogic(0);
-        currentQuiz = buildQuiz(0);
+
+        currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
         inputs();
     }
 
@@ -65,11 +67,12 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
+                cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-red.png");
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                quiz.setAnswerP1("RED");
+                StromBewusst.QUIZ.setAnswerP1("RED");
             }
         }, KeyCode.DIGIT4);
 
@@ -77,11 +80,12 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
+                cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-green.png");
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                quiz.setAnswerP1("GREEN");
+                StromBewusst.QUIZ.setAnswerP1("GREEN");
             }
         }, KeyCode.DIGIT5);
 
@@ -90,11 +94,12 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
+                cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-blue.png");
                 textureAnswerP1.setTranslateX(1012);
                 textureAnswerP1.setTranslateY(136);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                quiz.setAnswerP1("BLUE");
+                StromBewusst.QUIZ.setAnswerP1("BLUE");
 
             }
         }, KeyCode.DIGIT6);
@@ -103,11 +108,12 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
+                cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-red.png");
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                quiz.setAnswerP2("RED");
+                StromBewusst.QUIZ.setAnswerP2("RED");
             }
         }, KeyCode.DIGIT7);
 
@@ -116,11 +122,12 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
+                cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-green.png");
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                quiz.setAnswerP2("GREEN");
+                StromBewusst.QUIZ.setAnswerP2("GREEN");
             }
         }, KeyCode.DIGIT8);
 
@@ -129,18 +136,19 @@ public class PuzzleSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
+                cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-blue.png");
                 textureAnswerP2.setTranslateX(1012);
                 textureAnswerP2.setTranslateY(487);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                quiz.setAnswerP2("BLUE");
+                StromBewusst.QUIZ.setAnswerP2("BLUE");
             }
         }, KeyCode.DIGIT9);
 
         getInput().addAction(new UserAction("resetAnswers") {
             @Override
             protected void onActionBegin() {
-                quiz.resetAnswers();
+                StromBewusst.QUIZ.resetAnswers();
                 getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
             }
         }, KeyCode.E);
@@ -148,12 +156,24 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("checkAnswers") {
             @Override
             protected void onActionBegin() {
-                if (quiz.checkAnswer()) {
-                    System.out.println("correct");
+
+                if (StromBewusst.QUIZ.checkAnswer()) {
+                    StromBewusst.SCORE.increaseScore(1);
+                    System.out.println(StromBewusst.SCORE.getScore());
+
+                    answerPopUp = getAssetLoader().loadTexture("richtig.png");
+                    answerPopUp.setTranslateX(990);
+                    answerPopUp.setTranslateY(100);
+                    getContentRoot().getChildren().addAll(answerPopUp);
+
                     nextQuestion();
                 } else {
-                    System.out.println("false");
-                    quiz.resetAnswers();
+                    answerPopUp = getAssetLoader().loadTexture("falsch.png");
+                    answerPopUp.setTranslateX(990);
+                    answerPopUp.setTranslateY(100);
+                    getContentRoot().getChildren().addAll(answerPopUp);
+
+                    StromBewusst.QUIZ.resetAnswers();
                     getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
                 }
             }
@@ -162,8 +182,15 @@ public class PuzzleSubScene extends SubScene {
 
     }
 
+    void cleanPopUp(){
+        if(answerPopUp!=null){
+            getContentRoot().getChildren().removeAll(answerPopUp);
+            answerPopUp = null;
+        }
+    }
+
     HBox buildTextbox(int question, int num) {
-        Text box = new Text(quiz.getText(question, num));
+        Text box = new Text(StromBewusst.QUIZ.getText(question, num));
         box.getStyleClass().add("message");
         HBox boxHBox = new HBox(box);
         if (num == 0) {
@@ -189,12 +216,13 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void nextQuestion() {
-        if (quiz.quizDone()) {
+        if (StromBewusst.QUIZ.quizDone()) {
+            StromBewusst.QUIZ.unlockDoor();
             getSceneService().popSubScene();
         } else {
             clearQuiz();
-            quiz.incQuestNum();
-            currentQuiz = buildQuiz(quiz.getQustNum());
+            StromBewusst.QUIZ.nextQuestion();
+            currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
         }
     }
 

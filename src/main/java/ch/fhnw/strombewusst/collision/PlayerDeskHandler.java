@@ -31,6 +31,11 @@ public class PlayerDeskHandler extends CollisionHandler {
         FXGL.runOnce(() -> getSceneService().getCurrentScene().addChild(player2HBox), Duration.ZERO);
     }
 
+    public PlayerDeskHandler(EntityType player, EntityType type) {
+        super(player, type);
+        this.bucket = new Textbucket();
+    }
+
     @Override
     protected void onCollisionBegin(Entity player, Entity desk) {
         int deskNum = desk.getComponent(DeskComponent.class).getDeskNum();
@@ -149,6 +154,8 @@ class Textbucket {
             put(15, note15);
             put(16, note16);
             put(17, note17);
+            put(18, "kommt noch");
+            put(19, "kommt noch");
         }
     };
 }
