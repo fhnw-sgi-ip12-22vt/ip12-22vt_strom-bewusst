@@ -62,7 +62,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DESK)
                 .view("desk"+ rnd +".png")
-                .bbox(new HitBox(new Point2D(6, -2), BoundingShape.box(52, 10)))
+                .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
                 .with(new DeskComponent(data.get("deskNum")))
                 .with(new CollidableComponent(true))
