@@ -5,7 +5,6 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
-import ch.fhnw.strombewusst.components.PlayerComponent;
 import ch.fhnw.strombewusst.input.Controller;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.rooms.Room;
@@ -13,13 +12,13 @@ import ch.fhnw.strombewusst.rooms.Room1;
 import ch.fhnw.strombewusst.rooms.Room2;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
-import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.cutscene.Cutscene;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.PhysicsWorld;
@@ -50,7 +49,7 @@ public class StromBewusst extends GameApplication {
         launch(args);
     }
 
-    private void nextLevel() {
+    void nextLevel() {
         level++;
 
         // BUGFIX: clear HBoxes on level change, so Desk info boxes don't persist
@@ -130,7 +129,7 @@ public class StromBewusst extends GameApplication {
             p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
 
             p1Controller.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
-            p1Controller.untenDown(InputHandler::handleSelect);
+            p1Controller.untenDown(() -> InputHandler.handleSelect(player1));
             p1Controller.linksDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
             p1Controller.mitteDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
             p1Controller.rechtsDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
@@ -246,33 +245,15 @@ public class StromBewusst extends GameApplication {
             }
         }, KeyCode.K);
 
-        getInput().addAction(new UserAction("open puzzle") {
-            @Override
-            protected void onAction() {
-                boolean p1 = player1.getComponent(PlayerComponent.class).getIsNearDesk();
-                boolean p2 = player2.getComponent(PlayerComponent.class).getIsNearDesk();
-                if (p1 || p2) {
-                    getSceneService().pushSubScene(new PuzzleSubScene());
-                }
-            }
-        }, KeyCode.Q);
+        // "backwards compatibility"
+        FXGL.onKeyDown(KeyCode.Q, () -> InputHandler.handleSelect(player1));
+        FXGL.onKeyDown(KeyCode.R, () -> InputHandler.handleSelect(player1));
 
         onKeyDown(KeyCode.F, () -> {
             var lines = getAssetLoader().loadText("example—cutscene1.txt");
             var cutscene = new Cutscene(lines);
             getCutsceneService().startCutscene(cutscene);
         });
-
-        getInput().addAction(new UserAction("next room") {
-            @Override
-            protected void onAction() {
-                boolean p1 = player1.isColliding(door);
-                boolean p2 = player2.isColliding(door);
-                if ((p1 || p2) && QUIZ.getDoorOpen()) {
-                    getGameScene().getViewport().fade(() -> nextLevel());
-                }
-            }
-        }, KeyCode.R);
     }
 
     /**
