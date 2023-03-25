@@ -18,7 +18,6 @@ public class PlayerComponent extends Component {
 
     private final int playerNum;
 
-    private boolean isNearDesk;
 
     private PhysicsComponent physics;
 
@@ -122,14 +121,6 @@ public class PlayerComponent extends Component {
 
     public int getPlayerNum() {
         return playerNum;
-    }
-
-    public void setIsNearDesk(boolean is) {
-        this.isNearDesk = is;
-    }
-
-    public boolean getIsNearDesk() {
-        return isNearDesk;
     }
 }
 
