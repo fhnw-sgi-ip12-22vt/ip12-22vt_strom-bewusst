@@ -40,6 +40,7 @@ public class PlayerDeskHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity player, Entity desk) {
         int deskNum = desk.getComponent(DeskComponent.class).getDeskNum();
         Text title = new Text(bucket.textMap.get(deskNum));
+        title.setWrappingWidth(300);
         title.getStyleClass().add("message");
 
         if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
@@ -62,77 +63,49 @@ public class PlayerDeskHandler extends CollisionHandler {
 }
 
 class Textbucket {
-    private String note0 = "Der durchschnittliche Mensch\n"
-            + "kann mit einem Fahrrad ca. 200 Watt an\n"
-            + "Strom erzeugen.";
+    private String note0 = "Der durchschnittliche Mensch kann mit einem Fahrrad ca. 200 Watt an Strom erzeugen.";
 
-    private String note1 = "Handys verbrauchen weniger Strom\n"
-            + "wie man meint.";
+    private String note1 = "Handys verbrauchen weniger Strom als man meint.";
 
-    private String note2 = "Watt ist eine Einheit für Leistung,\n"
-            + "mit welcher die pro Sekunde verbrauchte\n"
-            + "Energie eines Geräts bezeichnet wird.\n";
+    private String note2 = "Watt ist eine Einheit für Leistung, mit welcher die pro Sekunde verbrauchte "
+            + "Energie eines Geräts bezeichnet wird.";
 
-    private String note3 = "Eine Familie verbraucht pro Jahr\n"
-            + "ca 4000kwh an Strom";
+    private String note3 = "Eine Familie verbraucht pro Jahr ca. 4000kwh an Strom";
 
-    private String note4 = "Heutzutage gibt es nur sehr\n"
-            + "wenige Sachen, die keinen Strom\n"
-            + "benötigen";
+    private String note4 = "Heutzutage gibt es nur sehr wenige Sachen, die keinen Strom benötigen";
 
-    private String note5 = "In der Strom Erzeugung werden\n"
-            + "Erneuerbare Ressourcen wie Wind,\n"
-            + "Sonne und Wasser immer beliebter im\n"
-            + "Gegensatz zu Fossilen Ressourcen wie\n"
-            + "Holz, Öl und Kohle";
+    private String note5 = "In der Stromerzeugung werden erneuerbare Ressourcen wie Wind, Sonne und Wasser immer "
+            + "beliebter im Gegensatz zu fossilen Ressourcen wie Holz, Öl und Kohle";
 
-    private String note6 = "Strommasten sind sehr wichtig\n"
-            + "für das Stromnetz der Schweiz";
+    private String note6 = "Strommasten sind sehr wichtig für das Stromnetz der Schweiz";
 
-    private String note7 = "Unser Gehirn und unser\n"
-            + "Herz funktionieren wie bei einem Antrieb\n"
-            + "durch kleine elektrische Impulse";
+    private String note7 = "Unser Gehirn und unser Herz funktionieren wie bei einem Antrieb durch kleine elektrische "
+            + "Impulse";
 
-    private String note8 = "Das Treibhausgas CO2 wird\n"
-            + "hauptsächlich durch Fossile Energien\n"
-            + "in die Luft verbreitet";
+    private String note8 = "Das Treibhausgas CO2 wird hauptsächlich durch Fossile Energien in die Luft verbreitet";
 
-    private String note9 = "Benjamin Franklin hat 1752 mit\n"
-            + "einem Drachen einen Blitz abgefangen\n"
-            + "und damit bewiesen das Blitze elektrisch sind.";
+    private String note9 = "Benjamin Franklin hat 1752 mit einem Drachen einen Blitz abgefangen und damit bewiesen, "
+            + "dass Blitze elektrisch sind";
 
-    private String note10 = "Das Treibhausgas CO2 wird\n"
-            + "hauptsächlich durch Fossile\n"
-            + "Energien in die Luft verbreitet";
+    private String note10 = "Das Treibhausgas CO2 wird hauptsächlich durch Fossile Energien in die Luft verbreitet";
 
-    private String note11 = "Strom entsteht durch Bewegung.\n"
-            + "Kraftwerke nutzen dies aus indem sie\n"
-            + "durch Ressourcen Turbinen antreiben";
+    private String note11 = "Strom entsteht durch Bewegung. Kraftwerke nutzen dies aus indem sie durch Ressourcen "
+            + "Turbinen antreiben";
 
-    private String note12 = "In der Schweiz sind aktuell 1300\n"
-            + "Wasserkraftwerke aktiv und produzieren ca.\n"
-            + "57% des Stroms. Damit ist die Wasserkraft die\n"
-            + "wichtigste Stromquelle";
+    private String note12 = "In der Schweiz sind aktuell 1300 Wasserkraftwerke aktiv und produzieren ca. 57% des "
+            + "Stroms. Damit ist die Wasserkraft die wichtigste Stromquelle";
 
-    private String note13 = "Strom besteht aus vielen kleinen Elektronen\n"
-            + "die wie ein Fluss durch die Haushalte geht";
+    private String note13 = "Strom besteht aus vielen kleinen Elektronen die wie ein Fluss durch die Haushalte geht";
 
-    private String note14 = "Im Vergleich zu anderen Ländern\n"
-            + "hat die Schweiz sehr wenige Windkraftanlagen";
+    private String note14 = "Im Vergleich zu anderen Ländern hat die Schweiz sehr wenige Windkraftanlagen";
 
-    private String note15 = "Metalle und Salzwasser haben\n"
-            + "die Eigenschaft Strom zu leiten.";
+    private String note15 = "Metalle und Salzwasser haben die Eigenschaft Strom zu leiten.";
 
-    private String note16 = "Wenn ein Wasserkraftwerk\n"
-            + "nachts zu viel Strom erzeugen sollte, kann\n"
-            + "dieser für den nächsten Tag gespeichert\n"
-            + "werden.";
+    private String note16 = "Wenn ein Wasserkraftwerk nachts zu viel Strom erzeugt, kann dieser für den "
+            + "nächsten Tag gespeichert werden.";
 
-    private String note17 = "Ein Kochherd gehört mit\n"
-            + "zu den grössten Stromfressern. Deshalb\n"
-            + "sollte man immer mir Deckel kochen damit\n"
-            + "sich das Essen schneller erhitzt und Energie\n"
-            + "gespart werden kann";
+    private String note17 = "Ein Kochherd gehört mit zu den grössten Stromfressern. Deshalb sollte man immer mit "
+            + "Deckel kochen, damit sich das Essen schneller erhitzt und Energie gespart werden kann";
 
     protected HashMap<Integer, String> textMap = new HashMap<>() {
         {
