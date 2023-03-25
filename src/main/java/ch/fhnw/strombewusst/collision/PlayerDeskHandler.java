@@ -15,13 +15,20 @@ import java.util.HashMap;
 import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 public class PlayerDeskHandler extends CollisionHandler {
-
-    private HBox messageHBox1, messageHBox2;
+    private final HBox player1HBox = new HBox();
+    private final HBox player2HBox = new HBox();
     private final Textbucket bucket;
 
     public PlayerDeskHandler() {
         super(EntityType.PLAYER, EntityType.DESK);
         bucket = new Textbucket();
+        player1HBox.setTranslateX(950);
+        player1HBox.setTranslateY(25);
+        FXGL.runOnce(() -> getSceneService().getCurrentScene().addChild(player1HBox), Duration.ZERO);
+
+        player2HBox.setTranslateX(950);
+        player2HBox.setTranslateY(380);
+        FXGL.runOnce(() -> getSceneService().getCurrentScene().addChild(player2HBox), Duration.ZERO);
     }
 
     @Override
@@ -31,32 +38,20 @@ public class PlayerDeskHandler extends CollisionHandler {
         title.getStyleClass().add("message");
 
         if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-            messageHBox1 = new HBox(title);
-            messageHBox1.setTranslateX(950);
-            messageHBox1.setTranslateY(25);
-            getSceneService().getCurrentScene().addChild(messageHBox1);
+            player1HBox.getChildren().clear();
+            player1HBox.getChildren().add(title);
         } else {
-            messageHBox2 = new HBox(title);
-            messageHBox2.setTranslateX(950);
-            messageHBox2.setTranslateY(380);
-            getSceneService().getCurrentScene().addChild(messageHBox2);
+            player2HBox.getChildren().clear();
+            player2HBox.getChildren().add(title);
         }
     }
 
     @Override
     protected void onCollisionEnd(Entity player, Entity desk) {
-        try {
-            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-                // BUGFIX: Use FXGL.runOnce without any delay, to prevent a wrong-thread crash if this method gets
-                //         called from outside the FXGL / JavaFX environment (which happens when using the physical
-                //         controller instead of WASD)
-                FXGL.runOnce(() -> getSceneService().getCurrentScene().removeChild(messageHBox1), Duration.ZERO);
-            } else {
-                FXGL.runOnce(() -> getSceneService().getCurrentScene().removeChild(messageHBox2), Duration.ZERO);
-            }
-        } catch (IllegalArgumentException ignored) {
-            // Reference to textbox was lost, this happens on level changes.
-            // The text-boxes get explicitly cleared in StromBewusst.nextLevel(), so we can ignore this.
+        if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+            player1HBox.getChildren().clear();
+        } else {
+            player2HBox.getChildren().clear();
         }
     }
 }
