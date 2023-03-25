@@ -1,8 +1,7 @@
-package ch.fhnw.strombewusst.collision.Geräte;
+package ch.fhnw.strombewusst.collision.devices;
 
 import ch.fhnw.strombewusst.EntityType;
 import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
-import com.almasb.fxgl.physics.CollisionHandler;
 
 public class PlayerMicrowaveHandler extends PlayerDeskHandler {
         public PlayerMicrowaveHandler() {
