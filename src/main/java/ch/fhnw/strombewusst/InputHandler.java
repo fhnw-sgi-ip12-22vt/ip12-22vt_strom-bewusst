@@ -10,22 +10,14 @@ import com.almasb.fxgl.scene.Scene;
 
 public class InputHandler {
     public static void handlePlayerRight(Entity player) {
-        if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
-            MainMenu.focusNextNode();
-        } else {
-            if (player != null) {
-                player.getComponent(PlayerComponent.class).moveRight();
-            }
+        if (player != null) {
+            player.getComponent(PlayerComponent.class).moveRight();
         }
     }
 
     public static void handlePlayerLeft(Entity player) {
-        if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
-            MainMenu.focusPreviousNode();
-        } else {
-            if (player != null) {
-                player.getComponent(PlayerComponent.class).moveLeft();
-            }
+        if (player != null) {
+            player.getComponent(PlayerComponent.class).moveLeft();
         }
     }
 
