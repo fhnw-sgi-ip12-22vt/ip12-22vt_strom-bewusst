@@ -44,8 +44,11 @@ public class PlayerTest {
         Point2D afterMoveUpPosition = player.getPosition();
 
         Assertions.assertEquals(new Point2D(0, -20), afterMoveUpPosition);
-
-        player.getComponent(DummyPlayerComponent.class).moveLeft();
+        try {
+            player.getComponent(DummyPlayerComponent.class).moveLeft();
+        } catch (kotlin.UninitializedPropertyAccessException ignored) {
+            // Exception happens because of the FXGL.runOnce() call
+        }
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
         player.getComponent(DummyPlayerComponent.class).stopMovingX();
@@ -65,7 +68,11 @@ public class PlayerTest {
 
         Assertions.assertEquals(new Point2D(-20, 0), afterMoveDownPosition);
 
-        player.getComponent(DummyPlayerComponent.class).moveRight();
+        try {
+            player.getComponent(DummyPlayerComponent.class).moveRight();
+        } catch (kotlin.UninitializedPropertyAccessException ignored) {
+            // Exception happens because of the FXGL.runOnce() call
+        }
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
         player.getComponent(DummyPlayerComponent.class).stopMovingX();
