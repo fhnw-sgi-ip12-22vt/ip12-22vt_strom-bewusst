@@ -14,7 +14,7 @@ class QuizLogicTest {
 
     @Test
     void checkAnswer() {
-        //checkAnser() returns only true if both choose the correct answer
+        //checkAnswer() returns only true if both choose the correct answer
         String[] correctAnswer = {"RED","RED","GREEN","BLUE","RED","RED"};
         String[] wrongAnswer = {"BLUE","BLUE","BLUE","GREEN","BLUE","GREEN"};
 
@@ -33,7 +33,7 @@ class QuizLogicTest {
 
     @Test
     void quizDone() {
-        //We currently 6 questions in total, hence we can increment the questionNum 5 times
+        //We currently have 6 questions in total, hence we can increment the questionNum 5 times
         for(int i = 0; i < 5; i++){
             assertFalse(quiz.quizDone());
             quiz.incQuestNum();
