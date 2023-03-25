@@ -12,8 +12,6 @@ import javafx.util.Duration;
 
 import java.util.HashMap;
 
-import static com.almasb.fxgl.dsl.FXGL.getSceneService;
-
 public class PlayerDeskHandler extends CollisionHandler {
     private final HBox player1HBox = new HBox();
     private final HBox player2HBox = new HBox();
@@ -24,11 +22,11 @@ public class PlayerDeskHandler extends CollisionHandler {
         bucket = new Textbucket();
         player1HBox.setTranslateX(950);
         player1HBox.setTranslateY(25);
-        FXGL.runOnce(() -> getSceneService().getCurrentScene().addChild(player1HBox), Duration.ZERO);
+        FXGL.runOnce(() -> FXGL.getSceneService().getCurrentScene().addChild(player1HBox), Duration.ZERO);
 
         player2HBox.setTranslateX(950);
         player2HBox.setTranslateY(380);
-        FXGL.runOnce(() -> getSceneService().getCurrentScene().addChild(player2HBox), Duration.ZERO);
+        FXGL.runOnce(() -> FXGL.getSceneService().getCurrentScene().addChild(player2HBox), Duration.ZERO);
     }
 
     public PlayerDeskHandler(EntityType player, EntityType type) {
