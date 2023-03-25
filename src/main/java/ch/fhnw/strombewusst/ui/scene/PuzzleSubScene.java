@@ -20,13 +20,21 @@ import javafx.scene.text.Text;
 public class PuzzleSubScene extends SubScene {
 
     private final int mainBoxX = 70;
-    private final int mainBoxY = 60;
-    private final int firstBoxX = 260;
+    private final int mainBoxY = 40;
+    private final int firstBoxX = 300;
     private final int firstBoxY = 300;
-    private final int secondBoxX = 260;
-    private final int secondBoxY = 425;
-    private final int thirdBoxX = 260;
-    private final int thirdBoxY = 550;
+    private final int secondBoxX = 300;
+    private final int secondBoxY = 450;
+    private final int thirdBoxX = 300;
+    private final int thirdBoxY = 600;
+
+    private final int plugP1X = 925;
+
+    private final int plugP1Y = 590;
+
+    private final int plugP2X = 1100;
+
+    private final int plugP2Y = 590;
     private HBox[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
@@ -49,17 +57,32 @@ public class PuzzleSubScene extends SubScene {
         backHBox.setAlignment(Pos.CENTER);
         backHBox.setTranslateY(getAppHeight() - 90);
 
-        String inputs = "PLAYER 1 \nROT: 4 \nGRÜN: 5 \nBLAU: 6 \n \nPLAYER 2 \nROT: 7 \nGRÜN: 8 \nBLAU: 9";
+        String inputs = "PLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} \nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9}";
         Text playerInputs = new Text(inputs);
         playerInputs.getStyleClass().add("message");
         HBox inputsHBox = new HBox(playerInputs);
         inputsHBox.setTranslateX(950);
-        inputsHBox.setTranslateY(25);
+        inputsHBox.setTranslateY(430);
 
-        getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox);
+        HBox score = getTextBox("Score",950,30);
+        HBox steering = getTextBox("Steuerung",950,380);
+        HBox response = getTextBox("Rückmeldung",950,210);
+        HBox answerOne = getTextBox("Antwort 1", 955,555);
+        HBox answerTwo = getTextBox("Antwort 2", 1135,555);
+
+        getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox,score,steering,response,answerOne,answerTwo);
 
         currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
         inputs();
+    }
+
+    HBox getTextBox(String txt, int x, int y){
+        Text text = new Text(txt);
+        text.getStyleClass().add("small_title");
+        HBox textHBox = new HBox(text);
+        textHBox.setTranslateX(x);
+        textHBox.setTranslateY(y);
+        return textHBox;
     }
 
     void inputs() {
@@ -69,8 +92,8 @@ public class PuzzleSubScene extends SubScene {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
                 cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-red.png");
-                textureAnswerP1.setTranslateX(1012);
-                textureAnswerP1.setTranslateY(136);
+                textureAnswerP1.setTranslateX(plugP1X);
+                textureAnswerP1.setTranslateY(plugP1Y);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
                 StromBewusst.QUIZ.setAnswerP1("RED");
             }
@@ -82,8 +105,8 @@ public class PuzzleSubScene extends SubScene {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
                 cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-green.png");
-                textureAnswerP1.setTranslateX(1012);
-                textureAnswerP1.setTranslateY(136);
+                textureAnswerP1.setTranslateX(plugP1X);
+                textureAnswerP1.setTranslateY(plugP1Y);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
                 StromBewusst.QUIZ.setAnswerP1("GREEN");
             }
@@ -96,8 +119,8 @@ public class PuzzleSubScene extends SubScene {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
                 cleanPopUp();
                 textureAnswerP1 = getAssetLoader().loadTexture("plug-blue.png");
-                textureAnswerP1.setTranslateX(1012);
-                textureAnswerP1.setTranslateY(136);
+                textureAnswerP1.setTranslateX(plugP1X);
+                textureAnswerP1.setTranslateY(plugP1Y);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
                 StromBewusst.QUIZ.setAnswerP1("BLUE");
 
@@ -110,8 +133,8 @@ public class PuzzleSubScene extends SubScene {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
                 cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-red.png");
-                textureAnswerP2.setTranslateX(1012);
-                textureAnswerP2.setTranslateY(487);
+                textureAnswerP2.setTranslateX(plugP2X);
+                textureAnswerP2.setTranslateY(plugP2Y);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
                 StromBewusst.QUIZ.setAnswerP2("RED");
             }
@@ -124,8 +147,8 @@ public class PuzzleSubScene extends SubScene {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
                 cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-green.png");
-                textureAnswerP2.setTranslateX(1012);
-                textureAnswerP2.setTranslateY(487);
+                textureAnswerP2.setTranslateX(plugP2X);
+                textureAnswerP2.setTranslateY(plugP2Y);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
                 StromBewusst.QUIZ.setAnswerP2("GREEN");
             }
@@ -138,8 +161,8 @@ public class PuzzleSubScene extends SubScene {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
                 cleanPopUp();
                 textureAnswerP2 = getAssetLoader().loadTexture("plug-blue.png");
-                textureAnswerP2.setTranslateX(1012);
-                textureAnswerP2.setTranslateY(487);
+                textureAnswerP2.setTranslateX(plugP2X);
+                textureAnswerP2.setTranslateY(plugP2Y);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
                 StromBewusst.QUIZ.setAnswerP2("BLUE");
             }
@@ -191,7 +214,7 @@ public class PuzzleSubScene extends SubScene {
 
     HBox buildTextbox(int question, int num) {
         Text box = new Text(StromBewusst.QUIZ.getText(question, num));
-        box.getStyleClass().add("message");
+        box.getStyleClass().add("small_title");
         HBox boxHBox = new HBox(box);
         if (num == 0) {
             boxHBox.setTranslateX(mainBoxX);
