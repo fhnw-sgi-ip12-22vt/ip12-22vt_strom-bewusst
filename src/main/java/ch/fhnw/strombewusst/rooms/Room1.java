@@ -52,7 +52,7 @@ public class Room1 implements Room {
                 world.create("desk", new SpawnData(747, 543).put("deskNum", 14)),
 
                 world.create("empty-desk", new SpawnData(830, 75).put("deskNum", 15)),
-                world.create("empty-desk", new SpawnData(553, 75).put("deskNum", 16)),
+                world.create("empty-desk", new SpawnData(510, 75).put("deskNum", 16)),
                 world.create("empty-desk", new SpawnData(20, 625).put("deskNum", 17)),
 
                 world.create("bookshelf", new SpawnData(150, 18). put("deskNum", 18)),
