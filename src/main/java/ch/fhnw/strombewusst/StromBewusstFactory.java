@@ -241,4 +241,15 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("")
                 .build();
     }
+
+    @Spawns("cabinet")
+    public Entity newCabinet(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.CABINET)
+                .view("cabinet.png")
+                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .build();
+    }
 }

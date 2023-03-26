@@ -32,6 +32,10 @@ public class Room2 implements Room {
 
         int x = 100;
         int y = 100;
+        int xCabinet= 22;
+        int yCabinet= 600;//spawnlocation of cabinet to the wall on the left
+        int cabinetWidth = 62;
+        int cabinetDelta = 170;
 
         entities = List.of(
             player1,
@@ -50,7 +54,63 @@ public class Room2 implements Room {
                 world.create("washing-machine", new SpawnData(4*x,2*y).put("washing-machine", 1)),
                 world.create("microwave", new SpawnData(5*x,2*y).put("microwave", 1)),
                 world.create("smartphone", new SpawnData(2*x,3*y).put("smartphone", 1)),
-                world.create("ps5", new SpawnData(3*x,3*y).put("ps5", 1))
+                world.create("ps5", new SpawnData(3*x,3*y).put("ps5", 1)),
+
+                //first row
+                world.create("cabinet", new SpawnData(xCabinet, yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+cabinetWidth, yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(2*cabinetWidth), yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(3*cabinetWidth), yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(4*cabinetWidth), yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(5*cabinetWidth), yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(6*cabinetWidth), yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(7*cabinetWidth), yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(8*cabinetWidth), yCabinet)),
+
+                world.create("cabinet", new SpawnData(xCabinet+(12*cabinetWidth), yCabinet)),
+                world.create("cabinet", new SpawnData(xCabinet+(13*cabinetWidth), yCabinet)),
+
+
+                //second row
+                world.create("cabinet", new SpawnData(xCabinet+(cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(2*cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(3*cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(4*cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(5*cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(6*cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(7*cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(8*cabinetWidth), yCabinet-cabinetDelta)),
+
+                world.create("cabinet", new SpawnData(xCabinet+(12*cabinetWidth), yCabinet-cabinetDelta)),
+                world.create("cabinet", new SpawnData(xCabinet+(13*cabinetWidth), yCabinet-cabinetDelta)),
+
+                //third row
+                world.create("cabinet", new SpawnData(xCabinet+(cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(2*cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(3*cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(4*cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(5*cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(6*cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(7*cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(8*cabinetWidth), yCabinet-(cabinetDelta*2))),
+
+                world.create("cabinet", new SpawnData(xCabinet+(12*cabinetWidth), yCabinet-(cabinetDelta*2))),
+                world.create("cabinet", new SpawnData(xCabinet+(13*cabinetWidth), yCabinet-(cabinetDelta*2))),
+
+                //fourth row
+                world.create("cabinet", new SpawnData(xCabinet, yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+cabinetWidth, yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(2*cabinetWidth), yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(3*cabinetWidth), yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(4*cabinetWidth), yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(5*cabinetWidth), yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(6*cabinetWidth), yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(7*cabinetWidth), yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(8*cabinetWidth), yCabinet-(cabinetDelta*3))),
+
+                world.create("cabinet", new SpawnData(xCabinet+(12*cabinetWidth), yCabinet-(cabinetDelta*3))),
+                world.create("cabinet", new SpawnData(xCabinet+(13*cabinetWidth), yCabinet-(cabinetDelta*3)))
+
 
 
         );
