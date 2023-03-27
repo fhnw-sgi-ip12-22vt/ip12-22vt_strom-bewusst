@@ -182,6 +182,9 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newStove(SpawnData data){
         return entityBuilder(data)
                 .type(EntityType.STOVE)
+                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
                 .view("Electroherd.png")
                 .zIndex(1)
                 .build();
@@ -190,6 +193,9 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newWasher(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.WASHER)
+                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
                 .view("Waschmaschine.png")
                 .zIndex(1)
                 .build();
@@ -200,6 +206,9 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.PS5)
                 .view("PS5.png")
+                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
     }
@@ -208,6 +217,9 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newMicrowave(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.MICROWAVE)
+                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
                 .view("Mikrowelle.png")
                 .build();
     }
@@ -215,6 +227,9 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newTelevision(SpawnData data){
         return entityBuilder(data)
                 .type(EntityType.TELEVISION)
+                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
                 .view("Fernseher.png")
                 .build();
     }
@@ -222,6 +237,9 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newRouter(SpawnData data){
         return entityBuilder(data)
                 .type(EntityType.ROUTER)
+                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
                 .view("WLAN-Router.png")
                 .build();
     }
