@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 /**
@@ -39,7 +40,7 @@ public class PuzzleSubScene extends SubScene {
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
 
-    private Texture answerPopUp;
+    private HBox answerPopUp;
 
 
     public PuzzleSubScene() {
@@ -85,15 +86,30 @@ public class PuzzleSubScene extends SubScene {
         return textHBox;
     }
 
+    void setImagePlug(String image, int player){
+        if(player == 1) {
+            textureAnswerP1 = getAssetLoader().loadTexture(image);
+            textureAnswerP1.setTranslateX(plugP1X);
+            textureAnswerP1.setTranslateY(plugP1Y);
+            textureAnswerP1.setScaleX(0.75);
+            textureAnswerP1.setScaleY(0.75);
+        }
+        else{
+            textureAnswerP2 = getAssetLoader().loadTexture(image);
+            textureAnswerP2.setTranslateX(plugP2X);
+            textureAnswerP2.setTranslateY(plugP2Y);
+            textureAnswerP2.setScaleX(0.75);
+            textureAnswerP2.setScaleY(0.75);
+        }
+    }
+
     void inputs() {
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
                 cleanPopUp();
-                textureAnswerP1 = getAssetLoader().loadTexture("plug-red.png");
-                textureAnswerP1.setTranslateX(plugP1X);
-                textureAnswerP1.setTranslateY(plugP1Y);
+                setImagePlug("plug-red.png",1);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
                 StromBewusst.QUIZ.setAnswerP1("RED");
             }
@@ -104,9 +120,8 @@ public class PuzzleSubScene extends SubScene {
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
                 cleanPopUp();
-                textureAnswerP1 = getAssetLoader().loadTexture("plug-green.png");
-                textureAnswerP1.setTranslateX(plugP1X);
-                textureAnswerP1.setTranslateY(plugP1Y);
+                setImagePlug("plug-green.png",1);
+
                 getContentRoot().getChildren().addAll(textureAnswerP1);
                 StromBewusst.QUIZ.setAnswerP1("GREEN");
             }
@@ -118,9 +133,7 @@ public class PuzzleSubScene extends SubScene {
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP1);
                 cleanPopUp();
-                textureAnswerP1 = getAssetLoader().loadTexture("plug-blue.png");
-                textureAnswerP1.setTranslateX(plugP1X);
-                textureAnswerP1.setTranslateY(plugP1Y);
+                setImagePlug("plug-blue.png",1);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
                 StromBewusst.QUIZ.setAnswerP1("BLUE");
 
@@ -132,9 +145,7 @@ public class PuzzleSubScene extends SubScene {
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
                 cleanPopUp();
-                textureAnswerP2 = getAssetLoader().loadTexture("plug-red.png");
-                textureAnswerP2.setTranslateX(plugP2X);
-                textureAnswerP2.setTranslateY(plugP2Y);
+                setImagePlug("plug-red.png",2);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
                 StromBewusst.QUIZ.setAnswerP2("RED");
             }
@@ -146,9 +157,7 @@ public class PuzzleSubScene extends SubScene {
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
                 cleanPopUp();
-                textureAnswerP2 = getAssetLoader().loadTexture("plug-green.png");
-                textureAnswerP2.setTranslateX(plugP2X);
-                textureAnswerP2.setTranslateY(plugP2Y);
+                setImagePlug("plug-green.png",2);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
                 StromBewusst.QUIZ.setAnswerP2("GREEN");
             }
@@ -160,9 +169,7 @@ public class PuzzleSubScene extends SubScene {
             protected void onActionBegin() {
                 getContentRoot().getChildren().removeAll(textureAnswerP2);
                 cleanPopUp();
-                textureAnswerP2 = getAssetLoader().loadTexture("plug-blue.png");
-                textureAnswerP2.setTranslateX(plugP2X);
-                textureAnswerP2.setTranslateY(plugP2Y);
+                setImagePlug("plug-blue.png",2);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
                 StromBewusst.QUIZ.setAnswerP2("BLUE");
             }
@@ -182,18 +189,24 @@ public class PuzzleSubScene extends SubScene {
 
                 if (StromBewusst.QUIZ.checkAnswer()) {
                     StromBewusst.SCORE.increaseScore(1);
-                    System.out.println(StromBewusst.SCORE.getScore());
+                    System.out.println(StromBewusst.SCORE.getScore()); //Here comes scoreboard HBox
 
-                    answerPopUp = getAssetLoader().loadTexture("richtig.png");
-                    answerPopUp.setTranslateX(990);
-                    answerPopUp.setTranslateY(100);
+                    Text text = new Text("RICHTIG");
+                    text.setStyle("-fx-font-size: 44px;");
+                    text.setFill(Color.GREEN);
+                    answerPopUp = new HBox(text);
+                    answerPopUp.setTranslateX(1020);
+                    answerPopUp.setTranslateY(250);
                     getContentRoot().getChildren().addAll(answerPopUp);
 
                     nextQuestion();
                 } else {
-                    answerPopUp = getAssetLoader().loadTexture("falsch.png");
-                    answerPopUp.setTranslateX(990);
-                    answerPopUp.setTranslateY(100);
+                    Text text = new Text("FALSCH");
+                    text.setStyle("-fx-font-size: 44px;");
+                    text.setFill(Color.RED);
+                    answerPopUp = new HBox(text);
+                    answerPopUp.setTranslateX(1020);
+                    answerPopUp.setTranslateY(250);
                     getContentRoot().getChildren().addAll(answerPopUp);
 
                     StromBewusst.QUIZ.resetAnswers();
