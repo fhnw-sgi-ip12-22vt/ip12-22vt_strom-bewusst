@@ -121,9 +121,9 @@ public class QuizLogic {
     private String answer19 = "BLUE";
 
     private String questionString20 = "Welche Aussage trifft zu?";
-    private String firstString20 = "Früher wurde mit Windmühlen elektrischer Strom produziert";
-    private String secondString20 = "Ein Wasserkraftwerk kann mit Wasser steuern wie viel Strom produziert wird";
-    private String thirdString20 = "Solaranlagen sind die wichtigsten Energieträger der Schweiz ";
+    private String firstString20 = "Früher wurde mit Windmühlen \nelektrischer Strom produziert";
+    private String secondString20 = "Ein Wasserkraftwerk kann mit \nWasser steuern wie viel Strom produziert wird";
+    private String thirdString20 = "Solaranlagen sind die wichtigsten \nEnergieträger der Schweiz ";
     private String answer20 = "GREEN";
 
     private String questionString21 = "Was ist der effektivste Weg, \num Strom in der Küche zu sparen?";
@@ -248,6 +248,8 @@ public class QuizLogic {
     public int getQustNum() {
         return questionNum;
     }
+
+    public int getSize(){return size;}
 
     public void buildSet(){
         Random random = new Random();

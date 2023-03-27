@@ -36,11 +36,15 @@ public class PuzzleSubScene extends SubScene {
     private final int plugP2X = 1100;
 
     private final int plugP2Y = 590;
+
+    private int falseAnswer = 0;
     private HBox[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
 
     private HBox answerPopUp;
+
+    private HBox scoretable;
 
 
     public PuzzleSubScene() {
@@ -58,20 +62,19 @@ public class PuzzleSubScene extends SubScene {
         backHBox.setAlignment(Pos.CENTER);
         backHBox.setTranslateY(getAppHeight() - 90);
 
-        String inputs = "PLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} \nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9}";
+        String inputs = "PLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} \nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9} \nFALSCH: 0 -> 3P\nFALSCH: 1 -> 2P\nFALSCH:>1 -> 1P";
         Text playerInputs = new Text(inputs);
         playerInputs.getStyleClass().add("message");
         HBox inputsHBox = new HBox(playerInputs);
         inputsHBox.setTranslateX(950);
-        inputsHBox.setTranslateY(430);
+        inputsHBox.setTranslateY(410);
 
-        HBox score = getTextBox("Score",950,30);
         HBox steering = getTextBox("Steuerung",950,380);
         HBox response = getTextBox("Rückmeldung",950,210);
         HBox answerOne = getTextBox("Antwort 1", 955,555);
         HBox answerTwo = getTextBox("Antwort 2", 1135,555);
 
-        getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox,score,steering,response,answerOne,answerTwo);
+        getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox,steering,response,answerOne,answerTwo);
 
         currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
         inputs();
@@ -188,8 +191,11 @@ public class PuzzleSubScene extends SubScene {
             protected void onActionBegin() {
 
                 if (StromBewusst.QUIZ.checkAnswer()) {
-                    StromBewusst.SCORE.increaseScore(1);
-                    System.out.println(StromBewusst.SCORE.getScore()); //Here comes scoreboard HBox
+                    if (StromBewusst.SCORE.getAnswerSolved() < StromBewusst.QUIZ.getSize()) {
+                        int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
+                        StromBewusst.SCORE.increaseScore(increase);
+                    }
+
 
                     Text text = new Text("RICHTIG");
                     text.setStyle("-fx-font-size: 44px;");
@@ -210,6 +216,7 @@ public class PuzzleSubScene extends SubScene {
                     getContentRoot().getChildren().addAll(answerPopUp);
 
                     StromBewusst.QUIZ.resetAnswers();
+                    falseAnswer++;
                     getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
                 }
             }
@@ -247,8 +254,8 @@ public class PuzzleSubScene extends SubScene {
 
     void clearQuiz() {
         getContentRoot().getChildren()
-                .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1,
-                        textureAnswerP2);
+                .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1, textureAnswerP2, scoretable);
+        falseAnswer = 0;
     }
 
     void nextQuestion() {
@@ -267,7 +274,8 @@ public class PuzzleSubScene extends SubScene {
         HBox firstHBox = buildTextbox(i, 1);
         HBox secondHBox = buildTextbox(i, 2);
         HBox thirdHBox = buildTextbox(i, 3);
-        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox);
+        scoretable = StromBewusst.SCORE.pushScore(950,30);
+        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox,scoretable);
         HBox[] result = {questionHBox, firstHBox, secondHBox, thirdHBox};
         return result;
     }

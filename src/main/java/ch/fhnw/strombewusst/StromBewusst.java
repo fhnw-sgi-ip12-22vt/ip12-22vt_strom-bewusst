@@ -26,8 +26,10 @@ import com.almasb.fxgl.physics.PhysicsWorld;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * This is the main class of our game, the methods of this class initialize the game.
@@ -269,5 +271,17 @@ public class StromBewusst extends GameApplication {
         physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());
+    }
+
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("score",0);
+    }
+
+    @Override
+    protected void initUI() {
+        var scoreText = getUIFactoryService().newText("", Color.AQUA,40.0);
+        scoreText.textProperty().bind(getip("score").asString("Score: %d"));
+        addUINode(scoreText,720,50);
     }
 }

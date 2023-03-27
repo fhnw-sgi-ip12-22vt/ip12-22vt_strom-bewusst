@@ -1,28 +1,36 @@
 package ch.fhnw.strombewusst;
 
+import com.almasb.fxgl.dsl.FXGL;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 
 public class Score {
     private int score;
+    private int answerSolved;
 
     public Score(){
         this.score = 0;
+        this.answerSolved = 0;
     }
 
     public int getScore(){return score;}
 
-    public void increaseScore(int points){this.score+=points;}
+    public int getAnswerSolved(){return answerSolved;}
 
-    public HBox pushScore(){
+    public void increaseScore(int points){
+        this.score+=points;
+        FXGL.inc("score",+points);
+        this.answerSolved++;
+    }
+
+    public HBox pushScore(int x, int y){
         Text title = new Text(toString());
-        title.getStyleClass().add("message");
-
-        HBox messageHBox1 = new HBox(title);
-        messageHBox1.setTranslateX(750);
-        messageHBox1.setTranslateY(25);
-        return messageHBox1;
+        title.setStyle("-fx-font-size: 44px;");
+        HBox titleHBox1 = new HBox(title);
+        titleHBox1.setTranslateX(x);
+        titleHBox1.setTranslateY(y);
+        return titleHBox1;
     }
 
     @Override
