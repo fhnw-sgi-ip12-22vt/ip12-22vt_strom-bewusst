@@ -110,7 +110,7 @@ public class StromBewusst extends GameApplication {
         level = 0;
         nextLevel();
     }
-
+//this is a test
     /**
      * This method initializes the input. It gets executed *before* initGame.
      */
