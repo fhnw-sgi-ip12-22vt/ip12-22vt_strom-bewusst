@@ -63,7 +63,8 @@ public class QuizLogic {
     private String questionString10 = "Wieso sind Fossile Energien \nwie Öl, Gas und Kohle Umweltschädlich?";
     private String firstString10 = "Weil sie verbrannt werden, \nwodurch Treibhausgase entstehen";
     private String secondString10 = "Weil sie nach der Benutzung \nin die Umwelt geworfen werden";
-    private String thirdString10 = "Weil Fossile Energien zusammen \nmit dem Sauerstoff aus der Luft gefiltert werden \n und das schlecht für die Umwelt ist";
+    private String thirdString10 =
+            "Weil Fossile Energien zusammen \nmit dem Sauerstoff aus der Luft gefiltert werden \n und das schlecht für die Umwelt ist";
     private String answer10 = "RED";
 
     private String questionString11 = "Wie wird Strom erzeugt?";
@@ -200,7 +201,9 @@ public class QuizLogic {
         nextQuestion();
     }
 
-    public void unlockDoor(){this.doorOpen=true;}
+    public void unlockDoor() {
+        this.doorOpen = true;
+    }
 
     public boolean checkAnswer() {
         if (!(getAnswerP1() == null) || !(getAnswerP2() == null)) {
@@ -209,11 +212,13 @@ public class QuizLogic {
         return false;
     }
 
-    public boolean quizDone() {return questSet.isEmpty();}
+    public boolean quizDone() {
+        return questSet.isEmpty();
+    }
 
     public void nextQuestion() {
-        for(int i = 0; i < quest.length; i++){
-            if(questSet.remove(i)){
+        for (int i = 0; i < quest.length; i++) {
+            if (questSet.remove(i)) {
                 questionNum = i;
                 break;
             }
@@ -249,19 +254,25 @@ public class QuizLogic {
         return questionNum;
     }
 
-    public int getSize(){return size;}
+    public int getSize() {
+        return size;
+    }
 
-    public void buildSet(){
+    public void buildSet() {
         Random random = new Random();
         int x;
-        for(int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             x = random.nextInt(quest.length);
-            while(questSet.contains(x)){x=random.nextInt(quest.length);}
+            while (questSet.contains(x)) {
+                x = random.nextInt(quest.length);
+            }
             questSet.add(x);
         }
     }
 
-    public boolean getDoorOpen(){return doorOpen;}
+    public boolean getDoorOpen() {
+        return doorOpen;
+    }
 }
 
 
