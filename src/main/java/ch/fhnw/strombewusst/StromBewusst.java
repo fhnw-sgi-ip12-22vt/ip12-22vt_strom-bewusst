@@ -284,4 +284,6 @@ public class StromBewusst extends GameApplication {
         scoreText.textProperty().bind(getip("score").asString("Score: %d"));
         addUINode(scoreText,720,50);
     }
+
+    public int getLevel(){return level;}
 }

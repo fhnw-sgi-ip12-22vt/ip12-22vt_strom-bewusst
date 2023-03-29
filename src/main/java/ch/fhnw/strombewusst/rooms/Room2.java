@@ -44,6 +44,9 @@ public class Room2 implements Room {
             world.create("emptyRoom", new SpawnData().put("textureName", "room2-with-sidebar.png")),
             door,
             world.create("prev-door", new SpawnData(618, FXGL.getAppHeight() - 127)),
+                //Geräteorderung
+                world.create("main-desk", new SpawnData(770, 150)),
+
                 //Haushaltgeräte
                 world.create("fridge", new SpawnData(2*x, y).put("fridge", 19)),
                 world.create("stove", new SpawnData(3*x,y).put("stove", 1)),

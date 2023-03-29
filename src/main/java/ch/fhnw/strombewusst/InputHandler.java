@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.components.PlayerComponent;
+import ch.fhnw.strombewusst.ui.scene.DeviceOrderSubScene;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
@@ -77,8 +78,12 @@ public class InputHandler {
         for (Entity e : entities) {
             // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
             // instead we check for the distance between bounding boxes
-            if (e.distanceBBox(player) <= 1 && !StromBewusst.QUIZ.quizDone()) {
+            if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel()==1 && !StromBewusst.QUIZ.quizDone()) {
                 FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
+                return;
+            }
+            else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel()==2) {
+                FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new DeviceOrderSubScene()), Duration.ZERO);
                 return;
             }
         }
