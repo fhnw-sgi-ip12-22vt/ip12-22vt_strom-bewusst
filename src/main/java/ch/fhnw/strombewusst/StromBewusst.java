@@ -282,7 +282,6 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initUI() {
         var scoreText = getUIFactoryService().newText("", Color.ANTIQUEWHITE,38.0);
-        scoreText.setFont(Font.font ("Verdana", 20));
         scoreText.textProperty().bind(getip("score").asString("Score: %d"));
         addUINode(scoreText,720,60);
     }
