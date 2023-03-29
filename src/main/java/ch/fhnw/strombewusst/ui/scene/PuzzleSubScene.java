@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -18,15 +19,19 @@ import javafx.scene.text.Text;
  * player gets to the main desk in the room button 1 is pressed.
  */
 public class PuzzleSubScene extends SubScene {
+    enum BoxType {
+        QUESTION(70, 40, 700),
+        REDANSWER(300, 300, 550),
+        GREENANSWER(300, 450, 550),
+        BLUEANSWER(300, 600, 550);
+        final int x, y, width;
 
-    private final int mainBoxX = 70;
-    private final int mainBoxY = 40;
-    private final int firstBoxX = 300;
-    private final int firstBoxY = 300;
-    private final int secondBoxX = 300;
-    private final int secondBoxY = 450;
-    private final int thirdBoxX = 300;
-    private final int thirdBoxY = 600;
+        BoxType(int x, int y, int width) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+        }
+    }
 
     private final int plugP1X = 925;
 
@@ -75,7 +80,7 @@ public class PuzzleSubScene extends SubScene {
 
         getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox,steering,response,answerOne,answerTwo);
 
-        currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
+        currentQuiz = buildQuiz(StromBewusst.QUIZ.getQuestion());
         inputs();
     }
 
@@ -113,7 +118,7 @@ public class PuzzleSubScene extends SubScene {
                 cleanPopUp();
                 setImagePlug("plug-red.png",1);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                StromBewusst.QUIZ.setAnswerP1("RED");
+                StromBewusst.QUIZ.setAnswerP1(0);
             }
         }, KeyCode.DIGIT4);
 
@@ -125,7 +130,7 @@ public class PuzzleSubScene extends SubScene {
                 setImagePlug("plug-green.png",1);
 
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                StromBewusst.QUIZ.setAnswerP1("GREEN");
+                StromBewusst.QUIZ.setAnswerP1(1);
             }
         }, KeyCode.DIGIT5);
 
@@ -137,7 +142,7 @@ public class PuzzleSubScene extends SubScene {
                 cleanPopUp();
                 setImagePlug("plug-blue.png",1);
                 getContentRoot().getChildren().addAll(textureAnswerP1);
-                StromBewusst.QUIZ.setAnswerP1("BLUE");
+                StromBewusst.QUIZ.setAnswerP1(2);
 
             }
         }, KeyCode.DIGIT6);
@@ -149,7 +154,7 @@ public class PuzzleSubScene extends SubScene {
                 cleanPopUp();
                 setImagePlug("plug-red.png",2);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                StromBewusst.QUIZ.setAnswerP2("RED");
+                StromBewusst.QUIZ.setAnswerP2(0);
             }
         }, KeyCode.DIGIT7);
 
@@ -161,7 +166,7 @@ public class PuzzleSubScene extends SubScene {
                 cleanPopUp();
                 setImagePlug("plug-green.png",2);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                StromBewusst.QUIZ.setAnswerP2("GREEN");
+                StromBewusst.QUIZ.setAnswerP2(1);
             }
         }, KeyCode.DIGIT8);
 
@@ -173,7 +178,7 @@ public class PuzzleSubScene extends SubScene {
                 cleanPopUp();
                 setImagePlug("plug-blue.png",2);
                 getContentRoot().getChildren().addAll(textureAnswerP2);
-                StromBewusst.QUIZ.setAnswerP2("BLUE");
+                StromBewusst.QUIZ.setAnswerP2(2);
             }
         }, KeyCode.DIGIT9);
 
@@ -220,8 +225,6 @@ public class PuzzleSubScene extends SubScene {
                 }
             }
         }, KeyCode.Q);
-
-
     }
 
     void cleanPopUp(){
@@ -231,28 +234,15 @@ public class PuzzleSubScene extends SubScene {
         }
     }
 
-    HBox buildTextbox(int question, int num) {
-        Text box = new Text(StromBewusst.QUIZ.getText(question, num));
+    private HBox buildTextbox(String text, BoxType type) {
+        Text box = new Text(text);
+        box.setWrappingWidth(type.width);
         box.getStyleClass().add("small_title");
-        HBox boxHBox = new HBox(box);
-        if (num == 0) {
-            box.setWrappingWidth(700);
-            boxHBox.setTranslateX(mainBoxX);
-            boxHBox.setTranslateY(mainBoxY);
-        } else if (num == 1) {
-            box.setWrappingWidth(550);
-            boxHBox.setTranslateX(firstBoxX);
-            boxHBox.setTranslateY(firstBoxY);
-        } else if (num == 2) {
-            box.setWrappingWidth(550);
-            boxHBox.setTranslateX(secondBoxX);
-            boxHBox.setTranslateY(secondBoxY);
-        } else {
-            box.setWrappingWidth(550);
-            boxHBox.setTranslateX(thirdBoxX);
-            boxHBox.setTranslateY(thirdBoxY);
-        }
-        return boxHBox;
+        HBox hBox = new HBox(box);
+        hBox.setTranslateX(type.x);
+        hBox.setTranslateY(type.y);
+
+        return hBox;
     }
 
     void clearQuiz() {
@@ -262,25 +252,27 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void nextQuestion() {
+        StromBewusst.QUIZ.nextQuestion();
+
         if (StromBewusst.QUIZ.quizDone()) {
             StromBewusst.QUIZ.unlockDoor();
             getSceneService().popSubScene();
         } else {
             clearQuiz();
-            StromBewusst.QUIZ.nextQuestion();
-            currentQuiz = buildQuiz(StromBewusst.QUIZ.getQustNum());
+            currentQuiz = buildQuiz(StromBewusst.QUIZ.getQuestion());
         }
     }
 
-    HBox[] buildQuiz(int i) {
-        HBox questionHBox = buildTextbox(i, 0);
-        HBox firstHBox = buildTextbox(i, 1);
-        HBox secondHBox = buildTextbox(i, 2);
-        HBox thirdHBox = buildTextbox(i, 3);
+    private HBox[] buildQuiz(QuizQuestion question) {
+        HBox questionHBox = buildTextbox(question.question(), BoxType.QUESTION);
+        HBox firstHBox = buildTextbox(question.answerOptions()[0], BoxType.REDANSWER);
+        HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.GREENANSWER);
+        HBox thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
+
         scoretable = StromBewusst.SCORE.pushScore(950,30);
+
         getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox,scoretable);
-        HBox[] result = {questionHBox, firstHBox, secondHBox, thirdHBox};
-        return result;
+        return new HBox[] {questionHBox, firstHBox, secondHBox, thirdHBox};
     }
 
 }

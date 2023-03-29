@@ -27,7 +27,6 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 import java.util.List;
 import java.util.Map;
@@ -106,6 +105,7 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initGame() {
+        QUIZ.initQuestions();
         getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
         level = 0;

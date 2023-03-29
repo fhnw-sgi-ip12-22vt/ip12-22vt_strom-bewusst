@@ -1,0 +1,250 @@
+[{
+  "question": "Wie viel denkst du kostet der Strom deines Handys pro Jahr?",
+  "answerOptions": [
+    "40 – 50 CHF",
+    "2 – 2.50 CHF",
+    "ca. 150 CHF"
+  ],
+  "correctAnswer": 1
+},
+
+  {
+    "question": "Wie viel Energie kann man mit Fahrrad fahren ca. herstellen?",
+    "answerOptions": [
+      "1kwh",
+      "0.2kwh",
+      "5kwh"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Wie viel Strom denkst du verbraucht ein Haushalt?",
+    "answerOptions": [
+      "4000 kwh",
+      "10000 kwh",
+      "99999 kwh"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Wo wird alles Strom benutzt?",
+    "answerOptions": [
+      "Wasserhahn, Warm Wasser, duschen",
+      "Google, Netflix, Titkok, Sony",
+      "Alle Sachen sind von Strom abhängig"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Mit welchen mitteln kann Strom hergestellt werden?",
+    "answerOptions": [
+      "Gas, Öl Kohle",
+      "Sonne, Wind und Wasser",
+      "Alle ressourcen"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Wer hat bewiesen das Blitze elektrisch geladen sind?",
+    "answerOptions": [
+      "Benjamin Franklin",
+      "Thomas Edison",
+      "Thales von Milet"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Welcher dieser Sachen nutzt elektrische Impulse?",
+    "answerOptions": [
+      "Gehirn",
+      "Besen",
+      "Feuerzeug"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Welches Gerät verbraucht am meisten Strom?",
+    "answerOptions": [
+      "Laptop",
+      "Fernseher",
+      "Alte Heizungen"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Welches Wort, das mit Strom zu tun hat, gibt es nicht?",
+    "answerOptions": [
+      "Strommast",
+      "Stromgewebe",
+      "Stromnetz"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Wieso sind Fossile Energien wie Öl, Gas und Kohle Umweltschädlich?",
+    "answerOptions": [
+      "Weil sie verbrannt werden, wodurch Treibhausgase entstehen",
+      "Weil sie nach der Benutzung in die Umwelt geworfen werden",
+      "Energien zusammen mit dem Sauerstoff aus der Luft gefiltert werden  und das schlecht für die Umwelt ist"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Wie wird Strom erzeugt?",
+    "answerOptions": [
+      "Durch Schmutz",
+      "Es wird in der Steckdose erzeugt",
+      "Durch Turbinen"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Was ist das wichtigste Kraftwerk der Schweiz?",
+    "answerOptions": [
+      "Kernkraftwerk",
+      "Windkraftwerk",
+      "Wasserkraftwerk"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Wie viele Wasserkraftwerke hat die Schweiz?",
+    "answerOptions": [
+      "20’000",
+      "1’753",
+      "1’300"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Wie entsteht Strom?",
+    "answerOptions": [
+      "Durch Bewegung",
+      "Durch einen Blitz",
+      "Durch Öl, Gas, Wasser, Luft"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Mit was kann man elektrische Strom gut vergleichen?",
+    "answerOptions": [
+      "Durch einen Fluss",
+      "Mit einem Blitz",
+      "Mit einer Graphik"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Aus was besteht Strom?",
+    "answerOptions": [
+      "Atomen",
+      "Elektronen",
+      "Photonen"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Welches Kraftwerk erzeugt kein Strom?",
+    "answerOptions": [
+      "Gaskraftwerk",
+      "Holzkraftwerk",
+      "Luftkraftwerk"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Welche Fähigkeit hat Strom?",
+    "answerOptions": [
+      "Laufen",
+      "Leiten",
+      "Fliegen"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Welcher Gegenstand leitet Strom?",
+    "answerOptions": [
+      "Plastik",
+      "Luft",
+      "Salzwasser"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Welche Aussage trifft zu?",
+    "answerOptions": [
+      "Früher wurde mit Windmühlen elektrischer Strom produziert",
+      "Ein Wasserkraftwerk kann mit Wasser steuern wie viel Strom produziert wird",
+      "Solaranlagen sind die wichtigsten Energieträger der Schweiz"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Was ist der effektivste Weg, um Strom in der Küche zu sparen?",
+    "answerOptions": [
+      "Kühlschrank schnell schliessen",
+      "Kochen mit Deckel",
+      "Kühlschrank und Gefriertruhe abtauen"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Welches Gerät nutzt am wenigsten Strom?",
+    "answerOptions": [
+      "Laptop",
+      "Kühlschrank",
+      "Fernseher"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Wieso ist Strom sparen wichtig?",
+    "answerOptions": [
+      "Weil ich die Umwelt schone",
+      "Weil ich dadurch mehr Geld ausgebe",
+      "Damit ich später mehr habe"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Zu welcher Tageszeit verbraucht die Schweiz am meisten Storm?",
+    "answerOptions": [
+      "Morgens",
+      "Mittags",
+      "Abends"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Wie viel Strom verbraucht eine Person im Jahr?",
+    "answerOptions": [
+      "12.76 Megawattstuden",
+      "4.93 Megawattstunden",
+      "6.8 Megawattstunden"
+    ],
+    "correctAnswer": 2
+  }
+]
