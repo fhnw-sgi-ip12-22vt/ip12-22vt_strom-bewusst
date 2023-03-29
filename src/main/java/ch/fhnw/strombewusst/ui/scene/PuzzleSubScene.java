@@ -188,13 +188,13 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("checkAnswers") {
             @Override
             protected void onActionBegin() {
+                cleanPopUp();
 
                 if (StromBewusst.QUIZ.checkAnswer()) {
                     if (StromBewusst.SCORE.getAnswerSolved() < StromBewusst.QUIZ.getSize()) {
                         int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
                         StromBewusst.SCORE.increaseScore(increase);
                     }
-
 
                     Text text = new Text("RICHTIG");
                     text.setStyle("-fx-font-size: 44px;");
