@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst.components;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.texture.AnimatedTexture;
@@ -17,7 +18,6 @@ public class PlayerComponent extends Component {
 
     private final int playerNum;
 
-    private boolean isNearDesk;
 
     private PhysicsComponent physics;
 
@@ -81,7 +81,8 @@ public class PlayerComponent extends Component {
         } else {
             physics.setVelocityX(PLAYER_SPEED);
         }
-        getEntity().setScaleX(1);
+        // BUGFIX: avoid wrong-thread crash
+        FXGL.runOnce(() -> getEntity().setScaleX(1), Duration.ZERO);
     }
 
     public void moveLeft() {
@@ -90,7 +91,7 @@ public class PlayerComponent extends Component {
         } else {
             physics.setVelocityX(-PLAYER_SPEED);
         }
-        getEntity().setScaleX(-1);
+        FXGL.runOnce(() -> getEntity().setScaleX(-1), Duration.ZERO);
     }
 
 
@@ -120,14 +121,6 @@ public class PlayerComponent extends Component {
 
     public int getPlayerNum() {
         return playerNum;
-    }
-
-    public void setIsNearDesk(boolean is) {
-        this.isNearDesk = is;
-    }
-
-    public boolean getIsNearDesk() {
-        return isNearDesk;
     }
 }
 

@@ -51,11 +51,11 @@ public class Controller {
 
     private final JoystickAnalog joystick;
 
-    private final SimpleButton steckdoseLinks;
-    private final SimpleButton steckdoseMitte;
-    private final SimpleButton steckdoseRechts;
-    private final SimpleButton buttonOben;
-    private final SimpleButton buttonUnten;
+    private final SimpleButton outletLeft;
+    private final SimpleButton outletMiddle;
+    private final SimpleButton outletRight;
+    private final SimpleButton buttonUpper;
+    private final SimpleButton buttonLower;
 
     private final List<Runnable> onJoystickRightTasks = new ArrayList<>();
     private final List<Runnable> onJoystickLeftTasks = new ArrayList<>();
@@ -64,11 +64,11 @@ public class Controller {
     private final List<Runnable> onJoystickDownTasks = new ArrayList<>();
     private final List<Runnable> onJoystickVerticalIdleTasks = new ArrayList<>();
 
-    private final List<Runnable> onButtonLinksDownTasks = new ArrayList<>();
-    private final List<Runnable> onButtonRechtsDownTasks = new ArrayList<>();
-    private final List<Runnable> onButtonMitteDownTasks = new ArrayList<>();
-    private final List<Runnable> onButtonObenDownTasks = new ArrayList<>();
-    private final List<Runnable> onButtonUntenDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonLeftDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonRightDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonMiddleDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonUpperDownTasks = new ArrayList<>();
+    private final List<Runnable> onButtonLowerDownTasks = new ArrayList<>();
 
     public Controller(int channelXAxis, int channelYAxis, PIN pin,
                       PIN links, PIN mitte, PIN rechts, PIN oben, PIN unten) {
@@ -84,33 +84,33 @@ public class Controller {
         }
         joystick.start(0.05, 15);
 
-        steckdoseLinks = new SimpleButton(PI4J_CONTEXT, links, false);
-        steckdoseLinks.onDown(() -> {
-            for (Runnable task : onButtonLinksDownTasks) {
+        outletLeft = new SimpleButton(PI4J_CONTEXT, links, false);
+        outletLeft.onDown(() -> {
+            for (Runnable task : onButtonLeftDownTasks) {
                 task.run();
             }
         });
-        steckdoseRechts = new SimpleButton(PI4J_CONTEXT, rechts, false);
-        steckdoseRechts.onDown(() -> {
-            for (Runnable task : onButtonRechtsDownTasks) {
+        outletRight = new SimpleButton(PI4J_CONTEXT, rechts, false);
+        outletRight.onDown(() -> {
+            for (Runnable task : onButtonRightDownTasks) {
                 task.run();
             }
         });
-        steckdoseMitte = new SimpleButton(PI4J_CONTEXT, mitte, false);
-        steckdoseMitte.onDown(() -> {
-            for (Runnable task : onButtonMitteDownTasks) {
+        outletMiddle = new SimpleButton(PI4J_CONTEXT, mitte, false);
+        outletMiddle.onDown(() -> {
+            for (Runnable task : onButtonMiddleDownTasks) {
                 task.run();
             }
         });
-        buttonOben = new SimpleButton(PI4J_CONTEXT, oben, false);
-        buttonOben.onDown(() -> {
-            for (Runnable task : onButtonObenDownTasks) {
+        buttonUpper = new SimpleButton(PI4J_CONTEXT, oben, false);
+        buttonUpper.onDown(() -> {
+            for (Runnable task : onButtonUpperDownTasks) {
                 task.run();
             }
         });
-        buttonUnten = new SimpleButton(PI4J_CONTEXT, unten, false);
-        buttonUnten.onDown(() -> {
-            for (Runnable task : onButtonUntenDownTasks) {
+        buttonLower = new SimpleButton(PI4J_CONTEXT, unten, false);
+        buttonLower.onDown(() -> {
+            for (Runnable task : onButtonLowerDownTasks) {
                 task.run();
             }
         });
@@ -200,23 +200,23 @@ public class Controller {
         onJoystickVerticalIdleTasks.add(task);
     }
 
-    public void linksDown(Runnable tasks) {
-        onButtonLinksDownTasks.add(tasks);
+    public void onButtonLeftDown(Runnable tasks) {
+        onButtonLeftDownTasks.add(tasks);
     }
 
-    public void rechtsDown(Runnable tasks) {
-        onButtonRechtsDownTasks.add(tasks);
+    public void onButtonRightDown(Runnable tasks) {
+        onButtonRightDownTasks.add(tasks);
     }
 
-    public void mitteDown(Runnable tasks) {
-        onButtonMitteDownTasks.add(tasks);
+    public void onButtonMiddleDown(Runnable tasks) {
+        onButtonMiddleDownTasks.add(tasks);
     }
 
-    public void obenDown(Runnable tasks) {
-        onButtonObenDownTasks.add(tasks);
+    public void onButtonUpperDown(Runnable tasks) {
+        onButtonUpperDownTasks.add(tasks);
     }
 
-    public void untenDown(Runnable tasks) {
-        onButtonUntenDownTasks.add(tasks);
+    public void onButtonLowerDown(Runnable tasks) {
+        onButtonLowerDownTasks.add(tasks);
     }
 }

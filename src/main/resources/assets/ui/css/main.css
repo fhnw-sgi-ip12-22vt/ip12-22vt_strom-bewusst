@@ -4,6 +4,12 @@
     -fx-font-size: 60px;
 }
 
+.small_title{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 23px;
+}
+
 .message{
     -fx-text-fill: white;
     -fx-font-weight: bold;

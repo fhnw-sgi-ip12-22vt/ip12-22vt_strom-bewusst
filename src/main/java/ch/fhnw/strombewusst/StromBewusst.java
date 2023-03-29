@@ -3,9 +3,9 @@ package ch.fhnw.strombewusst;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
+import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerPlayerHandler;
-import ch.fhnw.strombewusst.components.PlayerComponent;
 import ch.fhnw.strombewusst.input.Controller;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.rooms.Room;
@@ -13,21 +13,23 @@ import ch.fhnw.strombewusst.rooms.Room1;
 import ch.fhnw.strombewusst.rooms.Room2;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
-import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.cutscene.Cutscene;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * This is the main class of our game, the methods of this class initialize the game.
@@ -38,6 +40,9 @@ public class StromBewusst extends GameApplication {
     private Entity door;
     private int level = 0;
 
+    public static final Score SCORE = new Score();
+    public static final QuizLogic QUIZ = new QuizLogic(10);
+
     private Room[] rooms;
 
     private Controller p1Controller;
@@ -47,7 +52,7 @@ public class StromBewusst extends GameApplication {
         launch(args);
     }
 
-    private void nextLevel() {
+    void nextLevel() {
         level++;
 
         // BUGFIX: clear HBoxes on level change, so Desk info boxes don't persist
@@ -126,13 +131,13 @@ public class StromBewusst extends GameApplication {
             p1Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player1));
             p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
 
-            p1Controller.obenDown(() -> getInput().mockKeyPress(KeyCode.Q));
-            p1Controller.untenDown(InputHandler::handleSelect);
-            p1Controller.linksDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
-            p1Controller.mitteDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
-            p1Controller.rechtsDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
-            p1Controller.obenDown(() -> System.out.println("DEBUG: P1 UPPER DOWN"));
-            p1Controller.untenDown(() -> System.out.println("DEBUG: P1 LOWER DOWN"));
+            p1Controller.onButtonUpperDown(() -> getInput().mockKeyPress(KeyCode.Q));
+            p1Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player1));
+            p1Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
+            p1Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
+            p1Controller.onButtonRightDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
+            p1Controller.onButtonUpperDown(() -> System.out.println("DEBUG: P1 UPPER DOWN"));
+            p1Controller.onButtonLowerDown(() -> System.out.println("DEBUG: P1 LOWER DOWN"));
 /*
             p2Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.L));
             p2Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.J));
@@ -243,33 +248,15 @@ public class StromBewusst extends GameApplication {
             }
         }, KeyCode.K);
 
-        getInput().addAction(new UserAction("open puzzle") {
-            @Override
-            protected void onAction() {
-                boolean p1 = player1.getComponent(PlayerComponent.class).getIsNearDesk();
-                boolean p2 = player2.getComponent(PlayerComponent.class).getIsNearDesk();
-                if (p1 || p2) {
-                    getSceneService().pushSubScene(new PuzzleSubScene());
-                }
-            }
-        }, KeyCode.Q);
+        // "backwards compatibility"
+        FXGL.onKeyDown(KeyCode.Q, () -> InputHandler.handleSelect(player1));
+        FXGL.onKeyDown(KeyCode.R, () -> InputHandler.handleSelect(player1));
 
         onKeyDown(KeyCode.F, () -> {
             var lines = getAssetLoader().loadText("example—cutscene1.txt");
             var cutscene = new Cutscene(lines);
             getCutsceneService().startCutscene(cutscene);
         });
-
-        getInput().addAction(new UserAction("next room") {
-            @Override
-            protected void onAction() {
-                boolean p1 = player1.isColliding(door);
-                boolean p2 = player2.isColliding(door);
-                if (p1 || p2) {
-                    getGameScene().getViewport().fade(() -> nextLevel());
-                }
-            }
-        }, KeyCode.R);
     }
 
     /**
@@ -283,5 +270,18 @@ public class StromBewusst extends GameApplication {
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
+        physicsWorld.addCollisionHandler(new PlayerDoorHandler());
+    }
+
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("score",0);
+    }
+
+    @Override
+    protected void initUI() {
+        var scoreText = getUIFactoryService().newText("", Color.AQUA,40.0);
+        scoreText.textProperty().bind(getip("score").asString("Score: %d"));
+        addUINode(scoreText,720,50);
     }
 }
