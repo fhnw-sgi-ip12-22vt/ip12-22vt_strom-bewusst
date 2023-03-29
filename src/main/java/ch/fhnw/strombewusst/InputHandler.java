@@ -78,7 +78,6 @@ public class InputHandler {
             // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
             // instead we check for the distance between bounding boxes
             if (e.distanceBBox(player) <= 1) {
-                System.out.println("wonderful");
                 FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
                 return;
             }
