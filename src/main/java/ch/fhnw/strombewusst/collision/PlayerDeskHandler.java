@@ -52,10 +52,14 @@ public class PlayerDeskHandler extends CollisionHandler {
 
     @Override
     protected void onCollisionEnd(Entity player, Entity desk) {
-        if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-            player1HBox.getChildren().clear();
-        } else {
-            player2HBox.getChildren().clear();
+        try {
+            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+                player1HBox.getChildren().clear();
+            } else {
+                player2HBox.getChildren().clear();
+            }
+        } catch (IllegalArgumentException ignored) {
+            // BUGFIX: prevent crash on edge-case when text is shown during level change
         }
     }
 }
