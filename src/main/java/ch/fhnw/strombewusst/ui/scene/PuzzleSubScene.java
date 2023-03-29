@@ -2,7 +2,6 @@ package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-import ch.fhnw.strombewusst.QuizLogic;
 import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -237,15 +236,19 @@ public class PuzzleSubScene extends SubScene {
         box.getStyleClass().add("small_title");
         HBox boxHBox = new HBox(box);
         if (num == 0) {
+            box.setWrappingWidth(700);
             boxHBox.setTranslateX(mainBoxX);
             boxHBox.setTranslateY(mainBoxY);
         } else if (num == 1) {
+            box.setWrappingWidth(550);
             boxHBox.setTranslateX(firstBoxX);
             boxHBox.setTranslateY(firstBoxY);
         } else if (num == 2) {
+            box.setWrappingWidth(550);
             boxHBox.setTranslateX(secondBoxX);
             boxHBox.setTranslateY(secondBoxY);
         } else {
+            box.setWrappingWidth(550);
             boxHBox.setTranslateX(thirdBoxX);
             boxHBox.setTranslateY(thirdBoxY);
         }

@@ -6,19 +6,19 @@ import java.util.Random;
 import java.util.Set;
 
 public class QuizLogic {
-    private String questionString1 = "Wie viel Energie kann man mit \nFahrrad fahren ca. herstellen?";
+    private String questionString1 = "Wie viel Energie kann man mit Fahrrad fahren ca. herstellen?";
     private String firstString1 = "1kwh";
     private String secondString1 = "0.2kwh";
     private String thirdString1 = "5kwh";
     private String answer1 = "GREEN";
 
-    private String questionString2 = "Wie viel denkst du kostet der \nStrom deines Handys pro Jahr? ";
+    private String questionString2 = "Wie viel denkst du kostet der Strom deines Handys pro Jahr? ";
     private String firstString2 = "40 – 50 CHF";
     private String secondString2 = "2 – 2.50 CHF";
     private String thirdString2 = "ca. 150 CHF";
     private String answer2 = "GREEN";
 
-    private String questionString3 = "Wie viel Strom denkst du \nverbraucht ein Haushalt?";
+    private String questionString3 = "Wie viel Strom denkst du verbraucht ein Haushalt?";
     private String firstString3 = "4000 kwh";
     private String secondString3 = "10000 kwh";
     private String thirdString3 = "99999 kwh";
@@ -30,41 +30,41 @@ public class QuizLogic {
     private String thirdString4 = "Alle Sachen sind von Strom abhängig";
     private String answer4 = "BLUE";
 
-    private String questionString5 = "Mit welchen mitteln kann \nStrom hergestellt werden?";
+    private String questionString5 = "Mit welchen mitteln kann Strom hergestellt werden?";
     private String firstString5 = "Gas, Öl Kohle";
     private String secondString5 = "Sonne, Wind und Wasser";
     private String thirdString5 = "Alle ressourcen";
     private String answer5 = "BLUE";
 
-    private String questionString6 = "Wer hat bewiesen das Blitze \nelektrisch geladen sind?";
+    private String questionString6 = "Wer hat bewiesen das Blitze elektrisch geladen sind?";
     private String firstString6 = "Benjamin Franklin";
     private String secondString6 = "Thomas Edison";
     private String thirdString6 = "Thales von Milet";
     private String answer6 = "RED";
 
-    private String questionString7 = "Welcher dieser Sachen \nnutzt elektrische Impulse?";
+    private String questionString7 = "Welcher dieser Sachen nutzt elektrische Impulse?";
     private String firstString7 = "Gehirn";
     private String secondString7 = "Besen";
     private String thirdString7 = "Feuerzeug";
     private String answer7 = "RED";
 
-    private String questionString8 = "Welches Gerät verbraucht \nam meisten Strom?";
+    private String questionString8 = "Welches Gerät verbraucht am meisten Strom?";
     private String firstString8 = "Laptop";
     private String secondString8 = "Fernseher";
     private String thirdString8 = "Alte Heizungen";
     private String answer8 = "BLUE";
 
-    private String questionString9 = "Welches Wort, das mit \nStrom zu tun hat, gibt es nicht?";
+    private String questionString9 = "Welches Wort, das mit Strom zu tun hat, gibt es nicht?";
     private String firstString9 = "Strommast";
     private String secondString9 = "Stromgewebe";
     private String thirdString9 = "Stromnetz";
     private String answer9 = "GREEN";
 
-    private String questionString10 = "Wieso sind Fossile Energien \nwie Öl, Gas und Kohle Umweltschädlich?";
-    private String firstString10 = "Weil sie verbrannt werden, \nwodurch Treibhausgase entstehen";
-    private String secondString10 = "Weil sie nach der Benutzung \nin die Umwelt geworfen werden";
+    private String questionString10 = "Wieso sind Fossile Energien wie Öl, Gas und Kohle Umweltschädlich?";
+    private String firstString10 = "Weil sie verbrannt werden, wodurch Treibhausgase entstehen";
+    private String secondString10 = "Weil sie nach der Benutzung in die Umwelt geworfen werden";
     private String thirdString10 =
-            "Weil Fossile Energien zusammen \nmit dem Sauerstoff aus der Luft gefiltert werden \n und das schlecht für die Umwelt ist";
+            "Weil Fossile Energien zusammen mit dem Sauerstoff aus der Luft gefiltert werden  und das schlecht für die Umwelt ist";
     private String answer10 = "RED";
 
     private String questionString11 = "Wie wird Strom erzeugt?";
@@ -73,13 +73,13 @@ public class QuizLogic {
     private String thirdString11 = "Durch Turbinen";
     private String answer11 = "BLUE";
 
-    private String questionString12 = "Was ist das wichtigste \nKraftwerk der Schweiz?";
+    private String questionString12 = "Was ist das wichtigste Kraftwerk der Schweiz?";
     private String firstString12 = "Kernkraftwerk";
     private String secondString12 = "Windkraftwerk";
     private String thirdString12 = "Wasserkraftwerk";
     private String answer12 = "BLUE";
 
-    private String questionString13 = "Wie viele Wasserkraftwerke \nhat die Schweiz?";
+    private String questionString13 = "Wie viele Wasserkraftwerke hat die Schweiz?";
     private String firstString13 = "20’000";
     private String secondString13 = "1’753";
     private String thirdString13 = "1’300";
@@ -91,7 +91,7 @@ public class QuizLogic {
     private String thirdString14 = "Durch Öl, Gas, Wasser, Luft";
     private String answer14 = "RED";
 
-    private String questionString15 = "Mit was kann man elektrische \nStrom gut vergleichen?";
+    private String questionString15 = "Mit was kann man elektrische Strom gut vergleichen?";
     private String firstString15 = "Durch einen Fluss";
     private String secondString15 = "Mit einem Blitz";
     private String thirdString15 = "Mit einer Graphik";
@@ -122,18 +122,18 @@ public class QuizLogic {
     private String answer19 = "BLUE";
 
     private String questionString20 = "Welche Aussage trifft zu?";
-    private String firstString20 = "Früher wurde mit Windmühlen \nelektrischer Strom produziert";
-    private String secondString20 = "Ein Wasserkraftwerk kann mit \nWasser steuern wie viel Strom produziert wird";
-    private String thirdString20 = "Solaranlagen sind die wichtigsten \nEnergieträger der Schweiz ";
+    private String firstString20 = "Früher wurde mit Windmühlen elektrischer Strom produziert";
+    private String secondString20 = "Ein Wasserkraftwerk kann mit Wasser steuern wie viel Strom produziert wird";
+    private String thirdString20 = "Solaranlagen sind die wichtigsten Energieträger der Schweiz ";
     private String answer20 = "GREEN";
 
-    private String questionString21 = "Was ist der effektivste Weg, \num Strom in der Küche zu sparen?";
+    private String questionString21 = "Was ist der effektivste Weg, um Strom in der Küche zu sparen?";
     private String firstString21 = "Kühlschrank schnell schliessen";
     private String secondString21 = "Kochen mit Deckel";
     private String thirdString21 = "Kühlschrank und Gefriertruhe abtauen";
     private String answer21 = "GREEN";
 
-    private String questionString22 = "Welches Gerät nutzt am \nwenigsten Strom?";
+    private String questionString22 = "Welches Gerät nutzt am wenigsten Strom?";
     private String firstString22 = "Laptop";
     private String secondString22 = "Kühlschrank";
     private String thirdString22 = "Fernseher";
@@ -145,13 +145,13 @@ public class QuizLogic {
     private String thirdString23 = "Damit ich später mehr habe";
     private String answer23 = "RED";
 
-    private String questionString24 = "Zu welcher Tageszeit verbraucht \ndie Schweiz am meisten Storm?";
+    private String questionString24 = "Zu welcher Tageszeit verbraucht die Schweiz am meisten Storm?";
     private String firstString24 = "Morgens";
     private String secondString24 = "Mittags";
     private String thirdString24 = "Abends";
     private String answer24 = "BLUE";
 
-    private String questionString25 = "Wie viel Strom verbraucht \neine Person im Jahr?";
+    private String questionString25 = "Wie viel Strom verbraucht eine Person im Jahr?";
     private String firstString25 = "12.76 Megawattstuden";
     private String secondString25 = "4.93 Megawattstunden";
     private String thirdString25 = "6.8 Megawattstunden";
