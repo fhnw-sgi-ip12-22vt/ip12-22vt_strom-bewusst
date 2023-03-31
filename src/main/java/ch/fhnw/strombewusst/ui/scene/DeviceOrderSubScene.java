@@ -19,7 +19,7 @@ import javafx.scene.text.Text;
  */
 public class DeviceOrderSubScene extends SubScene {
     public DeviceOrderSubScene() {
-        Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
+        Texture bg = getAssetLoader().loadTexture("background/deviceorderbackground.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
