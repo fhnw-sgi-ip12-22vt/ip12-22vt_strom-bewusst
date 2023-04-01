@@ -60,6 +60,8 @@ public class DeviceOrderLogic {
         if(index < answer.length){answer[index++]=d;}
     }
 
+    public int getIndex(){return index < answer.length ? index : index - 1;}
+
     public boolean[] compareAnswerSolution(){
         boolean[] correctAtIndex = new boolean[solution.length];
         for(int i = 0; i < solution.length; i++){

@@ -53,12 +53,12 @@ public class DeviceOrderSubScene extends SubScene {
         PLAYERTWORED(140,350),
         PLAYERTWOGREEN(425,350),
         PLAYERTWOBLUE(710,350),
-        QUEUEFIRST(65,530),
-        QUEUESECOND(65,530),
-        QUEUETHIRD(65,530),
-        QUEUEFOURTH(65,530),
-        QUEUEFIFTH(65,530),
-        QUEUESIXTH(65,530);
+        QUEUEFIRST(70,590),
+        QUEUESECOND(230,590),
+        QUEUETHIRD(365,590),
+        QUEUEFOURTH(500,590),
+        QUEUEFIFTH(625,590),
+        QUEUESIXTH(750,590);
         final int x, y;
 
         ImageType(int x, int y) {
@@ -67,22 +67,22 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
-    private Map<ImageType,Texture> currentDevices = new HashMap<ImageType,Texture>();
+    private Map<ImageType,Texture> currentTextures = new HashMap<ImageType,Texture>();
+    private Map<ImageType,DeviceOrderDevices> currentDevices = new HashMap<ImageType,DeviceOrderDevices>();
+
+    private ImageType[] queue = {
+        ImageType.QUEUEFIRST,
+        ImageType.QUEUESECOND,
+        ImageType.QUEUETHIRD,
+        ImageType.QUEUEFOURTH,
+        ImageType.QUEUEFIFTH,
+        ImageType.QUEUESIXTH
+    };
 
     public DeviceOrderSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/deviceorderbackground.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
-
-        Button btnBack = new Button("Back");
-        btnBack.getStyleClass().add("main_menu_button");
-        btnBack.setStyle("-fx-text-fill: black;");
-        btnBack.setOnAction(e -> getSceneService().popSubScene());
-
-        HBox backHBox = new HBox(btnBack);
-        backHBox.setPrefWidth(getAppWidth());
-        backHBox.setAlignment(Pos.CENTER);
-        backHBox.setTranslateY(getAppHeight() - 90);
 
         //TODO
         /*String inputs = "PLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} \nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9} \nFALSCH: 0 -> 3P\nFALSCH: 1 -> 2P\nFALSCH:>1 -> 1P";
@@ -98,7 +98,7 @@ public class DeviceOrderSubScene extends SubScene {
         HBox playerone = getTextBox("Player 1",BoxType.PLAYERONE,Color.BLACK,FontWeight.BOLD);
         HBox playertwo = getTextBox("Player 2",BoxType.PLAYERTWO,Color.BLACK,FontWeight.BOLD);
         HBox answerqueue = getTextBox("Eingabe",BoxType.QUEUEINPUT,Color.BLACK,FontWeight.BOLD);
-        getContentRoot().getChildren().addAll(bg, backHBox,steering,response,playerone,playertwo,answerqueue);
+        getContentRoot().getChildren().addAll(bg,steering,response,playerone,playertwo,answerqueue);
 
         StromBewusst.DEVICES.initDevices();
         buildDeviceOrder();
@@ -120,53 +120,60 @@ public class DeviceOrderSubScene extends SubScene {
         texture.setTranslateX(type.x);
         texture.setTranslateY(type.y);
         getContentRoot().getChildren().addAll(texture);
-        currentDevices.put(type,texture);
+        currentTextures.put(type,texture);
+        currentDevices.put(type,device);
     }
 
     void deleteImage(ImageType type){
-        getContentRoot().getChildren().removeAll(currentDevices.get(type));
+        getContentRoot().getChildren().removeAll(currentTextures.get(type));
     }
 
     void inputs() {
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {
-                setPlug(1, 0);
+                int index = StromBewusst.DEVICES.getIndex();
+                setDevice(ImageType.PLAYERONERED,queue[index]);
             }
         }, KeyCode.DIGIT4);
 
         getInput().addAction(new UserAction("Green1 Button") {
             @Override
             protected void onActionBegin() {
-                setPlug(1, 1);
+                int index = StromBewusst.DEVICES.getIndex();
+                setDevice(ImageType.PLAYERONEGREEN,queue[index]);
             }
         }, KeyCode.DIGIT5);
 
         getInput().addAction(new UserAction("Blue1 Button") {
             @Override
             protected void onActionBegin() {
-                setPlug(1, 2);
+                int index = StromBewusst.DEVICES.getIndex();
+                setDevice(ImageType.PLAYERONEBLUE,queue[index]);
             }
         }, KeyCode.DIGIT6);
 
         getInput().addAction(new UserAction("Red2 Button") {
             @Override
             protected void onActionBegin() {
-                setPlug(2, 0);
+                int index = StromBewusst.DEVICES.getIndex();
+                setDevice(ImageType.PLAYERTWORED,queue[index]);
             }
         }, KeyCode.DIGIT7);
 
         getInput().addAction(new UserAction("Green2 Button") {
             @Override
             protected void onActionBegin() {
-                setPlug(2, 1);
+                int index = StromBewusst.DEVICES.getIndex();
+                setDevice(ImageType.PLAYERTWOGREEN,queue[index]);
             }
         }, KeyCode.DIGIT8);
 
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
             protected void onActionBegin() {
-                setPlug(2, 2);
+                int index = StromBewusst.DEVICES.getIndex();
+                setDevice(ImageType.PLAYERTWOBLUE,queue[index]);
             }
         }, KeyCode.DIGIT9);
 
@@ -218,28 +225,11 @@ public class DeviceOrderSubScene extends SubScene {
         }*/
     }
 
-    public void setPlug(int player, int colour) {
-        /*if (player == 1) {
-            getContentRoot().getChildren().removeAll(textureAnswerP1);
-        } else if (player == 2) {
-            getContentRoot().getChildren().removeAll(textureAnswerP2);
-        }
-        cleanPopUp();
-
-        switch (colour) {
-        case 0 -> setImagePlug("plug-red.png", player);
-        case 1 -> setImagePlug("plug-green.png", player);
-        case 2 -> setImagePlug("plug-blue.png", player);
-        }
-
-        if (player == 1) {
-            getContentRoot().getChildren().addAll(textureAnswerP1);
-            StromBewusst.QUIZ.setAnswerP1(colour);
-        } else if (player == 2) {
-            getContentRoot().getChildren().addAll(textureAnswerP2);
-            StromBewusst.QUIZ.setAnswerP2(colour);
-        }*/
-
+    public void setDevice(ImageType from, ImageType to) {
+        DeviceOrderDevices device = currentDevices.get(from);
+        deleteImage(from);
+        setImage(device,to);
+        StromBewusst.DEVICES.addAnswer(device);
     }
 
     void cleanPopUp() {
