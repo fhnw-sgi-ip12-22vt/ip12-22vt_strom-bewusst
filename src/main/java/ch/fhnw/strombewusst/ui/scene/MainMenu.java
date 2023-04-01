@@ -3,15 +3,9 @@ package ch.fhnw.strombewusst.ui.scene;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.texture.Texture;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -22,61 +16,6 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
  * This class defines the layout of the main menu.
  */
 public class MainMenu extends FXGLMenu {
-    public static void focusPreviousNode() {
-        Platform.runLater(() -> {
-            Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
-            if (getSceneService().getCurrentScene() instanceof MainMenu) {
-                Node node = s.focusOwnerProperty().get();
-
-                KeyEvent event = new KeyEvent(
-                        null,
-                        null,
-                        KeyEvent.KEY_PRESSED,
-                        "",
-                        "",
-                        KeyCode.UP,
-                        false,
-                        false,
-                        false,
-                        false
-                );
-
-                node.fireEvent(event);
-            }
-        });
-    }
-    public static void focusNextNode() {
-        Platform.runLater(() -> {
-            Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
-            if (getSceneService().getCurrentScene() instanceof MainMenu) {
-                Node node = s.focusOwnerProperty().get();
-
-                KeyEvent event = new KeyEvent(
-                        null,
-                        null,
-                        KeyEvent.KEY_PRESSED,
-                        "",
-                        "",
-                        KeyCode.DOWN,
-                        false,
-                        false,
-                        false,
-                        false
-                );
-
-                node.fireEvent(event);
-            }
-        });
-    }
-    public static void confirmSelectedNode() {
-        Platform.runLater(() -> {
-            Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
-            Node node = s.focusOwnerProperty().get();
-
-            node.fireEvent(new ActionEvent());
-        });
-    }
-
     public MainMenu() {
         super(MenuType.MAIN_MENU);
 

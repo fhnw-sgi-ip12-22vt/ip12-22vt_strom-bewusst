@@ -113,7 +113,7 @@ public class StromBewusst extends GameApplication {
         level = 0;
         nextLevel();
     }
-//this is a test
+
     /**
      * This method initializes the input. It gets executed *before* initGame.
      */
@@ -134,8 +134,11 @@ public class StromBewusst extends GameApplication {
             p1Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player1));
             p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
 
-            //p1Controller.onButtonUpperDown(() -> getInput().mockKeyPress(KeyCode.Q));
+            p1Controller.onButtonLeftDown(() -> InputHandler.handleButtonLeft(player1));
+            p1Controller.onButtonMiddleDown(() -> InputHandler.handleButtonMiddle(player1));
+            p1Controller.onButtonRightDown(() -> InputHandler.handleButtonRight(player1));
             p1Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player1));
+            p1Controller.onButtonUpperDown(() -> InputHandler.handleBack(player1));
 
             p1Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
             p1Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
@@ -160,13 +163,17 @@ public class StromBewusst extends GameApplication {
             p2Controller.onJoystickDown(() -> System.out.println("DEBUG: P2 JOYSTICK DOWN"));
             p2Controller.onJoystickVerticalIdle(() -> System.out.println("DEBUG: P2 JOYSTICK V-IDLE"));
 
-            p2Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player2));
-
             p2Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P2 LEFT DOWN"));
             p2Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P2 MIDDLE DOWN"));
             p2Controller.onButtonRightDown(() -> System.out.println("DEBUG: P2 RIGHT DOWN"));
             p2Controller.onButtonUpperDown(() -> System.out.println("DEBUG: P2 UPPER DOWN"));
             p2Controller.onButtonLowerDown(() -> System.out.println("DEBUG: P2 LOWER DOWN"));
+
+            p2Controller.onButtonLeftDown(() -> InputHandler.handleButtonLeft(player2));
+            p2Controller.onButtonMiddleDown(() -> InputHandler.handleButtonMiddle(player2));
+            p2Controller.onButtonRightDown(() -> InputHandler.handleButtonRight(player2));
+            p2Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player2));
+            p2Controller.onButtonUpperDown(() -> InputHandler.handleBack(player2));
         } catch (Exception ignored) {
             System.out.println("failed to initialize controller, proceeding");
         }

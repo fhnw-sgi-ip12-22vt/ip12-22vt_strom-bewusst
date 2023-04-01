@@ -114,23 +114,14 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {
-                getContentRoot().getChildren().removeAll(textureAnswerP1);
-                cleanPopUp();
-                setImagePlug("plug-red.png",1);
-                getContentRoot().getChildren().addAll(textureAnswerP1);
-                StromBewusst.QUIZ.setAnswerP1(0);
+                setPlug(1, 0);
             }
         }, KeyCode.DIGIT4);
 
         getInput().addAction(new UserAction("Green1 Button") {
             @Override
             protected void onActionBegin() {
-                getContentRoot().getChildren().removeAll(textureAnswerP1);
-                cleanPopUp();
-                setImagePlug("plug-green.png",1);
-
-                getContentRoot().getChildren().addAll(textureAnswerP1);
-                StromBewusst.QUIZ.setAnswerP1(1);
+                setPlug(1, 1);
             }
         }, KeyCode.DIGIT5);
 
@@ -138,23 +129,14 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("Blue1 Button") {
             @Override
             protected void onActionBegin() {
-                getContentRoot().getChildren().removeAll(textureAnswerP1);
-                cleanPopUp();
-                setImagePlug("plug-blue.png",1);
-                getContentRoot().getChildren().addAll(textureAnswerP1);
-                StromBewusst.QUIZ.setAnswerP1(2);
-
+                setPlug(1, 2);
             }
         }, KeyCode.DIGIT6);
 
         getInput().addAction(new UserAction("Red2 Button") {
             @Override
             protected void onActionBegin() {
-                getContentRoot().getChildren().removeAll(textureAnswerP2);
-                cleanPopUp();
-                setImagePlug("plug-red.png",2);
-                getContentRoot().getChildren().addAll(textureAnswerP2);
-                StromBewusst.QUIZ.setAnswerP2(0);
+                setPlug(2, 0);
             }
         }, KeyCode.DIGIT7);
 
@@ -162,11 +144,7 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("Green2 Button") {
             @Override
             protected void onActionBegin() {
-                getContentRoot().getChildren().removeAll(textureAnswerP2);
-                cleanPopUp();
-                setImagePlug("plug-green.png",2);
-                getContentRoot().getChildren().addAll(textureAnswerP2);
-                StromBewusst.QUIZ.setAnswerP2(1);
+                setPlug(2, 1);
             }
         }, KeyCode.DIGIT8);
 
@@ -174,11 +152,7 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
             protected void onActionBegin() {
-                getContentRoot().getChildren().removeAll(textureAnswerP2);
-                cleanPopUp();
-                setImagePlug("plug-blue.png",2);
-                getContentRoot().getChildren().addAll(textureAnswerP2);
-                StromBewusst.QUIZ.setAnswerP2(2);
+                setPlug(2, 2);
             }
         }, KeyCode.DIGIT9);
 
@@ -193,38 +167,66 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("checkAnswers") {
             @Override
             protected void onActionBegin() {
-                cleanPopUp();
-
-                if (StromBewusst.QUIZ.checkAnswer()) {
-                    if (StromBewusst.SCORE.getAnswerSolved() < StromBewusst.QUIZ.getSize()) {
-                        int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
-                        StromBewusst.SCORE.increaseScore(increase);
-                    }
-
-                    Text text = new Text("RICHTIG");
-                    text.setStyle("-fx-font-size: 44px;");
-                    text.setFill(Color.GREEN);
-                    answerPopUp = new HBox(text);
-                    answerPopUp.setTranslateX(1020);
-                    answerPopUp.setTranslateY(250);
-                    getContentRoot().getChildren().addAll(answerPopUp);
-
-                    nextQuestion();
-                } else {
-                    Text text = new Text("FALSCH");
-                    text.setStyle("-fx-font-size: 44px;");
-                    text.setFill(Color.RED);
-                    answerPopUp = new HBox(text);
-                    answerPopUp.setTranslateX(1020);
-                    answerPopUp.setTranslateY(250);
-                    getContentRoot().getChildren().addAll(answerPopUp);
-
-                    StromBewusst.QUIZ.resetAnswers();
-                    falseAnswer++;
-                    getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
-                }
+                checkAnswers();
             }
         }, KeyCode.Q);
+    }
+
+    public void checkAnswers() {
+        cleanPopUp();
+
+        if (StromBewusst.QUIZ.checkAnswer()) {
+            if (StromBewusst.SCORE.getAnswerSolved() < StromBewusst.QUIZ.getSize()) {
+                int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
+                StromBewusst.SCORE.increaseScore(increase);
+            }
+
+            Text text = new Text("RICHTIG");
+            text.setStyle("-fx-font-size: 44px;");
+            text.setFill(Color.GREEN);
+            answerPopUp = new HBox(text);
+            answerPopUp.setTranslateX(1020);
+            answerPopUp.setTranslateY(250);
+            getContentRoot().getChildren().addAll(answerPopUp);
+
+            nextQuestion();
+        } else {
+            Text text = new Text("FALSCH");
+            text.setStyle("-fx-font-size: 44px;");
+            text.setFill(Color.RED);
+            answerPopUp = new HBox(text);
+            answerPopUp.setTranslateX(1020);
+            answerPopUp.setTranslateY(250);
+            getContentRoot().getChildren().addAll(answerPopUp);
+
+            StromBewusst.QUIZ.resetAnswers();
+            falseAnswer++;
+            getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
+        }
+    }
+
+    public void setPlug(int player, int colour) {
+        if (player == 1) {
+            getContentRoot().getChildren().removeAll(textureAnswerP1);
+        } else if (player == 2) {
+            getContentRoot().getChildren().removeAll(textureAnswerP2);
+        }
+        cleanPopUp();
+
+        switch (colour) {
+        case 0 -> setImagePlug("plug-red.png", player);
+        case 1 -> setImagePlug("plug-green.png", player);
+        case 2 -> setImagePlug("plug-blue.png", player);
+        }
+
+        if (player == 1) {
+            getContentRoot().getChildren().addAll(textureAnswerP1);
+            StromBewusst.QUIZ.setAnswerP1(colour);
+        } else if (player == 2) {
+            getContentRoot().getChildren().addAll(textureAnswerP2);
+            StromBewusst.QUIZ.setAnswerP2(colour);
+        }
+
     }
 
     void cleanPopUp(){

@@ -5,10 +5,12 @@ import ch.fhnw.strombewusst.ui.scene.DeviceOrderSubScene;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
+import ch.fhnw.strombewusst.ui.scene.NodeSelectionHelper;
 import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.scene.Scene;
+import javafx.application.Platform;
 import javafx.util.Duration;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public class InputHandler {
 
     public static void handlePlayerUp(Entity player) {
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
-            MainMenu.focusPreviousNode();
+            NodeSelectionHelper.focusPreviousNode();
         } else {
             if (player != null) {
                 player.getComponent(PlayerComponent.class).moveUp();
@@ -39,7 +41,7 @@ public class InputHandler {
 
     public static void handlePlayerDown(Entity player) {
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
-            MainMenu.focusNextNode();
+            NodeSelectionHelper.focusNextNode();
         } else {
             if (player != null) {
                 player.getComponent(PlayerComponent.class).moveDown();
@@ -59,14 +61,38 @@ public class InputHandler {
         }
     }
 
+    public static void handleButtonLeft(Entity player) {
+        Scene currentScene = FXGL.getSceneService().getCurrentScene();
+        if (currentScene instanceof PuzzleSubScene) {
+            int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+            Platform.runLater(() -> ((PuzzleSubScene)currentScene).setPlug(playerNumber, 0));
+        }
+    }
+    public static void handleButtonMiddle(Entity player) {
+        Scene currentScene = FXGL.getSceneService().getCurrentScene();
+        if (currentScene instanceof PuzzleSubScene) {
+            int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+            Platform.runLater(() -> ((PuzzleSubScene)currentScene).setPlug(playerNumber, 1));
+        }
+    }
+    public static void handleButtonRight(Entity player) {
+        Scene currentScene = FXGL.getSceneService().getCurrentScene();
+        if (currentScene instanceof PuzzleSubScene) {
+            int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+            Platform.runLater(() -> ((PuzzleSubScene)currentScene).setPlug(playerNumber, 2));
+        }
+    }
+
     public static void handleSelect(Entity player) {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof MainMenu
                 || currentScene instanceof LeaderboardSubScene
-                || currentScene instanceof EndGameSubScene
-                || currentScene instanceof PuzzleSubScene) {
-            MainMenu.confirmSelectedNode();
+                || currentScene instanceof EndGameSubScene) {
+            NodeSelectionHelper.confirmSelectedNode();
             return;
+        }
+        if (currentScene instanceof PuzzleSubScene) {
+            Platform.runLater(() -> ((PuzzleSubScene)currentScene).checkAnswers());
         }
 
         if (player == null) {
@@ -97,6 +123,21 @@ public class InputHandler {
                         Duration.ZERO);
                 return;
             }
+        }
+    }
+
+    public static void handleBack(Entity player) {
+        Scene currentScene = FXGL.getSceneService().getCurrentScene();
+        if (currentScene instanceof PuzzleSubScene) {
+            // For some reason we have to pop two subscenes. This solution is hacky, but works for now.
+            // TODO: find a more robust solution for this
+
+            Platform.runLater(() -> FXGL.getSceneService().popSubScene());
+            try {
+                Thread.sleep(30);
+            } catch (Exception ignored) {
+            }
+            Platform.runLater(() -> FXGL.getSceneService().popSubScene());
         }
     }
 }
