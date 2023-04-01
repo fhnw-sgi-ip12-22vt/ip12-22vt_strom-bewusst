@@ -4,6 +4,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.StromBewusst;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -11,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
@@ -61,30 +63,36 @@ public class PuzzleSubScene extends SubScene {
         btnBack.setStyle("-fx-text-fill: black;");
         btnBack.setOnAction(e -> getSceneService().popSubScene());
 
-        HBox backHBox = new HBox(btnBack);
-        backHBox.setPrefWidth(getAppWidth());
-        backHBox.setAlignment(Pos.CENTER);
-        backHBox.setTranslateY(getAppHeight() - 90);
+        Texture selectButton = getAssetLoader().loadTexture("red-button-icon-single.png", 48, 48);
+        Text selectText = new Text("Antworten prüfen");
+        selectText.getStyleClass().add("message");
+        HBox selectHBox = new HBox(selectButton, selectText);
+        selectHBox.setAlignment(Pos.CENTER_LEFT);
+        selectHBox.setSpacing(20);
 
-        String inputs = "PLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} \nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9} \nFALSCH: 0 -> 3P\nFALSCH: 1 -> 2P\nFALSCH:>1 -> 1P";
-        Text playerInputs = new Text(inputs);
-        playerInputs.getStyleClass().add("message");
-        HBox inputsHBox = new HBox(playerInputs);
-        inputsHBox.setTranslateX(950);
-        inputsHBox.setTranslateY(410);
+        Texture backButton = getAssetLoader().loadTexture("green-button-icon-single.png", 48, 48);
+        Text backText = new Text("Zurück");
+        backText.getStyleClass().add("message");
+        HBox backHBox = new HBox(backButton, backText);
+        backHBox.setAlignment(Pos.CENTER_LEFT);
+        backHBox.setSpacing(20);
 
-        HBox steering = getTextBox("Steuerung",950,380);
-        HBox response = getTextBox("Rückmeldung",950,210);
-        HBox answerOne = getTextBox("Antwort 1", 955,555);
-        HBox answerTwo = getTextBox("Antwort 2", 1135,555);
+        VBox inputsVBox = new VBox(selectHBox, backHBox);
+        inputsVBox.setTranslateX(950);
+        inputsVBox.setTranslateY(410);
 
-        getContentRoot().getChildren().addAll(bg, backHBox, inputsHBox,steering,response,answerOne,answerTwo);
+        HBox steering = getTextBox("Steuerung", 950, 380);
+        HBox response = getTextBox("Rückmeldung", 950, 210);
+        HBox answerOne = getTextBox("Antwort 1", 955, 555);
+        HBox answerTwo = getTextBox("Antwort 2", 1135, 555);
+
+        getContentRoot().getChildren().addAll(bg, inputsVBox, steering, response, answerOne, answerTwo);
 
         currentQuiz = buildQuiz(StromBewusst.QUIZ.getQuestion());
         inputs();
     }
 
-    HBox getTextBox(String txt, int x, int y){
+    HBox getTextBox(String txt, int x, int y) {
         Text text = new Text(txt);
         text.getStyleClass().add("small_title");
         HBox textHBox = new HBox(text);
@@ -93,15 +101,14 @@ public class PuzzleSubScene extends SubScene {
         return textHBox;
     }
 
-    void setImagePlug(String image, int player){
-        if(player == 1) {
+    void setImagePlug(String image, int player) {
+        if (player == 1) {
             textureAnswerP1 = getAssetLoader().loadTexture(image);
             textureAnswerP1.setTranslateX(plugP1X);
             textureAnswerP1.setTranslateY(plugP1Y);
             textureAnswerP1.setScaleX(0.75);
             textureAnswerP1.setScaleY(0.75);
-        }
-        else{
+        } else {
             textureAnswerP2 = getAssetLoader().loadTexture(image);
             textureAnswerP2.setTranslateX(plugP2X);
             textureAnswerP2.setTranslateY(plugP2Y);
@@ -125,7 +132,6 @@ public class PuzzleSubScene extends SubScene {
             }
         }, KeyCode.DIGIT5);
 
-
         getInput().addAction(new UserAction("Blue1 Button") {
             @Override
             protected void onActionBegin() {
@@ -140,14 +146,12 @@ public class PuzzleSubScene extends SubScene {
             }
         }, KeyCode.DIGIT7);
 
-
         getInput().addAction(new UserAction("Green2 Button") {
             @Override
             protected void onActionBegin() {
                 setPlug(2, 1);
             }
         }, KeyCode.DIGIT8);
-
 
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
@@ -170,6 +174,13 @@ public class PuzzleSubScene extends SubScene {
                 checkAnswers();
             }
         }, KeyCode.Q);
+
+        getInput().addAction(new UserAction("exit") {
+            @Override
+            protected void onActionBegin() {
+                FXGL.getSceneService().popSubScene();
+            }
+        }, KeyCode.ESCAPE);
     }
 
     public void checkAnswers() {
@@ -229,8 +240,8 @@ public class PuzzleSubScene extends SubScene {
 
     }
 
-    void cleanPopUp(){
-        if(answerPopUp!=null){
+    void cleanPopUp() {
+        if (answerPopUp != null) {
             getContentRoot().getChildren().removeAll(answerPopUp);
             answerPopUp = null;
         }
@@ -249,7 +260,8 @@ public class PuzzleSubScene extends SubScene {
 
     void clearQuiz() {
         getContentRoot().getChildren()
-                .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1, textureAnswerP2, scoretable);
+                .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1,
+                        textureAnswerP2, scoretable);
         falseAnswer = 0;
     }
 
@@ -271,10 +283,9 @@ public class PuzzleSubScene extends SubScene {
         HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.GREENANSWER);
         HBox thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
 
-        scoretable = StromBewusst.SCORE.pushScore(950,30);
+        scoretable = StromBewusst.SCORE.pushScore(950, 30);
 
-        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox,scoretable);
+        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox, scoretable);
         return new HBox[] {questionHBox, firstHBox, secondHBox, thirdHBox};
     }
-
 }
