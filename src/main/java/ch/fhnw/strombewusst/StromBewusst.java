@@ -117,13 +117,13 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initInput() {
-        // Initializing the controllers, their input gets processed and the appropriate keypresses get "simulated"
-        // By simulating the keypresses, the programm can be worked on locally by using WASD, but can be controlled
-        // in production with the controller.
         try {
+            // PIN.D17 and PIN.D4 are dummy pins, they would be used for the joystick button, which we do not use.
+            // despite not using them, they have to be set to *some* value, so we just use unused pins
             p1Controller = new Controller(0, 1, PIN.D17, PIN.D5, PIN.D21, PIN.D26, PIN.D20, PIN.D6);
-            //p2Controller = new Controller(2, 3, PIN.D6);
+            p2Controller = new Controller(2, 3, PIN.D4, PIN.PWM19, PIN.PWM12, PIN.D24, PIN.PWM18, PIN.D25);
 
+            // Player 1 controls
             p1Controller.onJoystickRight(() -> InputHandler.handlePlayerRight(player1));
             p1Controller.onJoystickLeft(() -> InputHandler.handlePlayerLeft(player1));
             p1Controller.onJoystickHorizontalIdle(() -> InputHandler.handlePlayerHorizontalIdle(player1));
@@ -132,27 +132,39 @@ public class StromBewusst extends GameApplication {
             p1Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player1));
             p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
 
-            p1Controller.onButtonUpperDown(() -> getInput().mockKeyPress(KeyCode.Q));
+            //p1Controller.onButtonUpperDown(() -> getInput().mockKeyPress(KeyCode.Q));
             p1Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player1));
+
             p1Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
             p1Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
             p1Controller.onButtonRightDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
             p1Controller.onButtonUpperDown(() -> System.out.println("DEBUG: P1 UPPER DOWN"));
             p1Controller.onButtonLowerDown(() -> System.out.println("DEBUG: P1 LOWER DOWN"));
-/*
-            p2Controller.onJoystickRight(() -> getInput().mockKeyPress(KeyCode.L));
-            p2Controller.onJoystickLeft(() -> getInput().mockKeyPress(KeyCode.J));
-            p2Controller.onJoystickHorizontalIdle(() -> {
-                getInput().mockKeyRelease(KeyCode.L);
-                getInput().mockKeyRelease(KeyCode.J);
-            });
 
-            p2Controller.onJoystickUp(() -> getInput().mockKeyPress(KeyCode.I));
-            p2Controller.onJoystickDown(() -> getInput().mockKeyPress(KeyCode.K));
-            p2Controller.onJoystickVerticalIdle(() -> {
-                getInput().mockKeyRelease(KeyCode.I);
-                getInput().mockKeyRelease(KeyCode.K);
-            });*/
+            // Player 2 controls
+            p2Controller.onJoystickRight(() -> InputHandler.handlePlayerRight(player2));
+            p2Controller.onJoystickLeft(() -> InputHandler.handlePlayerLeft(player2));
+            p2Controller.onJoystickHorizontalIdle(() -> InputHandler.handlePlayerHorizontalIdle(player2));
+
+            p2Controller.onJoystickUp(() -> InputHandler.handlePlayerUp(player2));
+            p2Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player2));
+            p2Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player2));
+
+            p2Controller.onJoystickRight(() -> System.out.println("DEBUG: P2 JOYSTICK RIGHT"));
+            p2Controller.onJoystickLeft(() -> System.out.println("DEBUG: P2 JOYSTICK LEFT"));
+            p2Controller.onJoystickHorizontalIdle(() -> System.out.println("DEBUG: P2 JOYSTICK H-IDLE"));
+
+            p2Controller.onJoystickUp(() -> System.out.println("DEBUG: P2 JOYSTICK UP"));
+            p2Controller.onJoystickDown(() -> System.out.println("DEBUG: P2 JOYSTICK DOWN"));
+            p2Controller.onJoystickVerticalIdle(() -> System.out.println("DEBUG: P2 JOYSTICK V-IDLE"));
+
+            p2Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player2));
+
+            p2Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P2 LEFT DOWN"));
+            p2Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P2 MIDDLE DOWN"));
+            p2Controller.onButtonRightDown(() -> System.out.println("DEBUG: P2 RIGHT DOWN"));
+            p2Controller.onButtonUpperDown(() -> System.out.println("DEBUG: P2 UPPER DOWN"));
+            p2Controller.onButtonLowerDown(() -> System.out.println("DEBUG: P2 LOWER DOWN"));
         } catch (Exception ignored) {
             System.out.println("failed to initialize controller, proceeding");
         }
