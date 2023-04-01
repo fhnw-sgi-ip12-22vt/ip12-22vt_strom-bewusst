@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst.ui.scene;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+import ch.fhnw.strombewusst.DeviceOrderLogic;
 import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
