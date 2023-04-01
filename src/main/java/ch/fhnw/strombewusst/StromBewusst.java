@@ -43,6 +43,8 @@ public class StromBewusst extends GameApplication {
     public static final Score SCORE = new Score();
     public static final QuizLogic QUIZ = new QuizLogic(10);
 
+    public static final DeviceOrderLogic DEVICES = new DeviceOrderLogic(6);
+
     private Room[] rooms;
 
     private Controller p1Controller;
