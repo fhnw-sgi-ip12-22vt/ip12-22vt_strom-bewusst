@@ -1,66 +1,79 @@
 [{
   "device": "Elektroherd",
   "consumption": 455,
+  "image": "Electroherd.png",
   "place": 1
   },
   {
     "device": "Beleuchtung",
     "consumption": 400,
+    "image": "player1-right.png",
     "place": 2
   },
   {
     "device": "Kühlschrank",
     "consumption": 300,
+    "image": "Kühlschrank.png",
     "place": 3
   },
   {
     "device": "Waschmaschine",
     "consumption": 200,
+    "image": "Waschmaschine.png",
     "place": 4
   },
   {
     "device": "Fernseher",
     "consumption": 190,
+    "image": "player1-right.png",
     "place": 5
   },
   {
     "device": "Geschirrspüler",
     "consumption": 146,
+    "image": "player1-right.png",
     "place": 6
   },
   {
     "device": "Wlan-Router",
     "consumption": 135,
+    "image": "WLAN-Router.png",
     "place": 7
   },
   {
     "device": "PS5",
     "consumption": 120,
+    "image": "PS5.png",
     "place": 8
   },
   {
     "device": "Computer",
     "consumption": 90,
+    "image": "player1-right.png",
     "place": 9
   },
   {
     "device": "Laptop",
     "consumption": 22,
+    "image": "player1-right.png",
     "place": 10
   },
   {
     "device": "Staubsauger",
     "consumption": 9,
+    "image": "player1-right.png",
     "place": 11
   },
   {
     "device": "Smartphone",
     "consumption": 6,
+    "image": "player1-right.png",
     "place": 12
   },
   {
     "device": "Kaffeemachine",
     "consumption": 3,
+    "image": "player1-right.png",
     "place": 13
   }
 ]

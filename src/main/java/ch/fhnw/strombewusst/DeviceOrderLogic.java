@@ -10,46 +10,50 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DeviceOrderLogic {
 
     private List<DeviceOrderDevices> devices = new ArrayList<>();
     private DeviceOrderDevices[] solution;
-
     private DeviceOrderDevices[] answer;
-
+    private Set<Integer> trackPassedDevices;
+    private final int QUEUESIZE = 6;
     private int index = 0;
+    private int roundsTotal;
 
-    private int size;
 
-    public DeviceOrderLogic(int size){this.size = size;}
+    public DeviceOrderLogic(int roundsTotal){this.roundsTotal = roundsTotal;}
 
     public void initDevices() {
         devices = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/devices.json", DeviceOrderDevices[].class).get()).toList();
-        buildSolution();
+        trackPassedDevices = Stream.iterate(0,i->i+1)
+            .limit(devices.size())
+            .collect(Collectors.toSet());
     }
 
     public void buildSolution(){
-        Random random = new Random();
-        Deque<DeviceOrderDevices> deviceSet = new LinkedList<>();
+        if(trackPassedDevices.size() >= QUEUESIZE) {
+            Random random = new Random();
+            Deque<DeviceOrderDevices> deviceSet = new LinkedList<>();
 
-        for (int i = 0; i < size; i++) {
-            int randomNum = random.nextInt(devices.size());
-
-            while (deviceSet.contains(devices.get(randomNum))) {
-                randomNum = random.nextInt(devices.size());
+            for (int i = 0; i < QUEUESIZE; i++) {
+                int randomNum = random.nextInt(devices.size());
+                while (!trackPassedDevices.contains(randomNum)) {
+                    randomNum = random.nextInt(devices.size());
+                }
+                deviceSet.add(devices.get(randomNum));
+                trackPassedDevices.remove(randomNum);
             }
-            deviceSet.add(devices.get(randomNum));
+            answer = new DeviceOrderDevices[QUEUESIZE];
+            solution = deviceSet.stream()
+                .sorted((x, y) -> x.place() - y.place())
+                .toArray(DeviceOrderDevices[]::new);
         }
-
-        answer = new DeviceOrderDevices[size];
-        solution = deviceSet.stream()
-            .sorted((x,y)->x.place()-y.place())
-            .toArray(DeviceOrderDevices[]::new);
     }
 
-    public Set<DeviceOrderDevices> getDevices(){
-        return Arrays.stream(solution).collect(Collectors.toSet());
+    public List<DeviceOrderDevices> getDevices(){
+        return Arrays.stream(solution).collect(Collectors.toList());
     }
 
     public void addAnswer(DeviceOrderDevices d){
