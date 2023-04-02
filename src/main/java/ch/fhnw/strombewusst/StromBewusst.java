@@ -297,14 +297,14 @@ public class StromBewusst extends GameApplication {
 
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("score",100);
+        vars.put("score",0);
     }
 
     @Override
     protected void initUI() {
         var scoreText = getUIFactoryService().newText("", Color.ANTIQUEWHITE,38.0);
         scoreText.textProperty().bind(getip("score").asString("%d"));
-        addUINode(scoreText,775,67);
+        addUINode(scoreText,810,67);
     }
 
     public int getLevel(){return level;}
