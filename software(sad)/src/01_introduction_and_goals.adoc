@@ -24,7 +24,7 @@ Die wichtigsten Qualitätsanforderungen an die Architektur sind folgende:
 |===
 |Rolle |Kontakt |Erwartungshaltung
 | Auftraggeber | Primeo Energie | Gute Dokumentation und Wartbarkeit für den Betrieb des Systems
-| Kunden | Cédric Merz, Hannah Sarah Kühne | Geeignete Architektur für einen sauberen Projektverlauf
+| Kunden | Cédric Merz, Hannah Sarah Kühne (1. Semester), Katja Pott (2. Semester) | Geeignete Architektur für einen sauberen Projektverlauf
 | Teammitglieder allgemein | Andrin Martig, Daniel Barber, Samuel Burkhardt, Damjan Mlinar, Hoang Viet Nguyen, Viktor Weilenmann, Marco Worni | Erlernbare Architektur, gute Dokumentation für einfache Zusammenarbeit
 | Testmanager | Damjan Mlinar | Testbarkeit der Funktionen der Software
 | Requirements-Engineer | Viktor Weilenmann | Angemessene Architektur entsprechend den Requirements
