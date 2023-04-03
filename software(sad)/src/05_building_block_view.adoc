@@ -1,6 +1,6 @@
 [[section-building-block-view]]
 == Bausteinsicht
-
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -18,7 +18,6 @@ Damit ermöglichen Sie Kommunikation auf abstrakterer Ebene, ohne zu viele Imple
 .Form
 Die Bausteinsicht ist eine hierarchische Sammlung von Blackboxen und Whiteboxen (siehe Abbildung unten) und deren Beschreibungen.
 
-image::05_blackbox_diagram.png["Hierarchie in der Bausteinsicht"]
 
 *Ebene 1* ist die Whitebox-Beschreibung des Gesamtsystems, zusammen mit Blackbox-Beschreibungen der darin enthaltenen Bausteine.
 
@@ -32,6 +31,9 @@ Sie enthält somit die Whitebox-Beschreibungen ausgewählter Bausteine der Ebene
 
 Siehe https://docs.arc42.org/section-5/[Bausteinsicht] in der online-Dokumentation (auf Englisch!).
 ****
+////
+
+image::05_blackbox_diagram.png["Hierarchie in der Bausteinsicht"]
 
 === Whitebox Gesamtsystem
 
