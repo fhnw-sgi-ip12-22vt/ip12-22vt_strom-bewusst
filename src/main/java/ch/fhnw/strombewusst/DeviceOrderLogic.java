@@ -19,11 +19,19 @@ public class DeviceOrderLogic {
     private DeviceOrderDevices[] answer;
     private Set<Integer> trackPassedDevices;
     private final int QUEUESIZE = 6;
-    private int index = 0;
-    private int roundsTotal;
+    private int index;
+
+    private int size;
+    private int roundsLeft;
+
+    //private boolean doorOpen = false;
+    private boolean doorOpen = true; //for development of room 3
 
 
-    public DeviceOrderLogic(int roundsTotal){this.roundsTotal = roundsTotal;}
+    public DeviceOrderLogic(int roundsTotal){
+        this.roundsLeft = roundsTotal;
+        this.size = roundsTotal;
+    }
 
     public void initDevices() {
         devices = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/devices.json", DeviceOrderDevices[].class).get()).toList();
@@ -31,6 +39,14 @@ public class DeviceOrderLogic {
             .limit(devices.size())
             .collect(Collectors.toSet());
         buildSolution();
+    }
+
+    public boolean deviceOrderDone(){
+        return !((trackPassedDevices.size() >= QUEUESIZE) && (roundsLeft > 0));
+    }
+
+    public void unlockDoor() {
+        this.doorOpen = true;
     }
 
     public void buildSolution(){
@@ -50,12 +66,16 @@ public class DeviceOrderLogic {
             solution = deviceSet.stream()
                 .sorted((x, y) -> x.place() - y.place())
                 .toArray(DeviceOrderDevices[]::new);
+            roundsLeft--;
+            index = 0;
         }
     }
 
     public List<DeviceOrderDevices> getDevices(){
         return Arrays.stream(solution).unordered().collect(Collectors.toList());
     }
+
+    public int getSize(){return size;}
 
     public void addAnswer(DeviceOrderDevices d){
         if(index < answer.length){answer[index++]=d;}
@@ -68,11 +88,8 @@ public class DeviceOrderLogic {
     public boolean[] compareAnswerSolution(){
         boolean[] correctAtIndex = new boolean[solution.length];
         for(int i = 0; i < solution.length; i++){
-            if(answer[i].place() == solution[i].place()){correctAtIndex[i]=true;}
+            if(answer[i] != null && answer[i].place() == solution[i].place()){correctAtIndex[i]=true;}
         }
-
-        /*System.out.println("Solution: " + Arrays.toString(solution));
-        System.out.println("Answer: " + Arrays.toString(answer));*/
         return correctAtIndex;
     }
 

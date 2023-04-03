@@ -9,19 +9,28 @@ public class Score {
     private int score;
     private int answerSolved;
 
+    private int queueSolved;
+
     public Score(){
         this.score = 0;
         this.answerSolved = 0;
+        this.queueSolved = 0;
     }
-
-    public int getScore(){return score;}
 
     public int getAnswerSolved(){return answerSolved;}
 
-    public void increaseScore(int points){
+    public int getQueueSolved(){return queueSolved;}
+
+    public void increaseScoreByQuiz(int points){
         this.score+=points;
         FXGL.inc("score",+points);
         this.answerSolved++;
+    }
+
+    public void increaseScoreByDeviceOrder(int points){
+        this.score+=points;
+        FXGL.inc("score",+points);
+        this.queueSolved++;
     }
 
     public HBox pushScore(int x, int y){
