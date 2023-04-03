@@ -1,6 +1,6 @@
 [[section-concepts]]
 == Querschnittliche Konzepte
-
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -46,11 +46,16 @@ image::08-Crosscutting-Concepts-Structure-DE.png["Possible topics for crosscutti
 Siehe https://docs.arc42.org/section-8/[Querschnittliche Konzepte] in der online-Dokumentation (auf Englisch).
 
 ****
+////
 
-=== _<Konzept 1>_
 
-_<Erklärung>_
+=== MVC Design Pattern
+Das Model-View-Controller (MVC)-Designmuster ist ein Architekturmuster, das zur Trennung von Datenmodell, Präsentation und Steuerungslogik in einer Anwendung verwendet wird. Das Modell repräsentiert die Daten und Geschäftslogik, die Ansicht ist für die Präsentation und Darstellung der Daten verantwortlich und der Controller koordiniert die Interaktion zwischen Modell und Ansicht. Diese Trennung ermöglicht eine leichtere Wartung und Erweiterbarkeit der Anwendung, da Änderungen an einem Bereich den anderen nicht beeinträchtigen sollten.
 
+In unserem Projekt sieht die Realisierung dieses Architekturmusters folgendermassen aus:
+image::08_mvc_overview.png["MVC Design Pattern in unserem Projekt"]
+
+////
 === _<Konzept 2>_
 
 _<Erklärung>_
@@ -60,3 +65,4 @@ _<Erklärung>_
 === _<Konzept n>_
 
 _<Erklärung>_
+////
