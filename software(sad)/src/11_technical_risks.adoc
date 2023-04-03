@@ -1,6 +1,12 @@
 [[section-technical-risks]]
 == Risiken und technische Schulden
 
+==== Mischung FXGL und JavaFX
+Bei der Realisierung des ersten Raumes haben wir uns entschieden, für das Userinterface der Rätsel JavaFX zu benutzen, anstelle von FXGL. Dies erlaubt saubereres Layouting für Teile des Spiels, die wenig mit Game-Logik zu tun haben (z.B. Player Movement oder Collision Handling).
+
+Die Entscheidung führt aber auch zu technischen Risiken und Schulden, denn durch die Mischung können unvorhergesehene Bugs auftreten. Deshalb ist kontinuierliches Testing während des Developments zentral.
+
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -20,4 +26,4 @@ Liste oder Tabelle von Risiken und/oder technischen Schulden, eventuell mit vorg
 
 Siehe https://docs.arc42.org/section-11/[Risiken und technische Schulden] in der online-Dokumentation (auf Englisch!).
 ****
-
+////
