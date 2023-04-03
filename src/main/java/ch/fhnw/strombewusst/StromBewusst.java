@@ -108,6 +108,7 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initGame() {
         QUIZ.initQuestions();
+        DEVICES.initDevices();
         getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
         level = 0;

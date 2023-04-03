@@ -84,23 +84,30 @@ public class DeviceOrderSubScene extends SubScene {
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
-        //TODO
-        /*String inputs = "PLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} \nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9} \nFALSCH: 0 -> 3P\nFALSCH: 1 -> 2P\nFALSCH:>1 -> 1P";
+        //TODO set steering according to controller
+        String inputs = "SORTIERE NACH KWH VERBRAUCH \nVON VIEL NACH WENIG" +
+            "\nPLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} " +
+            "\nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9} " +
+            "\nFALSCH: 0 -> 3P" +
+            "\nFALSCH: 1 -> 2P" +
+            "\nFALSCH:>1 -> 1P" +
+            "\nÜBERPRÜFEN: Q" +
+            "\nLÖSCHEN: E" +
+            "\nSCHLIESSEN: ESC";
         Text playerInputs = new Text(inputs);
         playerInputs.getStyleClass().add("message");
         HBox inputsHBox = new HBox(playerInputs);
         inputsHBox.setTranslateX(950);
         inputsHBox.setTranslateY(410);
-        */
+
 
         HBox steering = getTextBox("Steuerung",BoxType.STERRING,Color.BLACK,FontWeight.BOLD);
         HBox response = getTextBox("Rückmeldung",BoxType.RESPONSE, Color.BLACK,FontWeight.BOLD);
         HBox playerone = getTextBox("Player 1",BoxType.PLAYERONE,Color.BLACK,FontWeight.BOLD);
         HBox playertwo = getTextBox("Player 2",BoxType.PLAYERTWO,Color.BLACK,FontWeight.BOLD);
         HBox answerqueue = getTextBox("Eingabe",BoxType.QUEUEINPUT,Color.BLACK,FontWeight.BOLD);
-        getContentRoot().getChildren().addAll(bg,steering,response,playerone,playertwo,answerqueue);
+        getContentRoot().getChildren().addAll(bg,steering,response,playerone,playertwo,answerqueue,inputsHBox);
 
-        StromBewusst.DEVICES.initDevices();
         buildDeviceOrder();
         inputs();
     }
@@ -126,6 +133,7 @@ public class DeviceOrderSubScene extends SubScene {
 
     void deleteImage(ImageType type){
         getContentRoot().getChildren().removeAll(currentTextures.get(type));
+        currentDevices.put(type,null);
     }
 
     void inputs() {
@@ -184,52 +192,35 @@ public class DeviceOrderSubScene extends SubScene {
             }
         }, KeyCode.Q);
 
+        getInput().addAction(new UserAction("resetAnswers") {
+            @Override
+            protected void onActionBegin() {
+                clearDeviceOrder();
+                StromBewusst.DEVICES.deleteAnswerQueue();
+                buildDeviceOrder();
+            }
+        }, KeyCode.E);
+
         getInput().addAction(new UserAction("exit") {
             @Override
             protected void onActionBegin() {
+                StromBewusst.DEVICES.deleteAnswerQueue();
                 FXGL.getSceneService().popSubScene();
             }
         }, KeyCode.ESCAPE);
     }
 
     public void checkAnswers() {
-        /*cleanPopUp();
-
-        if (StromBewusst.QUIZ.checkAnswer()) {
-            if (StromBewusst.SCORE.getAnswerSolved() < StromBewusst.QUIZ.getSize()) {
-                int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
-                StromBewusst.SCORE.increaseScore(increase);
-            }
-
-            Text text = new Text("RICHTIG");
-            text.setStyle("-fx-font-size: 44px;");
-            text.setFill(Color.GREEN);
-            answerPopUp = new HBox(text);
-            answerPopUp.setTranslateX(1020);
-            answerPopUp.setTranslateY(250);
-            getContentRoot().getChildren().addAll(answerPopUp);
-
-            nextQuestion();
-        } else {
-            Text text = new Text("FALSCH");
-            text.setStyle("-fx-font-size: 44px;");
-            text.setFill(Color.RED);
-            answerPopUp = new HBox(text);
-            answerPopUp.setTranslateX(1020);
-            answerPopUp.setTranslateY(250);
-            getContentRoot().getChildren().addAll(answerPopUp);
-
-            StromBewusst.QUIZ.resetAnswers();
-            falseAnswer++;
-            getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
-        }*/
+        boolean[] solution = StromBewusst.DEVICES.compareAnswerSolution();
     }
 
     public void setDevice(ImageType from, ImageType to) {
-        DeviceOrderDevices device = currentDevices.get(from);
-        deleteImage(from);
-        setImage(device,to);
-        StromBewusst.DEVICES.addAnswer(device);
+        if(currentDevices.get(from) != null){
+            DeviceOrderDevices device = currentDevices.get(from);
+            deleteImage(from);
+            setImage(device,to);
+            StromBewusst.DEVICES.addAnswer(device);
+        }
     }
 
     void cleanPopUp() {
@@ -251,11 +242,8 @@ public class DeviceOrderSubScene extends SubScene {
         return null;
     }
 
-    void clearQuiz() {
-        /*getContentRoot().getChildren()
-            .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1,
-                textureAnswerP2, scoretable);
-        falseAnswer = 0;*/
+    void clearDeviceOrder() {
+        getContentRoot().getChildren().removeAll(currentTextures.values());
     }
 
     void nextQuestion() {
@@ -271,8 +259,6 @@ public class DeviceOrderSubScene extends SubScene {
     }
 
     private void buildDeviceOrder() {
-        StromBewusst.DEVICES.buildSolution();
-
         List<DeviceOrderDevices> devices = StromBewusst.DEVICES.getDevices();
         List<ImageType> types = Arrays.stream(ImageType.values())
             .filter(x->x.toString().substring(0,1).equals("P"))

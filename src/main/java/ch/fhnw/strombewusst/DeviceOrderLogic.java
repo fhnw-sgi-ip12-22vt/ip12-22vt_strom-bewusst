@@ -30,6 +30,7 @@ public class DeviceOrderLogic {
         trackPassedDevices = Stream.iterate(0,i->i+1)
             .limit(devices.size())
             .collect(Collectors.toSet());
+        buildSolution();
     }
 
     public void buildSolution(){
@@ -59,6 +60,8 @@ public class DeviceOrderLogic {
     public void addAnswer(DeviceOrderDevices d){
         if(index < answer.length){answer[index++]=d;}
     }
+
+    public void deleteAnswerQueue(){index=0;answer = new DeviceOrderDevices[QUEUESIZE];}
 
     public int getIndex(){return index < answer.length ? index : index - 1;}
 
