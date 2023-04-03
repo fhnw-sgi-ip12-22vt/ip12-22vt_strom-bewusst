@@ -54,7 +54,7 @@ public class DeviceOrderLogic {
     }
 
     public List<DeviceOrderDevices> getDevices(){
-        return Arrays.stream(solution).collect(Collectors.toList());
+        return Arrays.stream(solution).unordered().collect(Collectors.toList());
     }
 
     public void addAnswer(DeviceOrderDevices d){
@@ -70,6 +70,9 @@ public class DeviceOrderLogic {
         for(int i = 0; i < solution.length; i++){
             if(answer[i].place() == solution[i].place()){correctAtIndex[i]=true;}
         }
+
+        /*System.out.println("Solution: " + Arrays.toString(solution));
+        System.out.println("Answer: " + Arrays.toString(answer));*/
         return correctAtIndex;
     }
 

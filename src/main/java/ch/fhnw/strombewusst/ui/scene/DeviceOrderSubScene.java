@@ -19,12 +19,16 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This class defines the layout of our device sub-scene. It gets rendered on top of the main menu when the
@@ -36,7 +40,8 @@ public class DeviceOrderSubScene extends SubScene {
         RESPONSE(950,210,30),
         PLAYERONE(65,25,30),
         PLAYERTWO(65,280,30),
-        QUEUEINPUT(65,530,30);
+        QUEUEINPUT(65,530,30),
+        POPUP(950,240,15);
         final int x, y, width;
 
         BoxType(int x, int y, int width) {
@@ -78,6 +83,8 @@ public class DeviceOrderSubScene extends SubScene {
         ImageType.QUEUEFIFTH,
         ImageType.QUEUESIXTH
     };
+
+    private HBox popUp;
 
     public DeviceOrderSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/deviceorderbackground.png");
@@ -211,7 +218,30 @@ public class DeviceOrderSubScene extends SubScene {
     }
 
     public void checkAnswers() {
+        cleanPopUp();
         boolean[] solution = StromBewusst.DEVICES.compareAnswerSolution();
+        Set<DeviceOrderDevices> falseDevice = new HashSet<>();
+        String msg  = "";
+
+        for(int i = 0; i < solution.length; i++){
+            if(!solution[i]){
+                falseDevice.add(currentDevices.get(queue[i]));
+            }
+        }
+
+        if(falseDevice.isEmpty()){
+            msg = "RICHTIG";
+            popUp = getTextBox(msg,BoxType.POPUP,Color.GREEN,FontWeight.SEMI_BOLD);
+            getContentRoot().getChildren().addAll(popUp);
+        }
+        else{
+            for(DeviceOrderDevices d : falseDevice){msg+=d.device()+"\n";}
+            popUp = getTextBox(msg,BoxType.POPUP,Color.RED,FontWeight.SEMI_BOLD);
+            getContentRoot().getChildren().addAll(popUp);
+        }
+        /*System.out.println("Eingabe: " + currentDevices);
+        System.out.println("Boolean: " + Arrays.toString(solution));
+        System.out.println("Set:" + falseDevice);*/
     }
 
     public void setDevice(ImageType from, ImageType to) {
@@ -221,13 +251,6 @@ public class DeviceOrderSubScene extends SubScene {
             setImage(device,to);
             StromBewusst.DEVICES.addAnswer(device);
         }
-    }
-
-    void cleanPopUp() {
-        /*if (answerPopUp != null) {
-            getContentRoot().getChildren().removeAll(answerPopUp);
-            answerPopUp = null;
-        }*/
     }
 
     private HBox buildTextbox(String text, PuzzleSubScene.BoxType type) {
@@ -244,6 +267,14 @@ public class DeviceOrderSubScene extends SubScene {
 
     void clearDeviceOrder() {
         getContentRoot().getChildren().removeAll(currentTextures.values());
+        cleanPopUp();
+    }
+
+    void cleanPopUp(){
+        if(popUp != null){
+            getContentRoot().getChildren().removeAll(popUp);
+            popUp = null;
+        }
     }
 
     void nextQuestion() {
@@ -260,6 +291,7 @@ public class DeviceOrderSubScene extends SubScene {
 
     private void buildDeviceOrder() {
         List<DeviceOrderDevices> devices = StromBewusst.DEVICES.getDevices();
+        Collections.shuffle(devices);
         List<ImageType> types = Arrays.stream(ImageType.values())
             .filter(x->x.toString().substring(0,1).equals("P"))
             .toList();
