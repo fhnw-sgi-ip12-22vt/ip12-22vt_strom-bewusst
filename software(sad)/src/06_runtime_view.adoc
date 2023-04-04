@@ -1,6 +1,7 @@
 [[section-runtime-view]]
 == Laufzeitsicht
 
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -38,11 +39,11 @@ Nutzen Sie beispielsweise:
 Siehe https://docs.arc42.org/section-6/[Laufzeitsicht] in der online-Dokumentation (auf Englisch!).
 
 ****
+////
 
-=== _<Bezeichnung Laufzeitszenario 1>_
+=== Joystick Left Spieler Bewegung
 
-*  <hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
-*  <hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem Szenario erläutern>
+image::06_runtime_example.png["Laufzeitsicht von Joystick Left"]
 
 === _<Bezeichnung Laufzeitszenario 2>_
 
