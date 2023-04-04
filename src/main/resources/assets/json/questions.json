@@ -1,5 +1,5 @@
 [{
-  "question": "Wie viel denkst du kostet der Strom deines Handys pro Jahr?",
+  "question": "Wie viel kostet der Strom deines Handys pro Jahr?",
   "answerOptions": [
     "40 – 50 CHF",
     "2 – 2.50 CHF",
@@ -11,29 +11,29 @@
   {
     "question": "Wie viel Energie kann man mit Fahrrad fahren ca. herstellen?",
     "answerOptions": [
-      "1kwh",
-      "0.2kwh",
-      "5kwh"
+      "1kWh",
+      "0.2kWh",
+      "5kWh"
     ],
     "correctAnswer": 1
   },
 
   {
-    "question": "Wie viel Strom denkst du verbraucht ein Haushalt?",
+    "question": "Wie viel Strom verbraucht ein Haushalt?",
     "answerOptions": [
-      "4000 kwh",
-      "10000 kwh",
-      "99999 kwh"
+      "4000 kWh",
+      "10000 kWh",
+      "99999 kWh"
     ],
     "correctAnswer": 0
   },
 
   {
-    "question": "Wo wird alles Strom benutzt?",
+    "question": "Wo wird in deinem Alltag überall Strom genutzt",
     "answerOptions": [
       "Wasserhahn, Warm Wasser, duschen",
       "Google, Netflix, Titkok, Sony",
-      "Alle Sachen sind von Strom abhängig"
+      "Sowohl Antwort A als auch Antwort B sind zutreffend"
     ],
     "correctAnswer": 2
   },
@@ -43,19 +43,19 @@
     "answerOptions": [
       "Gas, Öl Kohle",
       "Sonne, Wind und Wasser",
-      "Alle ressourcen"
+      "Alle genannten ressourcen"
     ],
     "correctAnswer": 2
   },
 
   {
-    "question": "Wer hat bewiesen das Blitze elektrisch geladen sind?",
+    "question": "Dreckiges Geschirr, wie können wir es am Strom effizientesten abwaschen?",
     "answerOptions": [
-      "Benjamin Franklin",
-      "Thomas Edison",
-      "Thales von Milet"
+      "Von Hand",
+      "Mit dem Kurzprogramm der Geschirrspülmaschine",
+      "Mit dem Eco Programm des Geschirrspülers"
     ],
-    "correctAnswer": 0
+    "correctAnswer": 2
   },
 
   {
@@ -73,19 +73,19 @@
     "answerOptions": [
       "Laptop",
       "Fernseher",
-      "Alte Heizungen"
+      "Elektrischer Kochherd"
     ],
     "correctAnswer": 2
   },
 
   {
-    "question": "Welches Wort, das mit Strom zu tun hat, gibt es nicht?",
+    "question": "Benötigt ein Gerät im Stand-by-Modus Strom?",
     "answerOptions": [
-      "Strommast",
-      "Stromgewebe",
-      "Stromnetz"
+      "Nein",
+      "Nur eine kurze Zeit",
+      "Ja, deswegen immer ausschalten, wenn es nicht in Gebrauch ist"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
 
   {
@@ -101,7 +101,7 @@
   {
     "question": "Wie wird Strom erzeugt?",
     "answerOptions": [
-      "Durch Schmutz",
+      "Durch Magnete",
       "Es wird in der Steckdose erzeugt",
       "Durch Turbinen"
     ],
@@ -109,7 +109,7 @@
   },
 
   {
-    "question": "Was ist das wichtigste Kraftwerk der Schweiz?",
+    "question": "Welches Element ist der Hauptproduzent der Schweizer Energiegewinnung?",
     "answerOptions": [
       "Kernkraftwerk",
       "Windkraftwerk",
@@ -129,23 +129,23 @@
   },
 
   {
-    "question": "Wie entsteht Strom?",
+    "question": "Was ist der effektivste Weg, um Strom in der Küche zu sparen?",
     "answerOptions": [
-      "Durch Bewegung",
-      "Durch einen Blitz",
-      "Durch Öl, Gas, Wasser, Luft"
+      "Kühlschrank schnell wieder schliessen",
+      "Kochen mit Deckel",
+      "Tiefkühlprodukte im Kühlschrank auftauen"
     ],
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
 
   {
-    "question": "Mit was kann man elektrische Strom gut vergleichen?",
+    "question": "Was ist der effektivste Weg, um Wasser aufzukochen?",
     "answerOptions": [
-      "Durch einen Fluss",
-      "Mit einem Blitz",
-      "Mit einer Graphik"
+      "Im Topf auf dem Herd",
+      "In der Mikrowelle",
+      "Im Wasserkocher"
     ],
-    "correctAnswer": 0
+    "correctAnswer": 2
   },
 
   {
@@ -159,13 +159,13 @@
   },
 
   {
-    "question": "Welches Kraftwerk erzeugt kein Strom?",
+    "question": "Was verbraucht am wenigsten Strom?",
     "answerOptions": [
-      "Gaskraftwerk",
-      "Holzkraftwerk",
-      "Luftkraftwerk"
+      "Baden in der Badewanne",
+      "Duschen in der Dusche",
+      "Duschen im Garten mit dem Wasserschlauch"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 1
   },
 
   {
@@ -179,7 +179,7 @@
   },
 
   {
-    "question": "Welcher Gegenstand leitet Strom?",
+    "question": "Welches Element leitet Strom am besten?",
     "answerOptions": [
       "Plastik",
       "Luft",
@@ -221,11 +221,11 @@
   {
     "question": "Wieso ist Strom sparen wichtig?",
     "answerOptions": [
-      "Weil ich die Umwelt schone",
-      "Weil ich dadurch mehr Geld ausgebe",
-      "Damit ich später mehr habe"
+      "Damit man die Umwelt schonen kann",
+      "Weil man damit Geld sparen kann",
+      "Sowohl Antwort A als auch Antwort B sind zutreffend."
     ],
-    "correctAnswer": 0
+    "correctAnswer": 2
   },
 
   {
@@ -241,7 +241,7 @@
   {
     "question": "Wie viel Strom verbraucht eine Person im Jahr?",
     "answerOptions": [
-      "12.76 Megawattstuden",
+      "12.76 Megawattstunden",
       "4.93 Megawattstunden",
       "6.8 Megawattstunden"
     ],
