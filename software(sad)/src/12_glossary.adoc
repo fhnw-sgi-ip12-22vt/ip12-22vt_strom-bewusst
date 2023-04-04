@@ -1,6 +1,6 @@
 [[section-glossary]]
 == Glossar
-
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -23,14 +23,20 @@ Sie sollten relevante Begriffe klar definieren, so dass alle Beteiligten
 Siehe https://docs.arc42.org/section-12/[Glossar] in der online-Dokumentation (auf Englisch!).
 
 ****
+////
 
 [cols="e,2e" options="header"]
 |===
 |Begriff |Definition
 
-|<Begriff-1>
-|<Definition-1>
+|JavaFX
+|Java Grafiklibrary +
+GitHub: https://github.com/openjdk/jfx
 
-|<Begriff-2
-|<Definition-2>
+|FXGL
+|Java**FX** **G**ame **L**ibrary +
+GitHub: https://github.com/AlmasB/FXGL
+
+|Primeo Energie
+|Die Primeo Energie ist ein Energieunternehmen und der Auftraggeber des StromBewusst Projekts
 |===
