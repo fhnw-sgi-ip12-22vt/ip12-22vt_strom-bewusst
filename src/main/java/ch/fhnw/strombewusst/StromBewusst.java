@@ -291,6 +291,7 @@ public class StromBewusst extends GameApplication {
         physicsWorld.setGravity(0, 0);
 
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
+        physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());

@@ -1,7 +1,6 @@
 package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.components.DeskComponent;
-import ch.fhnw.strombewusst.components.FridgeComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -170,11 +169,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("fridge")
     public Entity newFridge(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.FRIDGE)
+                .type(EntityType.DESK)
                 .view("Kühlschrank.png")
                 .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box(95, 20)))
                 .with(new PhysicsComponent())
-                .with(new FridgeComponent(data.get("fridge")))
+                .with(new DeskComponent(data.get("fridge")))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
@@ -183,10 +182,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("stove")
     public Entity newStove(SpawnData data){
         return entityBuilder(data)
-                .type(EntityType.STOVE)
+                .type(EntityType.DESK)
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
+                .with(new DeskComponent(data.get("stove")))
                 .view("Electroherd.png")
                 .zIndex(1)
                 .build();
@@ -194,10 +194,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("washing-machine")
     public Entity newWasher(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.WASHER)
+                .type(EntityType.DESK)
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
+                .with(new DeskComponent(data.get("washing-machine")))
                 .view("Waschmaschine.png")
                 .zIndex(1)
                 .build();
@@ -211,6 +212,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
+                .with(new DeskComponent(data.get("ps5")))
                 .zIndex(1)
                 .build();
     }
@@ -222,6 +224,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
+                .with(new DeskComponent(data.get("microwave")))
                 .view("Mikrowelle.png")
                 .build();
     }
@@ -232,6 +235,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
+                .with(new DeskComponent(data.get("television")))
                 .view("Fernseher.png")
                 .build();
     }
@@ -242,6 +246,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
+                .with(new DeskComponent(data.get("router")))
                 .view("WLAN-Router.png")
                 .build();
     }

@@ -12,7 +12,6 @@ import javafx.util.Duration;
 
 import java.util.List;
 
-
 public class PlayerDeskHandler extends CollisionHandler {
     private final HBox player1HBox = new HBox();
     private final HBox player2HBox = new HBox();
@@ -29,13 +28,11 @@ public class PlayerDeskHandler extends CollisionHandler {
         FXGL.runOnce(() -> FXGL.getSceneService().getCurrentScene().addChild(player2HBox), Duration.ZERO);
     }
 
-    public PlayerDeskHandler(EntityType player, EntityType type) {
-        super(player, type);
-    }
+
 
     @Override
-    protected void onCollisionBegin(Entity player, Entity desk) {
-        int deskNum = desk.getComponent(DeskComponent.class).getDeskNum();
+    protected void onCollisionBegin(Entity player, Entity type) {
+        int deskNum = type.getComponent(DeskComponent.class).getDeskNum();
         Text title = new Text(infoBoxes.get(deskNum));
         title.setWrappingWidth(300);
         title.getStyleClass().add("message");
@@ -48,8 +45,6 @@ public class PlayerDeskHandler extends CollisionHandler {
             player2HBox.getChildren().add(title);
         }
     }
-
-    @Override
     protected void onCollisionEnd(Entity player, Entity desk) {
         try {
             if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
@@ -61,4 +56,5 @@ public class PlayerDeskHandler extends CollisionHandler {
             // BUGFIX: prevent crash on edge-case when text is shown during level change
         }
     }
+
 }

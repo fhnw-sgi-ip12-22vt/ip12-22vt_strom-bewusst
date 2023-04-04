@@ -11,4 +11,5 @@ public interface Room {
     Entity getDoor();
 
     Level getLevel();
+    String initText();
 }

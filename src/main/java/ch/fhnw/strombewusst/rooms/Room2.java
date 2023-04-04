@@ -47,7 +47,15 @@ public class Room2 implements Room {
                 world.create("main-desk", new SpawnData(765, 86).put("textureName", "main-desk2.png")),
 
                 //Haushaltgeräte
-
+                world.create("fridge", new SpawnData(5, 55).put("fridge", 19)), //positioned
+                world.create("stove", new SpawnData(300,55).put("stove", 20)),
+                //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
+                world.create("television", new SpawnData(90,230).put("television", 21)), //positioned
+                world.create("router", new SpawnData(323,580).put("router", 22)), //positioned
+                world.create("washing-machine", new SpawnData(500,250).put("washing-machine", 23)), //positioned
+                world.create("microwave", new SpawnData(760, 412).put("microwave", 24)), //positioned
+                //world.create("smartphone", new SpawnData(2*x,3*y).put("smartphone", 1)), missing texture
+                world.create("ps5", new SpawnData(205,240).put("ps5", 25)),//positioned
 
                 //first row
                 world.create("cabinet", new SpawnData(xCabinet, yCabinet)),
@@ -102,17 +110,7 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(xCabinet+(8*cabinetWidth), yCabinet-(cabinetDelta*3))),
 
                 world.create("cabinet", new SpawnData(xCabinet+(12*cabinetWidth), yCabinet-(cabinetDelta*3))),
-                world.create("cabinet", new SpawnData(xCabinet+(13*cabinetWidth), yCabinet-(cabinetDelta*3))),
-
-                world.create("fridge", new SpawnData(5, 55).put("fridge", 19)), //positioned
-                world.create("stove", new SpawnData(300,55).put("stove", 1)),
-                //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
-                world.create("television", new SpawnData(90,230).put("television", 1)), //positioned
-                world.create("router", new SpawnData(323,580).put("router", 1)), //positioned
-                world.create("washing-machine", new SpawnData(500,250).put("washing-machine", 1)), //positioned
-                world.create("microwave", new SpawnData(760, 412).put("microwave", 1)), //positioned
-                //world.create("smartphone", new SpawnData(2*x,3*y).put("smartphone", 1)), missing texture
-                world.create("ps5", new SpawnData(205,240).put("ps5", 1)) //positioned
+                world.create("cabinet", new SpawnData(xCabinet+(13*cabinetWidth), yCabinet-(cabinetDelta*3)))
 
 
         );
@@ -131,5 +129,9 @@ public class Room2 implements Room {
     @Override
     public Entity getDoor() {
         return door;
+    }
+
+    public String initText(){
+        return "room2_deviceinfo.txt";
     }
 }

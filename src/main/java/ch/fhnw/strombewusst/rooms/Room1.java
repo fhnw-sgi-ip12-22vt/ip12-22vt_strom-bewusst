@@ -57,7 +57,6 @@ public class Room1 implements Room {
 
                 world.create("bookshelf", new SpawnData(150, 18). put("deskNum", 18)),
                 world.create("bookshelf", new SpawnData(40, 18).put("deskNum", 19))
-
         );
     }
 
@@ -71,5 +70,9 @@ public class Room1 implements Room {
 
     public Entity getDoor() {
         return door;
+    }
+
+    public String initText() {
+        return "room1_deskinfo.txt";
     }
 }

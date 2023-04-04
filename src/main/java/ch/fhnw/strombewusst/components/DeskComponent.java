@@ -4,7 +4,7 @@ import com.almasb.fxgl.entity.component.Component;
 
 public class DeskComponent extends Component {
 
-    private int deskNum;
+    private final int deskNum;
 
     public DeskComponent(int deskNum) {
         this.deskNum = deskNum;
