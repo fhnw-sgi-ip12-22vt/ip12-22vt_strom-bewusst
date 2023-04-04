@@ -16,5 +16,4 @@
 
 == Sicherstellung der Einhaltung der Konventionen
 
-- Die konfigurierten Coding Conventions werden automatisch im Projekt gespeichert und importiert wenn das Projekt in IntelliJ geöffnet wird.
-- Jede Person arbeitet auf einem eigenen Git Branch. Sobald ein Feature fertiggestellt wurde, wird ein Merge-Request gestellt und der Branch wird geprüft vor dem Merge.
+- Die konfigurierten Coding Conventions wurden in einer Checkstyle Konfig festgehalten, welche die Teammitglieder vor dem commiten ausführen sollen.
