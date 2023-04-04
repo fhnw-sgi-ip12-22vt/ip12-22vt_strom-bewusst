@@ -3,14 +3,11 @@ package ch.fhnw.strombewusst.ui.scene;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 import ch.fhnw.strombewusst.DeviceOrderDevices;
-import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -24,11 +21,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 /**
  * This class defines the layout of our device sub-scene. It gets rendered on top of the main menu when the
@@ -41,7 +35,8 @@ public class DeviceOrderSubScene extends SubScene {
         PLAYERONE(65,25,30),
         PLAYERTWO(65,280,30),
         QUEUEINPUT(65,530,30),
-        POPUP(950,240,15);
+        POPUP(950,240,15),
+        SCORETABLE(950, 30,44);
         final int x, y, width;
 
         BoxType(int x, int y, int width) {
@@ -75,6 +70,8 @@ public class DeviceOrderSubScene extends SubScene {
     private Map<ImageType,Texture> currentTextures = new HashMap<ImageType,Texture>();
     private Map<ImageType,DeviceOrderDevices> currentDevices = new HashMap<ImageType,DeviceOrderDevices>();
 
+    private int falseAnswer = 0;
+
     private ImageType[] queue = {
         ImageType.QUEUEFIRST,
         ImageType.QUEUESECOND,
@@ -85,6 +82,7 @@ public class DeviceOrderSubScene extends SubScene {
     };
 
     private HBox popUp;
+    private HBox scoreboard;
 
     public DeviceOrderSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/deviceorderbackground.png");
@@ -147,6 +145,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {
+                cleanPopUp();
                 int index = StromBewusst.DEVICES.getIndex();
                 setDevice(ImageType.PLAYERONERED,queue[index]);
             }
@@ -155,6 +154,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("Green1 Button") {
             @Override
             protected void onActionBegin() {
+                cleanPopUp();
                 int index = StromBewusst.DEVICES.getIndex();
                 setDevice(ImageType.PLAYERONEGREEN,queue[index]);
             }
@@ -163,6 +163,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("Blue1 Button") {
             @Override
             protected void onActionBegin() {
+                cleanPopUp();
                 int index = StromBewusst.DEVICES.getIndex();
                 setDevice(ImageType.PLAYERONEBLUE,queue[index]);
             }
@@ -171,6 +172,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("Red2 Button") {
             @Override
             protected void onActionBegin() {
+                cleanPopUp();
                 int index = StromBewusst.DEVICES.getIndex();
                 setDevice(ImageType.PLAYERTWORED,queue[index]);
             }
@@ -179,6 +181,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("Green2 Button") {
             @Override
             protected void onActionBegin() {
+                cleanPopUp();
                 int index = StromBewusst.DEVICES.getIndex();
                 setDevice(ImageType.PLAYERTWOGREEN,queue[index]);
             }
@@ -187,6 +190,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
             protected void onActionBegin() {
+                cleanPopUp();
                 int index = StromBewusst.DEVICES.getIndex();
                 setDevice(ImageType.PLAYERTWOBLUE,queue[index]);
             }
@@ -230,18 +234,21 @@ public class DeviceOrderSubScene extends SubScene {
         }
 
         if(falseDevice.isEmpty()){
+            if (StromBewusst.SCORE.getQueueSolved() < StromBewusst.DEVICES.getSize()) {
+                int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
+                StromBewusst.SCORE.increaseScoreByDeviceOrder(increase);
+            }
             msg = "RICHTIG";
             popUp = getTextBox(msg,BoxType.POPUP,Color.GREEN,FontWeight.SEMI_BOLD);
             getContentRoot().getChildren().addAll(popUp);
+            nextQueue();
         }
         else{
             for(DeviceOrderDevices d : falseDevice){msg+=d.device()+"\n";}
             popUp = getTextBox(msg,BoxType.POPUP,Color.RED,FontWeight.SEMI_BOLD);
             getContentRoot().getChildren().addAll(popUp);
+            falseAnswer++;
         }
-        /*System.out.println("Eingabe: " + currentDevices);
-        System.out.println("Boolean: " + Arrays.toString(solution));
-        System.out.println("Set:" + falseDevice);*/
     }
 
     public void setDevice(ImageType from, ImageType to) {
@@ -253,21 +260,9 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
-    private HBox buildTextbox(String text, PuzzleSubScene.BoxType type) {
-       /* Text box = new Text(text);
-        box.setWrappingWidth(type.width);
-        box.getStyleClass().add("small_title");
-        HBox hBox = new HBox(box);
-        hBox.setTranslateX(type.x);
-        hBox.setTranslateY(type.y);
-
-        return hBox;*/
-        return null;
-    }
-
     void clearDeviceOrder() {
         getContentRoot().getChildren().removeAll(currentTextures.values());
-        cleanPopUp();
+        getContentRoot().getChildren().removeAll(scoreboard);
     }
 
     void cleanPopUp(){
@@ -277,24 +272,27 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
-    void nextQuestion() {
-        /*StromBewusst.QUIZ.nextQuestion();
-
-        if (StromBewusst.QUIZ.quizDone()) {
-            StromBewusst.QUIZ.unlockDoor();
+    void nextQueue() {
+        if (StromBewusst.DEVICES.deviceOrderDone()) {
+            StromBewusst.DEVICES.unlockDoor();
             getSceneService().popSubScene();
         } else {
-            clearQuiz();
-            currentQuiz = buildQuiz(StromBewusst.QUIZ.getQuestion());
-        }*/
+            clearDeviceOrder();
+            falseAnswer = 0;
+            StromBewusst.DEVICES.buildSolution();
+            buildDeviceOrder();
+        }
     }
 
     private void buildDeviceOrder() {
         List<DeviceOrderDevices> devices = StromBewusst.DEVICES.getDevices();
-        Collections.shuffle(devices);
+        //Collections.shuffle(devices); //comment it, then you pass puzzle with key 456789
         List<ImageType> types = Arrays.stream(ImageType.values())
-            .filter(x->x.toString().substring(0,1).equals("P"))
+            .filter(x->x.toString().charAt(0)=='P')
             .toList();
+
+        scoreboard = getTextBox(StromBewusst.SCORE.toString(),BoxType.SCORETABLE,Color.BLACK,FontWeight.SEMI_BOLD);
+        getContentRoot().getChildren().addAll(scoreboard);
 
         if(devices.size() == types.size()){
             for(int i = 0; i < devices.size(); i++){setImage(devices.get(i),types.get(i));}
