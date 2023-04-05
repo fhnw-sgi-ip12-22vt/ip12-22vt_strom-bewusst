@@ -4,4 +4,5 @@ public record QuizQuestion(
         String question,
         String[] answerOptions,
         int correctAnswer
-) {}
+) {
+}

@@ -11,29 +11,33 @@ public class Score {
 
     private int queueSolved;
 
-    public Score(){
+    public Score() {
         this.score = 0;
         this.answerSolved = 0;
         this.queueSolved = 0;
     }
 
-    public int getAnswerSolved(){return answerSolved;}
+    public int getAnswerSolved() {
+        return answerSolved;
+    }
 
-    public int getQueueSolved(){return queueSolved;}
+    public int getQueueSolved() {
+        return queueSolved;
+    }
 
-    public void increaseScoreByQuiz(int points){
-        this.score+=points;
-        FXGL.inc("score",+points);
+    public void increaseScoreByQuiz(int points) {
+        this.score += points;
+        FXGL.inc("score", +points);
         this.answerSolved++;
     }
 
-    public void increaseScoreByDeviceOrder(int points){
-        this.score+=points;
-        FXGL.inc("score",+points);
+    public void increaseScoreByDeviceOrder(int points) {
+        this.score += points;
+        FXGL.inc("score", +points);
         this.queueSolved++;
     }
 
-    public HBox pushScore(int x, int y){
+    public HBox pushScore(int x, int y) {
         Text title = new Text(toString());
         title.setStyle("-fx-font-size: 44px;");
         HBox titleHBox1 = new HBox(title);

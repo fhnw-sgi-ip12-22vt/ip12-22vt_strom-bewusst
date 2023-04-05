@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    protected final static PiGpio PI_GPIO = PiGpio.newNativeInstance();
-    protected final static Context PI4J_CONTEXT = Pi4J.newContextBuilder()
+    protected static final PiGpio PI_GPIO = PiGpio.newNativeInstance();
+    protected static final Context PI4J_CONTEXT = Pi4J.newContextBuilder()
             .noAutoDetect()
             .add(new RaspberryPiPlatform() {
                 @Override

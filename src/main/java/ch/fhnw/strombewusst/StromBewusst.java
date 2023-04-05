@@ -1,7 +1,5 @@
 package ch.fhnw.strombewusst;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 import ch.fhnw.strombewusst.collision.PlayerDeskHandler;
 import ch.fhnw.strombewusst.collision.PlayerDoorHandler;
 import ch.fhnw.strombewusst.collision.PlayerMainDeskHandler;
@@ -30,6 +28,18 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 import java.util.Map;
+
+import static com.almasb.fxgl.dsl.FXGL.addUINode;
+import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
+import static com.almasb.fxgl.dsl.FXGL.getCutsceneService;
+import static com.almasb.fxgl.dsl.FXGL.getGameController;
+import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
+import static com.almasb.fxgl.dsl.FXGL.getInput;
+import static com.almasb.fxgl.dsl.FXGL.getPhysicsWorld;
+import static com.almasb.fxgl.dsl.FXGL.getSceneService;
+import static com.almasb.fxgl.dsl.FXGL.getUIFactoryService;
+import static com.almasb.fxgl.dsl.FXGL.getip;
+import static com.almasb.fxgl.dsl.FXGL.onKeyDown;
 
 /**
  * This is the main class of our game, the methods of this class initialize the game.
@@ -141,12 +151,6 @@ public class StromBewusst extends GameApplication {
             p1Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player1));
             p1Controller.onButtonUpperDown(() -> InputHandler.handleBack(player1));
 
-            p1Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P1 LEFT DOWN"));
-            p1Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P1 MIDDLE DOWN"));
-            p1Controller.onButtonRightDown(() -> System.out.println("DEBUG: P1 RIGHT DOWN"));
-            p1Controller.onButtonUpperDown(() -> System.out.println("DEBUG: P1 UPPER DOWN"));
-            p1Controller.onButtonLowerDown(() -> System.out.println("DEBUG: P1 LOWER DOWN"));
-
             // Player 2 controls
             p2Controller.onJoystickRight(() -> InputHandler.handlePlayerRight(player2));
             p2Controller.onJoystickLeft(() -> InputHandler.handlePlayerLeft(player2));
@@ -155,20 +159,6 @@ public class StromBewusst extends GameApplication {
             p2Controller.onJoystickUp(() -> InputHandler.handlePlayerUp(player2));
             p2Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player2));
             p2Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player2));
-
-            p2Controller.onJoystickRight(() -> System.out.println("DEBUG: P2 JOYSTICK RIGHT"));
-            p2Controller.onJoystickLeft(() -> System.out.println("DEBUG: P2 JOYSTICK LEFT"));
-            p2Controller.onJoystickHorizontalIdle(() -> System.out.println("DEBUG: P2 JOYSTICK H-IDLE"));
-
-            p2Controller.onJoystickUp(() -> System.out.println("DEBUG: P2 JOYSTICK UP"));
-            p2Controller.onJoystickDown(() -> System.out.println("DEBUG: P2 JOYSTICK DOWN"));
-            p2Controller.onJoystickVerticalIdle(() -> System.out.println("DEBUG: P2 JOYSTICK V-IDLE"));
-
-            p2Controller.onButtonLeftDown(() -> System.out.println("DEBUG: P2 LEFT DOWN"));
-            p2Controller.onButtonMiddleDown(() -> System.out.println("DEBUG: P2 MIDDLE DOWN"));
-            p2Controller.onButtonRightDown(() -> System.out.println("DEBUG: P2 RIGHT DOWN"));
-            p2Controller.onButtonUpperDown(() -> System.out.println("DEBUG: P2 UPPER DOWN"));
-            p2Controller.onButtonLowerDown(() -> System.out.println("DEBUG: P2 LOWER DOWN"));
 
             p2Controller.onButtonLeftDown(() -> InputHandler.handleButtonLeft(player2));
             p2Controller.onButtonMiddleDown(() -> InputHandler.handleButtonMiddle(player2));
@@ -299,15 +289,17 @@ public class StromBewusst extends GameApplication {
 
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("score",0);
+        vars.put("score", 0);
     }
 
     @Override
     protected void initUI() {
-        var scoreText = getUIFactoryService().newText("", Color.ANTIQUEWHITE,38.0);
+        var scoreText = getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         scoreText.textProperty().bind(getip("score").asString("%d"));
-        addUINode(scoreText,810,67);
+        addUINode(scoreText, 810, 67);
     }
 
-    public int getLevel(){return level;}
+    public int getLevel() {
+        return level;
+    }
 }

@@ -1,15 +1,15 @@
 package ch.fhnw.strombewusst.input.pi4jcomponents;
 
+import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.ContinuousMeasuringException;
 import com.pi4j.config.exception.ConfigException;
 import com.pi4j.context.Context;
-import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.ContinuousMeasuringException;
 import com.pi4j.io.i2c.I2C;
 import com.pi4j.io.i2c.I2CConfig;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-public class Ads1115 extends Component  {
+public class Ads1115 extends Component {
     /**
      * PI4J i2c component
      */
@@ -137,7 +137,7 @@ public class Ads1115 extends Component  {
      * @param pi4j Pi4J context
      */
     public Ads1115(Context pi4j) {
-        this(pi4j, DEFAULT_I2C_BUS,GAIN.GAIN_4_096V, ADDRESS.GND, DEFAULT_NUMBER_OF_CHANNELS);
+        this(pi4j, DEFAULT_I2C_BUS, GAIN.GAIN_4_096V, ADDRESS.GND, DEFAULT_NUMBER_OF_CHANNELS);
     }
 
     /**
@@ -149,7 +149,8 @@ public class Ads1115 extends Component  {
      * @param address Custom device address on I2C
      */
     public Ads1115(Context pi4j, int bus, GAIN gain, ADDRESS address, int numberOfChannels) {
-        this(pi4j, bus, gain, address, numberOfChannels, pi4j.create(buildI2CConfig(pi4j, bus, address.getAddress(), DEVICE_ID)));
+        this(pi4j, bus, gain, address, numberOfChannels,
+                pi4j.create(buildI2CConfig(pi4j, bus, address.getAddress(), DEVICE_ID)));
     }
 
     /**
@@ -161,7 +162,7 @@ public class Ads1115 extends Component  {
      * @param address Custom device address on I2C
      * @param i2c     Custom I2C bus
      */
-    public Ads1115(Context pi4j, int bus, GAIN gain, ADDRESS address, int numberOfChannels, I2C i2c){
+    public Ads1115(Context pi4j, int bus, GAIN gain, ADDRESS address, int numberOfChannels, I2C i2c) {
         this.context = pi4j;
         this.numberOfChannels = numberOfChannels;
         this.consumersSlowRead = new Consumer[numberOfChannels];
@@ -172,11 +173,11 @@ public class Ads1115 extends Component  {
         //mux will be set in function
         this.pga = gain;
         //mode will be set in function
-        this.dr       = DR.SPS_128;
+        this.dr = DR.SPS_128;
         this.compMode = COMP_MODE.TRAD_COMP.getCompMode();
-        this.compPol  = COMP_POL.ACTIVE_LOW.getCompPol();
-        this.compLat  = COMP_LAT.NON_LATCH.getLatching();
-        this.compQue  = COMP_QUE.DISABLE_COMP.getCompQue();
+        this.compPol = COMP_POL.ACTIVE_LOW.getCompPol();
+        this.compLat = COMP_LAT.NON_LATCH.getLatching();
+        this.compQue = COMP_QUE.DISABLE_COMP.getCompQue();
         createTemplateConfiguration();
 
         //i2c parameter
@@ -236,8 +237,11 @@ public class Ads1115 extends Component  {
      * @return double voltage
      */
     public double singleShotAIn0() {
-        if (continuousReadingActive) throw new ContinuousMeasuringException("Continuous measuring active");
-        return pga.gainPerBit * readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN0_GND.getMux() | MODE.SINGLE.getMode());
+        if (continuousReadingActive) {
+            throw new ContinuousMeasuringException("Continuous measuring active");
+        }
+        return pga.gainPerBit *
+                readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN0_GND.getMux() | MODE.SINGLE.getMode());
     }
 
     /**
@@ -246,8 +250,11 @@ public class Ads1115 extends Component  {
      * @return double voltage
      */
     public double singleShotAIn1() {
-        if (continuousReadingActive) throw new ContinuousMeasuringException("Continuous measuring active");
-        return pga.gainPerBit * readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN1_GND.getMux() | MODE.SINGLE.getMode());
+        if (continuousReadingActive) {
+            throw new ContinuousMeasuringException("Continuous measuring active");
+        }
+        return pga.gainPerBit *
+                readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN1_GND.getMux() | MODE.SINGLE.getMode());
     }
 
     /**
@@ -256,8 +263,11 @@ public class Ads1115 extends Component  {
      * @return double voltage
      */
     public double singleShotAIn2() {
-        if (continuousReadingActive) throw new ContinuousMeasuringException("Continuous measuring active");
-        return pga.gainPerBit * readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN2_GND.getMux() | MODE.SINGLE.getMode());
+        if (continuousReadingActive) {
+            throw new ContinuousMeasuringException("Continuous measuring active");
+        }
+        return pga.gainPerBit *
+                readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN2_GND.getMux() | MODE.SINGLE.getMode());
     }
 
     /**
@@ -266,8 +276,11 @@ public class Ads1115 extends Component  {
      * @return double voltage
      */
     public double singleShotAIn3() {
-        if (continuousReadingActive) throw new ContinuousMeasuringException("Continuous measuring active");
-        return pga.gainPerBit * readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN3_GND.getMux() | MODE.SINGLE.getMode());
+        if (continuousReadingActive) {
+            throw new ContinuousMeasuringException("Continuous measuring active");
+        }
+        return pga.gainPerBit *
+                readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN3_GND.getMux() | MODE.SINGLE.getMode());
     }
 
     /**
@@ -289,9 +302,10 @@ public class Ads1115 extends Component  {
                 default -> MUX.AIN0_GND;
             };
             continuousReadingActive = true;
-            fastReadContinuousValue(CONFIG_REGISTER_TEMPLATE | mux.getMux() | MODE.CONTINUOUS.getMode(), threshold, readFrequency);
+            fastReadContinuousValue(CONFIG_REGISTER_TEMPLATE | mux.getMux() | MODE.CONTINUOUS.getMode(), threshold,
+                    readFrequency);
             logDebug("Start fast continuous reading");
-        }else{
+        } else {
             throw new ContinuousMeasuringException("Continuous reading already active!");
         }
     }
@@ -389,9 +403,12 @@ public class Ads1115 extends Component  {
 
     /**
      * Return I2C object
+     *
      * @return I2C object
      */
-    public I2C getI2cObject(){return i2c;}
+    public I2C getI2cObject() {
+        return i2c;
+    }
 
     /**
      * Return device name
@@ -503,23 +520,32 @@ public class Ads1115 extends Component  {
      * @return configuration from device
      */
     private int readConfigRegister() {
-        String[] osInfo   = {"0 : Device is currently performing a conversion\n", "1 : Device is not currently performing a conversion\n"};
+        String[] osInfo = {"0 : Device is currently performing a conversion\n",
+                "1 : Device is not currently performing a conversion\n"};
 
-        String[] muxInfo  = {"000 : AINP = AIN0 and AINN = AIN1\n", "001 : AINP = AIN0 and AINN = AIN3\n", "010 : AINP = AIN1 and AINN = AIN3\n", "011 : AINP = AIN2 and AINN = AIN3\n", "100 : AINP = AIN0 and AINN = GND\n", "101 : AINP = AIN1 and AINN = GND\n", "110 : AINP = AIN2 and AINN = GND\n", "111 : AINP = AIN3 and AINN = GND\n"};
+        String[] muxInfo = {"000 : AINP = AIN0 and AINN = AIN1\n", "001 : AINP = AIN0 and AINN = AIN3\n",
+                "010 : AINP = AIN1 and AINN = AIN3\n", "011 : AINP = AIN2 and AINN = AIN3\n",
+                "100 : AINP = AIN0 and AINN = GND\n", "101 : AINP = AIN1 and AINN = GND\n",
+                "110 : AINP = AIN2 and AINN = GND\n", "111 : AINP = AIN3 and AINN = GND\n"};
 
-        String[] pgaInfo  = {"000 : FSR = ±6.144 V(1)\n", "001 : FSR = ±4.096 V(1)\n", "010 : FSR = ±2.048 V\n", "011 : FSR = ±1.024 V\n", "100 : FSR = ±0.512 V\n", "101 : FSR = ±0.256 V\n", "110 : FSR = ±0.256 V\n", "111 : FSR = ±0.256 V\n"};
+        String[] pgaInfo = {"000 : FSR = ±6.144 V(1)\n", "001 : FSR = ±4.096 V(1)\n", "010 : FSR = ±2.048 V\n",
+                "011 : FSR = ±1.024 V\n", "100 : FSR = ±0.512 V\n", "101 : FSR = ±0.256 V\n", "110 : FSR = ±0.256 V\n",
+                "111 : FSR = ±0.256 V\n"};
 
         String[] modeInfo = {"0 : Continuous-conversion mode\n", "1 : Single-shot mode or power-down state\n"};
 
-        String[] drInfo   = {"000 : 8 SPS\n", "001 : 16 SPS\n", "010 : 32 SPS\n", "011 : 64 SPS\n", "100 : 128 SPS\n", "101 : 250 SPS\n", "110 : 475 SPS\n", "111 : 860 SPS\n"};
+        String[] drInfo = {"000 : 8 SPS\n", "001 : 16 SPS\n", "010 : 32 SPS\n", "011 : 64 SPS\n", "100 : 128 SPS\n",
+                "101 : 250 SPS\n", "110 : 475 SPS\n", "111 : 860 SPS\n"};
 
         String[] compModeInfo = {"0 : Traditional comparator (default)\n", "1 : Window comparator\n"};
 
-        String[] compPolInfo  = {"0 : Active low (default)\n", "1 : Active high\n"};
+        String[] compPolInfo = {"0 : Active low (default)\n", "1 : Active high\n"};
 
-        String[] compLatInfo  = {"0 : Non latching comparator\n", "1 : Latching comparator\n"};
+        String[] compLatInfo = {"0 : Non latching comparator\n", "1 : Latching comparator\n"};
 
-        String[] compQueInfo  = {"00 : Assert after one conversion\n", "01 : Assert after two conversions\n", "10 : Assert after four conversions\n", "11 : Disable comparator and set ALERT/RDY pin to high-impedance\n"};
+        String[] compQueInfo = {"00 : Assert after one conversion\n", "01 : Assert after two conversions\n",
+                "10 : Assert after four conversions\n",
+                "11 : Disable comparator and set ALERT/RDY pin to high-impedance\n"};
 
         //get configuration from device
         int result = i2c.readRegisterWord(CONFIG_REGISTER);
@@ -559,8 +585,9 @@ public class Ads1115 extends Component  {
         //write configuration to device
         int confCheck = writeConfigRegister(config);
         //check if configuration is correct written on device, ignore first bit (os)
-        if ((confCheck & OS.CLR_CURRENT_CONF_PARAM.getOs()) != (config & OS.CLR_CURRENT_CONF_PARAM.getOs()))
+        if ((confCheck & OS.CLR_CURRENT_CONF_PARAM.getOs()) != (config & OS.CLR_CURRENT_CONF_PARAM.getOs())) {
             throw new ConfigException("Configuration not correctly written to device.");
+        }
         //read actual ad value from device
         int result = readConversionRegister();
         logDebug("readIn: " + config + ", raw " + result);
@@ -592,7 +619,8 @@ public class Ads1115 extends Component  {
                     //convert threshold voltage to digits
                     int thresholdDigits = (int) (threshold / pga.gainPerBit);
                     if (oldValue[0] - thresholdDigits > result || oldValue[0] + thresholdDigits < result) {
-                        logDebug("New event triggered on value change, old value: " + Arrays.toString(oldValue) + " , new value: " + result);
+                        logDebug("New event triggered on value change, old value: " + Arrays.toString(oldValue) +
+                                " , new value: " + result);
                         oldValue[0] = result;
                         consumerFastRead.accept(pga.gainPerBit * (double) result);
                     }
@@ -630,21 +658,25 @@ public class Ads1115 extends Component  {
 
                     int[] result = new int[4];
                     //at least on channel must be activated
-                    result[0] = readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN0_GND.getMux() | MODE.SINGLE.getMode());
+                    result[0] =
+                            readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN0_GND.getMux() | MODE.SINGLE.getMode());
                     logDebug("Current value channel 0: " + result[0]);
                     //if at least two channels are activated
                     if (numberOfChannels > 1) {
-                        result[1] = readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN1_GND.getMux() | MODE.SINGLE.getMode());
+                        result[1] = readSingleShot(
+                                CONFIG_REGISTER_TEMPLATE | MUX.AIN1_GND.getMux() | MODE.SINGLE.getMode());
                         logDebug("Current value channel 1: " + result[1]);
                     }
                     //if at least three channels are activated
                     if (numberOfChannels > 2) {
-                        result[2] = readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN2_GND.getMux() | MODE.SINGLE.getMode());
+                        result[2] = readSingleShot(
+                                CONFIG_REGISTER_TEMPLATE | MUX.AIN2_GND.getMux() | MODE.SINGLE.getMode());
                         logDebug("Current value channel 2: " + result[2]);
                     }
                     //if all 4 channels are activated
                     if (numberOfChannels > 3) {
-                        result[3] = readSingleShot(CONFIG_REGISTER_TEMPLATE | MUX.AIN3_GND.getMux() | MODE.SINGLE.getMode());
+                        result[3] = readSingleShot(
+                                CONFIG_REGISTER_TEMPLATE | MUX.AIN3_GND.getMux() | MODE.SINGLE.getMode());
                         logDebug("Current value channel 3: " + result[3]);
                     }
                     //convert threshold voltage to digits
@@ -652,7 +684,8 @@ public class Ads1115 extends Component  {
 
                     for (int i = 0; i < numberOfChannels; i++) {
                         if (oldValue[i] - thresholdDigits > result[i] || oldValue[i] + thresholdDigits < result[i]) {
-                            logDebug("New event triggered on value change, old value: " + oldValue[i] + " , new value: " + result[i]);
+                            logDebug("New event triggered on value change, old value: " + oldValue[i] +
+                                    " , new value: " + result[i]);
                             oldValue[i] = result[i];
                             if (consumersSlowRead[i] != null) {
                                 consumersSlowRead[i].accept(pga.gainPerBit * (double) result[i]);
@@ -683,7 +716,8 @@ public class Ads1115 extends Component  {
      * @return I2C configuration
      */
     private static I2CConfig buildI2CConfig(Context pi4j, int bus, int device, String deviceId) {
-        return I2C.newConfigBuilder(pi4j).id("I2C-" + device + "@" + bus).name(deviceId).bus(bus).device(device).build();
+        return I2C.newConfigBuilder(pi4j).id("I2C-" + device + "@" + bus).name(deviceId).bus(bus).device(device)
+                .build();
     }
 
     /**

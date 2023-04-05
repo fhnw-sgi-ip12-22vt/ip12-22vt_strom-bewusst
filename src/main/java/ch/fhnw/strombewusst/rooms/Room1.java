@@ -30,8 +30,8 @@ public class Room1 implements Room {
                 player1,
                 player2,
 
-            world.create("emptyRoom", new SpawnData()
-                .put("textureName", "room1-with-sidebar.png")),
+                world.create("emptyRoom", new SpawnData()
+                        .put("textureName", "room1-with-sidebar.png")),
                 door,
 
                 world.create("main-desk", new SpawnData(264, 75).put("textureName", "main-desk1.png")),
@@ -55,7 +55,7 @@ public class Room1 implements Room {
                 world.create("empty-desk", new SpawnData(510, 75).put("deskNum", 16)),
                 world.create("empty-desk", new SpawnData(20, 625).put("deskNum", 17)),
 
-                world.create("bookshelf", new SpawnData(150, 18). put("deskNum", 18)),
+                world.create("bookshelf", new SpawnData(150, 18).put("deskNum", 18)),
                 world.create("bookshelf", new SpawnData(40, 18).put("deskNum", 19))
         );
     }

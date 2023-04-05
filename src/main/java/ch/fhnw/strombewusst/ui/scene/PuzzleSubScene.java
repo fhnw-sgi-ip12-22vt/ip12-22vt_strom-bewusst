@@ -1,7 +1,5 @@
 package ch.fhnw.strombewusst.ui.scene;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.dsl.FXGL;
@@ -15,6 +13,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
+import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
+import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
+import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
+import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 /**
  * This class defines the layout of our puzzle sub-scene. It gets rendered on top of the main menu when the
@@ -228,6 +231,7 @@ public class PuzzleSubScene extends SubScene {
         case 0 -> setImagePlug("plug-red.png", player);
         case 1 -> setImagePlug("plug-green.png", player);
         case 2 -> setImagePlug("plug-blue.png", player);
+        default -> System.out.println("unknown colour!");
         }
 
         if (player == 1) {

@@ -3,7 +3,7 @@
 
 <module name="Checker">
 	<property name="charset" value="UTF-8"/>
-	<property name="severity" value="warning" />
+	<property name="severity" value="error" />
 
 	<module name="BeforeExecutionExclusionFileFilter">
 		<property name="fileNamePattern" value="module\-info\.java$"/>
@@ -45,7 +45,9 @@
 		<module name="ParameterName" />
 		<module name="StaticVariableName" />
 		<module name="TypeName" />
-		<module name="AvoidStarImport" />
+		<module name="AvoidStarImport">
+			<property name="severity" value="warning" />
+		</module>
 		<module name="IllegalImport" />
 		<module name="RedundantImport" />
 		<module name="UnusedImports" />
@@ -56,7 +58,9 @@
 			<property name="max" value="150" />
 			<property name="tokens" value="METHOD_DEF" />
 		</module>
-		<module name="ParameterNumber" />
+		<module name="ParameterNumber">
+			<property name="severity" value="warning" />
+		</module>
 		<module name="EmptyForIteratorPad" />
 		<module name="MethodParamPad" />
 		<module name="NoWhitespaceAfter" />
@@ -81,11 +85,17 @@
 		<module name="SimplifyBooleanExpression" />
 		<module name="SimplifyBooleanReturn" />
 		<module name="FinalClass" />
-		<module name="HideUtilityClassConstructor" />
+		<module name="HideUtilityClassConstructor">
+			<property name="severity" value="warning" />
+		</module>
 		<module name="InterfaceIsType" />
-		<module name="VisibilityModifier" />
+		<module name="VisibilityModifier">
+			<property name="severity" value="warning" />
+		</module>
 		<module name="ArrayTypeStyle" />
-		<module name="TodoComment" />
+		<module name="TodoComment">
+			<property name="severity" value="info" />
+		</module>
 		<module name="UpperEll" />
         <module name="SingleSpaceSeparator"/>
 		<!-- disable metrics

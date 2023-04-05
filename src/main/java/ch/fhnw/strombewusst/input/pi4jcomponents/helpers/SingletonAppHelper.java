@@ -1,4 +1,5 @@
 package ch.fhnw.strombewusst.input.pi4jcomponents.helpers;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;

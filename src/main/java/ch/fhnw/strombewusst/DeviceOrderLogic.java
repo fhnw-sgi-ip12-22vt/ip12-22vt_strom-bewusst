@@ -1,10 +1,10 @@
 package ch.fhnw.strombewusst;
 
 import com.almasb.fxgl.dsl.FXGL;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -18,7 +18,7 @@ public class DeviceOrderLogic {
     private DeviceOrderDevices[] solution;
     private DeviceOrderDevices[] answer;
     private Set<Integer> trackPassedDevices;
-    private final int QUEUESIZE = 6;
+    private static final int QUEUESIZE = 6;
     private int index;
 
     private int size;
@@ -28,20 +28,21 @@ public class DeviceOrderLogic {
     private boolean doorOpen = true; //for development of room 3
 
 
-    public DeviceOrderLogic(int roundsTotal){
+    public DeviceOrderLogic(int roundsTotal) {
         this.roundsLeft = roundsTotal;
         this.size = roundsTotal;
     }
 
     public void initDevices() {
-        devices = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/devices.json", DeviceOrderDevices[].class).get()).toList();
-        trackPassedDevices = Stream.iterate(0,i->i+1)
-            .limit(devices.size())
-            .collect(Collectors.toSet());
+        devices = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/devices.json", DeviceOrderDevices[].class).get())
+                .toList();
+        trackPassedDevices = Stream.iterate(0, i -> i + 1)
+                .limit(devices.size())
+                .collect(Collectors.toSet());
         buildSolution();
     }
 
-    public boolean deviceOrderDone(){
+    public boolean deviceOrderDone() {
         return !((trackPassedDevices.size() >= QUEUESIZE) && (roundsLeft > 0));
     }
 
@@ -49,8 +50,8 @@ public class DeviceOrderLogic {
         this.doorOpen = true;
     }
 
-    public void buildSolution(){
-        if(trackPassedDevices.size() >= QUEUESIZE) {
+    public void buildSolution() {
+        if (trackPassedDevices.size() >= QUEUESIZE) {
             Random random = new Random();
             Deque<DeviceOrderDevices> deviceSet = new LinkedList<>();
 
@@ -64,31 +65,42 @@ public class DeviceOrderLogic {
             }
             answer = new DeviceOrderDevices[QUEUESIZE];
             solution = deviceSet.stream()
-                .sorted((x, y) -> x.place() - y.place())
-                .toArray(DeviceOrderDevices[]::new);
+                    .sorted((x, y) -> x.place() - y.place())
+                    .toArray(DeviceOrderDevices[]::new);
             roundsLeft--;
             index = 0;
         }
     }
 
-    public List<DeviceOrderDevices> getDevices(){
+    public List<DeviceOrderDevices> getDevices() {
         return Arrays.stream(solution).unordered().collect(Collectors.toList());
     }
 
-    public int getSize(){return size;}
-
-    public void addAnswer(DeviceOrderDevices d){
-        if(index < answer.length){answer[index++]=d;}
+    public int getSize() {
+        return size;
     }
 
-    public void deleteAnswerQueue(){index=0;answer = new DeviceOrderDevices[QUEUESIZE];}
+    public void addAnswer(DeviceOrderDevices d) {
+        if (index < answer.length) {
+            answer[index++] = d;
+        }
+    }
 
-    public int getIndex(){return index < answer.length ? index : index - 1;}
+    public void deleteAnswerQueue() {
+        index = 0;
+        answer = new DeviceOrderDevices[QUEUESIZE];
+    }
 
-    public boolean[] compareAnswerSolution(){
+    public int getIndex() {
+        return index < answer.length ? index : index - 1;
+    }
+
+    public boolean[] compareAnswerSolution() {
         boolean[] correctAtIndex = new boolean[solution.length];
-        for(int i = 0; i < solution.length; i++){
-            if(answer[i] != null && answer[i].place() == solution[i].place()){correctAtIndex[i]=true;}
+        for (int i = 0; i < solution.length; i++) {
+            if (answer[i] != null && answer[i].place() == solution[i].place()) {
+                correctAtIndex[i] = true;
+            }
         }
         return correctAtIndex;
     }

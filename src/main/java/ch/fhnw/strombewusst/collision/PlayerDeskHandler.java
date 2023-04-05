@@ -29,7 +29,6 @@ public class PlayerDeskHandler extends CollisionHandler {
     }
 
 
-
     @Override
     protected void onCollisionBegin(Entity player, Entity type) {
         int deskNum = type.getComponent(DeskComponent.class).getDeskNum();
@@ -45,6 +44,7 @@ public class PlayerDeskHandler extends CollisionHandler {
             player2HBox.getChildren().add(title);
         }
     }
+
     protected void onCollisionEnd(Entity player, Entity desk) {
         try {
             if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {

@@ -1,10 +1,11 @@
 package ch.fhnw.strombewusst.input.pi4jcomponents;
 
-import com.pi4j.context.Context;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
+import com.pi4j.context.Context;
+
 import java.util.function.Consumer;
 
-public class JoystickAnalog extends Component{
+public class JoystickAnalog extends Component {
     /**
      * potentiometer x axis
      */
@@ -75,23 +76,26 @@ public class JoystickAnalog extends Component{
      * @param push    additional push button on joystick
      */
     public JoystickAnalog(Context pi4j, Ads1115 ads1115, PIN push) {
-        this(pi4j, ads1115, DEFAULT_CHANNEL_POTENTIOMETER_X, DEFAULT_CHANNEL_POTENTIOMETER_Y, DEFAULT_MAX_VOLTAGE, DEFAULT_NORMALIZATION, push);
+        this(pi4j, ads1115, DEFAULT_CHANNEL_POTENTIOMETER_X, DEFAULT_CHANNEL_POTENTIOMETER_Y, DEFAULT_MAX_VOLTAGE,
+                DEFAULT_NORMALIZATION, push);
     }
 
     /**
      * Builds a new JoystickAnalog component with custom input for x-, y-axis, custom pin for push button.
      * ads component needs to be created outside this clas, other channels may be used for other components.
      *
-     * @param pi4j        Pi4J context
-     * @param ads1115     ads object
-     * @param channelXAxis analog potentiometer x-axis
-     * @param channelYAxis analog potentiometer y-axis
-     * @param maxVoltage  max voltage expects on analog input x- and y-axis
+     * @param pi4j           Pi4J context
+     * @param ads1115        ads object
+     * @param channelXAxis   analog potentiometer x-axis
+     * @param channelYAxis   analog potentiometer y-axis
+     * @param maxVoltage     max voltage expects on analog input x- and y-axis
      * @param normalized0to1 normalization axis if true -> normalization from 0 to 1 if false -> normalization from -1 to 1
-     * @param push        additional push button on joystick
+     * @param push           additional push button on joystick
      */
-    public JoystickAnalog(Context pi4j, Ads1115 ads1115, int channelXAxis, int channelYAxis, double maxVoltage, boolean normalized0to1, PIN push) {
-        this(new Potentiometer(ads1115, channelXAxis, maxVoltage), new Potentiometer(ads1115, channelYAxis, maxVoltage), normalized0to1, new SimpleButton(pi4j, push, true));
+    public JoystickAnalog(Context pi4j, Ads1115 ads1115, int channelXAxis, int channelYAxis, double maxVoltage,
+                          boolean normalized0to1, PIN push) {
+        this(new Potentiometer(ads1115, channelXAxis, maxVoltage), new Potentiometer(ads1115, channelYAxis, maxVoltage),
+                normalized0to1, new SimpleButton(pi4j, push, true));
     }
 
     /**
@@ -100,7 +104,8 @@ public class JoystickAnalog extends Component{
      * @param normalized0to1 normalization axis if true -> normalization from 0 to 1 if false -> normalization from -1 to 1
      * @param push           simpleButton object for push button on joystick
      */
-    public JoystickAnalog(Potentiometer potentiometerX, Potentiometer potentiometerY, boolean normalized0to1, SimpleButton push) {
+    public JoystickAnalog(Potentiometer potentiometerX, Potentiometer potentiometerY, boolean normalized0to1,
+                          SimpleButton push) {
         this.x = potentiometerX;
         this.y = potentiometerY;
         this.push = push;
@@ -124,8 +129,12 @@ public class JoystickAnalog extends Component{
 
             value = value + xOffset;
             //check if min max value are ok
-            if (value < xMinNormValue) xMinNormValue = value;
-            if (value > xMaxNormValue) xMaxNormValue = value;
+            if (value < xMinNormValue) {
+                xMinNormValue = value;
+            }
+            if (value > xMaxNormValue) {
+                xMaxNormValue = value;
+            }
             //scale axis from 0 to 1
             if (value < NORMALIZED_CENTER_POSITION) {
                 value = (value - xMinNormValue) / (NORMALIZED_CENTER_POSITION - xMinNormValue) / 2;
@@ -152,8 +161,12 @@ public class JoystickAnalog extends Component{
             value = value + yOffset;
 
             //check if min max value are ok
-            if (value < yMinNormValue) yMinNormValue = value;
-            if (value > yMaxNormValue) yMaxNormValue = value;
+            if (value < yMinNormValue) {
+                yMinNormValue = value;
+            }
+            if (value > yMaxNormValue) {
+                yMaxNormValue = value;
+            }
             //scale axis from 0 to 1
             if (value < NORMALIZED_CENTER_POSITION) {
                 value = (value - yMinNormValue) / (NORMALIZED_CENTER_POSITION - yMinNormValue) / 2;
@@ -240,15 +253,21 @@ public class JoystickAnalog extends Component{
 
     /**
      * returns xOffset
+     *
      * @return double xOffset
      */
-    public double getX_Offset(){return xOffset;}
+    public double getX_Offset() {
+        return xOffset;
+    }
 
     /**
      * returns yOffset
+     *
      * @return double yOffset
      */
-    public double getY_Offset(){return yOffset;}
+    public double getY_Offset() {
+        return yOffset;
+    }
 
     /**
      * Changes the output value from 0 to 1 to -1 to 1

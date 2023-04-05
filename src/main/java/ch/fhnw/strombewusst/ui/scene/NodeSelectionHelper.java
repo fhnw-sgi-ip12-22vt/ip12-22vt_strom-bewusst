@@ -33,6 +33,7 @@ public class NodeSelectionHelper {
             }
         });
     }
+
     public static void focusNextNode() {
         Platform.runLater(() -> {
             Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
@@ -56,6 +57,7 @@ public class NodeSelectionHelper {
             }
         });
     }
+
     public static void confirmSelectedNode() {
         Platform.runLater(() -> {
             Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();

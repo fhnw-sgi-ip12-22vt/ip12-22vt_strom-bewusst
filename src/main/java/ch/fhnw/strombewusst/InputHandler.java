@@ -65,21 +65,23 @@ public class InputHandler {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
             int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
-            Platform.runLater(() -> ((PuzzleSubScene)currentScene).setPlug(playerNumber, 0));
+            Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 0));
         }
     }
+
     public static void handleButtonMiddle(Entity player) {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
             int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
-            Platform.runLater(() -> ((PuzzleSubScene)currentScene).setPlug(playerNumber, 1));
+            Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 1));
         }
     }
+
     public static void handleButtonRight(Entity player) {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
             int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
-            Platform.runLater(() -> ((PuzzleSubScene)currentScene).setPlug(playerNumber, 2));
+            Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 2));
         }
     }
 
@@ -92,7 +94,7 @@ public class InputHandler {
             return;
         }
         if (currentScene instanceof PuzzleSubScene) {
-            Platform.runLater(() -> ((PuzzleSubScene)currentScene).checkAnswers());
+            Platform.runLater(() -> ((PuzzleSubScene) currentScene).checkAnswers());
         }
 
         if (player == null) {
@@ -104,11 +106,11 @@ public class InputHandler {
         for (Entity e : entities) {
             // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
             // instead we check for the distance between bounding boxes
-            if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel()==1 && !StromBewusst.QUIZ.quizDone()) {
+            if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 1
+                    && !StromBewusst.QUIZ.quizDone()) {
                 FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
                 return;
-            }
-            else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel()==2) {
+            } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2) {
                 FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new DeviceOrderSubScene()), Duration.ZERO);
                 return;
             }

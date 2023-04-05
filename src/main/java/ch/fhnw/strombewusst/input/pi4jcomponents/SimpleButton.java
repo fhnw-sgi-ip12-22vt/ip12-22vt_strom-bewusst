@@ -1,7 +1,12 @@
 package ch.fhnw.strombewusst.input.pi4jcomponents;
-import com.pi4j.context.Context;
+
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
-import com.pi4j.io.gpio.digital.*;
+import com.pi4j.context.Context;
+import com.pi4j.io.gpio.digital.DigitalInput;
+import com.pi4j.io.gpio.digital.DigitalInputConfig;
+import com.pi4j.io.gpio.digital.DigitalState;
+import com.pi4j.io.gpio.digital.PullResistance;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -83,20 +88,20 @@ public class SimpleButton extends Component {
             logDebug("Button switched to '" + state + "'");
 
             switch (state) {
-                case HIGH -> {
-                    if (onDown != null) {
-                        onDown.run();
-                    }
-                    if (whilePressed != null) {
-                        executor.submit(whilePressedWorker);
-                    }
+            case HIGH -> {
+                if (onDown != null) {
+                    onDown.run();
                 }
-                case LOW -> {
-                    if (onUp != null) {
-                        onUp.run();
-                    }
+                if (whilePressed != null) {
+                    executor.submit(whilePressedWorker);
                 }
-                case UNKNOWN -> logError("Button is in State UNKNOWN");
+            }
+            case LOW -> {
+                if (onUp != null) {
+                    onUp.run();
+                }
+            }
+            case UNKNOWN -> logError("Button is in State UNKNOWN");
             }
         });
     }
@@ -108,9 +113,9 @@ public class SimpleButton extends Component {
      */
     public DigitalState getState() {
         return switch (digitalInput.state()) {
-            case HIGH -> inverted ? DigitalState.LOW  : DigitalState.HIGH;
-            case LOW  -> inverted ? DigitalState.HIGH : DigitalState.LOW;
-            default   -> DigitalState.UNKNOWN;
+            case HIGH -> inverted ? DigitalState.LOW : DigitalState.HIGH;
+            case LOW -> inverted ? DigitalState.HIGH : DigitalState.LOW;
+            default -> DigitalState.UNKNOWN;
         };
     }
 

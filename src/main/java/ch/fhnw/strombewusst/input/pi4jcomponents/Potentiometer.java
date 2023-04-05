@@ -1,7 +1,8 @@
 package ch.fhnw.strombewusst.input.pi4jcomponents;
 
-import com.pi4j.config.exception.ConfigException;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.ContinuousMeasuringException;
+import com.pi4j.config.exception.ConfigException;
+
 import java.util.function.Consumer;
 
 public class Potentiometer extends Component {
@@ -38,14 +39,14 @@ public class Potentiometer extends Component {
      * Create a new potentiometer component with custom channel and custom maxVoltage
      *
      * @param ads1115    ads instance
-     * @param channel     custom ad channel
+     * @param channel    custom ad channel
      * @param maxVoltage custom maxVoltage
      */
     public Potentiometer(Ads1115 ads1115, int channel, double maxVoltage) {
-        this.ads1115  = ads1115;
+        this.ads1115 = ads1115;
         this.minValue = ads1115.getPga().gain() * 0.1;
         this.maxValue = maxVoltage;
-        this.channel  = channel;
+        this.channel = channel;
 
         //check if channel is in range of ad converter
         if (channel < 0 || channel > 3) {
@@ -75,10 +76,10 @@ public class Potentiometer extends Component {
      */
     public double singleShotGetVoltage() {
         double result = switch (channel) {
-            case 0  -> ads1115.singleShotAIn0();
-            case 1  -> ads1115.singleShotAIn1();
-            case 2  -> ads1115.singleShotAIn2();
-            case 3  -> ads1115.singleShotAIn3();
+            case 0 -> ads1115.singleShotAIn0();
+            case 1 -> ads1115.singleShotAIn1();
+            case 2 -> ads1115.singleShotAIn2();
+            case 3 -> ads1115.singleShotAIn3();
             default -> 0.0;
         };
         updateMinMaxValue(result);
@@ -118,34 +119,34 @@ public class Potentiometer extends Component {
      */
     public void setConsumerSlowReadChan(Consumer<Double> method) {
         switch (channel) {
-            case 0:
-                ads1115.setConsumerSlowReadChannel0((value) -> {
-                    updateMinMaxValue(value);
-                    value = value / maxValue;
-                    method.accept(value);
-                });
-                break;
-            case 1:
-                ads1115.setConsumerSlowReadChannel1((value) -> {
-                    updateMinMaxValue(value);
-                    value = value / maxValue;
-                    method.accept(value);
-                });
-                break;
-            case 2:
-                ads1115.setConsumerSlowReadChannel2((value) -> {
-                    updateMinMaxValue(value);
-                    value = value / maxValue;
-                    method.accept(value);
-                });
-                break;
-            case 3:
-                ads1115.setConsumerSlowReadChannel3((value) -> {
-                    updateMinMaxValue(value);
-                    value = value / maxValue;
-                    method.accept(value);
-                });
-                break;
+        case 0:
+            ads1115.setConsumerSlowReadChannel0((value) -> {
+                updateMinMaxValue(value);
+                value = value / maxValue;
+                method.accept(value);
+            });
+            break;
+        case 1:
+            ads1115.setConsumerSlowReadChannel1((value) -> {
+                updateMinMaxValue(value);
+                value = value / maxValue;
+                method.accept(value);
+            });
+            break;
+        case 2:
+            ads1115.setConsumerSlowReadChannel2((value) -> {
+                updateMinMaxValue(value);
+                value = value / maxValue;
+                method.accept(value);
+            });
+            break;
+        case 3:
+            ads1115.setConsumerSlowReadChannel3((value) -> {
+                updateMinMaxValue(value);
+                value = value / maxValue;
+                method.accept(value);
+            });
+            break;
         }
     }
 
@@ -220,18 +221,18 @@ public class Potentiometer extends Component {
      */
     public void deregisterAll() {
         switch (channel) {
-            case 0:
-                ads1115.setConsumerSlowReadChannel0(null);
-                break;
-            case 1:
-                ads1115.setConsumerSlowReadChannel1(null);
-                break;
-            case 2:
-                ads1115.setConsumerSlowReadChannel2(null);
-                break;
-            case 3:
-                ads1115.setConsumerSlowReadChannel3(null);
-                break;
+        case 0:
+            ads1115.setConsumerSlowReadChannel0(null);
+            break;
+        case 1:
+            ads1115.setConsumerSlowReadChannel1(null);
+            break;
+        case 2:
+            ads1115.setConsumerSlowReadChannel2(null);
+            break;
+        case 3:
+            ads1115.setConsumerSlowReadChannel3(null);
+            break;
         }
     }
 
@@ -240,7 +241,9 @@ public class Potentiometer extends Component {
      *
      * @return maximal value in voltage
      */
-    public double getMaxValue(){return maxValue;}
+    public double getMaxValue() {
+        return maxValue;
+    }
 
     /**
      * Check if new value is bigger than current max value or lower than min value

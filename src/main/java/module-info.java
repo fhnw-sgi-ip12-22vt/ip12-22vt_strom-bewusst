@@ -1,5 +1,5 @@
 open module com.pi4j.mvc {
-     // Pi4J Modules
+    // Pi4J Modules
     requires com.pi4j;
     requires com.pi4j.library.pigpio;
     requires com.pi4j.library.linuxfs;

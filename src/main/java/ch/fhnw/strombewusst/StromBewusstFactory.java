@@ -81,7 +81,7 @@ public class StromBewusstFactory implements EntityFactory {
         int rnd = random(1, 7);
         return entityBuilder(data)
                 .type(EntityType.DESK)
-                .view("desk"+ rnd +".png")
+                .view("desk" + rnd + ".png")
                 .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
                 .with(new DeskComponent(data.get("deskNum")))
@@ -166,6 +166,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("plug-red.png")
                 .build();
     }
+
     @Spawns("fridge")
     public Entity newFridge(SpawnData data) {
         return entityBuilder(data)
@@ -180,7 +181,7 @@ public class StromBewusstFactory implements EntityFactory {
     }
 
     @Spawns("stove")
-    public Entity newStove(SpawnData data){
+    public Entity newStove(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DESK)
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
@@ -191,6 +192,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .zIndex(1)
                 .build();
     }
+
     @Spawns("washing-machine")
     public Entity newWasher(SpawnData data) {
         return entityBuilder(data)
@@ -205,7 +207,7 @@ public class StromBewusstFactory implements EntityFactory {
     }
 
     @Spawns("ps5")
-    public Entity newPS5(SpawnData data){
+    public Entity newPS5(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.PS5)
                 .view("PS5.png")
@@ -228,8 +230,9 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("Mikrowelle.png")
                 .build();
     }
+
     @Spawns("television")
-    public Entity newTelevision(SpawnData data){
+    public Entity newTelevision(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.TELEVISION)
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
@@ -239,8 +242,9 @@ public class StromBewusstFactory implements EntityFactory {
                 .view("Fernseher.png")
                 .build();
     }
+
     @Spawns("router")
-    public Entity newRouter(SpawnData data){
+    public Entity newRouter(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.ROUTER)
                 .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
@@ -252,7 +256,7 @@ public class StromBewusstFactory implements EntityFactory {
     }
 
     @Spawns("lamp")
-    public Entity newLamp(SpawnData data){
+    public Entity newLamp(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.LAMP)
                 .view("")
@@ -272,7 +276,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.CABINET)
                 .view("cabinet.png")
-                .bbox(new HitBox(new Point2D(7, 8+15), BoundingShape.box(50, 8)))
+                .bbox(new HitBox(new Point2D(7, 8 + 15), BoundingShape.box(50, 8)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .build();

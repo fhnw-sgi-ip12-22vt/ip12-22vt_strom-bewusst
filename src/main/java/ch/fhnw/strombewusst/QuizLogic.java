@@ -3,7 +3,6 @@ package ch.fhnw.strombewusst;
 
 import com.almasb.fxgl.dsl.FXGL;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
@@ -28,7 +27,8 @@ public class QuizLogic {
     }
 
     public void initQuestions() {
-        questions = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class).get()).toList();
+        questions = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class).get())
+                .toList();
 
         buildSet();
     }
