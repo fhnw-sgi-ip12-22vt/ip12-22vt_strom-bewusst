@@ -20,16 +20,23 @@ cache:
     - .m2/repository
 
 stages:
+  - test
   - build
-  - site
+
+test-job:
+  stage: test
+  script:
+    - mvn $MAVEN_CLI_OPTS test
+  artifacts:
+    paths:
+      - "target/surefire-reports/*.xml"
+    reports:
+      junit: "target/surefire-reports/*.xml"
 
 build-job:
-  # Your specification comes here
   stage: build
   script:
     - mvn $MAVEN_CLI_OPTS package
   artifacts:
     paths:
       - "target/*.jar"
-    reports:
-      junit: "target/surefire-reports/*.xml"
