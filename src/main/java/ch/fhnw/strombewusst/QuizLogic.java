@@ -79,6 +79,10 @@ public class QuizLogic {
         return size;
     }
 
+    public void setQuestions(List<QuizQuestion> questions) {
+        this.questions = questions;
+    }
+
     public void buildSet() {
         Random random = new Random();
 

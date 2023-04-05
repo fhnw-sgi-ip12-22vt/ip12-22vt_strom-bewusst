@@ -6,8 +6,10 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import javafx.geometry.Point2D;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
     private static class DummyPlayerComponent extends PlayerComponent {
@@ -17,24 +19,31 @@ public class PlayerTest {
         }
     }
 
-    @Test
-    void movementTest() {
-        PhysicsComponent physics = new PhysicsComponent();
+    PhysicsComponent physics;
+    PhysicsWorld physicsWorld;
+    Entity player;
+
+    @BeforeEach
+    void entitySetup() {
+        physics = new PhysicsComponent();
         physics.setBodyType(BodyType.DYNAMIC);
 
-        Entity player = new Entity();
+        player = new Entity();
         player.setType(EntityType.PLAYER);
         player.addComponent(physics);
         player.addComponent(new DummyPlayerComponent());
 
-        PhysicsWorld physicsWorld = new PhysicsWorld(100, 10);
+        physicsWorld = new PhysicsWorld(100, 10);
         physicsWorld.setGravity(0, 0);
 
         physicsWorld.onEntityAdded(player);
 
         Point2D initialPosition = player.getPosition();
-        Assertions.assertEquals(new Point2D(0, 0), initialPosition);
+        assertEquals(new Point2D(0, 0), initialPosition);
+    }
 
+    @Test
+    void playerUpTest() {
         player.getComponent(DummyPlayerComponent.class).moveUp();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
@@ -43,7 +52,11 @@ public class PlayerTest {
         physics.onUpdate(1.0);
         Point2D afterMoveUpPosition = player.getPosition();
 
-        Assertions.assertEquals(new Point2D(0, -20), afterMoveUpPosition);
+        assertEquals(new Point2D(0, -20), afterMoveUpPosition);
+    }
+
+    @Test
+    void playerLeftTest() {
         try {
             player.getComponent(DummyPlayerComponent.class).moveLeft();
         } catch (kotlin.UninitializedPropertyAccessException ignored) {
@@ -56,8 +69,11 @@ public class PlayerTest {
         physics.onUpdate(1.0);
         Point2D afterMoveLeftPosition = player.getPosition();
 
-        Assertions.assertEquals(new Point2D(-20, -20), afterMoveLeftPosition);
+        assertEquals(new Point2D(-20, 0), afterMoveLeftPosition);
+    }
 
+    @Test
+    void playerDownTest() {
         player.getComponent(DummyPlayerComponent.class).moveDown();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
@@ -66,8 +82,11 @@ public class PlayerTest {
         physics.onUpdate(1.0);
         Point2D afterMoveDownPosition = player.getPosition();
 
-        Assertions.assertEquals(new Point2D(-20, 0), afterMoveDownPosition);
+        assertEquals(new Point2D(0, 20), afterMoveDownPosition);
+    }
 
+    @Test
+    void playerRightTest() {
         try {
             player.getComponent(DummyPlayerComponent.class).moveRight();
         } catch (kotlin.UninitializedPropertyAccessException ignored) {
@@ -80,6 +99,6 @@ public class PlayerTest {
         physics.onUpdate(1.0);
         Point2D afterMoveRightPosition = player.getPosition();
 
-        Assertions.assertEquals(new Point2D(0, 0), afterMoveRightPosition);
+        assertEquals(new Point2D(20, 0), afterMoveRightPosition);
     }
 }
