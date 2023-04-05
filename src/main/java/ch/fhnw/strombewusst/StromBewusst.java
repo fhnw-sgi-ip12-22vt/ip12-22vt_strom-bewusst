@@ -29,18 +29,6 @@ import javafx.scene.paint.Color;
 import java.util.List;
 import java.util.Map;
 
-import static com.almasb.fxgl.dsl.FXGL.addUINode;
-import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
-import static com.almasb.fxgl.dsl.FXGL.getCutsceneService;
-import static com.almasb.fxgl.dsl.FXGL.getGameController;
-import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
-import static com.almasb.fxgl.dsl.FXGL.getInput;
-import static com.almasb.fxgl.dsl.FXGL.getPhysicsWorld;
-import static com.almasb.fxgl.dsl.FXGL.getSceneService;
-import static com.almasb.fxgl.dsl.FXGL.getUIFactoryService;
-import static com.almasb.fxgl.dsl.FXGL.getip;
-import static com.almasb.fxgl.dsl.FXGL.onKeyDown;
-
 /**
  * This is the main class of our game, the methods of this class initialize the game.
  */
@@ -68,10 +56,10 @@ public class StromBewusst extends GameApplication {
         level++;
 
         // BUGFIX: clear HBoxes on level change, so Desk info boxes don't persist
-        List<Node> nodes = getSceneService().getCurrentScene().getContentRoot().getChildren();
+        List<Node> nodes = FXGL.getSceneService().getCurrentScene().getContentRoot().getChildren();
         List<Node> hBoxes = nodes.stream().filter((n) -> n instanceof HBox).toList();
         for (Node n : hBoxes) {
-            getSceneService().getCurrentScene().removeChild(n);
+            FXGL.getSceneService().getCurrentScene().removeChild(n);
         }
 
         if (level <= rooms.length) {
@@ -81,11 +69,11 @@ public class StromBewusst extends GameApplication {
             player2 = room.getPlayer2();
             door = room.getDoor();
 
-            getGameWorld().setLevel(room.getLevel());
+            FXGL.getGameWorld().setLevel(room.getLevel());
         } else {
             level = 0;
-            getGameController().gotoMainMenu();
-            getSceneService().pushSubScene(new EndGameSubScene());
+            FXGL.getGameController().gotoMainMenu();
+            FXGL.getSceneService().pushSubScene(new EndGameSubScene());
         }
     }
 
@@ -119,7 +107,7 @@ public class StromBewusst extends GameApplication {
     protected void initGame() {
         QUIZ.initQuestions();
         DEVICES.initDevices();
-        getGameWorld().addEntityFactory(new StromBewusstFactory());
+        FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
         level = 0;
         nextLevel();
@@ -170,106 +158,73 @@ public class StromBewusst extends GameApplication {
         }
 
         // player1 Movement
-        getInput().addAction(new UserAction("player1 Right") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerRight(player1);
-            }
+        FXGL.getInput().addAction(getUserAction("player1 Right",
+                        () -> InputHandler.handlePlayerRight(player1),
+                        () -> InputHandler.handlePlayerHorizontalIdle(player1)),
+                KeyCode.D);
+        FXGL.getInput().addAction(getUserAction("player1 Left",
+                        () -> InputHandler.handlePlayerLeft(player1),
+                        () -> InputHandler.handlePlayerHorizontalIdle(player1)),
+                KeyCode.A);
+        FXGL.getInput().addAction(getUserAction("player1 Up",
+                        () -> InputHandler.handlePlayerUp(player1),
+                        () -> InputHandler.handlePlayerVerticalIdle(player1)),
+                KeyCode.W);
+        FXGL.getInput().addAction(getUserAction("player1 Down",
+                        () -> InputHandler.handlePlayerDown(player1),
+                        () -> InputHandler.handlePlayerVerticalIdle(player1)),
+                KeyCode.S);
 
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerHorizontalIdle(player1);
-            }
-        }, KeyCode.D);
-        getInput().addAction(new UserAction("player1 Left") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerLeft(player1);
-            }
 
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerHorizontalIdle(player1);
-            }
-        }, KeyCode.A);
-        getInput().addAction(new UserAction("player1 Up") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerUp(player1);
-            }
-
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerVerticalIdle(player1);
-            }
-        }, KeyCode.W);
-        getInput().addAction(new UserAction("player1 Down") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerDown(player1);
-            }
-
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerVerticalIdle(player1);
-            }
-        }, KeyCode.S);
-
-        // player2 Movement
-        getInput().addAction(new UserAction("player2 Right") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerRight(player2);
-            }
-
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerHorizontalIdle(player2);
-            }
-        }, KeyCode.L);
-        getInput().addAction(new UserAction("player2 Left") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerLeft(player2);
-            }
-
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerHorizontalIdle(player2);
-            }
-        }, KeyCode.J);
-        getInput().addAction(new UserAction("player2 Up") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerUp(player2);
-            }
-
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerVerticalIdle(player2);
-            }
-        }, KeyCode.I);
-        getInput().addAction(new UserAction("player2 Down") {
-            @Override
-            protected void onAction() {
-                InputHandler.handlePlayerDown(player2);
-            }
-
-            @Override
-            protected void onActionEnd() {
-                InputHandler.handlePlayerVerticalIdle(player2);
-            }
-        }, KeyCode.K);
+        // player1 Movement
+        FXGL.getInput().addAction(getUserAction("player2 Right",
+                        () -> InputHandler.handlePlayerRight(player2),
+                        () -> InputHandler.handlePlayerHorizontalIdle(player2)),
+                KeyCode.L);
+        FXGL.getInput().addAction(getUserAction("player2 Left",
+                        () -> InputHandler.handlePlayerLeft(player2),
+                        () -> InputHandler.handlePlayerHorizontalIdle(player2)),
+                KeyCode.J);
+        FXGL.getInput().addAction(getUserAction("player2 Up",
+                        () -> InputHandler.handlePlayerUp(player2),
+                        () -> InputHandler.handlePlayerVerticalIdle(player2)),
+                KeyCode.I);
+        FXGL.getInput().addAction(getUserAction("player2 Down",
+                        () -> InputHandler.handlePlayerDown(player2),
+                        () -> InputHandler.handlePlayerVerticalIdle(player2)),
+                KeyCode.K);
 
         // "backwards compatibility"
         FXGL.onKeyDown(KeyCode.Q, () -> InputHandler.handleSelect(player1));
         FXGL.onKeyDown(KeyCode.R, () -> InputHandler.handleSelect(player1));
 
-        onKeyDown(KeyCode.F, () -> {
-            var lines = getAssetLoader().loadText("example—cutscene1.txt");
+        FXGL.onKeyDown(KeyCode.F, () -> {
+            var lines = FXGL.getAssetLoader().loadText("example—cutscene1.txt");
             var cutscene = new Cutscene(lines);
-            getCutsceneService().startCutscene(cutscene);
+            FXGL.getCutsceneService().startCutscene(cutscene);
         });
+    }
+
+    /**
+     * Returns an userAction with running the runnables provided
+     *
+     * @param name Name of the UserAction
+     * @param onAction Runnable to be execuded onAction
+     * @param onActionEnd Runnable to be executed onActionEnd
+     * @return The constructed UserAction
+     */
+    private UserAction getUserAction(String name, Runnable onAction, Runnable onActionEnd) {
+        return new UserAction(name) {
+            @Override
+            protected void onAction() {
+                onAction.run();
+            }
+
+            @Override
+            protected void onActionEnd() {
+                onActionEnd.run();
+            }
+        };
     }
 
     /**
@@ -277,7 +232,7 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initPhysics() {
-        PhysicsWorld physicsWorld = getPhysicsWorld();
+        PhysicsWorld physicsWorld = FXGL.getPhysicsWorld();
         physicsWorld.setGravity(0, 0);
 
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
@@ -294,9 +249,9 @@ public class StromBewusst extends GameApplication {
 
     @Override
     protected void initUI() {
-        var scoreText = getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
-        scoreText.textProperty().bind(getip("score").asString("%d"));
-        addUINode(scoreText, 810, 67);
+        var scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
+        scoreText.textProperty().bind(FXGL.getip("score").asString("%d"));
+        FXGL.addUINode(scoreText, 810, 67);
     }
 
     public int getLevel() {
