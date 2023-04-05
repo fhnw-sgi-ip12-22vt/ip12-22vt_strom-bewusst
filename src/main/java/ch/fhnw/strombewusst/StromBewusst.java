@@ -246,7 +246,7 @@ public class StromBewusst extends GameApplication {
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
 
-        vars.put("quizLogic", null);
+        vars.put("quizLogic", new QuizLogic(0));
     }
 
     @Override
