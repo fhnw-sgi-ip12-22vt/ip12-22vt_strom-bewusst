@@ -32,6 +32,7 @@ test-job:
       - "target/surefire-reports/*.xml"
     reports:
       junit: "target/surefire-reports/*.xml"
+      codequality: "target/checkstyle-result.xml"
 
 build-job:
   stage: build
