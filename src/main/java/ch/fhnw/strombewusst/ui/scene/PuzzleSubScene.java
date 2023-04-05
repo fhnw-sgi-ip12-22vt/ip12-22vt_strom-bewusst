@@ -1,5 +1,6 @@
 package ch.fhnw.strombewusst.ui.scene;
 
+import ch.fhnw.strombewusst.QuizLogic;
 import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.dsl.FXGL;
@@ -91,7 +92,7 @@ public class PuzzleSubScene extends SubScene {
 
         getContentRoot().getChildren().addAll(bg, inputsVBox, steering, response, answerOne, answerTwo);
 
-        currentQuiz = buildQuiz(StromBewusst.QUIZ.getQuestion());
+        currentQuiz = buildQuiz(FXGL.<QuizLogic>geto("quizLogic").getQuestion());
         inputs();
     }
 
@@ -166,7 +167,7 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("resetAnswers") {
             @Override
             protected void onActionBegin() {
-                StromBewusst.QUIZ.resetAnswers();
+                FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
                 getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
             }
         }, KeyCode.E);
@@ -189,8 +190,8 @@ public class PuzzleSubScene extends SubScene {
     public void checkAnswers() {
         cleanPopUp();
 
-        if (StromBewusst.QUIZ.checkAnswer()) {
-            if (StromBewusst.SCORE.getAnswerSolved() < StromBewusst.QUIZ.getSize()) {
+        if (FXGL.<QuizLogic>geto("quizLogic").checkAnswer()) {
+            if (StromBewusst.SCORE.getAnswerSolved() < FXGL.<QuizLogic>geto("quizLogic").getSize()) {
                 int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
                 StromBewusst.SCORE.increaseScoreByQuiz(increase);
             }
@@ -213,7 +214,7 @@ public class PuzzleSubScene extends SubScene {
             answerPopUp.setTranslateY(250);
             getContentRoot().getChildren().addAll(answerPopUp);
 
-            StromBewusst.QUIZ.resetAnswers();
+            FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
             falseAnswer++;
             getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
         }
@@ -236,10 +237,10 @@ public class PuzzleSubScene extends SubScene {
 
         if (player == 1) {
             getContentRoot().getChildren().addAll(textureAnswerP1);
-            StromBewusst.QUIZ.setAnswerP1(colour);
+            FXGL.<QuizLogic>geto("quizLogic").setAnswerP1(colour);
         } else if (player == 2) {
             getContentRoot().getChildren().addAll(textureAnswerP2);
-            StromBewusst.QUIZ.setAnswerP2(colour);
+            FXGL.<QuizLogic>geto("quizLogic").setAnswerP2(colour);
         }
 
     }
@@ -270,14 +271,15 @@ public class PuzzleSubScene extends SubScene {
     }
 
     void nextQuestion() {
-        StromBewusst.QUIZ.nextQuestion();
+        QuizLogic quiz = FXGL.geto("quizLogic");
+        quiz.nextQuestion();
 
-        if (StromBewusst.QUIZ.quizDone()) {
-            StromBewusst.QUIZ.unlockDoor();
+        if (quiz.quizDone()) {
+            quiz.unlockDoor();
             getSceneService().popSubScene();
         } else {
             clearQuiz();
-            currentQuiz = buildQuiz(StromBewusst.QUIZ.getQuestion());
+            currentQuiz = buildQuiz(quiz.getQuestion());
         }
     }
 

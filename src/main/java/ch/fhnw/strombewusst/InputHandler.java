@@ -107,7 +107,7 @@ public class InputHandler {
             // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
             // instead we check for the distance between bounding boxes
             if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 1
-                    && !StromBewusst.QUIZ.quizDone()) {
+                    && !FXGL.<QuizLogic>geto("quizLogic").quizDone()) {
                 FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
                 return;
             } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2) {
@@ -119,7 +119,7 @@ public class InputHandler {
         // check collision with door and switch levels if so
         entities = FXGL.getGameWorld().getEntitiesByType(EntityType.DOOR);
         for (Entity e : entities) {
-            if (player.isColliding(e) && StromBewusst.QUIZ.getDoorOpen()) {
+            if (player.isColliding(e) && FXGL.<QuizLogic>geto("quizLogic").getDoorOpen()) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);

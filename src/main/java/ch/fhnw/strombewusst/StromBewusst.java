@@ -39,7 +39,6 @@ public class StromBewusst extends GameApplication {
     private int level = 0;
 
     public static final Score SCORE = new Score();
-    public static final QuizLogic QUIZ = new QuizLogic(10);
 
     public static final DeviceOrderLogic DEVICES = new DeviceOrderLogic(2);
 
@@ -101,7 +100,10 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initGame() {
-        QUIZ.initQuestions();
+        QuizLogic quiz = new QuizLogic(10);
+        FXGL.set("quizLogic", quiz);
+        quiz.initQuestions();
+
         DEVICES.initDevices();
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
@@ -243,6 +245,8 @@ public class StromBewusst extends GameApplication {
         vars.put("score", 0);
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
+
+        vars.put("quizLogic", null);
     }
 
     @Override
