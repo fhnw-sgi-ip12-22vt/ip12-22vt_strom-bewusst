@@ -182,6 +182,7 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("exit") {
             @Override
             protected void onActionBegin() {
+                FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
                 FXGL.getSceneService().popSubScene();
             }
         }, KeyCode.ESCAPE);

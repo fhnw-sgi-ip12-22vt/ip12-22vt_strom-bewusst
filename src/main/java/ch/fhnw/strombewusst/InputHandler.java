@@ -104,15 +104,20 @@ public class InputHandler {
         // check collision with main desk and open puzzle subscene if so
         List<Entity> entities = FXGL.getGameWorld().getEntitiesByType(EntityType.MAINDESK);
         for (Entity e : entities) {
-            // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
-            // instead we check for the distance between bounding boxes
-            if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 1
-                    && !FXGL.<QuizLogic>geto("quizLogic").quizDone()) {
-                FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
-                return;
-            } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2) {
-                FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new DeviceOrderSubScene()), Duration.ZERO);
-                return;
+            try {
+                // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
+                // instead we check for the distance between bounding boxes
+                if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 1
+                        && !FXGL.<QuizLogic>geto("quizLogic").quizDone()) {
+                    FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
+                    return;
+                } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2) {
+                    FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new DeviceOrderSubScene()), Duration.ZERO);
+                    return;
+                }
+            } catch (NullPointerException ignored) {
+                // BUGFIX: there is a weird race-condition that causes a null-pointer exception in rare cases.
+                // if that happens, we just ignore it and continue
             }
         }
 
@@ -131,6 +136,7 @@ public class InputHandler {
     public static void handleBack(Entity player) {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
+            FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
             // For some reason we have to pop two subscenes. This solution is hacky, but works for now.
             // TODO: find a more robust solution for this
 
