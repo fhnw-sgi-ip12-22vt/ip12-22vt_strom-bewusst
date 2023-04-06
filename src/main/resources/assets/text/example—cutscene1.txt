@@ -1,8 +1,8 @@
 1.name=player1
 2.name=player2
 
-1.image=
-2.image=
+1.image=player1-right.png
+2.image=player2-right.png
 
 1:Hey, die Türe ist gesperrt. Hat uns unsere Lehrperson eingesperrt, weil wir die Hausaufgaben nicht gemacht haben?
 2:OMG was machen wir jetzt?
