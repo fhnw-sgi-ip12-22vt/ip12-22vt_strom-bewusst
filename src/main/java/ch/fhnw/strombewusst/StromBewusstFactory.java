@@ -273,10 +273,11 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("cabinet")
     public Entity newCabinet(SpawnData data) {
+        System.out.printf("%s, %s%n", data.getX(), data.getY());
         return entityBuilder(data)
                 .type(EntityType.CABINET)
                 .view("cabinet.png")
-                .bbox(new HitBox(new Point2D(7, 8 + 15), BoundingShape.box(50, 8)))
+                .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .build();
