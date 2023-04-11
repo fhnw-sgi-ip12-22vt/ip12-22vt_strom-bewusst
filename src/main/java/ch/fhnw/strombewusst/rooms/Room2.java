@@ -41,10 +41,10 @@ public class Room2 implements Room {
                 world.create("emptyRoom", new SpawnData().put("textureName", "room2-with-sidebar.png")),
                 door,
                 world.create("prev-door", new SpawnData(618, FXGL.getAppHeight() - 127)),
-                //Geräteorderung
-                world.create("main-desk", new SpawnData(765, 86).put("textureName", "main-desk2.png")),
+                // Geräteorderung
+                world.create("main-desk", new SpawnData(765, 90).put("textureName", "main-desk2.png")),
 
-                //Haushaltgeräte
+                // Haushaltgeräte
                 world.create("fridge", new SpawnData(5, 55).put("fridge", 19)), //positioned
                 world.create("stove", new SpawnData(300, 55).put("stove", 20)),
                 //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
