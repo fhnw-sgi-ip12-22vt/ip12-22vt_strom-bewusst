@@ -14,9 +14,13 @@ public class PlayerPlayerHandler extends CollisionHandler {
     protected void onCollisionEnd(Entity a, Entity b) {
         super.onCollisionEnd(a, b);
         // resetting velocity so pushed players don't keep moving after collision
-        a.getComponent(PhysicsComponent.class).setVelocityX(0);
-        a.getComponent(PhysicsComponent.class).setVelocityY(0);
-        b.getComponent(PhysicsComponent.class).setVelocityX(0);
-        b.getComponent(PhysicsComponent.class).setVelocityY(0);
+        try {
+            a.getComponent(PhysicsComponent.class).setVelocityX(0);
+            a.getComponent(PhysicsComponent.class).setVelocityY(0);
+            b.getComponent(PhysicsComponent.class).setVelocityX(0);
+            b.getComponent(PhysicsComponent.class).setVelocityY(0);
+        } catch (IllegalArgumentException ignored) {
+            // BUGFIX: avoid crashing when switching rooms while colliding
+        }
     }
 }
