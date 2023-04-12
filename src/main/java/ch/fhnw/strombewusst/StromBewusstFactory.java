@@ -184,11 +184,11 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newStove(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DESK)
-                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .view("stove.png")
+                .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
-                .with(new CollidableComponent(true))
                 .with(new DeskComponent(data.get("stove")))
-                .view("Electroherd.png")
+                .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
     }
@@ -273,7 +273,6 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("cabinet")
     public Entity newCabinet(SpawnData data) {
-        System.out.printf("%s, %s%n", data.getX(), data.getY());
         return entityBuilder(data)
                 .type(EntityType.CABINET)
                 .view("cabinet.png")

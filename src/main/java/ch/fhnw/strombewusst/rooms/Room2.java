@@ -39,7 +39,6 @@ public class Room2 implements Room {
 
                 // Haushaltgeräte
                 world.create("fridge", new SpawnData(5, 55).put("fridge", 19)), //positioned
-                world.create("stove", new SpawnData(300, 55).put("stove", 20)),
                 //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
                 world.create("television", new SpawnData(90, 230).put("television", 21)), //positioned
                 world.create("router", new SpawnData(323, 580).put("router", 22)), //positioned
@@ -51,11 +50,11 @@ public class Room2 implements Room {
                 //first row
                 world.create("cabinet", new SpawnData(22, 75)),
                 world.create("cabinet", new SpawnData(86, 75)),
-                world.create("cabinet", new SpawnData(150, 75)),
+                world.create("stove", new SpawnData(150, 75).put("stove", 20)), // TODO: Fix Text
                 world.create("cabinet", new SpawnData(214, 75)),
-                world.create("cabinet", new SpawnData(278, 75)),
+                world.create("stove", new SpawnData(278, 75).put("stove", 20)), // TODO: Fix Text
                 world.create("cabinet", new SpawnData(342, 75)),
-                world.create("cabinet", new SpawnData(406, 75)),
+                world.create("stove", new SpawnData(406, 75).put("stove", 20)), // TODO: Fix Text
 
                 world.create("cabinet", new SpawnData(764, 75)),
                 world.create("cabinet", new SpawnData(828, 75)),
