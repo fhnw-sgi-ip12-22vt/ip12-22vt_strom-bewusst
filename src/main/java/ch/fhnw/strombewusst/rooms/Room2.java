@@ -38,7 +38,6 @@ public class Room2 implements Room {
                 world.create("main-desk", new SpawnData(470, 53).put("textureName", "main-desk2.png")),
 
                 // Haushaltgeräte
-                world.create("fridge", new SpawnData(5, 55).put("fridge", 19)), //positioned
                 //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
                 world.create("television", new SpawnData(90, 230).put("television", 21)), //positioned
                 world.create("router", new SpawnData(323, 580).put("router", 22)), //positioned
@@ -47,7 +46,7 @@ public class Room2 implements Room {
                 world.create("ps5", new SpawnData(205, 240).put("ps5", 25)), //positioned
 
                 //first row
-                world.create("cabinet", new SpawnData(22, 75)),
+                world.create("fridge", new SpawnData(22, 11).put("fridge", 19)), // TODO: Fix Text
                 world.create("cabinet", new SpawnData(86, 75)),
                 world.create("stove", new SpawnData(150, 75).put("stove", 20)), // TODO: Fix Text
                 world.create("cabinet", new SpawnData(214, 75)),

@@ -171,8 +171,8 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newFridge(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DESK)
-                .view("Kühlschrank.png")
-                .bbox(new HitBox(new Point2D(0, 40), BoundingShape.box(95, 20)))
+                .view("fridge.png")
+                .bbox(new HitBox(new Point2D(12, 62), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
                 .with(new DeskComponent(data.get("fridge")))
                 .with(new CollidableComponent(true))
