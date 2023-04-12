@@ -70,6 +70,15 @@ public class Controller {
     private final List<Runnable> onButtonUpperDownTasks = new ArrayList<>();
     private final List<Runnable> onButtonLowerDownTasks = new ArrayList<>();
 
+    protected Controller() {
+        joystick = null;
+        outletLeft = null;
+        outletMiddle = null;
+        outletRight = null;
+        buttonUpper = null;
+        buttonLower = null;
+    }
+
     public Controller(int channelXAxis, int channelYAxis, PIN pin,
                       PIN links, PIN mitte, PIN rechts, PIN oben, PIN unten) {
         joystick = new JoystickAnalog(PI4J_CONTEXT, ads1115, channelXAxis, channelYAxis, 3.3, true, pin);
@@ -116,7 +125,7 @@ public class Controller {
         });
     }
 
-    private void handleXMove(double value) {
+    protected void handleXMove(double value) {
         List<Runnable> tasks;
         if (value > 0.75) {
             tasks = onJoystickLeftTasks;
@@ -130,7 +139,7 @@ public class Controller {
         }
     }
 
-    private void handleYMove(double value) {
+    protected void handleYMove(double value) {
         List<Runnable> tasks;
         if (value > 0.75) {
             tasks = onJoystickUpTasks;
