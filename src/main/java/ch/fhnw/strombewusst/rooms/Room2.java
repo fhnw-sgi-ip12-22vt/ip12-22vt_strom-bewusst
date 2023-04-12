@@ -42,7 +42,6 @@ public class Room2 implements Room {
                 //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
                 world.create("television", new SpawnData(90, 230).put("television", 21)), //positioned
                 world.create("router", new SpawnData(323, 580).put("router", 22)), //positioned
-                world.create("washing-machine", new SpawnData(500, 250).put("washing-machine", 23)), //positioned
                 world.create("microwave", new SpawnData(760, 412).put("microwave", 24)), //positioned
                 //world.create("smartphone", new SpawnData(2*x,3*y).put("smartphone", 1)), missing texture
                 world.create("ps5", new SpawnData(205, 240).put("ps5", 25)), //positioned
@@ -81,8 +80,8 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 441)),
                 world.create("cabinet", new SpawnData(470, 441)),
                 world.create("cabinet", new SpawnData(534, 441)),
-                world.create("cabinet", new SpawnData(764, 441)),
-                world.create("cabinet", new SpawnData(828, 441)),
+                world.create("washing-machine", new SpawnData(764, 441).put("washing-machine", 23)),
+                world.create("washing-machine", new SpawnData(828, 441).put("washing-machine", 23)),
 
                 //fourth row
                 world.create("cabinet", new SpawnData(22, 625)),
@@ -94,8 +93,8 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 625)),
                 world.create("cabinet", new SpawnData(470, 625)),
                 world.create("cabinet", new SpawnData(534, 625)),
-                world.create("cabinet", new SpawnData(764, 625)),
-                world.create("cabinet", new SpawnData(828, 625))
+                world.create("washing-machine", new SpawnData(764, 625).put("washing-machine", 23)),
+                world.create("washing-machine", new SpawnData(828, 625).put("washing-machine", 23))
         );
     }
 

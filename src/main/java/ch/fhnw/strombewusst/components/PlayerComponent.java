@@ -32,15 +32,15 @@ public class PlayerComponent extends Component {
                 42,
                 70,
                 Duration.seconds(1),
-                1,
-                1
+                0,
+                0
         );
         animWalk = new AnimationChannel(
                 image("player" + playerNum + ".png"),
                 4,
                 42,
                 70,
-                Duration.seconds(1),
+                Duration.seconds(0.8),
                 0,
                 3
         );

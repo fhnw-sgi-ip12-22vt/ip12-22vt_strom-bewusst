@@ -197,11 +197,11 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newWasher(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DESK)
-                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
+                .view("washingmachine.png")
+                .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
-                .with(new CollidableComponent(true))
                 .with(new DeskComponent(data.get("washing-machine")))
-                .view("Waschmaschine.png")
+                .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
     }
