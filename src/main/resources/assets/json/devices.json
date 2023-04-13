@@ -1,7 +1,7 @@
 [{
   "device": "Elektroherd",
   "consumption": 455,
-  "image": "Electroherd.png",
+  "image": "stove.png",
   "place": 1
   },
   {
@@ -13,13 +13,13 @@
   {
     "device": "Kühlschrank",
     "consumption": 300,
-    "image": "Kühlschrank.png",
+    "image": "fridge.png",
     "place": 3
   },
   {
     "device": "Waschmaschine",
     "consumption": 200,
-    "image": "Waschmaschine.png",
+    "image": "washingmachine.png",
     "place": 4
   },
   {
