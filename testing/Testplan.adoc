@@ -3,38 +3,53 @@
 
 //== Construction 1 : 18.11.2022 - 23.12.2022 == 
 
+== Manuelle Tests
 |===
-| Datum |Testobjekt | Testart | Was getestet wird |Testdokument
+| Datum |Testobjekt | Was getestet wird |Testdokument
 
 |13.11.2022
 |Prototyp Räume
-|Manueller Test
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
 
 |09.12.2022
 |Software MVP
-|Manueller Test
 |Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test2_09.12.2022.adoc[Test 2]
 
 |18.12.2022
 |Steckerkontroller MVP, Konsole MVP
-|Manueller Test
 |Steckerkontroller, Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test3_18.12.2022.adoc[Test 3]
 
-|09.01.2023
-|Software MVP
-|JUnit Test
-|RätselQuiz
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/ch/fhnw/strombewusst/QuizLogicTest.java[Test 4]
-
 |(ausstehend, voraussichtlich 30.04.2023)
 |Software MVP
-|Manueller Test
-|Highscore, RätselQuiz
+|Highscore, Quiz Rätsel, Device Order Rätsel
 |
+
+|===
+
+== Unit-Tests
+
+Unit Tests werden kontinuierlich nach jedem git-Push ausgeführt, entsprechend ist ein Link für die aktuellste Pipeline gegeben.
+
+|===
+| Testobjekt | Was getestet wird | Source | Testdokument
+
+|Software MVP
+|Quiz Rätsel
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/QuizLogicTest.java[QuizLogicTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Player Movement
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/PlayerTest.java[PlayerTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Controller
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/input/ControllerTest.java[ControllerTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
 
 |===
 
@@ -172,4 +187,4 @@
 |
 
 |===
-//// 
+////
