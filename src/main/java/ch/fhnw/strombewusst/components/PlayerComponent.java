@@ -28,21 +28,21 @@ public class PlayerComponent extends Component {
         this.playerNum = playerNum;
         animIdle = new AnimationChannel(
                 image("player" + playerNum + ".png"),
-                4,
+                5,
                 42,
                 70,
-                Duration.seconds(1),
+                Duration.seconds(1.5),
                 0,
-                0
+                1
         );
         animWalk = new AnimationChannel(
                 image("player" + playerNum + ".png"),
-                4,
+                5,
                 42,
                 70,
                 Duration.seconds(0.8),
-                0,
-                3
+                1,
+                4
         );
 
         texture = new AnimatedTexture(animIdle);
@@ -59,6 +59,7 @@ public class PlayerComponent extends Component {
     @Override
     public void onAdded() {
         entity.getTransformComponent().setScaleOrigin(new Point2D(32, 32));
+        texture.loopAnimationChannel(animIdle);
         entity.getViewComponent().addChild(texture);
     }
 
