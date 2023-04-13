@@ -106,11 +106,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("main-desk")
     public Entity newMainDesk(SpawnData data) {
         //add texture variable on constructor
-        String textureName = data.get("textureName");
+        String roomnum = data.get("room");
         return entityBuilder(data)
                 .type(EntityType.MAINDESK)
-                .view(textureName)
-                .bbox(new HitBox(new Point2D(6, 0), BoundingShape.box(90, 10)))
+                .view("main-desk" + roomnum + ".png")
+                .bbox(new HitBox(new Point2D(6, roomnum.equals("2") ? 20 : 0), BoundingShape.box(90, 10)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)
