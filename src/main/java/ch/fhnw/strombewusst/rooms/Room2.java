@@ -39,11 +39,11 @@ public class Room2 implements Room {
 
                 // Haushaltgeräte
                 //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
-                world.create("television", new SpawnData(90, 230).put("television", 21)), //positioned
-                world.create("router", new SpawnData(323, 580).put("router", 22)), //positioned
-                world.create("microwave", new SpawnData(760, 412).put("microwave", 24)), //positioned
+                world.create("television", new SpawnData(100, 385).put("television", 21)),
+                world.create("router", new SpawnData(323, 580).put("router", 22)),
+                world.create("microwave", new SpawnData(405, 215).put("microwave", 24)),
                 //world.create("smartphone", new SpawnData(2*x,3*y).put("smartphone", 1)), missing texture
-                world.create("ps5", new SpawnData(205, 240).put("ps5", 25)), //positioned
+                world.create("ps5", new SpawnData(210, 410).put("ps5", 25)),
 
                 //first row
                 world.create("fridge", new SpawnData(22, 11).put("fridge", 19)), // TODO: Fix Text
@@ -67,8 +67,8 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 258)),
                 world.create("cabinet", new SpawnData(470, 258)),
                 world.create("cabinet", new SpawnData(534, 258)),
-                world.create("cabinet", new SpawnData(764, 258)),
-                world.create("cabinet", new SpawnData(828, 258)),
+                world.create("washing-machine", new SpawnData(764, 258).put("washing-machine", 23)),
+                world.create("washing-machine", new SpawnData(828, 258).put("washing-machine", 23)),
 
                 //third row
                 world.create("cabinet", new SpawnData(86, 441)),
@@ -92,8 +92,8 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 625)),
                 world.create("cabinet", new SpawnData(470, 625)),
                 world.create("cabinet", new SpawnData(534, 625)),
-                world.create("washing-machine", new SpawnData(764, 625).put("washing-machine", 23)),
-                world.create("washing-machine", new SpawnData(828, 625).put("washing-machine", 23))
+                world.create("cabinet", new SpawnData(764, 625)),
+                world.create("cabinet", new SpawnData(828, 625))
         );
     }
 

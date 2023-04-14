@@ -195,8 +195,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.PS5)
                 .view("PS5.png")
-                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
-                .with(new PhysicsComponent())
+                .bbox(new HitBox(new Point2D(8, 8), BoundingShape.box(50, 50)))
                 .with(new CollidableComponent(true))
                 .with(new DeskComponent(data.get("ps5")))
                 .zIndex(1)
@@ -207,11 +206,11 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newMicrowave(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.MICROWAVE)
-                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
-                .with(new PhysicsComponent())
+                .bbox(new HitBox(new Point2D(7, 30), BoundingShape.box(50, 32)))
                 .with(new CollidableComponent(true))
                 .with(new DeskComponent(data.get("microwave")))
                 .view("Mikrowelle.png")
+                .zIndex(110)
                 .build();
     }
 
@@ -219,11 +218,11 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newTelevision(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.TELEVISION)
-                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
-                .with(new PhysicsComponent())
+                .bbox(new HitBox(new Point2D(6, 42), BoundingShape.box(90, 32)))
                 .with(new CollidableComponent(true))
                 .with(new DeskComponent(data.get("television")))
                 .view("Fernseher.png")
+                .zIndex(110)
                 .build();
     }
 
@@ -231,11 +230,11 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newRouter(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.ROUTER)
-                .bbox(new HitBox(new Point2D(7, 8), BoundingShape.box(50, 20)))
-                .with(new PhysicsComponent())
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50, 50)))
                 .with(new CollidableComponent(true))
                 .with(new DeskComponent(data.get("router")))
                 .view("WLAN-Router.png")
+                .zIndex(110)
                 .build();
     }
 
