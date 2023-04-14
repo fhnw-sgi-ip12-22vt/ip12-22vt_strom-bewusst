@@ -151,22 +151,6 @@ public class StromBewusstFactory implements EntityFactory {
                 .build();
     }
 
-    @Spawns("keyPrompt")
-    public Entity newPrompt(SpawnData data) {
-        return entityBuilder(data)
-                .type(EntityType.KEY_PROMPT)
-                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
-                .with(new CollidableComponent(true))
-                .build();
-    }
-
-    @Spawns("plug")
-    public Entity newPlug(SpawnData data) {
-        return entityBuilder(data)
-                .view("plug-red.png")
-                .build();
-    }
-
     @Spawns("fridge")
     public Entity newFridge(SpawnData data) {
         return entityBuilder(data)
