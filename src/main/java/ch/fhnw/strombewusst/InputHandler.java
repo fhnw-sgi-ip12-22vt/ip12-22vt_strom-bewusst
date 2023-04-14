@@ -111,7 +111,8 @@ public class InputHandler {
                         && !FXGL.<QuizLogic>geto("quizLogic").quizDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
                     return;
-                } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2) {
+                } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2
+                        && !FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deviceOrderDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new DeviceOrderSubScene()), Duration.ZERO);
                     return;
                 }
@@ -124,11 +125,20 @@ public class InputHandler {
         // check collision with door and switch levels if so
         entities = FXGL.getGameWorld().getEntitiesByType(EntityType.DOOR);
         for (Entity e : entities) {
-            if (player.isColliding(e) && FXGL.<QuizLogic>geto("quizLogic").getDoorOpen()) {
+            if (!player.isColliding(e)) {
+                continue;
+            }
+            if (((StromBewusst) FXGL.getApp()).getLevel() == 1
+                    && FXGL.<QuizLogic>geto("quizLogic").isDoorOpen()) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
                 return;
+            } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2
+                    && FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDoorOpen()) {
+                FXGL.runOnce(
+                        () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
+                        Duration.ZERO);
             }
         }
     }

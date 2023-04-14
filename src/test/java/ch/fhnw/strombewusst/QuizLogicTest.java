@@ -56,7 +56,7 @@ class QuizLogicTest {
         assertFalse(quiz.quizDone());
         quiz.nextQuestion();
         assertTrue(quiz.quizDone());
-        assertTrue(quiz.getDoorOpen());
+        assertTrue(quiz.isDoorOpen());
     }
 
     @Test

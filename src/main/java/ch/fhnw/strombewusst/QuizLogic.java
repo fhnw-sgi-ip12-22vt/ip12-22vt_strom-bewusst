@@ -96,7 +96,7 @@ public class QuizLogic {
         }
     }
 
-    public boolean getDoorOpen() {
+    public boolean isDoorOpen() {
         return doorOpen;
     }
 }

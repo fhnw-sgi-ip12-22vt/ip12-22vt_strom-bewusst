@@ -40,8 +40,6 @@ public class StromBewusst extends GameApplication {
 
     public static final Score SCORE = new Score();
 
-    public static final DeviceOrderLogic DEVICES = new DeviceOrderLogic(2);
-
     private Room[] rooms;
 
     private Controller p1Controller;
@@ -104,7 +102,10 @@ public class StromBewusst extends GameApplication {
         FXGL.set("quizLogic", quiz);
         quiz.initQuestions();
 
-        DEVICES.initDevices();
+        DeviceOrderLogic deviceOrder = new DeviceOrderLogic(2);
+        FXGL.set("deviceOrderLogic", deviceOrder);
+        deviceOrder.initDevices();
+
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
         level = 0;
@@ -246,7 +247,9 @@ public class StromBewusst extends GameApplication {
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
 
+        // These vars will get overwritten in initGame again
         vars.put("quizLogic", new QuizLogic(0));
+        vars.put("deviceOrderLogic", new DeviceOrderLogic(2));
     }
 
     @Override

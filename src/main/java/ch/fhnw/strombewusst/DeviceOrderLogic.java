@@ -4,6 +4,7 @@ import com.almasb.fxgl.dsl.FXGL;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +27,6 @@ public class DeviceOrderLogic {
 
     //private boolean doorOpen = false;
     private boolean doorOpen = true; //for development of room 3
-
 
     public DeviceOrderLogic(int roundsTotal) {
         this.roundsLeft = roundsTotal;
@@ -65,7 +65,7 @@ public class DeviceOrderLogic {
             }
             answer = new DeviceOrderDevices[QUEUESIZE];
             solution = deviceSet.stream()
-                    .sorted((x, y) -> x.place() - y.place())
+                    .sorted(Comparator.comparingInt(DeviceOrderDevices::place))
                     .toArray(DeviceOrderDevices[]::new);
             roundsLeft--;
             index = 0;
@@ -93,6 +93,10 @@ public class DeviceOrderLogic {
 
     public int getIndex() {
         return index < answer.length ? index : index - 1;
+    }
+
+    public boolean isDoorOpen() {
+        return doorOpen;
     }
 
     public boolean[] compareAnswerSolution() {

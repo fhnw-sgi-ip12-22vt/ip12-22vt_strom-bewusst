@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.DeviceOrderDevices;
+import ch.fhnw.strombewusst.DeviceOrderLogic;
 import ch.fhnw.strombewusst.StromBewusst;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
@@ -148,7 +149,7 @@ public class DeviceOrderSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 cleanPopUp();
-                int index = StromBewusst.DEVICES.getIndex();
+                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
                 setDevice(ImageType.PLAYERONERED, queue[index]);
             }
         }, KeyCode.DIGIT4);
@@ -157,7 +158,7 @@ public class DeviceOrderSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 cleanPopUp();
-                int index = StromBewusst.DEVICES.getIndex();
+                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
                 setDevice(ImageType.PLAYERONEGREEN, queue[index]);
             }
         }, KeyCode.DIGIT5);
@@ -166,7 +167,7 @@ public class DeviceOrderSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 cleanPopUp();
-                int index = StromBewusst.DEVICES.getIndex();
+                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
                 setDevice(ImageType.PLAYERONEBLUE, queue[index]);
             }
         }, KeyCode.DIGIT6);
@@ -175,7 +176,7 @@ public class DeviceOrderSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 cleanPopUp();
-                int index = StromBewusst.DEVICES.getIndex();
+                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
                 setDevice(ImageType.PLAYERTWORED, queue[index]);
             }
         }, KeyCode.DIGIT7);
@@ -184,7 +185,7 @@ public class DeviceOrderSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 cleanPopUp();
-                int index = StromBewusst.DEVICES.getIndex();
+                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
                 setDevice(ImageType.PLAYERTWOGREEN, queue[index]);
             }
         }, KeyCode.DIGIT8);
@@ -193,7 +194,7 @@ public class DeviceOrderSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 cleanPopUp();
-                int index = StromBewusst.DEVICES.getIndex();
+                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
                 setDevice(ImageType.PLAYERTWOBLUE, queue[index]);
             }
         }, KeyCode.DIGIT9);
@@ -209,7 +210,7 @@ public class DeviceOrderSubScene extends SubScene {
             @Override
             protected void onActionBegin() {
                 clearDeviceOrder();
-                StromBewusst.DEVICES.deleteAnswerQueue();
+                FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deleteAnswerQueue();
                 buildDeviceOrder();
             }
         }, KeyCode.E);
@@ -217,7 +218,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("exit") {
             @Override
             protected void onActionBegin() {
-                StromBewusst.DEVICES.deleteAnswerQueue();
+                FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deleteAnswerQueue();
                 FXGL.getSceneService().popSubScene();
             }
         }, KeyCode.ESCAPE);
@@ -225,7 +226,7 @@ public class DeviceOrderSubScene extends SubScene {
 
     public void checkAnswers() {
         cleanPopUp();
-        boolean[] solution = StromBewusst.DEVICES.compareAnswerSolution();
+        boolean[] solution = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").compareAnswerSolution();
         Set<DeviceOrderDevices> falseDevice = new HashSet<>();
         String msg = "";
 
@@ -236,7 +237,7 @@ public class DeviceOrderSubScene extends SubScene {
         }
 
         if (falseDevice.isEmpty()) {
-            if (StromBewusst.SCORE.getQueueSolved() < StromBewusst.DEVICES.getSize()) {
+            if (StromBewusst.SCORE.getQueueSolved() < FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getSize()) {
                 int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
                 StromBewusst.SCORE.increaseScoreByDeviceOrder(increase);
             }
@@ -259,7 +260,7 @@ public class DeviceOrderSubScene extends SubScene {
             DeviceOrderDevices device = currentDevices.get(from);
             deleteImage(from);
             setImage(device, to);
-            StromBewusst.DEVICES.addAnswer(device);
+            FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").addAnswer(device);
         }
     }
 
@@ -276,19 +277,19 @@ public class DeviceOrderSubScene extends SubScene {
     }
 
     void nextQueue() {
-        if (StromBewusst.DEVICES.deviceOrderDone()) {
-            StromBewusst.DEVICES.unlockDoor();
+        if (FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deviceOrderDone()) {
+            FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").unlockDoor();
             getSceneService().popSubScene();
         } else {
             clearDeviceOrder();
             falseAnswer = 0;
-            StromBewusst.DEVICES.buildSolution();
+            FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").buildSolution();
             buildDeviceOrder();
         }
     }
 
     private void buildDeviceOrder() {
-        List<DeviceOrderDevices> devices = StromBewusst.DEVICES.getDevices();
+        List<DeviceOrderDevices> devices = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getDevices();
         //Collections.shuffle(devices); //comment it, then you pass puzzle with key 456789
         List<ImageType> types = Arrays.stream(ImageType.values())
                 .filter(x -> x.toString().charAt(0) == 'P')
