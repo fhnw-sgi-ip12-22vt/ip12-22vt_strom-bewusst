@@ -132,6 +132,8 @@ public class DeviceOrderSubScene extends SubScene {
 
     void setImage(DeviceOrderDevices device, ImageType type) {
         Texture texture = getAssetLoader().loadTexture(device.image());
+        texture.setFitHeight(96);
+        texture.setFitWidth(96 / texture.getHeight() * texture.getWidth());
         texture.setTranslateX(type.x);
         texture.setTranslateY(type.y);
         getContentRoot().getChildren().addAll(texture);
