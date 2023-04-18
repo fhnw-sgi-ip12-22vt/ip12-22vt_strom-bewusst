@@ -7,7 +7,7 @@
   {
     "device": "Beleuchtung",
     "consumption": 400,
-    "image": "player1-right.png",
+    "image": "lamp.png",
     "place": 2
   },
   {
@@ -25,13 +25,13 @@
   {
     "device": "Fernseher",
     "consumption": 190,
-    "image": "player1-right.png",
+    "image": "Fernseher.png",
     "place": 5
   },
   {
     "device": "Geschirrspüler",
     "consumption": 146,
-    "image": "player1-right.png",
+    "image": "dishwasher.png",
     "place": 6
   },
   {
@@ -49,31 +49,31 @@
   {
     "device": "Computer",
     "consumption": 90,
-    "image": "player1-right.png",
+    "image": "computer.png",
     "place": 9
   },
   {
     "device": "Laptop",
     "consumption": 22,
-    "image": "player1-right.png",
+    "image": "laptop.png",
     "place": 10
   },
   {
     "device": "Staubsauger",
     "consumption": 9,
-    "image": "player1-right.png",
+    "image": "vacuum.png",
     "place": 11
   },
   {
     "device": "Smartphone",
     "consumption": 6,
-    "image": "player1-right.png",
+    "image": "smartphone.png",
     "place": 12
   },
   {
     "device": "Kaffeemachine",
     "consumption": 3,
-    "image": "player1-right.png",
+    "image": "coffeemachine.png",
     "place": 13
   }
 ]
