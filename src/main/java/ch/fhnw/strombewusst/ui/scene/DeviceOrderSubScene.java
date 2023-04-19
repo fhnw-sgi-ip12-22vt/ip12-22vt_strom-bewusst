@@ -254,8 +254,6 @@ public class DeviceOrderSubScene extends SubScene {
             falseAnswer++;
         } else {
             for (DeviceOrderDevices d : falseDevice) {
-                if (d == null)
-                    continue;
                 msg += d.device() + "\n";
             }
             popUp = getTextBox(msg, BoxType.POPUP, Color.RED, FontWeight.SEMI_BOLD);
