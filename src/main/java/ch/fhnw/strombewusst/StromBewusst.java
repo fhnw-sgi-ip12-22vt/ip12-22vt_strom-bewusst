@@ -12,6 +12,7 @@ import ch.fhnw.strombewusst.rooms.Room2;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import com.almasb.fxgl.app.ApplicationMode;
+import com.almasb.fxgl.app.CursorInfo;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
@@ -78,6 +79,8 @@ public class StromBewusst extends GameApplication {
 
         settings.setApplicationMode(ApplicationMode.DEVELOPER);
         settings.setDeveloperMenuEnabled(true);
+
+        settings.setDefaultCursor(new CursorInfo("hiddencursor.png", 0, 0));
 
         settings.setMainMenuEnabled(true);
         settings.setGameMenuEnabled(false);
