@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
@@ -247,8 +248,14 @@ public class DeviceOrderSubScene extends SubScene {
             popUp = getTextBox(msg, BoxType.POPUP, Color.GREEN, FontWeight.SEMI_BOLD);
             getContentRoot().getChildren().addAll(popUp);
             nextQueue();
+        } else if (falseDevice.stream().anyMatch(Objects::isNull)) {
+            popUp = getTextBox("Nicht alle Geräte sortiert", BoxType.POPUP, Color.RED, FontWeight.SEMI_BOLD);
+            getContentRoot().getChildren().addAll(popUp);
+            falseAnswer++;
         } else {
             for (DeviceOrderDevices d : falseDevice) {
+                if (d == null)
+                    continue;
                 msg += d.device() + "\n";
             }
             popUp = getTextBox(msg, BoxType.POPUP, Color.RED, FontWeight.SEMI_BOLD);
