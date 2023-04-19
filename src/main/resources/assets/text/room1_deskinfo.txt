@@ -1,5 +1,5 @@
 Der durchschnittliche Mensch kann mit einem Fahrrad ca. 200 Watt an Energie erzeugen.
-Handys verbrauchen weniger Strom wie man denkt.
+Handys verbrauchen weniger Strom als man denkt.
 Watt ist eine Einheit für Leistung, mit welcher die pro Sekunde verbrauchte Energie eines Geräts bezeichnet wird.
 Eine Familie verbraucht pro Jahr ca. 4000kWh an Strom.
 Heutzutage sind elektrische Geräte in fast allem verbaut.
@@ -7,7 +7,7 @@ In der Stromerzeugung werden erneuerbare Ressourcen wie Wind, Sonne und Wasser i
 Strommasten sind sehr wichtig für das Stromnetz der Schweiz.
 Unser gesamter Körper funktioniert wie bei einem Prozessor durch kleine elektrische Impulse.
 Das Treibhausgas CO2 wird hauptsächlich durch Fossile Energien in die Luft verbreitet.
-In der Nacht wird am meisten Strom verbraucht
+In der Nacht wird am meisten Strom verbraucht.
 Ein Kochherd gehört mit zu den grössten Stromfressern. Deshalb sollte man immer mit Deckel kochen, damit sich das Essen schneller erhitzt und Energie gespart werden kann.
 Strom entsteht durch Bewegung von Generatoren. Kraftwerke nutzen dies aus, indem sie durch Wärmeumformung Turbinen in Bewegung setzen.
 In der Schweiz sind aktuell 1300 Wasserkraftwerke aktiv und produzieren ca. 57% des Stroms. Damit ist die Wasserkraft die wichtigste Stromquelle.
