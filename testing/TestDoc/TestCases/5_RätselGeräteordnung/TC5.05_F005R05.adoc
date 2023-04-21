@@ -1,0 +1,18 @@
+== TC5.05 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F005R05[F005R05] : Benutzer/in kann die Auswhal rückgängig machen ==
+
+=== Beschreibung: === 
+Die Auswahl der Geräte soll wieder Rückgängig gemacht werden können, indem der Back Button gedrückt wird.
+
+=== Annahmen und Voraussetzungen: === 
+Geräteordnung Rätsel ist geöffnet.
+
+=== Testdaten: ===
+Geräteordnung Rätsel User Interface
+
+=== Auszuführende Schritte: ===
+    * Geräteordnung Rätsel öffnen
+    * Gerät durch einstecken auf dem Controller auswählen
+    * Abbruch-Button Drücken
+        
+=== Erwartetes Ergebnis: === 
+Die Auswahl der Geräte wird wieder Rückgängig gemacht.

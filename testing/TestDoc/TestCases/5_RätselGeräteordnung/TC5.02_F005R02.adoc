@@ -1,0 +1,16 @@
+== TC5.02 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F005R02[F005R02] : Benutzer/in lässt die gleiche Anzahl Elektrogeräte wie die Anzahl Steckdosen der zwei Spieler zusammen anzeigen ==
+
+=== Beschreibung: === 
+Es sollen nicht mehr und nicht weniger Möglichkeiten zur Auswahl stehen, als es Steckdosen auf den Controllern gibt.
+
+=== Annahmen und Voraussetzungen: === 
+Geräteordnung Rätsel ist geöffnet.
+
+=== Testdaten: ===
+Geräteordnung Rätsel User Interface
+
+=== Auszuführende Schritte: ===
+    * Geräteordnung Rätsel öffnen
+        
+=== Erwartetes Ergebnis: === 
+Anzahl der zur Wahl stehenden Geräte ist gleich der Anzahl Steckdosen (-> 6 Stück)
