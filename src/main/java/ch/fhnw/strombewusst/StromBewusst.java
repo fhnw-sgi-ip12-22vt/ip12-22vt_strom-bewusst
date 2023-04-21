@@ -80,6 +80,11 @@ public class StromBewusst extends GameApplication {
         settings.setApplicationMode(ApplicationMode.DEVELOPER);
         settings.setDeveloperMenuEnabled(true);
 
+        // BUGFIX: explicitly setting the TPS fixes the inconsistent movement speed
+        // The TPS also limits the FPS, so a small value can make the game look bad. 60 TPS works well for development
+        // but might need to get lowered for better performance on the raspberry.
+        settings.setTicksPerSecond(60);
+
         settings.setDefaultCursor(new CursorInfo("hiddencursor.png", 0, 0));
 
         settings.setMainMenuEnabled(true);
