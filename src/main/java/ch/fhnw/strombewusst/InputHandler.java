@@ -62,26 +62,35 @@ public class InputHandler {
     }
 
     public static void handleButtonLeft(Entity player) {
+        int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
-            int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
             Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 0));
+        } else if (currentScene instanceof DeviceOrderSubScene) {
+            Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).setDevice(playerNumber, 0));
         }
     }
 
     public static void handleButtonMiddle(Entity player) {
+        int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
-            int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
             Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 1));
+        } else if (currentScene instanceof DeviceOrderSubScene) {
+            Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).setDevice(playerNumber, 1));
         }
     }
 
     public static void handleButtonRight(Entity player) {
+        int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
-            int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
             Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 2));
+        } else if (currentScene instanceof DeviceOrderSubScene) {
+            Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).setDevice(playerNumber, 2));
         }
     }
 
@@ -92,9 +101,12 @@ public class InputHandler {
                 || currentScene instanceof EndGameSubScene) {
             NodeSelectionHelper.confirmSelectedNode();
             return;
-        }
-        if (currentScene instanceof PuzzleSubScene) {
+        } else if (currentScene instanceof PuzzleSubScene) {
             Platform.runLater(() -> ((PuzzleSubScene) currentScene).checkAnswers());
+            return;
+        } else if (currentScene instanceof DeviceOrderSubScene) {
+            Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).checkAnswers());
+            return;
         }
 
         if (player == null) {
@@ -151,6 +163,17 @@ public class InputHandler {
             // TODO: find a more robust solution for this
 
             Platform.runLater(() -> FXGL.getSceneService().popSubScene());
+            try {
+                Thread.sleep(30);
+            } catch (Exception ignored) {
+            }
+            Platform.runLater(() -> FXGL.getSceneService().popSubScene());
+        } else if (currentScene instanceof DeviceOrderSubScene) {
+            Platform.runLater(() -> {
+                ((DeviceOrderSubScene) currentScene).resetAnswers();
+                FXGL.getSceneService().popSubScene();
+            });
+
             try {
                 Thread.sleep(30);
             } catch (Exception ignored) {

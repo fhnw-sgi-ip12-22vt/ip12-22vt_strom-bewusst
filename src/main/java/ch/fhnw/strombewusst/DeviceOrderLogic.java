@@ -23,6 +23,7 @@ public class DeviceOrderLogic {
     private int index;
 
     private int size;
+
     private int roundsLeft;
 
     //private boolean doorOpen = false;
@@ -43,7 +44,7 @@ public class DeviceOrderLogic {
     }
 
     public boolean deviceOrderDone() {
-        return !((trackPassedDevices.size() >= QUEUESIZE) && (roundsLeft > 0));
+        return !(roundsLeft > 0);
     }
 
     public void unlockDoor() {
@@ -67,7 +68,6 @@ public class DeviceOrderLogic {
             solution = deviceSet.stream()
                     .sorted(Comparator.comparingInt(DeviceOrderDevices::place))
                     .toArray(DeviceOrderDevices[]::new);
-            roundsLeft--;
             index = 0;
         }
     }
@@ -78,6 +78,14 @@ public class DeviceOrderLogic {
 
     public int getSize() {
         return size;
+    }
+
+    public int getRoundsLeft() {
+        return roundsLeft;
+    }
+
+    public void setRoundsLeft(int roundsLeft) {
+        this.roundsLeft = roundsLeft;
     }
 
     public void addAnswer(DeviceOrderDevices d) {

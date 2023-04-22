@@ -76,7 +76,12 @@ public class DeviceOrderSubScene extends SubScene {
 
     private int falseAnswer = 0;
 
-    private ImageType[] queue = {
+    private final ImageType[][] plugMap = {
+        {ImageType.PLAYERONERED, ImageType.PLAYERONEGREEN, ImageType.PLAYERONEBLUE},
+        {ImageType.PLAYERTWORED, ImageType.PLAYERTWOGREEN, ImageType.PLAYERTWOBLUE}
+    };
+
+    private final ImageType[] queue = {
         ImageType.QUEUEFIRST,
         ImageType.QUEUESECOND,
         ImageType.QUEUETHIRD,
@@ -151,54 +156,42 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("Red1 Button") {
             @Override
             protected void onActionBegin() {
-                cleanPopUp();
-                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
-                setDevice(ImageType.PLAYERONERED, queue[index]);
+                setDevice(1, 0);
             }
         }, KeyCode.DIGIT4);
 
         getInput().addAction(new UserAction("Green1 Button") {
             @Override
             protected void onActionBegin() {
-                cleanPopUp();
-                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
-                setDevice(ImageType.PLAYERONEGREEN, queue[index]);
+                setDevice(1, 1);
             }
         }, KeyCode.DIGIT5);
 
         getInput().addAction(new UserAction("Blue1 Button") {
             @Override
             protected void onActionBegin() {
-                cleanPopUp();
-                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
-                setDevice(ImageType.PLAYERONEBLUE, queue[index]);
+                setDevice(1, 2);
             }
         }, KeyCode.DIGIT6);
 
         getInput().addAction(new UserAction("Red2 Button") {
             @Override
             protected void onActionBegin() {
-                cleanPopUp();
-                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
-                setDevice(ImageType.PLAYERTWORED, queue[index]);
+                setDevice(2, 0);
             }
         }, KeyCode.DIGIT7);
 
         getInput().addAction(new UserAction("Green2 Button") {
             @Override
             protected void onActionBegin() {
-                cleanPopUp();
-                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
-                setDevice(ImageType.PLAYERTWOGREEN, queue[index]);
+                setDevice(2, 1);
             }
         }, KeyCode.DIGIT8);
 
         getInput().addAction(new UserAction("Blue2 Button") {
             @Override
             protected void onActionBegin() {
-                cleanPopUp();
-                int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
-                setDevice(ImageType.PLAYERTWOBLUE, queue[index]);
+                setDevice(2, 2);
             }
         }, KeyCode.DIGIT9);
 
@@ -212,9 +205,7 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("resetAnswers") {
             @Override
             protected void onActionBegin() {
-                clearDeviceOrder();
-                FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deleteAnswerQueue();
-                buildDeviceOrder();
+                resetAnswers();
             }
         }, KeyCode.E);
 
@@ -225,6 +216,12 @@ public class DeviceOrderSubScene extends SubScene {
                 FXGL.getSceneService().popSubScene();
             }
         }, KeyCode.ESCAPE);
+    }
+
+    public void resetAnswers() {
+        clearDeviceOrder();
+        FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deleteAnswerQueue();
+        buildDeviceOrder();
     }
 
     public void checkAnswers() {
@@ -240,13 +237,16 @@ public class DeviceOrderSubScene extends SubScene {
         }
 
         if (falseDevice.isEmpty()) {
-            if (StromBewusst.SCORE.getQueueSolved() < FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getSize()) {
+            DeviceOrderLogic logic = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic");
+
+            if (StromBewusst.SCORE.getQueueSolved() < logic.getSize()) {
                 int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
                 StromBewusst.SCORE.increaseScoreByDeviceOrder(increase);
             }
             msg = "RICHTIG";
             popUp = getTextBox(msg, BoxType.POPUP, Color.GREEN, FontWeight.SEMI_BOLD);
             getContentRoot().getChildren().addAll(popUp);
+            logic.setRoundsLeft(logic.getRoundsLeft() - 1);
             nextQueue();
         } else if (falseDevice.stream().anyMatch(Objects::isNull)) {
             popUp = getTextBox("Nicht alle Geräte sortiert", BoxType.POPUP, Color.RED, FontWeight.SEMI_BOLD);
@@ -262,16 +262,20 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
-    public void setDevice(ImageType from, ImageType to) {
-        if (currentDevices.get(from) != null) {
-            DeviceOrderDevices device = currentDevices.get(from);
-            deleteImage(from);
-            setImage(device, to);
+    public void setDevice(int player, int colour) {
+        ImageType type = plugMap[player - 1][colour];
+        cleanPopUp();
+        int index = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getIndex();
+
+        if (currentDevices.get(type) != null) {
+            DeviceOrderDevices device = currentDevices.get(type);
+            deleteImage(type);
+            setImage(device, queue[index]);
             FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").addAnswer(device);
         }
     }
 
-    void clearDeviceOrder() {
+    public void clearDeviceOrder() {
         getContentRoot().getChildren().removeAll(currentTextures.values());
         getContentRoot().getChildren().removeAll(scoreboard);
     }
@@ -295,7 +299,7 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
-    private void buildDeviceOrder() {
+    public void buildDeviceOrder() {
         List<DeviceOrderDevices> devices = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getDevices();
         //Collections.shuffle(devices); //comment it, then you pass puzzle with key 456789
         List<ImageType> types = Arrays.stream(ImageType.values())
