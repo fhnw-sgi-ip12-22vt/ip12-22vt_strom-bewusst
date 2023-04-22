@@ -212,18 +212,24 @@ public class DeviceOrderSubScene extends SubScene {
         getInput().addAction(new UserAction("exit") {
             @Override
             protected void onActionBegin() {
-                FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deleteAnswerQueue();
+                FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").clearAnswerQueue();
                 FXGL.getSceneService().popSubScene();
             }
         }, KeyCode.ESCAPE);
     }
 
+    /**
+     * Resets all answers.
+     */
     public void resetAnswers() {
         clearDeviceOrder();
-        FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deleteAnswerQueue();
+        FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").clearAnswerQueue();
         buildDeviceOrder();
     }
 
+    /**
+     * Checks the puzzle and resets it if there are incorrect answers or shows the next puzzle.
+     */
     public void checkAnswers() {
         cleanPopUp();
         boolean[] solution = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").compareAnswerSolution();
@@ -262,6 +268,11 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
+    /**
+     * Adds the provided device to the queue.
+     * @param player The player selecting a device. 1 or 2
+     * @param colour The colour selected (0=Red, 1=Green, 2=Blue)
+     */
     public void setDevice(int player, int colour) {
         ImageType type = plugMap[player - 1][colour];
         cleanPopUp();
@@ -275,21 +286,24 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
+    /**
+     * clears the puzzle UI.
+     */
     public void clearDeviceOrder() {
         getContentRoot().getChildren().removeAll(currentTextures.values());
         getContentRoot().getChildren().removeAll(scoreboard);
     }
 
-    void cleanPopUp() {
+    private void cleanPopUp() {
         if (popUp != null) {
             getContentRoot().getChildren().removeAll(popUp);
             popUp = null;
         }
     }
 
-    void nextQueue() {
-        if (FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deviceOrderDone()) {
-            FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").unlockDoor();
+    private void nextQueue() {
+        if (FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDeviceOrderDone()) {
+            FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").setDoorOpen(true);
             getSceneService().popSubScene();
         } else {
             clearDeviceOrder();
@@ -299,6 +313,9 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
+    /**
+     * Builds the puzzle UI.
+     */
     public void buildDeviceOrder() {
         List<DeviceOrderDevices> devices = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").getDevices();
         //Collections.shuffle(devices); //comment it, then you pass puzzle with key 456789

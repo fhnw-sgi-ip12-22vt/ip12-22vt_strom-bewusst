@@ -17,18 +17,30 @@ import java.util.List;
 
 
 public class InputHandler {
+    /**
+     * Handles movement to the right
+     * @param player the player entity to apply the movement to
+     */
     public static void handlePlayerRight(Entity player) {
         if (player != null) {
             player.getComponent(PlayerComponent.class).moveRight();
         }
     }
 
+    /**
+     * Handles movement to the left
+     * @param player the player entity to apply the movement to
+     */
     public static void handlePlayerLeft(Entity player) {
         if (player != null) {
             player.getComponent(PlayerComponent.class).moveLeft();
         }
     }
 
+    /**
+     * Handles movement up
+     * @param player the player entity to apply the movement to
+     */
     public static void handlePlayerUp(Entity player) {
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
             NodeSelectionHelper.focusPreviousNode();
@@ -39,6 +51,10 @@ public class InputHandler {
         }
     }
 
+    /**
+     * Handles movement down
+     * @param player the player entity to apply the movement to
+     */
     public static void handlePlayerDown(Entity player) {
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
             NodeSelectionHelper.focusNextNode();
@@ -49,18 +65,30 @@ public class InputHandler {
         }
     }
 
+    /**
+     * Handles vertical idle
+     * @param player the player entity to vertically idle
+     */
     public static void handlePlayerVerticalIdle(Entity player) {
         if (player != null) {
             player.getComponent(PlayerComponent.class).stopMovingY();
         }
     }
 
+    /**
+     * Handles horizontal idle
+     * @param player the player entity to horizontally idle
+     */
     public static void handlePlayerHorizontalIdle(Entity player) {
         if (player != null) {
             player.getComponent(PlayerComponent.class).stopMovingX();
         }
     }
 
+    /**
+     * Handles presses of the left button
+     * @param player the player entity whose player has pressed the button
+     */
     public static void handleButtonLeft(Entity player) {
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
@@ -72,6 +100,10 @@ public class InputHandler {
         }
     }
 
+    /**
+     * Handles presses of the middle button
+     * @param player the player entity whose player has pressed the button
+     */
     public static void handleButtonMiddle(Entity player) {
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
@@ -83,6 +115,10 @@ public class InputHandler {
         }
     }
 
+    /**
+     * Handles presses of the right button
+     * @param player the player entity whose player has pressed the button
+     */
     public static void handleButtonRight(Entity player) {
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
@@ -94,6 +130,10 @@ public class InputHandler {
         }
     }
 
+    /**
+     * Handles presses of the select (lower) button
+     * @param player the player entity whose player has pressed the button
+     */
     public static void handleSelect(Entity player) {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof MainMenu
@@ -124,7 +164,7 @@ public class InputHandler {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
                     return;
                 } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2
-                        && !FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deviceOrderDone()) {
+                        && !FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDeviceOrderDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new DeviceOrderSubScene()), Duration.ZERO);
                     return;
                 }
@@ -155,6 +195,10 @@ public class InputHandler {
         }
     }
 
+    /**
+     * Handles presses of the back (upper) button
+     * @param player the player entity whose player has pressed the button
+     */
     public static void handleBack(Entity player) {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {

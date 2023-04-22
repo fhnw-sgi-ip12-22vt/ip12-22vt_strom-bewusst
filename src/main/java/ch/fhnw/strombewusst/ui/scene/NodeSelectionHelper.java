@@ -10,6 +10,9 @@ import javafx.scene.input.KeyEvent;
 import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 public class NodeSelectionHelper {
+    /**
+     * Focuses the previous node, by simulating an Arrow-Up KeyEvent.
+     */
     public static void focusPreviousNode() {
         Platform.runLater(() -> {
             Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
@@ -34,6 +37,9 @@ public class NodeSelectionHelper {
         });
     }
 
+    /**
+     * Focuses the next node, by simulating an Arrow-Down KeyEvent.
+     */
     public static void focusNextNode() {
         Platform.runLater(() -> {
             Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
@@ -58,6 +64,10 @@ public class NodeSelectionHelper {
         });
     }
 
+    /**
+     * Fires the action registered on the currently selected node.
+     * This is akin to pressing the enter key while a node is selected.
+     */
     public static void confirmSelectedNode() {
         Platform.runLater(() -> {
             Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();

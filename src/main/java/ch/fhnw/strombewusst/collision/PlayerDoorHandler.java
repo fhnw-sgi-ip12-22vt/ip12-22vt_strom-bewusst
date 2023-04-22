@@ -13,7 +13,7 @@ public class PlayerDoorHandler extends CollisionHandler {
         super(EntityType.PLAYER, EntityType.DOOR);
     }
 
-    Entity question;
+    private Entity question;
 
     protected void onCollisionBegin(Entity player, Entity desk) {
         if (((StromBewusst) FXGL.getApp()).getLevel() == 1

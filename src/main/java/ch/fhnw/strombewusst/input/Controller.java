@@ -209,23 +209,49 @@ public class Controller {
         onJoystickVerticalIdleTasks.add(task);
     }
 
-    public void onButtonLeftDown(Runnable tasks) {
-        onButtonLeftDownTasks.add(tasks);
+
+    /**
+     * Method to register Tasks to be run when the left Button on the Controller is pressed
+     *
+     * @param task the task to be run
+     */
+    public void onButtonLeftDown(Runnable task) {
+        onButtonLeftDownTasks.add(task);
     }
 
-    public void onButtonRightDown(Runnable tasks) {
-        onButtonRightDownTasks.add(tasks);
+    /**
+     * Method to register Tasks to be run when the right Button on the Controller is pressed
+     *
+     * @param task the task to be run
+     */
+    public void onButtonRightDown(Runnable task) {
+        onButtonRightDownTasks.add(task);
     }
 
-    public void onButtonMiddleDown(Runnable tasks) {
-        onButtonMiddleDownTasks.add(tasks);
+    /**
+     * Method to register Tasks to be run when the middle Button on the Controller is pressed
+     *
+     * @param task the task to be run
+     */
+    public void onButtonMiddleDown(Runnable task) {
+        onButtonMiddleDownTasks.add(task);
     }
 
-    public void onButtonUpperDown(Runnable tasks) {
-        onButtonUpperDownTasks.add(tasks);
+    /**
+     * Method to register Tasks to be run when the upper Button on the Controller is pressed
+     *
+     * @param task the task to be run
+     */
+    public void onButtonUpperDown(Runnable task) {
+        onButtonUpperDownTasks.add(task);
     }
 
-    public void onButtonLowerDown(Runnable tasks) {
-        onButtonLowerDownTasks.add(tasks);
+    /**
+     * Method to register Tasks to be run when the lower Button on the Controller is pressed
+     *
+     * @param task the task to be run
+     */
+    public void onButtonLowerDown(Runnable task) {
+        onButtonLowerDownTasks.add(task);
     }
 }

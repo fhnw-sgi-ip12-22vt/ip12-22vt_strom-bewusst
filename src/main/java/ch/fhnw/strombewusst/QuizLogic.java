@@ -26,6 +26,9 @@ public class QuizLogic {
         this.size = size;
     }
 
+    /**
+     * Initializes the devices, by loading the needed data from the JSON file.
+     */
     public void initQuestions() {
         questions = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class).get())
                 .toList();
@@ -33,19 +36,30 @@ public class QuizLogic {
         buildSet();
     }
 
-    public void unlockDoor() {
+    public void setDoorOpen(boolean doorOpen) {
         this.doorOpen = true;
     }
 
+    /**
+     * checks if the selected answers are correct.
+     * @return true if both selected answers are correct, false otherwise
+     */
     public boolean checkAnswer() {
         return getAnswerP1() == getQuestion().correctAnswer()
                 && getAnswerP2() == getQuestion().correctAnswer();
     }
 
+    /**
+     * Checks wheter the quiz is done.
+     * @return true if the quiz is done, false otherwise
+     */
     public boolean quizDone() {
         return questionSet.isEmpty();
     }
 
+    /**
+     * Removes a question from the question set.
+     */
     public void nextQuestion() {
         questionSet.pop();
     }
@@ -54,6 +68,9 @@ public class QuizLogic {
         return questionSet.peekFirst();
     }
 
+    /**
+     * Resets the selected answers.
+     */
     public void resetAnswers() {
         answerP2 = -1;
         answerP1 = -1;
@@ -83,6 +100,9 @@ public class QuizLogic {
         this.questions = questions;
     }
 
+    /**
+     * Randomly builds a quiz.
+     */
     public void buildSet() {
         Random random = new Random();
 

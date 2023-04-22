@@ -76,6 +76,9 @@ public class PlayerComponent extends Component {
         }
     }
 
+    /**
+     * Applies a velocity to the player entity to move it right.
+     */
     public void moveRight() {
         if (physics.isMovingY()) {
             physics.setVelocityX(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
@@ -86,6 +89,9 @@ public class PlayerComponent extends Component {
         FXGL.runOnce(() -> getEntity().setScaleX(1), Duration.ZERO);
     }
 
+    /**
+     * Applies a velocity to the player entity to move it left.
+     */
     public void moveLeft() {
         if (physics.isMovingY()) {
             physics.setVelocityX(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
@@ -95,7 +101,9 @@ public class PlayerComponent extends Component {
         FXGL.runOnce(() -> getEntity().setScaleX(-1), Duration.ZERO);
     }
 
-
+    /**
+     * Applies a velocity to the player entity to move it up.
+     */
     public void moveUp() {
         if (physics.isMovingX()) {
             physics.setVelocityY(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
@@ -104,6 +112,9 @@ public class PlayerComponent extends Component {
         }
     }
 
+    /**
+     * Applies a velocity to the player entity to move it down.
+     */
     public void moveDown() {
         if (physics.isMovingX()) {
             physics.setVelocityY(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
@@ -112,10 +123,16 @@ public class PlayerComponent extends Component {
         }
     }
 
+    /**
+     * Resets the velocity on the player entity to stop moving horizontally.
+     */
     public void stopMovingX() {
         physics.setVelocityX(0);
     }
 
+    /**
+     * Resets the velocity on the player entity to stop moving vertically.
+     */
     public void stopMovingY() {
         physics.setVelocityY(0);
     }

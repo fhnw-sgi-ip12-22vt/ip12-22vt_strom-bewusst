@@ -111,8 +111,4 @@ public class Room2 implements Room {
     public Entity getDoor() {
         return door;
     }
-
-    public String initText() {
-        return "room2_deviceinfo.txt";
-    }
 }

@@ -20,7 +20,7 @@ public class PlayerMainDeskHandler extends CollisionHandler {
                 && !FXGL.<QuizLogic>geto("quizLogic").quizDone()) {
             question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY() - 32);
         } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2
-                && !FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").deviceOrderDone()) {
+                && !FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDeviceOrderDone()) {
             question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY() - 32);
         }
     }

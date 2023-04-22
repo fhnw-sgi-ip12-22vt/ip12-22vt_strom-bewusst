@@ -71,8 +71,4 @@ public class Room1 implements Room {
     public Entity getDoor() {
         return door;
     }
-
-    public String initText() {
-        return "room1_deskinfo.txt";
-    }
 }

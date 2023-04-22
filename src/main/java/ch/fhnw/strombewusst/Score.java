@@ -25,18 +25,32 @@ public class Score {
         return queueSolved;
     }
 
+    /**
+     * Increases the score.
+     * @param points the amount of points to increase the score by
+     */
     public void increaseScoreByQuiz(int points) {
         this.score += points;
         FXGL.inc("score", +points);
         this.answerSolved++;
     }
 
+    /**
+     * Increases the score.
+     * @param points the amount of points to increase the score by
+     */
     public void increaseScoreByDeviceOrder(int points) {
         this.score += points;
         FXGL.inc("score", +points);
         this.queueSolved++;
     }
 
+    /**
+     * Generates a text label containing the score with the required styling.
+     * @param x x coordinate of the HBox containing the label
+     * @param y y coordinate of the HBox containing the label
+     * @return the generated HBox
+     */
     public HBox pushScore(int x, int y) {
         Text title = new Text(toString());
         title.setStyle("-fx-font-size: 44px;");

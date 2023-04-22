@@ -46,6 +46,10 @@ public class StromBewusst extends GameApplication {
     private Controller p1Controller;
     private Controller p2Controller;
 
+    /**
+     * Main Method, launches the FXGL application
+     * @param args Command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -282,6 +286,11 @@ public class StromBewusst extends GameApplication {
         player2InfoText.setFont(Font.font("Verdana", FontWeight.BOLD, 15d));
         player2InfoText.textProperty().bind(FXGL.getsp("player2InfoText"));
         FXGL.addUINode(player2InfoText, 950, 400);
+    }
+
+    @Override
+    protected void onPreInit() {
+        FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class);
     }
 
     public int getLevel() {

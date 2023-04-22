@@ -188,6 +188,9 @@ public class PuzzleSubScene extends SubScene {
         }, KeyCode.ESCAPE);
     }
 
+    /**
+     * Checks the puzzle and resets it if there are incorrect answers or shows the next puzzle.
+     */
     public void checkAnswers() {
         cleanPopUp();
 
@@ -221,6 +224,11 @@ public class PuzzleSubScene extends SubScene {
         }
     }
 
+    /**
+     * Sets the provided plug as the currently selected one.
+     * @param player The player selecting a device. 1 or 2
+     * @param colour The colour selected (0=Red, 1=Green, 2=Blue)
+     */
     public void setPlug(int player, int colour) {
         if (player == 1) {
             getContentRoot().getChildren().removeAll(textureAnswerP1);
@@ -246,7 +254,7 @@ public class PuzzleSubScene extends SubScene {
 
     }
 
-    void cleanPopUp() {
+    private void cleanPopUp() {
         if (answerPopUp != null) {
             getContentRoot().getChildren().removeAll(answerPopUp);
             answerPopUp = null;
@@ -264,19 +272,19 @@ public class PuzzleSubScene extends SubScene {
         return hBox;
     }
 
-    void clearQuiz() {
+    private void clearQuiz() {
         getContentRoot().getChildren()
                 .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1,
                         textureAnswerP2, scoretable);
         falseAnswer = 0;
     }
 
-    void nextQuestion() {
+    private void nextQuestion() {
         QuizLogic quiz = FXGL.geto("quizLogic");
         quiz.nextQuestion();
 
         if (quiz.quizDone()) {
-            quiz.unlockDoor();
+            quiz.setDoorOpen(true);
             getSceneService().popSubScene();
         } else {
             clearQuiz();

@@ -34,6 +34,9 @@ public class DeviceOrderLogic {
         this.size = roundsTotal;
     }
 
+    /**
+     * Initializes the devices, by loading the needed data from the JSON file.
+     */
     public void initDevices() {
         devices = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/devices.json", DeviceOrderDevices[].class).get())
                 .toList();
@@ -43,14 +46,17 @@ public class DeviceOrderLogic {
         buildSolution();
     }
 
-    public boolean deviceOrderDone() {
+    public boolean isDeviceOrderDone() {
         return !(roundsLeft > 0);
     }
 
-    public void unlockDoor() {
-        this.doorOpen = true;
+    public void setDoorOpen(boolean doorOpen) {
+        this.doorOpen = doorOpen;
     }
 
+    /**
+     * Randomly generates a puzzle and it's solution.
+     */
     public void buildSolution() {
         if (trackPassedDevices.size() >= QUEUESIZE) {
             Random random = new Random();
@@ -88,13 +94,20 @@ public class DeviceOrderLogic {
         this.roundsLeft = roundsLeft;
     }
 
+    /**
+     * Adds a device to the answer queue.
+     * @param d The device to add to the queue
+     */
     public void addAnswer(DeviceOrderDevices d) {
         if (index < answer.length) {
             answer[index++] = d;
         }
     }
 
-    public void deleteAnswerQueue() {
+    /**
+     * Clears the answer queue.
+     */
+    public void clearAnswerQueue() {
         index = 0;
         answer = new DeviceOrderDevices[QUEUESIZE];
     }
@@ -107,6 +120,11 @@ public class DeviceOrderLogic {
         return doorOpen;
     }
 
+    /**
+     * Compares the current queue to the solution.
+     * @return a boolean array containing true for the indexes with the correct answers and false for teh indexes with
+     *         incorrect ones
+     */
     public boolean[] compareAnswerSolution() {
         boolean[] correctAtIndex = new boolean[solution.length];
         for (int i = 0; i < solution.length; i++) {
