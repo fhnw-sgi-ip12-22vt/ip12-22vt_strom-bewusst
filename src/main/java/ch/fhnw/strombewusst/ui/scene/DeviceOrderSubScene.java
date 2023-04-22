@@ -34,7 +34,7 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
  */
 public class DeviceOrderSubScene extends SubScene {
     enum BoxType {
-        STERRING(950, 380, 30),
+        CONTROLS(950, 380, 30),
         RESPONSE(950, 210, 30),
         PLAYERONE(65, 25, 30),
         PLAYERTWO(65, 280, 30),
@@ -93,7 +93,7 @@ public class DeviceOrderSubScene extends SubScene {
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
-        //TODO set steering according to controller
+        //TODO set controls according to controller
         String inputs = "SORTIERE NACH KWH VERBRAUCH \nVON VIEL NACH WENIG"
                 + "\nPLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} "
                 + "\nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9} "
@@ -110,12 +110,12 @@ public class DeviceOrderSubScene extends SubScene {
         inputsHBox.setTranslateY(410);
 
 
-        HBox steering = getTextBox("Steuerung", BoxType.STERRING, Color.BLACK, FontWeight.BOLD);
+        HBox controls = getTextBox("Steuerung", BoxType.CONTROLS, Color.BLACK, FontWeight.BOLD);
         HBox response = getTextBox("Rückmeldung", BoxType.RESPONSE, Color.BLACK, FontWeight.BOLD);
         HBox playerone = getTextBox("Player 1", BoxType.PLAYERONE, Color.BLACK, FontWeight.BOLD);
         HBox playertwo = getTextBox("Player 2", BoxType.PLAYERTWO, Color.BLACK, FontWeight.BOLD);
         HBox answerqueue = getTextBox("Eingabe", BoxType.QUEUEINPUT, Color.BLACK, FontWeight.BOLD);
-        getContentRoot().getChildren().addAll(bg, steering, response, playerone, playertwo, answerqueue, inputsHBox);
+        getContentRoot().getChildren().addAll(bg, controls, response, playerone, playertwo, answerqueue, inputsHBox);
 
         buildDeviceOrder();
         inputs();
