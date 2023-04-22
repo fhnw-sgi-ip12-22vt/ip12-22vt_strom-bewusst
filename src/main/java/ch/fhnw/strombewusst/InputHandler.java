@@ -159,26 +159,12 @@ public class InputHandler {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof PuzzleSubScene) {
             FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
-            // For some reason we have to pop two subscenes. This solution is hacky, but works for now.
-            // TODO: find a more robust solution for this
-
-            Platform.runLater(() -> FXGL.getSceneService().popSubScene());
-            try {
-                Thread.sleep(30);
-            } catch (Exception ignored) {
-            }
             Platform.runLater(() -> FXGL.getSceneService().popSubScene());
         } else if (currentScene instanceof DeviceOrderSubScene) {
             Platform.runLater(() -> {
                 ((DeviceOrderSubScene) currentScene).resetAnswers();
                 FXGL.getSceneService().popSubScene();
             });
-
-            try {
-                Thread.sleep(30);
-            } catch (Exception ignored) {
-            }
-            Platform.runLater(() -> FXGL.getSceneService().popSubScene());
         }
     }
 }
