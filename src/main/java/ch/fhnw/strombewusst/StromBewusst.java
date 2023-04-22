@@ -85,7 +85,12 @@ public class StromBewusst extends GameApplication {
         // but might need to get lowered for better performance on the raspberry.
         settings.setTicksPerSecond(60);
 
-        settings.setDefaultCursor(new CursorInfo("hiddencursor.png", 0, 0));
+        if (System.getProperty("os.name").equals("Linux")) {
+            settings.setFullScreenAllowed(true);
+            settings.setFullScreenFromStart(true);
+
+            settings.setDefaultCursor(new CursorInfo("hiddencursor.png", 0, 0));
+        }
 
         settings.setMainMenuEnabled(true);
         settings.setGameMenuEnabled(false);
