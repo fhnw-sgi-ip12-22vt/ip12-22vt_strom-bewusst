@@ -29,7 +29,7 @@ Siehe https://docs.arc42.org/section-2/[Randbedingungen] in der online-Dokumenta
 Die folgenden Technologien und Libraries werden für das Projekt empfohlen und werden von uns übernommen
 
 .Programmiersprache +
-Java 11
+Java 17
 
 .Hardware +
 Raspberry Pi

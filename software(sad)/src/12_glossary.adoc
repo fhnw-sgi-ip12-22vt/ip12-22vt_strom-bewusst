@@ -29,6 +29,9 @@ Siehe https://docs.arc42.org/section-12/[Glossar] in der online-Dokumentation (a
 |===
 |Begriff |Definition
 
+|FHNW
+|Fachhochschule Nordwestschweiz
+
 |JavaFX
 |Java Grafiklibrary +
 GitHub: https://github.com/openjdk/jfx

@@ -31,11 +31,27 @@ Dort finden Sie Links und Beispiele zum Thema ADR.
 ////
 
 === Libraries
-- *FXGL* +
+* *FXGL* +
 FXGL erlaubte uns extrem schnell einen funktionierenden Prototypen zu entwickeln, schränkt das Development aber in gewissen Entscheidungen ein (viele Funktionen werden schon von der Library zur Verfügung gestellt, aber sind teilweise nur schwer anpassbar).
-- *Pi4J Example Components* +
+** GitHub: https://github.com/AlmasB/FXGL
+** Docs: https://github.com/AlmasB/FXGL/wiki/FXGL-11
+** Example Games: https://github.com/AlmasB/FXGLGames/
+** YouToube Videos: https://www.youtube.com/playlist?list=PL4h6ypqTi3RTiTuAQFKE6xwflnPKyFuPp[FXGL - JavaFX Game Engine Playlist]
+* *Pi4J* +
+Pi4J stellt eine Java API für I/O auf dem Raspberry Pi zur Verfügung.
+** Webseite: https://pi4j.com
+** GitHub: https://github.com/Pi4J/pi4j-v2
+* *Pi4J Example Components* +
 Die Pi4J Example Components Library verfügt über eine breite Auswahl an Klassen für die Kommunikation mit Hardwarekomponenten. Die Library wurde in der FHNW entwickelt wodurch wir bei Problemen schnell und einfach Support erhalten.
+** GitHub: https://github.com/Pi4J/pi4j-example-components
 
 === Architektur Patterns
-- *MVC* +
+* *MVC* +
 Wir richten uns bei der Architektur grob am Model-View-Controller Pattern, jedoch erschwert FXGL teilweise eine 100% saubere Trennung der Klassen.
+
+=== Weitere Ressourcen
+* *CrowPI OS* +
+Das CrowPi OS ist ein Betriebssystem für den Raspberry Pi, welches Out-of-the-box Support für Java 17 und JavaFX Applikationen bietet.
+** GitHub: https://github.com/Pi4J/pi4j-os
+** Docs: https://pi4j.com/getting-started/crowpi/crowpi-os/
+** JavaFX Template Project: https://github.com/Pi4J/pi4j-template-javafx
