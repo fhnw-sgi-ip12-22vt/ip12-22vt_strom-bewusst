@@ -22,10 +22,12 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
+import com.almasb.fxgl.physics.CollisionDetectionStrategy;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
@@ -340,8 +342,12 @@ public class StromBewusst extends GameApplication {
             // Pushing a notification so the user has an indication of what happened
             // This looks very weird, since notifications are animated and look a lot like what an achievement.
             // Despite this, it's still better than nothing at all.
+            var icon = new Text("⚠");
+            icon.setFont(Font.font("Verdana", FontWeight.BLACK, FontPosture.REGULAR, 32));
+            icon.setFill(Color.WHITE);
+            icon.setY(30);
             FXGL.getNotificationService().setBackgroundColor(Color.CRIMSON);
-            FXGL.getNotificationService().pushNotification("FATAL ERROR! Application restarted");
+            FXGL.getNotificationService().pushNotification("FATAL ERROR! Application restarted", icon);
         });
     }
 
