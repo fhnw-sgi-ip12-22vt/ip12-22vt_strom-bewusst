@@ -21,6 +21,7 @@ import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -48,6 +49,7 @@ public class StromBewusst extends GameApplication {
 
     /**
      * Main Method, launches the FXGL application
+     *
      * @param args Command line arguments
      */
     public static void main(String[] args) {
@@ -224,8 +226,8 @@ public class StromBewusst extends GameApplication {
     /**
      * Returns an userAction with running the runnables provided
      *
-     * @param name Name of the UserAction
-     * @param onAction Runnable to be execuded onAction
+     * @param name        Name of the UserAction
+     * @param onAction    Runnable to be execuded onAction
      * @param onActionEnd Runnable to be executed onActionEnd
      * @return The constructed UserAction
      */
@@ -290,7 +292,25 @@ public class StromBewusst extends GameApplication {
 
     @Override
     protected void onPreInit() {
+        // loading assets before the game caches them, which reduces loading times when starting a new game
         FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class);
+
+        // overwriting the default exception handler, so the game gets automatically restarted if an uncaught exception
+        // occurs.
+        Thread.setDefaultUncaughtExceptionHandler((thread, exception) -> {
+            Logger log = Logger.get(StromBewusst.class);
+            log.fatal("Uncaught Exception:", exception);
+            log.fatal("Fatal Error, restarting game");
+
+            FXGL.getGameController().gotoMainMenu();
+
+            // Pushing a notification so the user has an indication of what happened
+            // This currently looks very weird, since notifications are animated and look a lot like what an achievement
+            // would look like. Also, the background colour doesn't actually get respected by FXGL, so the notification
+            // is green. Despite all this, it's still better than nothing at all
+            FXGL.getNotificationService().setBackgroundColor(Color.RED);
+            FXGL.getNotificationService().pushNotification("FATAL ERROR! Application restarted");
+        });
     }
 
     public int getLevel() {
