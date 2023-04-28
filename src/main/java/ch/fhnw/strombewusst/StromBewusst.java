@@ -254,7 +254,6 @@ public class StromBewusst extends GameApplication {
         physicsWorld.setGravity(0, 0);
 
         physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
-        physicsWorld.addCollisionHandler(new PlayerPlayerHandler());
         physicsWorld.addCollisionHandler(new PlayerDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerMainDeskHandler());
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());
@@ -305,10 +304,9 @@ public class StromBewusst extends GameApplication {
             FXGL.getGameController().gotoMainMenu();
 
             // Pushing a notification so the user has an indication of what happened
-            // This currently looks very weird, since notifications are animated and look a lot like what an achievement
-            // would look like. Also, the background colour doesn't actually get respected by FXGL, so the notification
-            // is green. Despite all this, it's still better than nothing at all
-            FXGL.getNotificationService().setBackgroundColor(Color.RED);
+            // This looks very weird, since notifications are animated and look a lot like what an achievement.
+            // Despite this, it's still better than nothing at all.
+            FXGL.getNotificationService().setBackgroundColor(Color.CRIMSON);
             FXGL.getNotificationService().pushNotification("FATAL ERROR! Application restarted");
         });
     }

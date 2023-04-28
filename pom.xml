@@ -30,6 +30,7 @@
         <!-- Project Dependency Versions-->
         <javafx.version>18.0.2</javafx.version>
         <pi4j.version>2.2.0</pi4j.version>
+        <fxgl.version>17.3</fxgl.version>
 
         <junit.version>5.9.0</junit.version>
 
@@ -129,7 +130,7 @@
         <dependency>
             <groupId>com.github.almasb</groupId>
             <artifactId>fxgl</artifactId>
-            <version>11.17</version>
+            <version>${fxgl.version}</version>
         </dependency>
 
         <!-- JUnit -->
