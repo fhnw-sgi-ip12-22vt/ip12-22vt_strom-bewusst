@@ -32,7 +32,23 @@ import javafx.scene.text.Text;
 import java.util.Map;
 
 /**
- * This is the main class of our game, the methods of this class initialize the game.
+ * This is the main class of our game, the methods of this class initialize and launch the game.
+ * The initialization process can be seen below (irrelevant phases are omitted):
+ *
+ * <ol>
+ * <li>Instance fields of YOUR subclass of GameApplication</li>
+ * <li>initSettings()</li>
+ * <li>Services configuration (after this you can safely call any FXGL.* methods)</li>
+ * <b>Executed on JavaFX UI thread:</b>
+ * <li>initInput()</li>
+ * <li>onPreInit()</li>
+ * <b>NOT executed on JavaFX UI thread:</b>
+ * <li>initGameVars()</li>
+ * <li>initGame()</li>
+ * <li>initPhysics()</li>
+ * <li>initUI()</li>
+ * <b>Start of main game loop execution on JavaFX UI thread</b>
+ * </ol>
  */
 public class StromBewusst extends GameApplication {
     private Entity player1;
@@ -56,6 +72,9 @@ public class StromBewusst extends GameApplication {
         launch(args);
     }
 
+    /**
+     * Loads the next level, or ends the game if the current level is the last one.
+     */
     void nextLevel() {
         level++;
 
@@ -77,6 +96,10 @@ public class StromBewusst extends GameApplication {
         }
     }
 
+    /**
+     * Initializes the game settings.
+     * @param settings The game settings object
+     */
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setTitle("Strom Bewusst");
@@ -112,8 +135,8 @@ public class StromBewusst extends GameApplication {
     }
 
     /**
-     * This method initializes the game (after the "Play" Button on the Leaderboard is pressed).
-     * It spawns the players and entities.
+     * Initializes the game (after the "Play" Button on the Leaderboard is pressed). To start a new game, quizzes are
+     * reset and the rooms (-> entities) are regenerated.
      */
     @Override
     protected void initGame() {
@@ -132,7 +155,7 @@ public class StromBewusst extends GameApplication {
     }
 
     /**
-     * This method initializes the input. It gets executed *before* initGame.
+     * Initializes the input. It gets executed *before* initGame.
      */
     @Override
     protected void initInput() {
@@ -224,10 +247,10 @@ public class StromBewusst extends GameApplication {
     }
 
     /**
-     * Returns an userAction with running the runnables provided
+     * Creates a UserAction using the two provided runnable objects.
      *
      * @param name        Name of the UserAction
-     * @param onAction    Runnable to be execuded onAction
+     * @param onAction    Runnable to be executed onAction
      * @param onActionEnd Runnable to be executed onActionEnd
      * @return The constructed UserAction
      */
@@ -246,7 +269,7 @@ public class StromBewusst extends GameApplication {
     }
 
     /**
-     * This method initializes the physics engine that is used to handle collisions.
+     * Initializes the physics engine that is used to handle collisions and movement.
      */
     @Override
     protected void initPhysics() {
@@ -259,6 +282,10 @@ public class StromBewusst extends GameApplication {
         physicsWorld.addCollisionHandler(new PlayerDoorHandler());
     }
 
+    /**
+     * Initializes the game variables.
+     * @param vars The game vars map
+     */
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("score", 0);
@@ -270,6 +297,9 @@ public class StromBewusst extends GameApplication {
         vars.put("deviceOrderLogic", new DeviceOrderLogic(2));
     }
 
+    /**
+     * Initializes the UI. In this method UI elements such as the score get created and game vars bound to them.
+     */
     @Override
     protected void initUI() {
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
@@ -289,6 +319,10 @@ public class StromBewusst extends GameApplication {
         FXGL.addUINode(player2InfoText, 950, 400);
     }
 
+    /**
+     * Gets executed once per application lifetime, before initGame.
+     * In this method, assets are cached to decrease game startup delay, and the exception handler is overridden.
+     */
     @Override
     protected void onPreInit() {
         // loading assets before the game caches them, which reduces loading times when starting a new game
