@@ -28,7 +28,7 @@ public class PuzzleSubScene extends SubScene {
     enum BoxType {
         QUESTION(70, 40, 700),
         REDANSWER(300, 300, 550),
-        GREENANSWER(300, 450, 550),
+        YELLOWANSWER(300, 450, 550),
         BLUEANSWER(300, 600, 550);
         final int x, y, width;
 
@@ -129,7 +129,7 @@ public class PuzzleSubScene extends SubScene {
             }
         }, KeyCode.DIGIT4);
 
-        getInput().addAction(new UserAction("Green1 Button") {
+        getInput().addAction(new UserAction("Yellow1 Button") {
             @Override
             protected void onActionBegin() {
                 setPlug(1, 1);
@@ -150,7 +150,7 @@ public class PuzzleSubScene extends SubScene {
             }
         }, KeyCode.DIGIT7);
 
-        getInput().addAction(new UserAction("Green2 Button") {
+        getInput().addAction(new UserAction("Yellow2 Button") {
             @Override
             protected void onActionBegin() {
                 setPlug(2, 1);
@@ -227,7 +227,7 @@ public class PuzzleSubScene extends SubScene {
     /**
      * Sets the provided plug as the currently selected one.
      * @param player The player selecting a device. 1 or 2
-     * @param colour The colour selected (0=Red, 1=Green, 2=Blue)
+     * @param colour The colour selected (0=Red, 1=Yellow, 2=Blue)
      */
     public void setPlug(int player, int colour) {
         if (player == 1) {
@@ -295,7 +295,7 @@ public class PuzzleSubScene extends SubScene {
     private HBox[] buildQuiz(QuizQuestion question) {
         HBox questionHBox = buildTextbox(question.question(), BoxType.QUESTION);
         HBox firstHBox = buildTextbox(question.answerOptions()[0], BoxType.REDANSWER);
-        HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.GREENANSWER);
+        HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
         HBox thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
 
         scoretable = StromBewusst.SCORE.pushScore(950, 30);

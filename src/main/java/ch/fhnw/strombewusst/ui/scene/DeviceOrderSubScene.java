@@ -52,10 +52,10 @@ public class DeviceOrderSubScene extends SubScene {
 
     enum ImageType {
         PLAYERONERED(140, 90),
-        PLAYERONEGREEN(425, 90),
+        PLAYERONEYELLOW(425, 90),
         PLAYERONEBLUE(710, 90),
         PLAYERTWORED(140, 350),
-        PLAYERTWOGREEN(425, 350),
+        PLAYERTWOYELLOW(425, 350),
         PLAYERTWOBLUE(710, 350),
         QUEUEFIRST(70, 590),
         QUEUESECOND(230, 590),
@@ -77,8 +77,8 @@ public class DeviceOrderSubScene extends SubScene {
     private int falseAnswer = 0;
 
     private final ImageType[][] plugMap = {
-        {ImageType.PLAYERONERED, ImageType.PLAYERONEGREEN, ImageType.PLAYERONEBLUE},
-        {ImageType.PLAYERTWORED, ImageType.PLAYERTWOGREEN, ImageType.PLAYERTWOBLUE}
+        {ImageType.PLAYERONERED, ImageType.PLAYERONEYELLOW, ImageType.PLAYERONEBLUE},
+        {ImageType.PLAYERTWORED, ImageType.PLAYERTWOYELLOW, ImageType.PLAYERTWOBLUE}
     };
 
     private final ImageType[] queue = {
@@ -160,7 +160,7 @@ public class DeviceOrderSubScene extends SubScene {
             }
         }, KeyCode.DIGIT4);
 
-        getInput().addAction(new UserAction("Green1 Button") {
+        getInput().addAction(new UserAction("Yellow1 Button") {
             @Override
             protected void onActionBegin() {
                 setDevice(1, 1);
@@ -181,7 +181,7 @@ public class DeviceOrderSubScene extends SubScene {
             }
         }, KeyCode.DIGIT7);
 
-        getInput().addAction(new UserAction("Green2 Button") {
+        getInput().addAction(new UserAction("Yellow2 Button") {
             @Override
             protected void onActionBegin() {
                 setDevice(2, 1);
@@ -271,7 +271,7 @@ public class DeviceOrderSubScene extends SubScene {
     /**
      * Adds the provided device to the queue.
      * @param player The player selecting a device. 1 or 2
-     * @param colour The colour selected (0=Red, 1=Green, 2=Blue)
+     * @param colour The colour selected (0=Red, 1=Yellow, 2=Blue)
      */
     public void setDevice(int player, int colour) {
         ImageType type = plugMap[player - 1][colour];
