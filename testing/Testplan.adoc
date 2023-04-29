@@ -22,10 +22,10 @@
 |Steckerkontroller, Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test3_18.12.2022.adoc[Test 3]
 
-|geplant 30.04.2023
+|29.04.2023
 |Steckercontroller MVP, Software MVP
 |Steckerkontroller, Gameplay
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test4_30.04.2023.adoc[Test 4]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test4_29.04.2023.adoc[Test 4]
 
 |geplant 07.05.2023
 |Steckercontroller MVP, Software MVP
