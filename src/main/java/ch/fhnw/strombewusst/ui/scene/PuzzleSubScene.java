@@ -239,7 +239,7 @@ public class PuzzleSubScene extends SubScene {
 
         switch (colour) {
         case 0 -> setImagePlug("plug-red.png", player);
-        case 1 -> setImagePlug("plug-green.png", player);
+        case 1 -> setImagePlug("plug-yellow.png", player);
         case 2 -> setImagePlug("plug-blue.png", player);
         default -> System.out.println("unknown colour!");
         }
