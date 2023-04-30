@@ -7,8 +7,10 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
+import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -98,29 +100,30 @@ public class DeviceOrderSubScene extends SubScene {
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
-        //TODO set controls according to controller
-        String inputs = "SORTIERE NACH KWH VERBRAUCH \nVON VIEL NACH WENIG"
-                + "\nPLAYER ONE {ROT: 4 ,GRÜN: 5 ,BLAU: 6} "
-                + "\nPLAYER TWO {ROT: 7 ,GRÜN: 8 ,BLAU: 9} "
-                + "\nFALSCH: 0 -> 3P"
-                + "\nFALSCH: 1 -> 2P"
-                + "\nFALSCH:>1 -> 1P"
-                + "\nÜBERPRÜFEN: Q"
-                + "\nLÖSCHEN: E"
-                + "\nSCHLIESSEN: ESC";
-        Text playerInputs = new Text(inputs);
-        playerInputs.getStyleClass().add("message");
-        HBox inputsHBox = new HBox(playerInputs);
-        inputsHBox.setTranslateX(950);
-        inputsHBox.setTranslateY(410);
+        Texture selectButton = getAssetLoader().loadTexture("red-button-icon-single.png", 48, 48);
+        Text selectText = new Text("Antworten prüfen");
+        selectText.getStyleClass().add("message");
+        HBox selectHBox = new HBox(selectButton, selectText);
+        selectHBox.setAlignment(Pos.CENTER_LEFT);
+        selectHBox.setSpacing(20);
 
+        Texture backButton = getAssetLoader().loadTexture("blue-button-icon-single.png", 48, 48);
+        Text backText = new Text("Zurück");
+        backText.getStyleClass().add("message");
+        HBox backHBox = new HBox(backButton, backText);
+        backHBox.setAlignment(Pos.CENTER_LEFT);
+        backHBox.setSpacing(20);
 
-        HBox controls = getTextBox("Steuerung", BoxType.CONTROLS, Color.BLACK, FontWeight.BOLD);
+        VBox inputsVBox = new VBox(selectHBox, backHBox);
+        inputsVBox.setTranslateX(950);
+        inputsVBox.setTranslateY(410);
+
         HBox response = getTextBox("Rückmeldung", BoxType.RESPONSE, Color.BLACK, FontWeight.BOLD);
-        HBox playerone = getTextBox("Player 1", BoxType.PLAYERONE, Color.BLACK, FontWeight.BOLD);
-        HBox playertwo = getTextBox("Player 2", BoxType.PLAYERTWO, Color.BLACK, FontWeight.BOLD);
-        HBox answerqueue = getTextBox("Eingabe", BoxType.QUEUEINPUT, Color.BLACK, FontWeight.BOLD);
-        getContentRoot().getChildren().addAll(bg, controls, response, playerone, playertwo, answerqueue, inputsHBox);
+        HBox playerOne = getTextBox("Player 1", BoxType.PLAYERONE, Color.BLACK, FontWeight.BOLD);
+        HBox playerTwo = getTextBox("Player 2", BoxType.PLAYERTWO, Color.BLACK, FontWeight.BOLD);
+        HBox answerQueue = getTextBox("Eingabe", BoxType.QUEUEINPUT, Color.BLACK, FontWeight.BOLD);
+
+        getContentRoot().getChildren().addAll(bg, inputsVBox, response, playerOne, playerTwo, answerQueue);
 
         buildDeviceOrder();
         inputs();

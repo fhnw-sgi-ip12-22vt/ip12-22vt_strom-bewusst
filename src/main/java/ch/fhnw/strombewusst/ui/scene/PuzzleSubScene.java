@@ -62,11 +62,6 @@ public class PuzzleSubScene extends SubScene {
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
-        Button btnBack = new Button("Back");
-        btnBack.getStyleClass().add("main_menu_button");
-        btnBack.setStyle("-fx-text-fill: black;");
-        btnBack.setOnAction(e -> getSceneService().popSubScene());
-
         Texture selectButton = getAssetLoader().loadTexture("red-button-icon-single.png", 48, 48);
         Text selectText = new Text("Antworten prüfen");
         selectText.getStyleClass().add("message");
@@ -74,7 +69,7 @@ public class PuzzleSubScene extends SubScene {
         selectHBox.setAlignment(Pos.CENTER_LEFT);
         selectHBox.setSpacing(20);
 
-        Texture backButton = getAssetLoader().loadTexture("green-button-icon-single.png", 48, 48);
+        Texture backButton = getAssetLoader().loadTexture("blue-button-icon-single.png", 48, 48);
         Text backText = new Text("Zurück");
         backText.getStyleClass().add("message");
         HBox backHBox = new HBox(backButton, backText);
