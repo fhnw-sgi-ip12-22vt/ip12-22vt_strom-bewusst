@@ -4,6 +4,12 @@
     -fx-font-size: 60px;
 }
 
+.subtitle{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 40px;
+}
+
 .small_title{
     -fx-text-fill: white;
     -fx-font-weight: bold;

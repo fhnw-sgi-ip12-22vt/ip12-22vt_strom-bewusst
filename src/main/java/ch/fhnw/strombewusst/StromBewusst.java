@@ -230,6 +230,10 @@ public class StromBewusst extends GameApplication {
         FXGL.onKeyDown(KeyCode.Q, () -> InputHandler.handleSelect(player1));
         FXGL.onKeyDown(KeyCode.R, () -> InputHandler.handleSelect(player1));
 
+        FXGL.onKeyDown(KeyCode.P, () -> {
+            throw new RuntimeException("AA");
+        });
+
         FXGL.onKeyDown(KeyCode.F, () -> {
             var lines = FXGL.getAssetLoader().loadText("example—cutscene1.txt");
             var cutscene = new Cutscene(lines);
@@ -318,6 +322,8 @@ public class StromBewusst extends GameApplication {
     protected void onPreInit() {
         // loading assets before the game caches them, which reduces loading times when starting a new game
         FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class);
+        FXGL.getAssetLoader().loadText("room1_deskinfo.txt");
+        FXGL.getAssetLoader().loadText("room2_deviceinfo.txt");
 
         // overwriting the default exception handler, so the game gets automatically restarted if an uncaught exception
         // occurs.
