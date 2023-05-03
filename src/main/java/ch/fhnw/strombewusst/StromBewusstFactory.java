@@ -168,11 +168,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("stove")
     public Entity newStove(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.DESK)
+                .type(EntityType.DEVICE)
                 .view("stove.png")
                 .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
-                .with(new DeskComponent(data.get("stove")))
+                .with(new DeviceComponent(data.get("stove")))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
@@ -243,7 +243,11 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newLamp(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DEVICE)
-                .view("")
+                .bbox(new HitBox(new Point2D(8,15), BoundingShape.box(50,50)))
+                .with(new CollidableComponent(true))
+                .with(new DeviceComponent(data.get("lamp")))
+                .view("lamp.png")
+                .zIndex(110)
                 .build();
     }
 
@@ -251,7 +255,10 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newSmartphone(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DEVICE)
-                .view("")
+                .bbox(new HitBox(new Point2D(8,15), BoundingShape.box(50,50)))
+                .with(new CollidableComponent(true))
+                .with(new DeviceComponent(data.get("smartphone")))
+                .view("smartphone.png")
                 .build();
     }
 
@@ -263,6 +270,69 @@ public class StromBewusstFactory implements EntityFactory {
                 .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
+                .build();
+    }
+
+    @Spawns("coffemachine")
+    public Entity newCoffee(SpawnData data) {
+        return entityBuilder()
+                .type(EntityType.DEVICE)
+                .view("coffeemachine")
+                .bbox(new HitBox(new Point2D(8,10), BoundingShape.box(50, 50)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .with(new DeviceComponent(data.get("coffemachine.png")))
+                .build();
+    }
+    @Spawns("vacuum")
+    public Entity newVacuum(SpawnData data){
+        return entityBuilder()
+                .type(EntityType.DEVICE)
+                .view("vacuum.png")
+                .bbox(new HitBox(new Point2D(20, 10), BoundingShape.box(100,100)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .with(new DeviceComponent(data.get("vacuum")))
+                .zIndex(110)
+                .build();
+    }
+
+    @Spawns("laptop")
+    public Entity newLaptop(SpawnData data){
+        return entityBuilder()
+                .type(EntityType.DEVICE)
+                .view("laptop.png")
+                .bbox(new HitBox(new Point2D(8,15), BoundingShape.box(50,50)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .with(new DeviceComponent(data.get("laptop")))
+                .zIndex(110)
+                .build();
+    }
+
+    @Spawns("dishwasher")
+    public Entity newDishwasher(SpawnData data) {
+        return entityBuilder()
+                .type(EntityType.DEVICE)
+                .view("dishwasher.png")
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50,50)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .with(new DeviceComponent(data.get("dishwasher")))
+                .zIndex(110)
+                .build();
+    }
+
+    @Spawns("computer")
+    public Entity newComputer(SpawnData data){
+        return entityBuilder()
+                .type(EntityType.DEVICE)
+                .view("computer.png")
+                .bbox(new HitBox(new Point2D(8,15),BoundingShape.box(100,100)))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .with(new DeviceComponent(data.get("computer")))
+                .zIndex(110)
                 .build();
     }
 }

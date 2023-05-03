@@ -46,13 +46,13 @@ public class Room2 implements Room {
                 world.create("ps5", new SpawnData(210, 410).put("ps5", 4)),
 
                 //first row
-                world.create("fridge", new SpawnData(22, 11).put("fridge", 5)), // TODO: Fix Text
+                world.create("fridge", new SpawnData(22, 11).put("fridge", 5)),
                 world.create("cabinet", new SpawnData(86, 75)),
-                world.create("stove", new SpawnData(150, 75).put("stove", 6)), // TODO: Fix Text
+                world.create("stove", new SpawnData(150, 75).put("stove", 6)),
                 world.create("cabinet", new SpawnData(214, 75)),
-                world.create("stove", new SpawnData(278, 75).put("stove", 7)), // TODO: Fix Text
+                world.create("stove", new SpawnData(278, 75).put("stove", 7)),
                 world.create("cabinet", new SpawnData(342, 75)),
-                world.create("stove", new SpawnData(406, 75).put("stove", 20)), // TODO: Fix Text
+                world.create("stove", new SpawnData(406, 75).put("stove", 14)),
 
                 world.create("cabinet", new SpawnData(764, 75)),
                 world.create("cabinet", new SpawnData(828, 75)),
