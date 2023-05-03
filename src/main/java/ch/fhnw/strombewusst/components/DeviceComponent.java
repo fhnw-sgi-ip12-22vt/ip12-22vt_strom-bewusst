@@ -1,7 +1,14 @@
 package ch.fhnw.strombewusst.components;
 
-public class DeviceComponent extends DeskComponent {
-    public DeviceComponent(int objectNum) {
-        super(objectNum);
+import com.almasb.fxgl.entity.component.Component;
+public class DeviceComponent extends Component {
+
+    int deviceNum;
+    public DeviceComponent(int deviceNum) {
+        this.deviceNum = deviceNum;
+    }
+
+    public int getDeviceNum(){
+        return deviceNum;
     }
 }

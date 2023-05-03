@@ -18,7 +18,7 @@ public class PlayerDeviceHandler extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity player, Entity type) {
-        int deviceNum = type.getComponent(DeviceComponent.class).getDeskNum();
+        int deviceNum = type.getComponent(DeviceComponent.class).getDeviceNum();
 
         if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
             FXGL.set("player1InfoText", infoBoxes.get(deviceNum));
