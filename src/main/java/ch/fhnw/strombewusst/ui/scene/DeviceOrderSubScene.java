@@ -2,7 +2,7 @@ package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.DeviceOrderDevices;
 import ch.fhnw.strombewusst.DeviceOrderLogic;
-import ch.fhnw.strombewusst.StromBewusst;
+import ch.fhnw.strombewusst.Score;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -248,9 +248,9 @@ public class DeviceOrderSubScene extends SubScene {
         if (falseDevice.isEmpty()) {
             DeviceOrderLogic logic = FXGL.<DeviceOrderLogic>geto("deviceOrderLogic");
 
-            if (StromBewusst.SCORE.getQueueSolved() < logic.getSize()) {
+            if (FXGL.<Score>geto("score").getQueueSolved() < logic.getSize()) {
                 int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
-                StromBewusst.SCORE.increaseScoreByDeviceOrder(increase);
+                FXGL.<Score>geto("score").increaseScoreByDeviceOrder(increase);
             }
             msg = "RICHTIG";
             popUp = getTextBox(msg, BoxType.POPUP, Color.GREEN, FontWeight.SEMI_BOLD);
@@ -326,7 +326,8 @@ public class DeviceOrderSubScene extends SubScene {
                 .filter(x -> x.toString().charAt(0) == 'P')
                 .toList();
 
-        scoreboard = getTextBox(StromBewusst.SCORE.toString(), BoxType.SCORETABLE, Color.BLACK, FontWeight.SEMI_BOLD);
+        scoreboard = getTextBox(FXGL.<Score>geto("score").toString(),
+                BoxType.SCORETABLE, Color.BLACK, FontWeight.SEMI_BOLD);
         getContentRoot().getChildren().addAll(scoreboard);
 
         if (devices.size() == types.size()) {

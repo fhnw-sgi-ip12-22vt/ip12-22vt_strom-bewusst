@@ -1,28 +1,21 @@
 package ch.fhnw.strombewusst;
 
-import com.almasb.fxgl.dsl.FXGL;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 
 public class Score {
-    private int score;
+    private final IntegerProperty score;
     private int answerSolved;
 
     private int queueSolved;
 
     public Score() {
-        this.score = 0;
+        this.score = new SimpleIntegerProperty(0);
         this.answerSolved = 0;
         this.queueSolved = 0;
-    }
-
-    public int getAnswerSolved() {
-        return answerSolved;
-    }
-
-    public int getQueueSolved() {
-        return queueSolved;
     }
 
     /**
@@ -30,8 +23,7 @@ public class Score {
      * @param points the amount of points to increase the score by
      */
     public void increaseScoreByQuiz(int points) {
-        this.score += points;
-        FXGL.inc("score", +points);
+        score.setValue(score.get() + points);
         this.answerSolved++;
     }
 
@@ -40,8 +32,7 @@ public class Score {
      * @param points the amount of points to increase the score by
      */
     public void increaseScoreByDeviceOrder(int points) {
-        this.score += points;
-        FXGL.inc("score", +points);
+        score.setValue(score.get() + points);
         this.queueSolved++;
     }
 
@@ -60,8 +51,20 @@ public class Score {
         return titleHBox1;
     }
 
+    public int getAnswerSolved() {
+        return answerSolved;
+    }
+
+    public int getQueueSolved() {
+        return queueSolved;
+    }
+
+    public IntegerProperty getScore() {
+        return score;
+    }
+
     @Override
     public String toString() {
-        return "Score: " + this.score;
+        return "Score: " + this.score.get();
     }
 }
