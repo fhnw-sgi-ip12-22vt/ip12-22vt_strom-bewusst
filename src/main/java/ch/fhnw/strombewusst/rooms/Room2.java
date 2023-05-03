@@ -42,7 +42,12 @@ public class Room2 implements Room {
                 world.create("television", new SpawnData(100, 385).put("television", 4)),
                 world.create("router", new SpawnData(323, 580).put("router", 6)),
                 world.create("microwave", new SpawnData(405, 215).put("microwave", 9)),
-                //world.create("smartphone", new SpawnData(2*x,3*y).put("smartphone", 1)), missing texture
+                world.create("smartphone", new SpawnData(828, 75).put("smartphone", 13)),
+                world.create("coffeemachine", new SpawnData(764, 625).put("coffeemachine", 14)),
+                world.create("laptop", new SpawnData(214, 258).put("laptop", 11)),
+                world.create("computer", new SpawnData(22, 625).put("computer", 8)),
+                world.create("vacuum", new SpawnData(534, 258).put("vacuum", 12)),
+                world.create("lamp", new SpawnData(534, 258).put("lamp", 1)),
                 world.create("ps5", new SpawnData(210, 410).put("ps5", 7)),
 
                 //first row
@@ -67,6 +72,7 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 258)),
                 world.create("cabinet", new SpawnData(470, 258)),
                 world.create("cabinet", new SpawnData(534, 258)),
+
                 world.create("washing-machine", new SpawnData(764, 258).put("washing-machine", 3)),
                 world.create("washing-machine", new SpawnData(828, 258).put("washing-machine", 3)),
 
@@ -79,8 +85,9 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 441)),
                 world.create("cabinet", new SpawnData(470, 441)),
                 world.create("cabinet", new SpawnData(534, 441)),
+
                 world.create("washing-machine", new SpawnData(764, 441).put("washing-machine", 3)),
-                world.create("washing-machine", new SpawnData(828, 441).put("washing-machine", 3)),
+                world.create("dishwasher", new SpawnData(828, 441).put("dishwasher", 5)),
 
                 //fourth row
                 world.create("cabinet", new SpawnData(22, 625)),
@@ -92,6 +99,7 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 625)),
                 world.create("cabinet", new SpawnData(470, 625)),
                 world.create("cabinet", new SpawnData(534, 625)),
+
                 world.create("cabinet", new SpawnData(764, 625)),
                 world.create("cabinet", new SpawnData(828, 625))
         );
