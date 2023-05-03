@@ -7,8 +7,7 @@ public class DeviceComponent extends Component {
     public DeviceComponent(int deviceNum) {
         this.deviceNum = deviceNum;
     }
-
-    public int getDeviceNum(){
+    public int getDeviceNum() {
         return deviceNum;
     }
 }

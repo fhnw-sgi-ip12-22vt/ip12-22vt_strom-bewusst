@@ -39,20 +39,20 @@ public class Room2 implements Room {
 
                 // Haushaltgeräte
                 //world.create("lamp", new SpawnData(4*x,y).put("lamp", 1)), missing texture
-                world.create("television", new SpawnData(100, 385).put("television", 5)),
-                world.create("router", new SpawnData(323, 580).put("router", 7)),
-                world.create("microwave", new SpawnData(405, 215).put("microwave", 3)),
+                world.create("television", new SpawnData(100, 385).put("television", 4)),
+                world.create("router", new SpawnData(323, 580).put("router", 6)),
+                world.create("microwave", new SpawnData(405, 215).put("microwave", 9)),
                 //world.create("smartphone", new SpawnData(2*x,3*y).put("smartphone", 1)), missing texture
-                world.create("ps5", new SpawnData(210, 410).put("ps5", 8)),
+                world.create("ps5", new SpawnData(210, 410).put("ps5", 7)),
 
                 //first row
-                world.create("fridge", new SpawnData(22, 11).put("fridge", 5)),
+                world.create("fridge", new SpawnData(22, 11).put("fridge", 2)),
                 world.create("cabinet", new SpawnData(86, 75)),
                 world.create("stove", new SpawnData(150, 75).put("stove", 0)),
                 world.create("cabinet", new SpawnData(214, 75)),
-                world.create("stove", new SpawnData(278, 75).put("stove", 6)),
+                world.create("stove", new SpawnData(278, 75).put("stove", 0)),
                 world.create("cabinet", new SpawnData(342, 75)),
-                world.create("stove", new SpawnData(406, 75).put("stove", 6)),
+                world.create("stove", new SpawnData(406, 75).put("stove", 0)),
 
                 world.create("cabinet", new SpawnData(764, 75)),
                 world.create("cabinet", new SpawnData(828, 75)),
@@ -79,8 +79,8 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(406, 441)),
                 world.create("cabinet", new SpawnData(470, 441)),
                 world.create("cabinet", new SpawnData(534, 441)),
-                world.create("washing-machine", new SpawnData(764, 441).put("washing-machine", 8)),
-                world.create("washing-machine", new SpawnData(828, 441).put("washing-machine", 9)),
+                world.create("washing-machine", new SpawnData(764, 441).put("washing-machine", 3)),
+                world.create("washing-machine", new SpawnData(828, 441).put("washing-machine", 3)),
 
                 //fourth row
                 world.create("cabinet", new SpawnData(22, 625)),
