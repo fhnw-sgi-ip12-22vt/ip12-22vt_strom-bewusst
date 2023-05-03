@@ -57,8 +57,6 @@ public class StromBewusst extends GameApplication {
     private Entity door;
     private int level = 0;
 
-    public static final Score SCORE = new Score();
-
     private Room[] rooms;
 
     private Controller p1Controller;
@@ -141,13 +139,8 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initGame() {
-        QuizLogic quiz = new QuizLogic(10);
-        FXGL.set("quizLogic", quiz);
-        quiz.initQuestions();
-
-        DeviceOrderLogic deviceOrder = new DeviceOrderLogic(2);
-        FXGL.set("deviceOrderLogic", deviceOrder);
-        deviceOrder.initDevices();
+        FXGL.<QuizLogic>geto("quizLogic").initQuestions();
+        FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").initDevices();
 
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
@@ -284,17 +277,16 @@ public class StromBewusst extends GameApplication {
     }
 
     /**
-     * Initializes the game variables.
+     * Initializes the game variables. This method gets executed before every game.
      * @param vars The game vars map
      */
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("score", 0);
+        vars.put("score", new Score());
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
 
-        // These vars will get overwritten in initGame again
-        vars.put("quizLogic", new QuizLogic(0));
+        vars.put("quizLogic", new QuizLogic(10));
         vars.put("deviceOrderLogic", new DeviceOrderLogic(2));
     }
 
@@ -304,7 +296,7 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initUI() {
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
-        scoreText.textProperty().bind(FXGL.getip("score").asString("%d"));
+        scoreText.textProperty().bind(FXGL.<Score>geto("score").getScore().asString("%d"));
         FXGL.addUINode(scoreText, 810, 67);
 
         Text player1InfoText = new Text("");

@@ -2,7 +2,7 @@ package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.QuizLogic;
 import ch.fhnw.strombewusst.QuizQuestion;
-import ch.fhnw.strombewusst.StromBewusst;
+import ch.fhnw.strombewusst.Score;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -189,9 +189,9 @@ public class PuzzleSubScene extends SubScene {
         cleanPopUp();
 
         if (FXGL.<QuizLogic>geto("quizLogic").checkAnswer()) {
-            if (StromBewusst.SCORE.getAnswerSolved() < FXGL.<QuizLogic>geto("quizLogic").getSize()) {
+            if (FXGL.<Score>geto("score").getAnswerSolved() < FXGL.<QuizLogic>geto("quizLogic").getSize()) {
                 int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
-                StromBewusst.SCORE.increaseScoreByQuiz(increase);
+                FXGL.<Score>geto("score").increaseScoreByQuiz(increase);
             }
 
             Text text = new Text("RICHTIG");
@@ -292,7 +292,7 @@ public class PuzzleSubScene extends SubScene {
         HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
         HBox thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
 
-        scoretable = StromBewusst.SCORE.pushScore(950, 30);
+        scoretable = FXGL.<Score>geto("score").pushScore(950, 30);
 
         getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox, scoretable);
         return new HBox[] {questionHBox, firstHBox, secondHBox, thirdHBox};
