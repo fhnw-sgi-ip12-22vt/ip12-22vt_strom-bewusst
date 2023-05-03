@@ -62,6 +62,9 @@ public class EndGameSubScene extends SubScene {
         }, KeyCode.Q);
     }
 
+    /**
+     * Updates the username label with a new randomly generated username.
+     */
     public void newUsername() {
         usernameLabel.setText("Username: " + username.getNewUsername());
     }

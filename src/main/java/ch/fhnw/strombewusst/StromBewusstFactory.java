@@ -243,7 +243,7 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newLamp(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DEVICE)
-                .bbox(new HitBox(new Point2D(8,15), BoundingShape.box(50,50)))
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50, 50)))
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("lamp")))
                 .view("lamp.png")
@@ -255,7 +255,7 @@ public class StromBewusstFactory implements EntityFactory {
     public Entity newSmartphone(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DEVICE)
-                .bbox(new HitBox(new Point2D(8,15), BoundingShape.box(50,50)))
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50, 50)))
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("smartphone")))
                 .view("smartphone.png")
@@ -278,18 +278,18 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder()
                 .type(EntityType.DEVICE)
                 .view("coffeemachine")
-                .bbox(new HitBox(new Point2D(8,10), BoundingShape.box(50, 50)))
+                .bbox(new HitBox(new Point2D(8, 10), BoundingShape.box(50, 50)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("coffemachine.png")))
                 .build();
     }
     @Spawns("vacuum")
-    public Entity newVacuum(SpawnData data){
+    public Entity newVacuum(SpawnData data) {
         return entityBuilder()
                 .type(EntityType.DEVICE)
                 .view("vacuum.png")
-                .bbox(new HitBox(new Point2D(20, 10), BoundingShape.box(100,100)))
+                .bbox(new HitBox(new Point2D(20, 10), BoundingShape.box(100, 100)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("vacuum")))
@@ -298,11 +298,11 @@ public class StromBewusstFactory implements EntityFactory {
     }
 
     @Spawns("laptop")
-    public Entity newLaptop(SpawnData data){
+    public Entity newLaptop(SpawnData data) {
         return entityBuilder()
                 .type(EntityType.DEVICE)
                 .view("laptop.png")
-                .bbox(new HitBox(new Point2D(8,15), BoundingShape.box(50,50)))
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50, 50)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("laptop")))
@@ -315,7 +315,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder()
                 .type(EntityType.DEVICE)
                 .view("dishwasher.png")
-                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50,50)))
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50, 50)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("dishwasher")))
@@ -324,11 +324,11 @@ public class StromBewusstFactory implements EntityFactory {
     }
 
     @Spawns("computer")
-    public Entity newComputer(SpawnData data){
+    public Entity newComputer(SpawnData data) {
         return entityBuilder()
                 .type(EntityType.DEVICE)
                 .view("computer.png")
-                .bbox(new HitBox(new Point2D(8,15),BoundingShape.box(100,100)))
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(100, 100)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("computer")))
