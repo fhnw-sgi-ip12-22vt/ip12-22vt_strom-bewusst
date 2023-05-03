@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.components.DeskComponent;
+import ch.fhnw.strombewusst.components.DeviceComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -154,11 +155,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("fridge")
     public Entity newFridge(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.DESK)
+                .type(EntityType.DEVICE)
                 .view("fridge.png")
                 .bbox(new HitBox(new Point2D(12, 62), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
-                .with(new DeskComponent(data.get("fridge")))
+                .with(new DeviceComponent(data.get("fridge")))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
@@ -180,11 +181,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("washing-machine")
     public Entity newWasher(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.DESK)
+                .type(EntityType.DEVICE)
                 .view("washingmachine.png")
                 .bbox(new HitBox(new Point2D(12, -2), BoundingShape.box(40, 10)))
                 .with(new PhysicsComponent())
-                .with(new DeskComponent(data.get("washing-machine")))
+                .with(new DeviceComponent(data.get("washing-machine")))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
                 .build();
@@ -193,11 +194,11 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("ps5")
     public Entity newPS5(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.PS5)
+                .type(EntityType.DEVICE)
                 .view("PS5.png")
                 .bbox(new HitBox(new Point2D(8, 8), BoundingShape.box(50, 50)))
                 .with(new CollidableComponent(true))
-                .with(new DeskComponent(data.get("ps5")))
+                .with(new DeviceComponent(data.get("ps5")))
                 .zIndex(1)
                 .build();
     }
@@ -205,10 +206,10 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("microwave")
     public Entity newMicrowave(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.MICROWAVE)
+                .type(EntityType.DEVICE)
                 .bbox(new HitBox(new Point2D(7, 30), BoundingShape.box(50, 32)))
                 .with(new CollidableComponent(true))
-                .with(new DeskComponent(data.get("microwave")))
+                .with(new DeviceComponent(data.get("microwave")))
                 .view("Mikrowelle.png")
                 .zIndex(110)
                 .build();
@@ -217,10 +218,10 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("television")
     public Entity newTelevision(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.TELEVISION)
+                .type(EntityType.DEVICE)
                 .bbox(new HitBox(new Point2D(6, 42), BoundingShape.box(90, 32)))
                 .with(new CollidableComponent(true))
-                .with(new DeskComponent(data.get("television")))
+                .with(new DeviceComponent(data.get("television")))
                 .view("Fernseher.png")
                 .zIndex(110)
                 .build();
@@ -229,10 +230,10 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("router")
     public Entity newRouter(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.ROUTER)
+                .type(EntityType.DEVICE)
                 .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50, 50)))
                 .with(new CollidableComponent(true))
-                .with(new DeskComponent(data.get("router")))
+                .with(new DeviceComponent(data.get("router")))
                 .view("WLAN-Router.png")
                 .zIndex(110)
                 .build();
@@ -241,7 +242,7 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("lamp")
     public Entity newLamp(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.LAMP)
+                .type(EntityType.DEVICE)
                 .view("")
                 .build();
     }
@@ -249,7 +250,7 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("smartphone")
     public Entity newSmartphone(SpawnData data) {
         return entityBuilder(data)
-                .type(EntityType.SMARTPHONE)
+                .type(EntityType.DEVICE)
                 .view("")
                 .build();
     }
