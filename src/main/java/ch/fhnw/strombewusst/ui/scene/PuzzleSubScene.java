@@ -46,7 +46,7 @@ public class PuzzleSubScene extends SubScene {
 
     private final int plugP2Y = 590;
 
-    private int falseAnswer = 0;
+    private int falseAnswerCount = 0;
     private HBox[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
@@ -192,10 +192,7 @@ public class PuzzleSubScene extends SubScene {
         cleanPopUp();
 
         if (quizLogic.checkAnswer()) {
-            if (FXGL.<Score>geto("score").getAnswerSolved() < quizLogic.getSize()) {
-                int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
-                FXGL.<Score>geto("score").increaseScoreByQuiz(increase);
-            }
+            FXGL.<Score>geto("score").increaseScoreByQuiz(falseAnswerCount);
 
             Text text = new Text("RICHTIG");
             text.setStyle("-fx-font-size: 44px;");
@@ -216,7 +213,7 @@ public class PuzzleSubScene extends SubScene {
             getContentRoot().getChildren().addAll(answerPopUp);
 
             quizLogic.resetAnswers();
-            falseAnswer++;
+            falseAnswerCount++;
             getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
         }
     }
@@ -273,7 +270,7 @@ public class PuzzleSubScene extends SubScene {
         getContentRoot().getChildren()
                 .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1,
                         textureAnswerP2, scoretable);
-        falseAnswer = 0;
+        falseAnswerCount = 0;
     }
 
     private void nextQuestion() {

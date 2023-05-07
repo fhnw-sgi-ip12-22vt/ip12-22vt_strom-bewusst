@@ -7,24 +7,25 @@ import javafx.scene.text.Text;
 
 
 public class Score {
+    private static final int QUIZ_MIN_POINTS = 1;
+    private static final int QUIZ_MAX_POINT = 3;
+    private static final int QUIZ_PENALTY = 1;
     private final IntegerProperty score;
-    private int answerSolved;
 
     private int queueSolved;
 
     public Score() {
         this.score = new SimpleIntegerProperty(0);
-        this.answerSolved = 0;
         this.queueSolved = 0;
     }
 
     /**
      * Increases the score.
-     * @param points the amount of points to increase the score by
+     * @param penalty the number of wrong answers by the players
      */
-    public void increaseScoreByQuiz(int points) {
+    public void increaseScoreByQuiz(int penalty) {
+        int points = Math.max(QUIZ_MIN_POINTS, QUIZ_MAX_POINT - (penalty * QUIZ_PENALTY));
         score.setValue(score.get() + points);
-        this.answerSolved++;
     }
 
     /**
@@ -49,10 +50,6 @@ public class Score {
         titleHBox1.setTranslateX(x);
         titleHBox1.setTranslateY(y);
         return titleHBox1;
-    }
-
-    public int getAnswerSolved() {
-        return answerSolved;
     }
 
     public int getQueueSolved() {
