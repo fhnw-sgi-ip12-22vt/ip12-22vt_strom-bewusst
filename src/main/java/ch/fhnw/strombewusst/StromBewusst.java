@@ -298,7 +298,7 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initUI() {
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
-        scoreText.textProperty().bind(FXGL.<Score>geto("score").getScore().asString("%d"));
+        scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString("%d"));
         FXGL.addUINode(scoreText, 810, 67);
 
         Text player1InfoText = new Text("");
