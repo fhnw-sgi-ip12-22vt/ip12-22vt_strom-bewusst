@@ -250,11 +250,8 @@ public class DeviceOrderSubScene extends SubScene {
 
         if (falseDevice.isEmpty()) {
             DeviceOrderLogic logic = deviceOrderLogic;
+            FXGL.<Score>geto("score").increaseScoreByDeviceOrder(falseAnswer);
 
-            if (FXGL.<Score>geto("score").getQueueSolved() < logic.getSize()) {
-                int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
-                FXGL.<Score>geto("score").increaseScoreByDeviceOrder(increase);
-            }
             msg = "RICHTIG";
             popUp = getTextBox(msg, BoxType.POPUP, Color.GREEN, FontWeight.SEMI_BOLD);
             getContentRoot().getChildren().addAll(popUp);

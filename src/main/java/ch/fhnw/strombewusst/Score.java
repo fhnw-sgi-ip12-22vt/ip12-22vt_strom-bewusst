@@ -7,17 +7,13 @@ import javafx.scene.text.Text;
 
 
 public class Score {
-    private static final int QUIZ_MIN_POINTS = 1;
-    private static final int QUIZ_MAX_POINT = 3;
-    private static final int QUIZ_PENALTY = 1;
-    private final IntegerProperty score;
-
-    private int queueSolved;
-
-    public Score() {
-        this.score = new SimpleIntegerProperty(0);
-        this.queueSolved = 0;
-    }
+    public static final int QUIZ_MIN_POINTS = 1;
+    public static final int QUIZ_MAX_POINT = 3;
+    public static final int QUIZ_PENALTY = 1;
+    public static final int DEVICE_ORDER_MIN_POINTS = 10;
+    public static final int DEVICE_ORDER_MAX_POINT = 25;
+    public static final int DEVICE_ORDER_PENALTY = 10;
+    private final IntegerProperty score = new SimpleIntegerProperty(0);
 
     /**
      * Increases the score.
@@ -30,11 +26,11 @@ public class Score {
 
     /**
      * Increases the score.
-     * @param points the amount of points to increase the score by
+     * @param penalty the number of wrong answers by the players
      */
-    public void increaseScoreByDeviceOrder(int points) {
+    public void increaseScoreByDeviceOrder(int penalty) {
+        int points = Math.max(DEVICE_ORDER_MIN_POINTS, DEVICE_ORDER_MAX_POINT - (penalty * DEVICE_ORDER_PENALTY));
         score.setValue(score.get() + points);
-        this.queueSolved++;
     }
 
     /**
@@ -50,10 +46,6 @@ public class Score {
         titleHBox1.setTranslateX(x);
         titleHBox1.setTranslateY(y);
         return titleHBox1;
-    }
-
-    public int getQueueSolved() {
-        return queueSolved;
     }
 
     public IntegerProperty getScore() {
