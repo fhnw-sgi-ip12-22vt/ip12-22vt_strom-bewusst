@@ -50,13 +50,16 @@ public class PuzzleSubScene extends SubScene {
     private HBox[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
+    private final QuizLogic quizLogic;
 
     private HBox answerPopUp;
 
     private HBox scoretable;
 
 
-    public PuzzleSubScene() {
+    public PuzzleSubScene(QuizLogic quizLogic) {
+        this.quizLogic = quizLogic;
+
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
@@ -86,7 +89,7 @@ public class PuzzleSubScene extends SubScene {
 
         getContentRoot().getChildren().addAll(bg, inputsVBox, steering, response, answerOne, answerTwo);
 
-        currentQuiz = buildQuiz(FXGL.<QuizLogic>geto("quizLogic").getQuestion());
+        currentQuiz = buildQuiz(quizLogic.getQuestion());
         inputs();
     }
 
@@ -161,7 +164,7 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("resetAnswers") {
             @Override
             protected void onActionBegin() {
-                FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
+                quizLogic.resetAnswers();
                 getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
             }
         }, KeyCode.E);
@@ -176,7 +179,7 @@ public class PuzzleSubScene extends SubScene {
         getInput().addAction(new UserAction("exit") {
             @Override
             protected void onActionBegin() {
-                FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
+                quizLogic.resetAnswers();
                 FXGL.getSceneService().popSubScene();
             }
         }, KeyCode.ESCAPE);
@@ -188,8 +191,8 @@ public class PuzzleSubScene extends SubScene {
     public void checkAnswers() {
         cleanPopUp();
 
-        if (FXGL.<QuizLogic>geto("quizLogic").checkAnswer()) {
-            if (FXGL.<Score>geto("score").getAnswerSolved() < FXGL.<QuizLogic>geto("quizLogic").getSize()) {
+        if (quizLogic.checkAnswer()) {
+            if (FXGL.<Score>geto("score").getAnswerSolved() < quizLogic.getSize()) {
                 int increase = falseAnswer == 0 ? 3 : (falseAnswer == 1 ? 2 : 1);
                 FXGL.<Score>geto("score").increaseScoreByQuiz(increase);
             }
@@ -212,7 +215,7 @@ public class PuzzleSubScene extends SubScene {
             answerPopUp.setTranslateY(250);
             getContentRoot().getChildren().addAll(answerPopUp);
 
-            FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
+            quizLogic.resetAnswers();
             falseAnswer++;
             getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
         }
@@ -240,10 +243,10 @@ public class PuzzleSubScene extends SubScene {
 
         if (player == 1) {
             getContentRoot().getChildren().addAll(textureAnswerP1);
-            FXGL.<QuizLogic>geto("quizLogic").setAnswerP1(colour);
+            quizLogic.setAnswerP1(colour);
         } else if (player == 2) {
             getContentRoot().getChildren().addAll(textureAnswerP2);
-            FXGL.<QuizLogic>geto("quizLogic").setAnswerP2(colour);
+            quizLogic.setAnswerP2(colour);
         }
 
     }
@@ -274,15 +277,14 @@ public class PuzzleSubScene extends SubScene {
     }
 
     private void nextQuestion() {
-        QuizLogic quiz = FXGL.geto("quizLogic");
-        quiz.nextQuestion();
+        quizLogic.nextQuestion();
 
-        if (quiz.quizDone()) {
-            quiz.setDoorOpen(true);
+        if (quizLogic.quizDone()) {
+            quizLogic.setDoorOpen(true);
             getSceneService().popSubScene();
         } else {
             clearQuiz();
-            currentQuiz = buildQuiz(quiz.getQuestion());
+            currentQuiz = buildQuiz(quizLogic.getQuestion());
         }
     }
 

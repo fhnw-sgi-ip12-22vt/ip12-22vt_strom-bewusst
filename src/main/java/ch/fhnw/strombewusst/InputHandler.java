@@ -153,20 +153,28 @@ public class InputHandler {
             return;
         }
 
+        QuizLogic quizLogic = FXGL.geto("quizLogic");
+        DeviceOrderLogic deviceOrderLogic = FXGL.geto("deviceOrderLogic");
+
         // check collision with main desk and open puzzle subscene if so
         List<Entity> entities = FXGL.getGameWorld().getEntitiesByType(EntityType.MAINDESK);
         for (Entity e : entities) {
+
             try {
                 // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
                 // instead we check for the distance between bounding boxes
                 if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 1
-                        && !FXGL.<QuizLogic>geto("quizLogic").quizDone()) {
-                    FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new PuzzleSubScene()), Duration.ZERO);
+                        && !quizLogic.quizDone()) {
+                    FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
+                            new PuzzleSubScene(quizLogic)), Duration.ZERO);
                     return;
-                } else if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2
-                        && !FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDeviceOrderDone()) {
-                    FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(new DeviceOrderSubScene()), Duration.ZERO);
-                    return;
+                } else {
+                    if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2
+                            && !deviceOrderLogic.isDeviceOrderDone()) {
+                        FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
+                                new DeviceOrderSubScene(deviceOrderLogic)), Duration.ZERO);
+                        return;
+                    }
                 }
             } catch (NullPointerException ignored) {
                 // BUGFIX: there is a weird race-condition that causes a null-pointer exception in rare cases.
@@ -180,14 +188,12 @@ public class InputHandler {
             if (!player.isColliding(e)) {
                 continue;
             }
-            if (((StromBewusst) FXGL.getApp()).getLevel() == 1
-                    && FXGL.<QuizLogic>geto("quizLogic").isDoorOpen()) {
+            if (((StromBewusst) FXGL.getApp()).getLevel() == 1 && quizLogic.isDoorOpen()) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
                 return;
-            } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2
-                    && FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDoorOpen()) {
+            } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2 && deviceOrderLogic.isDoorOpen()) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
