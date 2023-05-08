@@ -90,7 +90,7 @@ public class StromBewusst extends GameApplication {
             FXGL.getGameController().gotoMainMenu();
             FXGL.getSceneService().pushSubScene(new EndGameSubScene());
             FXGL.getService(HighScoreService.class).commit("testname"); // temporary username for testing
-            FXGL.getSaveLoadService().saveAndWriteTask("high_score.dat").run();
+            FXGL.getSaveLoadService().saveAndWriteTask(Config.SAVE_FILE_NAME).run();
         }
     }
 
@@ -104,13 +104,13 @@ public class StromBewusst extends GameApplication {
         settings.setVersion("0.1_BETA");
         settings.getCSSList().add("main.css");
 
-        settings.setApplicationMode(ApplicationMode.DEVELOPER);
-        settings.setDeveloperMenuEnabled(true);
+        settings.setApplicationMode(Config.IS_RELEASE ? ApplicationMode.RELEASE : ApplicationMode.DEVELOPER);
+        settings.setDeveloperMenuEnabled(!Config.IS_RELEASE);
 
         // BUGFIX: explicitly setting the TPS fixes the inconsistent movement speed
         // The TPS also limits the FPS, so a small value can make the game look bad. 60 TPS works well for development
         // but might need to get lowered for better performance on the raspberry.
-        settings.setTicksPerSecond(60);
+        settings.setTicksPerSecond(Config.TICK_RATE);
 
         if (System.getProperty("os.name").equals("Linux")) {
             settings.setFullScreenAllowed(true);
@@ -121,8 +121,8 @@ public class StromBewusst extends GameApplication {
 
         settings.setMainMenuEnabled(true);
         settings.setGameMenuEnabled(false);
-        settings.setWidth(1280);
-        settings.setHeight(720);
+        settings.setWidth(Config.WIDTH);
+        settings.setHeight(Config.HEIGHT);
 
         settings.addEngineService(HighScoreService.class);
 

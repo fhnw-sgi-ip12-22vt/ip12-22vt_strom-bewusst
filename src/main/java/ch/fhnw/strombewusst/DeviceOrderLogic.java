@@ -26,8 +26,7 @@ public class DeviceOrderLogic {
 
     private int roundsLeft;
 
-    //private boolean doorOpen = false;
-    private boolean doorOpen = true; //for development of room 3
+    private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
 
     public DeviceOrderLogic(int roundsTotal) {
         this.roundsLeft = roundsTotal;

@@ -1,5 +1,6 @@
 package ch.fhnw.strombewusst.ui.scene;
 
+import ch.fhnw.strombewusst.Config;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.logging.Logger;
@@ -51,8 +52,8 @@ public class MainMenu extends FXGLMenu {
 
     @Override
     public void onCreate() {
-        getSaveLoadService().readAndLoadTask("high_score.dat")
-                .onFailure(error -> Logger.get(MainMenu.class).warning("Cannot read " + "high_score.dat"))
+        getSaveLoadService().readAndLoadTask(Config.SAVE_FILE_NAME)
+                .onFailure(error -> Logger.get(MainMenu.class).warning("Cannot read " + Config.SAVE_FILE_NAME))
                 .run();
     }
 }

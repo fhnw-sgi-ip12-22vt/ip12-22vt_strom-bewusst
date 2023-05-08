@@ -14,8 +14,7 @@ public class QuizLogic {
     private int answerP1;
     private int answerP2;
 
-    //private boolean doorOpen = false;
-    private boolean doorOpen = true; //for development of room 2
+    private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
     private final int size;
 
     private final Deque<QuizQuestion> questionSet = new LinkedList<>();
