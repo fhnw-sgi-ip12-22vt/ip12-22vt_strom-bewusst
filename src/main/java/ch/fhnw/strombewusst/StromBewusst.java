@@ -164,10 +164,12 @@ public class StromBewusst extends GameApplication {
         rooms = new Room[] {new Room1(), new Room2()};
         level = 0;
         nextLevel();
-        List<String> lines = FXGL.getAssetLoader().loadText("Tutorial.txt");
-        Cutscene cutscene = new Cutscene(lines);
-        FXGL.runOnce(() -> FXGL.getCutsceneService().startCutscene(cutscene), Duration.ZERO);
 
+        if (Config.IS_RELEASE || Config.IS_DEMO) {
+            List<String> lines = FXGL.getAssetLoader().loadText("Tutorial.txt");
+            Cutscene cutscene = new Cutscene(lines);
+            FXGL.runOnce(() -> FXGL.getCutsceneService().startCutscene(cutscene), Duration.ZERO);
+        }
     }
 
     /**
