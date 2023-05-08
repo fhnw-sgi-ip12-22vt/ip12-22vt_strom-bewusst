@@ -178,7 +178,7 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initInput() {
         EventBus eventBus = FXGL.getEventBus();
-        eventBus.addEventHandler(InputEvent.MOVE, new InputHandler());
+        eventBus.addEventHandler(InputEvent.INPUT, new InputHandler());
 
         try {
             // PIN.D17 and PIN.D4 are dummy pins, they would be used for the joystick button, which we do not use.

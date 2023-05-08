@@ -5,13 +5,13 @@ import javafx.event.Event;
 import javafx.event.EventType;
 
 public class InputEvent extends Event {
-    public static final EventType<InputEvent> MOVE = new EventType<>(Event.ANY, "MOVE_EVENT");
+    public static final EventType<InputEvent> INPUT = new EventType<>(Event.ANY, "MOVE_EVENT");
 
     private final InputType inputType;
     private final Entity player;
 
     public InputEvent(InputType inputType, Entity player) {
-        super(MOVE);
+        super(INPUT);
         this.inputType = inputType;
         this.player = player;
     }
