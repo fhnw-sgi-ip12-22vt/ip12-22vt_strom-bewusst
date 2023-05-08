@@ -2,6 +2,9 @@ package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.collision.*;
 import ch.fhnw.strombewusst.input.Controller;
+import ch.fhnw.strombewusst.input.InputEvent;
+import ch.fhnw.strombewusst.input.InputHandler;
+import ch.fhnw.strombewusst.input.InputType;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.rooms.Room;
 import ch.fhnw.strombewusst.rooms.Room1;
@@ -17,6 +20,7 @@ import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.event.EventBus;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
@@ -73,7 +77,7 @@ public class StromBewusst extends GameApplication {
     /**
      * Loads the next level, or ends the game if the current level is the last one.
      */
-    void nextLevel() {
+    public void nextLevel() {
         level++;
 
         FXGL.set("player1InfoText", "");
@@ -171,85 +175,90 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initInput() {
+        EventBus eventBus = FXGL.getEventBus();
+        eventBus.addEventHandler(InputEvent.MOVE, new InputHandler());
+
         try {
             // PIN.D17 and PIN.D4 are dummy pins, they would be used for the joystick button, which we do not use.
             // despite not using them, they have to be set to *some* value, so we just use unused pins
             p1Controller = new Controller(0, 1, PIN.D17, PIN.D5, PIN.D21, PIN.D26, PIN.D20, PIN.D6);
             p2Controller = new Controller(2, 3, PIN.D4, PIN.PWM19, PIN.PWM12, PIN.D24, PIN.PWM18, PIN.D25);
 
-            // Player 1 controls
-            p1Controller.onJoystickRight(() -> InputHandler.handlePlayerRight(player1));
-            p1Controller.onJoystickLeft(() -> InputHandler.handlePlayerLeft(player1));
-            p1Controller.onJoystickHorizontalIdle(() -> InputHandler.handlePlayerHorizontalIdle(player1));
 
-            p1Controller.onJoystickUp(() -> InputHandler.handlePlayerUp(player1));
-            p1Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player1));
-            p1Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player1));
+            p1Controller.onJoystickRight(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_RIGHT, player1)));
+            p1Controller.onJoystickLeft(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_LEFT, player1)));
+            p1Controller.onJoystickHorizontalIdle(() -> eventBus.fireEvent(
+                    new InputEvent(InputType.IDLE_HORIZONTAL, player1)));
 
-            p1Controller.onButtonLeftDown(() -> InputHandler.handleButtonLeft(player1));
-            p1Controller.onButtonMiddleDown(() -> InputHandler.handleButtonMiddle(player1));
-            p1Controller.onButtonRightDown(() -> InputHandler.handleButtonRight(player1));
-            p1Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player1));
-            p1Controller.onButtonUpperDown(() -> InputHandler.handleBack(player1));
+            p1Controller.onJoystickUp(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_UP, player1)));
+            p1Controller.onJoystickDown(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_DOWN, player1)));
+            p1Controller.onJoystickVerticalIdle(() -> eventBus.fireEvent(
+                    new InputEvent(InputType.IDLE_VERTICAL, player1)));
 
-            // Player 2 controls
-            p2Controller.onJoystickRight(() -> InputHandler.handlePlayerRight(player2));
-            p2Controller.onJoystickLeft(() -> InputHandler.handlePlayerLeft(player2));
-            p2Controller.onJoystickHorizontalIdle(() -> InputHandler.handlePlayerHorizontalIdle(player2));
+            p1Controller.onButtonLeftDown(() -> eventBus.fireEvent(new InputEvent(InputType.PLUG_LEFT, player1)));
+            p1Controller.onButtonMiddleDown(() -> eventBus.fireEvent(new InputEvent(InputType.PLUG_MIDDLE, player1)));
+            p1Controller.onButtonRightDown(() -> eventBus.fireEvent(new InputEvent(InputType.PLUG_RIGHT, player1)));
+            p1Controller.onButtonLowerDown(() -> eventBus.fireEvent(new InputEvent(InputType.SELECT, player1)));
+            p1Controller.onButtonUpperDown(() -> eventBus.fireEvent(new InputEvent(InputType.BACK, player1)));
 
-            p2Controller.onJoystickUp(() -> InputHandler.handlePlayerUp(player2));
-            p2Controller.onJoystickDown(() -> InputHandler.handlePlayerDown(player2));
-            p2Controller.onJoystickVerticalIdle(() -> InputHandler.handlePlayerVerticalIdle(player2));
+            p2Controller.onJoystickRight(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_RIGHT, player2)));
+            p2Controller.onJoystickLeft(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_LEFT, player2)));
+            p2Controller.onJoystickHorizontalIdle(() -> eventBus.fireEvent(
+                    new InputEvent(InputType.IDLE_HORIZONTAL, player2)));
 
-            p2Controller.onButtonLeftDown(() -> InputHandler.handleButtonLeft(player2));
-            p2Controller.onButtonMiddleDown(() -> InputHandler.handleButtonMiddle(player2));
-            p2Controller.onButtonRightDown(() -> InputHandler.handleButtonRight(player2));
-            p2Controller.onButtonLowerDown(() -> InputHandler.handleSelect(player2));
-            p2Controller.onButtonUpperDown(() -> InputHandler.handleBack(player2));
+            p2Controller.onJoystickUp(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_UP, player2)));
+            p2Controller.onJoystickDown(() -> eventBus.fireEvent(new InputEvent(InputType.MOVE_DOWN, player2)));
+            p2Controller.onJoystickVerticalIdle(() -> eventBus.fireEvent(
+                    new InputEvent(InputType.IDLE_VERTICAL, player2)));
+
+            p2Controller.onButtonLeftDown(() -> eventBus.fireEvent(new InputEvent(InputType.PLUG_LEFT, player2)));
+            p2Controller.onButtonMiddleDown(() -> eventBus.fireEvent(new InputEvent(InputType.PLUG_MIDDLE, player2)));
+            p2Controller.onButtonRightDown(() -> eventBus.fireEvent(new InputEvent(InputType.PLUG_RIGHT, player2)));
+            p2Controller.onButtonLowerDown(() -> eventBus.fireEvent(new InputEvent(InputType.SELECT, player2)));
+            p2Controller.onButtonUpperDown(() -> eventBus.fireEvent(new InputEvent(InputType.BACK, player2)));
         } catch (Exception ignored) {
-            System.out.println("failed to initialize controller, proceeding");
+            Logger.get(StromBewusst.class).warning("failed to initialize controller, proceeding");
         }
 
         // player1 Movement
         FXGL.getInput().addAction(getUserAction("player1 Right",
-                        () -> InputHandler.handlePlayerRight(player1),
-                        () -> InputHandler.handlePlayerHorizontalIdle(player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_RIGHT, player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_HORIZONTAL, player1))),
                 KeyCode.D);
         FXGL.getInput().addAction(getUserAction("player1 Left",
-                        () -> InputHandler.handlePlayerLeft(player1),
-                        () -> InputHandler.handlePlayerHorizontalIdle(player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_LEFT, player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_HORIZONTAL, player1))),
                 KeyCode.A);
         FXGL.getInput().addAction(getUserAction("player1 Up",
-                        () -> InputHandler.handlePlayerUp(player1),
-                        () -> InputHandler.handlePlayerVerticalIdle(player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_UP, player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_VERTICAL, player1))),
                 KeyCode.W);
         FXGL.getInput().addAction(getUserAction("player1 Down",
-                        () -> InputHandler.handlePlayerDown(player1),
-                        () -> InputHandler.handlePlayerVerticalIdle(player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_DOWN, player1)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_VERTICAL, player1))),
                 KeyCode.S);
-
 
         // player1 Movement
         FXGL.getInput().addAction(getUserAction("player2 Right",
-                        () -> InputHandler.handlePlayerRight(player2),
-                        () -> InputHandler.handlePlayerHorizontalIdle(player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_RIGHT, player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_HORIZONTAL, player2))),
                 KeyCode.L);
         FXGL.getInput().addAction(getUserAction("player2 Left",
-                        () -> InputHandler.handlePlayerLeft(player2),
-                        () -> InputHandler.handlePlayerHorizontalIdle(player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_LEFT, player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_HORIZONTAL, player2))),
                 KeyCode.J);
         FXGL.getInput().addAction(getUserAction("player2 Up",
-                        () -> InputHandler.handlePlayerUp(player2),
-                        () -> InputHandler.handlePlayerVerticalIdle(player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_UP, player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_VERTICAL, player2))),
                 KeyCode.I);
         FXGL.getInput().addAction(getUserAction("player2 Down",
-                        () -> InputHandler.handlePlayerDown(player2),
-                        () -> InputHandler.handlePlayerVerticalIdle(player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_DOWN, player2)),
+                        () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_VERTICAL, player2))),
                 KeyCode.K);
 
         // "backwards compatibility"
-        FXGL.onKeyDown(KeyCode.Q, () -> InputHandler.handleSelect(player1));
-        FXGL.onKeyDown(KeyCode.R, () -> InputHandler.handleSelect(player1));
+        FXGL.onKeyDown(KeyCode.Q, () -> eventBus.fireEvent(new InputEvent(InputType.SELECT, player1)));
+        FXGL.onKeyDown(KeyCode.U, () -> eventBus.fireEvent(new InputEvent(InputType.SELECT, player2)));
     }
 
     /**
