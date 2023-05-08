@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst.ui.scene;
 
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
+import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -46,5 +47,12 @@ public class MainMenu extends FXGLMenu {
         buttonVBox.setTranslateY(300);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, buttonVBox);
+    }
+
+    @Override
+    public void onCreate() {
+        getSaveLoadService().readAndLoadTask("high_score.dat")
+                .onFailure(error -> Logger.get(MainMenu.class).warning("Cannot read " + "high_score.dat"))
+                .run();
     }
 }

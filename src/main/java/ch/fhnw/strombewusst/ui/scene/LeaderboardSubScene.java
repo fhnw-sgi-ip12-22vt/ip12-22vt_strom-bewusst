@@ -1,5 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
+import ch.fhnw.strombewusst.HighScoreService;
+import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
@@ -12,15 +14,21 @@ import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
 import static com.almasb.fxgl.dsl.FXGL.getSceneService;
+import static com.almasb.fxgl.dsl.FXGL.getService;
 
 /**
  * This class defines the layout of our leaderboard sub-scene. It gets rendered on top of the main menu when the
  * "Leaderboard" button is pressed.
  */
 public class LeaderboardSubScene extends SubScene {
-    Button btnBack;
+    private Button btnBack;
 
     public LeaderboardSubScene() {
+        // temporarily just log the high scores
+        HighScoreService highScoreService = getService(HighScoreService.class);
+        highScoreService.getHighScores().forEach(data -> Logger.get(LeaderboardSubScene.class)
+                .info("Loaded Highscore: " + data.getTag() + " : " + data.getScore()));
+
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());

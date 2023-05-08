@@ -89,6 +89,8 @@ public class StromBewusst extends GameApplication {
             level = 0;
             FXGL.getGameController().gotoMainMenu();
             FXGL.getSceneService().pushSubScene(new EndGameSubScene());
+            FXGL.getService(HighScoreService.class).commit("testname"); // temporary username for testing
+            FXGL.getSaveLoadService().saveAndWriteTask("high_score.dat").run();
         }
     }
 
@@ -122,6 +124,8 @@ public class StromBewusst extends GameApplication {
         settings.setWidth(1280);
         settings.setHeight(720);
 
+        settings.addEngineService(HighScoreService.class);
+
         settings.setSceneFactory(new SceneFactory() {
             @Override
             public FXGLMenu newMainMenu() {
@@ -138,6 +142,9 @@ public class StromBewusst extends GameApplication {
     protected void initGame() {
         FXGL.<QuizLogic>geto("quizLogic").initQuestions();
         FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").initDevices();
+
+        FXGL.getWorldProperties().<Integer>addListener("score",
+                (prev, now) -> FXGL.getService(HighScoreService.class).setScore(now));
 
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
@@ -229,10 +236,6 @@ public class StromBewusst extends GameApplication {
         // "backwards compatibility"
         FXGL.onKeyDown(KeyCode.Q, () -> InputHandler.handleSelect(player1));
         FXGL.onKeyDown(KeyCode.R, () -> InputHandler.handleSelect(player1));
-
-        FXGL.onKeyDown(KeyCode.P, () -> {
-            throw new RuntimeException("AA");
-        });
 
         FXGL.onKeyDown(KeyCode.F, () -> {
             var lines = FXGL.getAssetLoader().loadText("example—cutscene1.txt");
