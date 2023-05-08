@@ -9,6 +9,7 @@ public final class Config {
     public static final String SAVE_FILE_NAME = "high_score.dat";
     public static final String ROOM_1_TEXT_PATH = "room1_deskinfo.txt";
     public static final String ROOM_2_TEXT_PATH = "room2_deviceinfo.txt";
+    public static final String TUTORIAL_PATH = "tutorial.txt";
     public static final String QUESTIONS_JSON_PATH = "json/questions.json";
     public static final String DEVICES_JSON_PATH = "json/devices.json";
 }

@@ -166,7 +166,7 @@ public class StromBewusst extends GameApplication {
         nextLevel();
 
         if (Config.IS_RELEASE || Config.IS_DEMO) {
-            List<String> lines = FXGL.getAssetLoader().loadText("Tutorial.txt");
+            List<String> lines = FXGL.getAssetLoader().loadText(Config.TUTORIAL_PATH);
             Cutscene cutscene = new Cutscene(lines);
             FXGL.runOnce(() -> FXGL.getCutsceneService().startCutscene(cutscene), Duration.ZERO);
         }
