@@ -1,7 +1,6 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.HighScoreService;
-import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
@@ -24,11 +23,6 @@ public class LeaderboardSubScene extends SubScene {
     private Button btnBack;
 
     public LeaderboardSubScene() {
-        // temporarily just log the high scores
-        HighScoreService highScoreService = getService(HighScoreService.class);
-        highScoreService.getHighScores().forEach(data -> Logger.get(LeaderboardSubScene.class)
-                .info("Loaded Highscore: " + data.getTag() + " : " + data.getScore()));
-
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
@@ -51,14 +45,20 @@ public class LeaderboardSubScene extends SubScene {
         leaderboardHBox.setPrefWidth(getAppWidth());
         leaderboardHBox.setTranslateY(200);
 
-        for (int i = 10; i > 0; i--) {
-            Label n = new Label("Player " + i);
+        HighScoreService highScoreService = getService(HighScoreService.class);
+        highScoreService.getHighScores().forEach(data -> {
+            Label n = new Label(data.getTag());
             n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
             leaderboardNames.getChildren().add(n);
 
-            Label s = new Label("" + (i * 1000));
+            Label s = new Label(Integer.toString(data.getScore()));
             s.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
             leaderboardScores.getChildren().add(s);
+        });
+        if (highScoreService.getHighScores().isEmpty()) {
+            Label n = new Label("noch keine High-Scores");
+            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardNames.getChildren().add(n);
         }
 
         btnBack = new Button("Back");
