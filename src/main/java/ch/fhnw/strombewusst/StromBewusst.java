@@ -26,7 +26,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -143,6 +145,10 @@ public class StromBewusst extends GameApplication {
         rooms = new Room[] {new Room1(), new Room2()};
         level = 0;
         nextLevel();
+        List<String> lines = FXGL.getAssetLoader().loadText("Tutorial.txt");
+        Cutscene cutscene = new Cutscene(lines);
+        FXGL.runOnce(() -> FXGL.getCutsceneService().startCutscene(cutscene), Duration.ZERO);
+
     }
 
     /**
@@ -232,12 +238,6 @@ public class StromBewusst extends GameApplication {
 
         FXGL.onKeyDown(KeyCode.P, () -> {
             throw new RuntimeException("AA");
-        });
-
-        FXGL.onKeyDown(KeyCode.F, () -> {
-            var lines = FXGL.getAssetLoader().loadText("example—cutscene1.txt");
-            var cutscene = new Cutscene(lines);
-            FXGL.getCutsceneService().startCutscene(cutscene);
         });
     }
 
