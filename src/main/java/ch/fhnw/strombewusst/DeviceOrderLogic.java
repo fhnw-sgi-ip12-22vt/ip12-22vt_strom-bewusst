@@ -37,8 +37,8 @@ public class DeviceOrderLogic {
      * Initializes the devices, by loading the needed data from the JSON file.
      */
     public void initDevices() {
-        devices = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/devices.json", DeviceOrderDevices[].class).get())
-                .toList();
+        devices = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevices[].class)
+                .get()).toList();
         trackPassedDevices = Stream.iterate(0, i -> i + 1)
                 .limit(devices.size())
                 .collect(Collectors.toSet());

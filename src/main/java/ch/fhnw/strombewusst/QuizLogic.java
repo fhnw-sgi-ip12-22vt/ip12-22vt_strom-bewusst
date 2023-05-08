@@ -29,8 +29,8 @@ public class QuizLogic {
      * Initializes the devices, by loading the needed data from the JSON file.
      */
     public void initQuestions() {
-        questions = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class).get())
-                .toList();
+        questions = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.QUESTIONS_JSON_PATH, QuizQuestion[].class)
+                .get()).toList();
 
         buildSet();
     }
@@ -41,6 +41,7 @@ public class QuizLogic {
 
     /**
      * checks if the selected answers are correct.
+     *
      * @return true if both selected answers are correct, false otherwise
      */
     public boolean checkAnswer() {
@@ -49,7 +50,8 @@ public class QuizLogic {
     }
 
     /**
-     * Checks wheter the quiz is done.
+     * Checks whether the quiz is done.
+     *
      * @return true if the quiz is done, false otherwise
      */
     public boolean quizDone() {

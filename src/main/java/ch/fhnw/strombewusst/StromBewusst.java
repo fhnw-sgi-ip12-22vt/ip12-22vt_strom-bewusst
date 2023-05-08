@@ -324,9 +324,10 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void onPreInit() {
         // loading assets before the game caches them, which reduces loading times when starting a new game
-        FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class);
-        FXGL.getAssetLoader().loadText("room1_deskinfo.txt");
-        FXGL.getAssetLoader().loadText("room2_deviceinfo.txt");
+        FXGL.getAssetLoader().loadJSON(Config.QUESTIONS_JSON_PATH, QuizQuestion[].class);
+        FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevices[].class);
+        FXGL.getAssetLoader().loadText(Config.ROOM_1_TEXT_PATH);
+        FXGL.getAssetLoader().loadText(Config.ROOM_2_TEXT_PATH);
 
         // overwriting the default exception handler, so the game gets automatically restarted if an uncaught exception
         // occurs.

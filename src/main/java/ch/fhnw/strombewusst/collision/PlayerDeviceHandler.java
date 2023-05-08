@@ -1,5 +1,6 @@
 package ch.fhnw.strombewusst.collision;
 
+import ch.fhnw.strombewusst.Config;
 import ch.fhnw.strombewusst.EntityType;
 import ch.fhnw.strombewusst.components.DeviceComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class PlayerDeviceHandler extends CollisionHandler {
 
-    private final List<String> infoBoxes = FXGL.getAssetLoader().loadText("room2_deviceinfo.txt");
+    private final List<String> infoBoxes = FXGL.getAssetLoader().loadText(Config.ROOM_2_TEXT_PATH);
     public PlayerDeviceHandler() {
         super(EntityType.PLAYER, EntityType.DEVICE);
     }
