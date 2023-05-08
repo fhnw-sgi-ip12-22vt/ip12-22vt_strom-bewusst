@@ -170,6 +170,7 @@ public class StromBewusst extends GameApplication {
             Cutscene cutscene = new Cutscene(lines);
             FXGL.runOnce(() -> FXGL.getCutsceneService().startCutscene(cutscene), Duration.ZERO);
         }
+        FXGL.run(() -> FXGL.<Timer>geto("timer").synchTimer(), Duration.seconds(1));
     }
 
     /**
@@ -240,6 +241,7 @@ public class StromBewusst extends GameApplication {
                         () -> eventBus.fireEvent(new InputEvent(InputType.IDLE_VERTICAL, player1))),
                 KeyCode.S);
 
+
         // player1 Movement
         FXGL.getInput().addAction(getUserAction("player2 Right",
                         () -> eventBus.fireEvent(new InputEvent(InputType.MOVE_RIGHT, player2)),
@@ -307,6 +309,7 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("score", new Score());
+        vars.put("timer", new Timer());
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
 
@@ -322,6 +325,10 @@ public class StromBewusst extends GameApplication {
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString("%d"));
         FXGL.addUINode(scoreText, 810, 67);
+
+        Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
+        timerText.textProperty().bind(FXGL.<Timer>geto("timer").getTimerProperty());
+        FXGL.addUINode(timerText, 810, 100);
 
         Text player1InfoText = new Text("");
         player1InfoText.setWrappingWidth(300);
