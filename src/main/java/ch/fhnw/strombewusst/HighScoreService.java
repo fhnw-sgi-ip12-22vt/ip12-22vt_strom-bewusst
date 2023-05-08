@@ -43,7 +43,7 @@ public final class HighScoreService extends EngineService {
     /**
      * Remember current score with given tag and reset score to 0.
      *
-     * @param tag the
+     * @param tag the team name to attach to this score
      */
     public void commit(String tag) {
         highScores.add(new HighScoreData(tag, getScore()));

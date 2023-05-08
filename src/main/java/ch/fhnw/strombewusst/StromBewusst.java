@@ -89,9 +89,17 @@ public class StromBewusst extends GameApplication {
             level = 0;
             FXGL.getGameController().gotoMainMenu();
             FXGL.getSceneService().pushSubScene(new EndGameSubScene());
-            FXGL.getService(HighScoreService.class).commit("testname"); // temporary username for testing
-            FXGL.getSaveLoadService().saveAndWriteTask(Config.SAVE_FILE_NAME).run();
         }
+    }
+
+    /**
+     * Saves the Leaderboard and exits to the main menu.
+     * @param teamName the team name to save the score under
+     */
+    public void endGame(String teamName) {
+        FXGL.getService(HighScoreService.class).commit(teamName);
+        FXGL.getSaveLoadService().saveAndWriteTask(Config.SAVE_FILE_NAME).run();
+        FXGL.getGameController().gotoMainMenu();
     }
 
     /**
@@ -143,8 +151,8 @@ public class StromBewusst extends GameApplication {
         FXGL.<QuizLogic>geto("quizLogic").initQuestions();
         FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").initDevices();
 
-        FXGL.getWorldProperties().<Integer>addListener("score",
-                (prev, now) -> FXGL.getService(HighScoreService.class).setScore(now));
+        FXGL.<Score>geto("score").getScoreProperty().addListener((observable, oldValue, newValue) ->
+                FXGL.getService(HighScoreService.class).setScore((int) newValue));
 
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
