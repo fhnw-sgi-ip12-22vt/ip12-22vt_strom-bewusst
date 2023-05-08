@@ -1,7 +1,8 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.Score;
-import ch.fhnw.strombewusst.Username;
+import ch.fhnw.strombewusst.StromBewusst;
+import ch.fhnw.strombewusst.TeamName;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -16,12 +17,11 @@ import javafx.scene.layout.VBox;
 import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
-import static com.almasb.fxgl.dsl.FXGL.getGameController;
 
 public class EndGameSubScene extends SubScene {
     private final Button btnEnd;
-    private final Username username = new Username();
-    private final Label usernameLabel;
+    private final TeamName teamName = new TeamName();
+    private final Label teamNameLabel;
 
     public EndGameSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
@@ -34,11 +34,11 @@ public class EndGameSubScene extends SubScene {
         Label score = new Label(FXGL.<Score>geto("score").toString());
         score.getStyleClass().add("subtitle");
 
-        usernameLabel = new Label();
-        usernameLabel.getStyleClass().add("subtitle");
-        newUsername();
+        teamNameLabel = new Label();
+        teamNameLabel.getStyleClass().add("subtitle");
+        updateTeamNameLabel();
 
-        VBox titleVBox = new VBox(title, score, usernameLabel);
+        VBox titleVBox = new VBox(title, score, teamNameLabel);
         titleVBox.setPrefWidth(getAppWidth());
         titleVBox.setAlignment(Pos.CENTER);
         titleVBox.setTranslateY(50);
@@ -46,7 +46,7 @@ public class EndGameSubScene extends SubScene {
         btnEnd = new Button("Back");
         btnEnd.getStyleClass().add("main_menu_button");
         btnEnd.setStyle("-fx-text-fill: black;");
-        btnEnd.setOnAction(e -> getGameController().gotoMainMenu());
+        btnEnd.setOnAction(e -> ((StromBewusst) FXGL.getApp()).endGame(teamName.getTeamName()));
         HBox endHBox = new HBox(btnEnd);
         endHBox.setPrefWidth(getAppWidth());
         endHBox.setAlignment(Pos.CENTER);
@@ -54,19 +54,27 @@ public class EndGameSubScene extends SubScene {
 
         getContentRoot().getChildren().addAll(bg, titleVBox, endHBox);
 
-        getInput().addAction(new UserAction("checkAnswers") {
+        getInput().addAction(new UserAction("update team name first") {
             @Override
             protected void onActionBegin() {
-                newUsername();
+                teamName.updateFirst();
+                updateTeamNameLabel();
             }
         }, KeyCode.Q);
+        getInput().addAction(new UserAction("update team name second") {
+            @Override
+            protected void onActionBegin() {
+                teamName.updateSecond();
+                updateTeamNameLabel();
+            }
+        }, KeyCode.U);
     }
 
     /**
      * Updates the username label with a new randomly generated username.
      */
-    public void newUsername() {
-        usernameLabel.setText("Username: " + username.getNewUsername());
+    public void updateTeamNameLabel() {
+        teamNameLabel.setText("TeamName: " + teamName.getTeamName());
     }
 
     @Override

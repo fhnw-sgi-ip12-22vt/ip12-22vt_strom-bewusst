@@ -95,6 +95,16 @@ public class StromBewusst extends GameApplication {
     }
 
     /**
+     * Saves the Leaderboard and exits to the main menu.
+     * @param teamName the team name to save the score under
+     */
+    public void endGame(String teamName) {
+        FXGL.getService(HighScoreService.class).commit(teamName);
+        FXGL.getSaveLoadService().saveAndWriteTask(Config.SAVE_FILE_NAME).run();
+        FXGL.getGameController().gotoMainMenu();
+    }
+
+    /**
      * Initializes the game settings.
      * @param settings The game settings object
      */
@@ -104,13 +114,13 @@ public class StromBewusst extends GameApplication {
         settings.setVersion("0.1_BETA");
         settings.getCSSList().add("main.css");
 
-        settings.setApplicationMode(ApplicationMode.DEVELOPER);
-        settings.setDeveloperMenuEnabled(true);
+        settings.setApplicationMode(Config.IS_RELEASE ? ApplicationMode.RELEASE : ApplicationMode.DEVELOPER);
+        settings.setDeveloperMenuEnabled(!Config.IS_RELEASE);
 
         // BUGFIX: explicitly setting the TPS fixes the inconsistent movement speed
         // The TPS also limits the FPS, so a small value can make the game look bad. 60 TPS works well for development
         // but might need to get lowered for better performance on the raspberry.
-        settings.setTicksPerSecond(60);
+        settings.setTicksPerSecond(Config.TICK_RATE);
 
         if (System.getProperty("os.name").equals("Linux")) {
             settings.setFullScreenAllowed(true);
@@ -121,8 +131,10 @@ public class StromBewusst extends GameApplication {
 
         settings.setMainMenuEnabled(true);
         settings.setGameMenuEnabled(false);
-        settings.setWidth(1280);
-        settings.setHeight(720);
+        settings.setWidth(Config.WIDTH);
+        settings.setHeight(Config.HEIGHT);
+
+        settings.addEngineService(HighScoreService.class);
 
         settings.setSceneFactory(new SceneFactory() {
             @Override
@@ -140,6 +152,9 @@ public class StromBewusst extends GameApplication {
     protected void initGame() {
         FXGL.<QuizLogic>geto("quizLogic").initQuestions();
         FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").initDevices();
+
+        FXGL.<Score>geto("score").getScoreProperty().addListener((observable, oldValue, newValue) ->
+                FXGL.getService(HighScoreService.class).setScore((int) newValue));
 
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2()};
@@ -235,10 +250,6 @@ public class StromBewusst extends GameApplication {
         // "backwards compatibility"
         FXGL.onKeyDown(KeyCode.Q, () -> InputHandler.handleSelect(player1));
         FXGL.onKeyDown(KeyCode.R, () -> InputHandler.handleSelect(player1));
-
-        FXGL.onKeyDown(KeyCode.P, () -> {
-            throw new RuntimeException("AA");
-        });
     }
 
     /**
@@ -321,9 +332,10 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void onPreInit() {
         // loading assets before the game caches them, which reduces loading times when starting a new game
-        FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class);
-        FXGL.getAssetLoader().loadText("room1_deskinfo.txt");
-        FXGL.getAssetLoader().loadText("room2_deviceinfo.txt");
+        FXGL.getAssetLoader().loadJSON(Config.QUESTIONS_JSON_PATH, QuizQuestion[].class);
+        FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevices[].class);
+        FXGL.getAssetLoader().loadText(Config.ROOM_1_TEXT_PATH);
+        FXGL.getAssetLoader().loadText(Config.ROOM_2_TEXT_PATH);
 
         // overwriting the default exception handler, so the game gets automatically restarted if an uncaught exception
         // occurs.

@@ -1,5 +1,6 @@
 package ch.fhnw.strombewusst.collision;
 
+import ch.fhnw.strombewusst.Config;
 import ch.fhnw.strombewusst.EntityType;
 import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
@@ -10,7 +11,7 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import java.util.List;
 
 public class PlayerDeskHandler extends CollisionHandler {
-    private final List<String> infoBoxes = FXGL.getAssetLoader().loadText("room1_deskinfo.txt");
+    private final List<String> infoBoxes = FXGL.getAssetLoader().loadText(Config.ROOM_1_TEXT_PATH);
 
     public PlayerDeskHandler() {
         super(EntityType.PLAYER, EntityType.DESK);

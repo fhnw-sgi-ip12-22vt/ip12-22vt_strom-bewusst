@@ -1,5 +1,6 @@
 package ch.fhnw.strombewusst.ui.scene;
 
+import ch.fhnw.strombewusst.HighScoreService;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
@@ -12,13 +13,14 @@ import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
 import static com.almasb.fxgl.dsl.FXGL.getSceneService;
+import static com.almasb.fxgl.dsl.FXGL.getService;
 
 /**
  * This class defines the layout of our leaderboard sub-scene. It gets rendered on top of the main menu when the
  * "Leaderboard" button is pressed.
  */
 public class LeaderboardSubScene extends SubScene {
-    Button btnBack;
+    private Button btnBack;
 
     public LeaderboardSubScene() {
         Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
@@ -43,14 +45,20 @@ public class LeaderboardSubScene extends SubScene {
         leaderboardHBox.setPrefWidth(getAppWidth());
         leaderboardHBox.setTranslateY(200);
 
-        for (int i = 10; i > 0; i--) {
-            Label n = new Label("Player " + i);
+        HighScoreService highScoreService = getService(HighScoreService.class);
+        highScoreService.getHighScores().forEach(data -> {
+            Label n = new Label(data.getTag());
             n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
             leaderboardNames.getChildren().add(n);
 
-            Label s = new Label("" + (i * 1000));
+            Label s = new Label(Integer.toString(data.getScore()));
             s.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
             leaderboardScores.getChildren().add(s);
+        });
+        if (highScoreService.getHighScores().isEmpty()) {
+            Label n = new Label("noch keine High-Scores");
+            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardNames.getChildren().add(n);
         }
 
         btnBack = new Button("Back");

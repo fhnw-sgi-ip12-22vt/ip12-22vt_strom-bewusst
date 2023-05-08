@@ -14,8 +14,7 @@ public class QuizLogic {
     private int answerP1;
     private int answerP2;
 
-    //private boolean doorOpen = false;
-    private boolean doorOpen = true; //for development of room 2
+    private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
     private final int size;
 
     private final Deque<QuizQuestion> questionSet = new LinkedList<>();
@@ -30,8 +29,8 @@ public class QuizLogic {
      * Initializes the devices, by loading the needed data from the JSON file.
      */
     public void initQuestions() {
-        questions = Arrays.stream(FXGL.getAssetLoader().loadJSON("json/questions.json", QuizQuestion[].class).get())
-                .toList();
+        questions = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.QUESTIONS_JSON_PATH, QuizQuestion[].class)
+                .get()).toList();
 
         buildSet();
     }
@@ -42,6 +41,7 @@ public class QuizLogic {
 
     /**
      * checks if the selected answers are correct.
+     *
      * @return true if both selected answers are correct, false otherwise
      */
     public boolean checkAnswer() {
@@ -50,7 +50,8 @@ public class QuizLogic {
     }
 
     /**
-     * Checks wheter the quiz is done.
+     * Checks whether the quiz is done.
+     *
      * @return true if the quiz is done, false otherwise
      */
     public boolean quizDone() {
