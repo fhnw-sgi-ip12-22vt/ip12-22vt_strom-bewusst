@@ -15,11 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-
-import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
-import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
-import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
 
 public class EndGameSubScene extends SubScene {
     private final Button btnEnd;
@@ -27,9 +22,9 @@ public class EndGameSubScene extends SubScene {
     private final Label teamNameLabel;
 
     public EndGameSubScene() {
-        Texture bg = getAssetLoader().loadTexture("background/mainmenu.png");
-        bg.setFitWidth(getAppWidth());
-        bg.setFitHeight(getAppHeight());
+        Texture bg = FXGL.getAssetLoader().loadTexture("background/mainmenu.png");
+        bg.setFitWidth(Config.WIDTH);
+        bg.setFitHeight(Config.HEIGHT);
 
         Label title = new Label("Spiel geschafft!");
         title.getStyleClass().add("title");
@@ -47,14 +42,14 @@ public class EndGameSubScene extends SubScene {
         titleVBox.setAlignment(Pos.CENTER);
         titleVBox.setTranslateY(50);
 
-        Texture selectButton = getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
+        Texture selectButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
         Label selectText = new Label("Zurück zum Hauptmenü");
         selectText.getStyleClass().add("small_title");
         HBox selectHBox = new HBox(selectButton, selectText);
         selectHBox.setAlignment(Pos.CENTER);
         selectHBox.setSpacing(20);
 
-        Texture backButton = getAssetLoader().loadTexture("blue-button-icon-single.png", 68, 68);
+        Texture backButton = FXGL.getAssetLoader().loadTexture("blue-button-icon-single.png", 68, 68);
         Label backText = new Label("Teamnamen ändern");
         backText.getStyleClass().add("small_title");
         HBox backHBox = new HBox(backButton, backText);
