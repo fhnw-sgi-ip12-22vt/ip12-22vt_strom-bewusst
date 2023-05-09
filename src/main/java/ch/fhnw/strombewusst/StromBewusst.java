@@ -20,10 +20,12 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import com.almasb.fxgl.texture.Texture;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -166,8 +168,22 @@ public class StromBewusst extends GameApplication {
         if (Config.IS_RELEASE || Config.IS_DEMO) {
             List<String> lines = FXGL.getAssetLoader().loadText(Config.TUTORIAL_PATH);
             Cutscene cutscene = new Cutscene(lines);
-            FXGL.runOnce(() -> FXGL.getCutsceneService().startCutscene(cutscene), Duration.ZERO);
+
+            FXGL.runOnce(() -> {
+                FXGL.getCutsceneService().startCutscene(cutscene);
+
+                Rectangle rectangle = new Rectangle(100, 50);
+                rectangle.setTranslateX(Config.WIDTH - rectangle.getWidth());
+                rectangle.setTranslateY(Config.HEIGHT - rectangle.getHeight());
+
+                Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
+                backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
+                backButton.setTranslateY(Config.HEIGHT - backButton.getHeight() - 10);
+
+                FXGL.getSceneService().getCurrentScene().getRoot().getChildren().addAll(rectangle, backButton);
+            }, Duration.ZERO);
         }
+
         FXGL.run(() -> FXGL.inc("timerseconds", 1), Duration.seconds(1));
     }
 
