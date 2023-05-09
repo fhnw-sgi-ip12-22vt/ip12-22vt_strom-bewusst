@@ -340,7 +340,7 @@ public class StromBewusst extends GameApplication {
             int secs = seconds.get() % 60;
             return String.format("%02d:%02d", minutes, secs);
         }, seconds));
-        FXGL.addUINode(timerText, 810, 100);
+        FXGL.addUINode(timerText, 405, 65);
 
         Text player1InfoText = new Text("");
         player1InfoText.setWrappingWidth(300);

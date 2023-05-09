@@ -36,7 +36,7 @@ public class Room2 implements Room {
                 door,
                 world.create("prev-door", new SpawnData(618, FXGL.getAppHeight() - 127)),
                 // Geräteorderung
-                world.create("main-desk", new SpawnData(470, 53).put("room", "2")),
+                world.create("main-desk", new SpawnData(86, 236).put("room", "2")),
 
                 // Haushaltgeräte
                 world.create("television", new SpawnData(100, 385).put("television", 4)),
@@ -58,14 +58,14 @@ public class Room2 implements Room {
                 world.create("stove", new SpawnData(278, 75).put("stove", 0)),
                 world.create("cabinet", new SpawnData(342, 75)),
                 world.create("stove", new SpawnData(406, 75).put("stove", 0)),
+                world.create("cabinet", new SpawnData(470, 75)),
+                world.create("cabinet", new SpawnData(534, 75)),
+
 
                 world.create("cabinet", new SpawnData(764, 75)),
                 world.create("cabinet", new SpawnData(828, 75)),
 
-
                 //second row
-                world.create("cabinet", new SpawnData(86, 258)),
-                world.create("cabinet", new SpawnData(150, 258)),
                 world.create("cabinet", new SpawnData(214, 258)),
                 world.create("cabinet", new SpawnData(278, 258)),
                 world.create("cabinet", new SpawnData(342, 258)),
