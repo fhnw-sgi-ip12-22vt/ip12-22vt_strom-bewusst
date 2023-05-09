@@ -197,6 +197,10 @@ public class InputHandler {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
+            }else if (((StromBewusst) FXGL.getApp()).getLevel() == 3 && deviceOrderLogic.isDoorOpen()){
+                FXGL.runOnce(
+                        () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
+                        Duration.ZERO);
             }
         }
     }

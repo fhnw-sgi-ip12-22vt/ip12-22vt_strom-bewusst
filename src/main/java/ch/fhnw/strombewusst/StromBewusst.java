@@ -174,7 +174,7 @@ public class StromBewusst extends GameApplication {
                 FXGL.getService(HighScoreService.class).setScore((int) newValue));
 
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
-        rooms = new Room[] {new Room1(), new Room2()};
+        rooms = new Room[] {new Room1(), new Room2(), new EndgameScene()};
         level = 0;
         nextLevel();
 
@@ -392,6 +392,7 @@ public class StromBewusst extends GameApplication {
             Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
             backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
             backButton.setTranslateY(Config.HEIGHT - backButton.getHeight() - 10);
+            FXGL.getSceneService().getCurrentScene().getRoot().getChildren().addAll(rectangle, backButton);
         }, Duration.ZERO);
     }
 

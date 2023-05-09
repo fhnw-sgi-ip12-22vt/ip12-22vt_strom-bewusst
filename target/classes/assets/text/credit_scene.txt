@@ -7,5 +7,8 @@
 2.image = player2-large.png
 3.image = teacher.png
 
-3: Hallo Jungs, anscheinend seit ihr heil da raus gekommen
-3: Muhahahahaha
+3: Hallo Jungs
+3: Es tut mir leid das ich euch ausversehen eingesperrt habe
+3: Ich musste zu einem wichtigen Meeting und habe die Zeit ganz vergessen
+2: Schon gut, wir konnten sehr viel lernen während ihrer abwesenheit
+1: Ja, am ende des Tages konnten wir wieder raus kommen
