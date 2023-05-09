@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    protected static final PiGpio PI_GPIO = PiGpio.newNativeInstance();
-    protected static final Context PI4J_CONTEXT = Pi4J.newContextBuilder()
+    public static final PiGpio PI_GPIO = PiGpio.newNativeInstance();
+    public static final Context PI4J_CONTEXT = Pi4J.newContextBuilder()
             .noAutoDetect()
             .add(new RaspberryPiPlatform() {
                 @Override
@@ -38,16 +38,6 @@ public class Controller {
                     LinuxFsI2CProvider.newInstance()
             )
             .build();
-
-    private static Ads1115 ads1115;
-
-    static {
-        try {
-            ads1115 = new Ads1115(PI4J_CONTEXT, 0x01, Ads1115.GAIN.GAIN_4_096V, Ads1115.ADDRESS.GND, 4);
-        } catch (Exception ignored) {
-            ads1115 = null;
-        }
-    }
 
     private final JoystickAnalog joystick;
 
@@ -79,7 +69,7 @@ public class Controller {
         buttonLower = null;
     }
 
-    public Controller(int channelXAxis, int channelYAxis, PIN pin,
+    public Controller(Ads1115 ads1115, int channelXAxis, int channelYAxis, PIN pin,
                       PIN links, PIN mitte, PIN rechts, PIN oben, PIN unten) {
         joystick = new JoystickAnalog(PI4J_CONTEXT, ads1115, channelXAxis, channelYAxis, 3.3, true, pin);
 
@@ -91,7 +81,7 @@ public class Controller {
         } catch (ContinuousMeasuringException ignored) {
             System.out.println("ContinuousMeasuringException, ignoring");
         }
-        joystick.start(0.05, 15);
+        joystick.start(0.05, 16);
 
         outletLeft = new SimpleButton(PI4J_CONTEXT, links, false);
         outletLeft.onDown(() -> {

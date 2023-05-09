@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.collision.*;
 import ch.fhnw.strombewusst.input.Controller;
+import ch.fhnw.strombewusst.input.pi4jcomponents.Ads1115;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
 import ch.fhnw.strombewusst.rooms.EndgameScene;
 import ch.fhnw.strombewusst.rooms.Room;
@@ -194,8 +195,13 @@ public class StromBewusst extends GameApplication {
         try {
             // PIN.D17 and PIN.D4 are dummy pins, they would be used for the joystick button, which we do not use.
             // despite not using them, they have to be set to *some* value, so we just use unused pins
-            p1Controller = new Controller(0, 1, PIN.D17, PIN.D5, PIN.D21, PIN.D26, PIN.D20, PIN.D6);
-            p2Controller = new Controller(2, 3, PIN.D4, PIN.PWM19, PIN.PWM12, PIN.D24, PIN.PWM18, PIN.D25);
+
+            Ads1115 p1ads1115 = new Ads1115(Controller.PI4J_CONTEXT, 0x01, Ads1115.GAIN.GAIN_4_096V,
+                    Ads1115.ADDRESS.GND, 2);
+            p1Controller = new Controller(p1ads1115, 0, 1, PIN.D17, PIN.D6, PIN.D20, PIN.D26, PIN.D5, PIN.D21);
+            Ads1115 p2ads1115 = new Ads1115(Controller.PI4J_CONTEXT, 0x01, Ads1115.GAIN.GAIN_4_096V,
+                    Ads1115.ADDRESS.VDD, 2);
+            p2Controller = new Controller(p2ads1115, 0, 1, PIN.D4, PIN.D25, PIN.PWM18, PIN.D24, PIN.PWM19, PIN.PWM12);
 
             // Player 1 controls
             p1Controller.onJoystickRight(() -> InputHandler.handlePlayerRight(player1));
