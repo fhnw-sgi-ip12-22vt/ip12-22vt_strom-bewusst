@@ -8,7 +8,7 @@ import com.almasb.fxgl.entity.level.Level;
 
 import java.util.List;
 
-public class EndgameScene implements Room{
+public class EndgameScene implements Room {
 
     private final Entity player1;
     private final Entity player2;
@@ -19,7 +19,7 @@ public class EndgameScene implements Room{
 
     @Override
     public Level getLevel() {
-        return new Level(FXGL.getAppWidth(), FXGL.getAppHeight(), entities);}
+        return new Level(FXGL.getAppWidth(), FXGL.getAppHeight(), entities); }
 
     public EndgameScene() {
         GameWorld world = FXGL.getGameWorld();

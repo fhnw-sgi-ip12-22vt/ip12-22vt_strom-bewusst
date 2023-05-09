@@ -98,12 +98,12 @@ public class StromBewusst extends GameApplication {
             FXGL.getGameController().gotoMainMenu();
             FXGL.getSceneService().pushSubScene(new EndGameSubScene());
         }
-        if (Config.IS_RELEASE || Config.IS_DEMO ) {
+        if (Config.IS_RELEASE || Config.IS_DEMO) {
             List<String> lines = switch (level) {
-                case 1 -> FXGL.getAssetLoader().loadText(Config.TUTORIAL_PATH);
-                case 2 -> FXGL.getAssetLoader().loadText(Config.TUTORIAL2_PATH);
-                case 3 -> FXGL.getAssetLoader().loadText(Config.CREDITSCENE_PATH);
-                default -> new ArrayList<>();
+            case 1 -> FXGL.getAssetLoader().loadText(Config.TUTORIAL_PATH);
+            case 2 -> FXGL.getAssetLoader().loadText(Config.TUTORIAL2_PATH);
+            case 3 -> FXGL.getAssetLoader().loadText(Config.CREDITSCENE_PATH);
+            default -> new ArrayList<>();
             };
             Cutscene cutscene = new Cutscene(lines);
             showCutsceneWithButton(cutscene);
