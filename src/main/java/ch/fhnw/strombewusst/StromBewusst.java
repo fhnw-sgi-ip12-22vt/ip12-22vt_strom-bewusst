@@ -21,8 +21,8 @@ import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.texture.Texture;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -184,7 +184,11 @@ public class StromBewusst extends GameApplication {
             }, Duration.ZERO);
         }
 
-        FXGL.run(() -> FXGL.inc("timerseconds", 1), Duration.seconds(1));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            FXGL.<Timer>geto("timer").synchTimer();
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     /**
@@ -316,7 +320,7 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("score", new Score());
-        vars.put("timerseconds", 0);
+        vars.put("timer", new Timer());
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
 
@@ -334,12 +338,7 @@ public class StromBewusst extends GameApplication {
         FXGL.addUINode(scoreText, 810, 67);
 
         Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
-        IntegerProperty seconds = FXGL.getip("timerseconds");
-        timerText.textProperty().bind(Bindings.createStringBinding(() -> {
-            int minutes = seconds.get() / 60;
-            int secs = seconds.get() % 60;
-            return String.format("%02d:%02d", minutes, secs);
-        }, seconds));
+        timerText.textProperty().bind(FXGL.<Timer>geto("timer").getTimerProperty());
         FXGL.addUINode(timerText, 405, 65);
 
         Text player1InfoText = new Text("");

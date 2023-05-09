@@ -3,6 +3,7 @@ package ch.fhnw.strombewusst.ui.scene;
 import ch.fhnw.strombewusst.DeviceOrderDevices;
 import ch.fhnw.strombewusst.DeviceOrderLogic;
 import ch.fhnw.strombewusst.Score;
+import ch.fhnw.strombewusst.Timer;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -328,7 +329,8 @@ public class DeviceOrderSubScene extends SubScene {
 
         scoreboard = getTextBox(FXGL.<Score>geto("score").toString(),
                 BoxType.SCORETABLE, Color.BLACK, FontWeight.SEMI_BOLD);
-        getContentRoot().getChildren().addAll(scoreboard);
+        HBox timertable = FXGL.<Timer>geto("timer").pushTimer(950, 90);
+        getContentRoot().getChildren().addAll(scoreboard, timertable);
 
         if (devices.size() == types.size()) {
             for (int i = 0; i < devices.size(); i++) {
