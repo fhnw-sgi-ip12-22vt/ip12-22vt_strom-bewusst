@@ -1,0 +1,250 @@
+[{
+  "question": "Wie viel kostet der Strom deines Handys pro Jahr?",
+  "answerOptions": [
+    "40 – 50 CHF",
+    "2 – 2.50 CHF",
+    "ca. 150 CHF"
+  ],
+  "correctAnswer": 1
+},
+
+  {
+    "question": "Wie viel Energie kann man mit Fahrrad fahren ca. herstellen?",
+    "answerOptions": [
+      "1kWh",
+      "0.2kWh",
+      "5kWh"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Wie viel Strom verbraucht ein Haushalt?",
+    "answerOptions": [
+      "4000 kWh",
+      "10000 kWh",
+      "99999 kWh"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Wo wird in deinem Alltag überall Strom genutzt",
+    "answerOptions": [
+      "Wasserhahn, Warm Wasser, duschen",
+      "Google, Netflix, Titkok, Sony",
+      "Sowohl Antwort A als auch Antwort B sind zutreffend"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Mit welchen mitteln kann Strom hergestellt werden?",
+    "answerOptions": [
+      "Gas, Öl Kohle",
+      "Sonne, Wind und Wasser",
+      "Alle genannten ressourcen"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Dreckiges Geschirr, wie können wir es am Strom effizientesten abwaschen?",
+    "answerOptions": [
+      "Von Hand",
+      "Mit dem Kurzprogramm der Geschirrspülmaschine",
+      "Mit dem Eco Programm des Geschirrspülers"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Welcher dieser Sachen nutzt elektrische Impulse?",
+    "answerOptions": [
+      "Gehirn",
+      "Besen",
+      "Feuerzeug"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Welches Gerät verbraucht am meisten Strom?",
+    "answerOptions": [
+      "Laptop",
+      "Fernseher",
+      "Elektrischer Kochherd"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Benötigt ein Gerät im Stand-by-Modus Strom?",
+    "answerOptions": [
+      "Nein",
+      "Nur eine kurze Zeit",
+      "Ja, deswegen immer ausschalten, wenn es nicht in Gebrauch ist"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Wieso sind Fossile Energien wie Öl, Gas und Kohle Umweltschädlich?",
+    "answerOptions": [
+      "Weil sie verbrannt werden, wodurch Treibhausgase entstehen",
+      "Weil sie nach der Benutzung in die Umwelt geworfen werden",
+      "Energien zusammen mit dem Sauerstoff aus der Luft gefiltert werden  und das schlecht für die Umwelt ist"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Wie wird Strom erzeugt?",
+    "answerOptions": [
+      "Durch Magnete",
+      "Es wird in der Steckdose erzeugt",
+      "Durch Turbinen"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Welches Element ist der Hauptproduzent der Schweizer Energiegewinnung?",
+    "answerOptions": [
+      "Kernkraftwerk",
+      "Windkraftwerk",
+      "Wasserkraftwerk"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Wie viele Wasserkraftwerke hat die Schweiz?",
+    "answerOptions": [
+      "20’000",
+      "1’753",
+      "1’300"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Was ist der effektivste Weg, um Strom in der Küche zu sparen?",
+    "answerOptions": [
+      "Kühlschrank schnell wieder schliessen",
+      "Kochen mit Deckel",
+      "Tiefkühlprodukte im Kühlschrank auftauen"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Was ist der effektivste Weg, um Wasser aufzukochen?",
+    "answerOptions": [
+      "Im Topf auf dem Herd",
+      "In der Mikrowelle",
+      "Im Wasserkocher"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Aus was besteht Strom?",
+    "answerOptions": [
+      "Atomen",
+      "Elektronen",
+      "Photonen"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Was verbraucht am wenigsten Strom?",
+    "answerOptions": [
+      "Baden in der Badewanne",
+      "Duschen in der Dusche",
+      "Duschen im Garten mit dem Wasserschlauch"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Welche Fähigkeit hat Strom?",
+    "answerOptions": [
+      "Laufen",
+      "Leiten",
+      "Fliegen"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Welches Element leitet Strom am besten?",
+    "answerOptions": [
+      "Plastik",
+      "Luft",
+      "Salzwasser"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Welche Aussage trifft zu?",
+    "answerOptions": [
+      "Früher wurde mit Windmühlen elektrischer Strom produziert",
+      "Ein Wasserkraftwerk kann mit Wasser steuern wie viel Strom produziert wird",
+      "Solaranlagen sind die wichtigsten Energieträger der Schweiz"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Was ist der effektivste Weg, um Strom in der Küche zu sparen?",
+    "answerOptions": [
+      "Kühlschrank schnell schliessen",
+      "Kochen mit Deckel",
+      "Kühlschrank und Gefriertruhe abtauen"
+    ],
+    "correctAnswer": 1
+  },
+
+  {
+    "question": "Welches Gerät nutzt am wenigsten Strom?",
+    "answerOptions": [
+      "Laptop",
+      "Kühlschrank",
+      "Fernseher"
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "question": "Wieso ist Strom sparen wichtig?",
+    "answerOptions": [
+      "Damit man die Umwelt schonen kann",
+      "Weil man damit Geld sparen kann",
+      "Sowohl Antwort A als auch Antwort B sind zutreffend."
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Zu welcher Tageszeit verbraucht die Schweiz am meisten Storm?",
+    "answerOptions": [
+      "Morgens",
+      "Mittags",
+      "Abends"
+    ],
+    "correctAnswer": 2
+  },
+
+  {
+    "question": "Wie viel Strom verbraucht eine Person im Jahr?",
+    "answerOptions": [
+      "12.76 Megawattstunden",
+      "4.93 Megawattstunden",
+      "6.8 Megawattstunden"
+    ],
+    "correctAnswer": 2
+  }
+]

@@ -3,6 +3,7 @@ package ch.fhnw.strombewusst;
 import ch.fhnw.strombewusst.collision.*;
 import ch.fhnw.strombewusst.input.Controller;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
+import ch.fhnw.strombewusst.rooms.EndgameScene;
 import ch.fhnw.strombewusst.rooms.Room;
 import ch.fhnw.strombewusst.rooms.Room1;
 import ch.fhnw.strombewusst.rooms.Room2;
@@ -32,6 +33,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -96,7 +98,18 @@ public class StromBewusst extends GameApplication {
             FXGL.getGameController().gotoMainMenu();
             FXGL.getSceneService().pushSubScene(new EndGameSubScene());
         }
+        if (Config.IS_RELEASE || Config.IS_DEMO ) {
+            List<String> lines = switch (level) {
+                case 1 -> FXGL.getAssetLoader().loadText(Config.TUTORIAL_PATH);
+                case 2 -> FXGL.getAssetLoader().loadText(Config.TUTORIAL2_PATH);
+                case 3 -> FXGL.getAssetLoader().loadText(Config.CREDITSCENE_PATH);
+                default -> new ArrayList<>();
+            };
+            Cutscene cutscene = new Cutscene(lines);
+            showCutsceneWithButton(cutscene);
+        }
     }
+
 
     /**
      * Saves the Leaderboard and exits to the main menu.
@@ -165,24 +178,6 @@ public class StromBewusst extends GameApplication {
         level = 0;
         nextLevel();
 
-        if (Config.IS_RELEASE || Config.IS_DEMO) {
-            List<String> lines = FXGL.getAssetLoader().loadText(Config.TUTORIAL_PATH);
-            Cutscene cutscene = new Cutscene(lines);
-
-            FXGL.runOnce(() -> {
-                FXGL.getCutsceneService().startCutscene(cutscene);
-
-                Rectangle rectangle = new Rectangle(100, 50);
-                rectangle.setTranslateX(Config.WIDTH - rectangle.getWidth());
-                rectangle.setTranslateY(Config.HEIGHT - rectangle.getHeight());
-
-                Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
-                backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
-                backButton.setTranslateY(Config.HEIGHT - backButton.getHeight() - 10);
-
-                FXGL.getSceneService().getCurrentScene().getRoot().getChildren().addAll(rectangle, backButton);
-            }, Duration.ZERO);
-        }
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             FXGL.<Timer>geto("timer").synchTimer();
@@ -385,6 +380,19 @@ public class StromBewusst extends GameApplication {
             FXGL.getNotificationService().setBackgroundColor(Color.CRIMSON);
             FXGL.getNotificationService().pushNotification("FATAL ERROR! Application restarted", icon);
         });
+    }
+    private static void showCutsceneWithButton(Cutscene cutscene) {
+        FXGL.runOnce(() -> {
+            FXGL.getCutsceneService().startCutscene(cutscene);
+
+            Rectangle rectangle = new Rectangle(100, 50);
+            rectangle.setTranslateX(Config.WIDTH - rectangle.getWidth());
+            rectangle.setTranslateY(Config.HEIGHT - rectangle.getHeight());
+
+            Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
+            backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
+            backButton.setTranslateY(Config.HEIGHT - backButton.getHeight() - 10);
+        }, Duration.ZERO);
     }
 
     public int getLevel() {

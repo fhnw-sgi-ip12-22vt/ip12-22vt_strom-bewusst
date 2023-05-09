@@ -1,0 +1,22 @@
+//init players
+1.name = Spieler 1
+2.name = Spieler 2
+3.name = Lehrer
+
+1.image = player1-large.png
+2.image = player2-large.png
+3.image = teacher.png
+
+3: Also gut Jungs
+3: Da ihr wieder einmal vergessen habt eure Hausaufgaben zu machen, müsst ihr sie jetzt halt fertig machen
+3: Falls ihr bei einer Aufgabe nicht weiter kommen solltet, könnt ihr jederzeit Hinweise bei den PCs recherchieren
+3: Wenn ihr fertig seid könnt ihr sie oben am Lehrer PC abgeben
+2: Ja Herr Meier
+1: Verstanden
+1: ...
+1: Ich fasse es nicht, dass wir länger bleiben müssen
+2: Mach schnell deine Hausaufgaben fertig und lad sie auf den PC dann können wir gehen
+2: Es ist bereits spät ich will nach Hause gehen
+1: Hey, die Türe ist gesperrt
+2: OMG was machen wir jetzt?
+

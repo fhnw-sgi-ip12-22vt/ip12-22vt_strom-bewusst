@@ -22,6 +22,8 @@ public class PlayerDoorHandler extends CollisionHandler {
         } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2
                 && FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDoorOpen()) {
             question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY() + 30);
+        } else {
+            question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY());
         }
     }
 

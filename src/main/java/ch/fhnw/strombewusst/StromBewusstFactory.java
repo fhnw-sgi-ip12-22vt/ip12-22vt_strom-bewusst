@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst;
 
 import ch.fhnw.strombewusst.components.DeskComponent;
 import ch.fhnw.strombewusst.components.DeviceComponent;
+import ch.fhnw.strombewusst.components.DoorComponent;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -341,6 +342,18 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new DeviceComponent(data.get("computer")))
                 .scale(1.5, 1.5)
                 .zIndex(2)
+                .build();
+    }
+
+    @Spawns("teacher")
+    public Entity newTeacher(SpawnData data) {
+        return entityBuilder(data)
+                .type(EntityType.DOOR)
+                .view("teacher-right.png")
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(64, 50)))
+                .with(new CollidableComponent(true))
+                .with(new DoorComponent(data.get("state")))
+                .zIndex(1)
                 .build();
     }
 }

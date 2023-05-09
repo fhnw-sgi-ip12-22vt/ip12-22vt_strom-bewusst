@@ -1,0 +1,11 @@
+//init players
+1.name = Spieler 1
+2.name = Spieler 2
+3.name = Lehrer
+
+1.image = player1-large.png
+2.image = player2-large.png
+3.image = teacher.png
+
+3: Hallo Jungs, anscheinend seit ihr heil da raus gekommen
+3: Muhahahahaha

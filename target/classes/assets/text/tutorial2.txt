@@ -1,0 +1,8 @@
+1.name = Spieler 1
+2.name = Spieler 2
+
+2: Diese Türe ist auch versperrt
+1: Was machen wir jetzt?
+2: Am besten sollten wir oben mal nach Hinweisen gucken
+
+
