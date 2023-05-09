@@ -1,6 +1,51 @@
 [[section-deployment-view]]
 == Verteilungssicht
 
+image::07_hardware_overwiew.png["Schematische Übersicht über die Hardware des Projekts"]
+
+=== Hardware Komponenten
+Für den I/O mit den Hardware Komponenten (Joysticks, Buttons, Ads1115) wird Pi4J und die Pi4J Example Components verwendet.
+
+Die Ads1115 Analog Digital Konverter sind in der Klasse `Ads1115.java` abgebildet.
+
+Die Buttons sind in der Klasse `SimpleButton.java` abgebildet.
+
+Die Joysticks sind in der Klasse `JoystickAnalog.java` abgebildet.
+
+=== Konsole
+image::07_hw_controller.png["Foto der Controller Hardware"]
+Die Komponenten aus der Übersicht sind farblich gekennzeichnet.
+
+Die Ads1115 Analog-Digital Konverter sind in der Konsole verbaut.
+
+Die Verbindung mit den Controllern geht über zwei Flachbandkabel.
+
+=== Controller
+image::07_hw_controller.png["Foto der Controller Hardware"]
+Die Komponenten aus der Übersicht sind farblich gekennzeichnet.
+
+Das Projekt hat zwei Controller (einen pro Spieler). Es gibt eine Abstraktion der Hardware-Controller wodurch die Kommunikation vereinfacht wird; die `Controller.java` Klasse.
+
+Die Controller Klasse stellt Methoden zur Registrierung von Callback Funktionen zur Verfügung. Die Callback Methoden werden ausgeführt, wenn ein Button gedrückt oder ein Joystick bewegt wird.
+
+Folgende Methoden zur Registrierung von Callback Funktionen existieren:
+
+* `onJoystickRight(Runnable task)`
+* `onJoystickLeft(Runnable task)`
+* `onJoystickHorizontalIdle(Runnable task)`
+* `onJoystickUp(Runnable task)`
+* `onJoystickDown(Runnable task)`
+* `onJoystickVerticalIdle(Runnable task)`
+* `onButtonLeftDown(Runnable task)`
+* `onButtonRightDown(Runnable task)`
+* `onButtonMiddleDown(Runnable task)`
+* `onButtonUpperDown(Runnable task)`
+* `onButtonLowerDown(Runnable task)`
+
+`Runnable task` ist eine Referenz auf die Callback Funktion.
+
+
+////
 [role="arc42help"]
 ****
 .Inhalt
@@ -81,3 +126,4 @@ _<Diagramm + Erläuterungen>_
 ==== _<Infrastrukturelement n>_
 
 _<Diagramm + Erläuterungen>_
+////
