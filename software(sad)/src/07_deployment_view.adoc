@@ -13,7 +13,7 @@ Die Buttons sind in der Klasse `SimpleButton.java` abgebildet.
 Die Joysticks sind in der Klasse `JoystickAnalog.java` abgebildet.
 
 === Konsole
-image::07_hw_controller.jpg["Foto der Controller Hardware"]
+image::07_hw_console.jpg["Foto der Konsolen Hardware"]
 Die Komponenten aus der Übersicht sind farblich gekennzeichnet.
 
 Die Ads1115 Analog-Digital Konverter sind in der Konsole verbaut.
