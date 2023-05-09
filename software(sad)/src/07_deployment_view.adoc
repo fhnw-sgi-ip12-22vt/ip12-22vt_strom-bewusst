@@ -13,7 +13,7 @@ Die Buttons sind in der Klasse `SimpleButton.java` abgebildet.
 Die Joysticks sind in der Klasse `JoystickAnalog.java` abgebildet.
 
 === Konsole
-image::07_hw_controller.png["Foto der Controller Hardware"]
+image::07_hw_controller.jpg["Foto der Controller Hardware"]
 Die Komponenten aus der Übersicht sind farblich gekennzeichnet.
 
 Die Ads1115 Analog-Digital Konverter sind in der Konsole verbaut.
@@ -21,7 +21,7 @@ Die Ads1115 Analog-Digital Konverter sind in der Konsole verbaut.
 Die Verbindung mit den Controllern geht über zwei Flachbandkabel.
 
 === Controller
-image::07_hw_controller.png["Foto der Controller Hardware"]
+image::07_hw_controller.jpg["Foto der Controller Hardware"]
 Die Komponenten aus der Übersicht sind farblich gekennzeichnet.
 
 Das Projekt hat zwei Controller (einen pro Spieler). Es gibt eine Abstraktion der Hardware-Controller wodurch die Kommunikation vereinfacht wird; die `Controller.java` Klasse.
