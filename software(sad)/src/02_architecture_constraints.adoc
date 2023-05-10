@@ -35,8 +35,8 @@ Java 17
 Raspberry Pi
 
 .Libraries +
-* Pi4J (Java API für Raspberry Pi)
+* Pi4J 2.2.0 (Java API für Raspberry Pi)
 ** Pi4J Example Components
 * JUnit (Test-Framework)
-* FXGL (Java Gamelibrary)
+* FXGL 17.3 (Java Gamelibrary)
 ****
