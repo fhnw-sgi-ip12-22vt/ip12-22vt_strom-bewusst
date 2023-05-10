@@ -325,8 +325,8 @@ public class StromBewusst extends GameApplication {
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
 
-        vars.put("quizLogic", new QuizLogic(10));
-        vars.put("deviceOrderLogic", new DeviceOrderLogic(2));
+        vars.put("quizLogic", new QuizLogic(Config.QUIZ_QUESTION_COUNT));
+        vars.put("deviceOrderLogic", new DeviceOrderLogic(Config.DEVICE_ORDER_COUNT));
     }
 
     /**

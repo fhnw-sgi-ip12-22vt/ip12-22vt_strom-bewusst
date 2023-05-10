@@ -27,4 +27,8 @@ public final class Config {
     public static final String QUESTIONS_JSON_PATH = "json/questions.json";
     /** Path of the json file containing device infos for the puzzle in room 2 */
     public static final String DEVICES_JSON_PATH = "json/devices.json";
+    /** The number of questions asked in the quiz in room 1 */
+    public static final int QUIZ_QUESTION_COUNT = 10;
+    /** The number of rounds to play in the device order puzzle */
+    public static final int DEVICE_ORDER_COUNT = 2;
 }
