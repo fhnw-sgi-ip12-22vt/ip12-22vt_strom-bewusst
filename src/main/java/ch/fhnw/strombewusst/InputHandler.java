@@ -7,10 +7,12 @@ import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import ch.fhnw.strombewusst.ui.scene.NodeSelectionHelper;
 import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
+import com.almasb.fxgl.cutscene.CutsceneScene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.scene.Scene;
 import javafx.application.Platform;
+import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 
 import java.util.List;
@@ -147,6 +149,10 @@ public class InputHandler {
         } else if (currentScene instanceof DeviceOrderSubScene) {
             Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).checkAnswers());
             return;
+        } else if (currentScene instanceof CutsceneScene) {
+            currentScene.getInput().mockKeyPress(KeyCode.ENTER);
+            currentScene.getInput().mockKeyRelease(KeyCode.ENTER);
+            return;
         }
 
         if (player == null) {
@@ -219,6 +225,13 @@ public class InputHandler {
                 ((DeviceOrderSubScene) currentScene).resetAnswers();
                 FXGL.getSceneService().popSubScene();
             });
+        } else if (currentScene instanceof EndGameSubScene) {
+            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+                ((EndGameSubScene) currentScene).getTeamName().updateFirst();
+            } else {
+                ((EndGameSubScene) currentScene).getTeamName().updateSecond();
+            }
+            Platform.runLater(() -> ((EndGameSubScene) currentScene).updateTeamNameLabel());
         }
     }
 }

@@ -17,6 +17,7 @@ public class PlayerComponent extends Component {
     private static final int PLAYER_SPEED = 300;
 
     private final int playerNum;
+    private boolean physicsReady = false;
 
 
     private PhysicsComponent physics;
@@ -61,6 +62,8 @@ public class PlayerComponent extends Component {
         entity.getTransformComponent().setScaleOrigin(new Point2D(32, 32));
         texture.loopAnimationChannel(animIdle);
         entity.getViewComponent().addChild(texture);
+
+        physics.setOnPhysicsInitialized(() -> physicsReady = true);
     }
 
     @Override
@@ -80,6 +83,9 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it right.
      */
     public void moveRight() {
+        if (!physicsReady) {
+            return;
+        }
         if (physics.isMovingY()) {
             physics.setVelocityX(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
@@ -93,6 +99,9 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it left.
      */
     public void moveLeft() {
+        if (!physicsReady) {
+            return;
+        }
         if (physics.isMovingY()) {
             physics.setVelocityX(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
@@ -105,6 +114,9 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it up.
      */
     public void moveUp() {
+        if (!physicsReady) {
+            return;
+        }
         if (physics.isMovingX()) {
             physics.setVelocityY(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
@@ -116,6 +128,9 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it down.
      */
     public void moveDown() {
+        if (!physicsReady) {
+            return;
+        }
         if (physics.isMovingX()) {
             physics.setVelocityY(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
         } else {
@@ -127,6 +142,9 @@ public class PlayerComponent extends Component {
      * Resets the velocity on the player entity to stop moving horizontally.
      */
     public void stopMovingX() {
+        if (!physicsReady) {
+            return;
+        }
         physics.setVelocityX(0);
     }
 
@@ -134,6 +152,9 @@ public class PlayerComponent extends Component {
      * Resets the velocity on the player entity to stop moving vertically.
      */
     public void stopMovingY() {
+        if (!physicsReady) {
+            return;
+        }
         physics.setVelocityY(0);
     }
 

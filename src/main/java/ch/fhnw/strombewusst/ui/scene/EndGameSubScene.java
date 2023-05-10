@@ -102,5 +102,9 @@ public class EndGameSubScene extends SubScene {
             btnEnd.requestFocus();
         }
     }
+
+    public TeamName getTeamName() {
+        return teamName;
+    }
 }
 
