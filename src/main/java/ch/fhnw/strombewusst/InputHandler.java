@@ -6,7 +6,7 @@ import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import ch.fhnw.strombewusst.ui.scene.UIHelper;
-import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
+import ch.fhnw.strombewusst.ui.scene.QuizSubScene;
 import com.almasb.fxgl.cutscene.CutsceneScene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -95,8 +95,8 @@ public class InputHandler {
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
-        if (currentScene instanceof PuzzleSubScene) {
-            Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 0));
+        if (currentScene instanceof QuizSubScene) {
+            Platform.runLater(() -> ((QuizSubScene) currentScene).setPlug(playerNumber, 0));
         } else if (currentScene instanceof DeviceOrderSubScene) {
             Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).setDevice(playerNumber, 0));
         }
@@ -110,8 +110,8 @@ public class InputHandler {
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
-        if (currentScene instanceof PuzzleSubScene) {
-            Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 1));
+        if (currentScene instanceof QuizSubScene) {
+            Platform.runLater(() -> ((QuizSubScene) currentScene).setPlug(playerNumber, 1));
         } else if (currentScene instanceof DeviceOrderSubScene) {
             Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).setDevice(playerNumber, 1));
         }
@@ -125,8 +125,8 @@ public class InputHandler {
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
-        if (currentScene instanceof PuzzleSubScene) {
-            Platform.runLater(() -> ((PuzzleSubScene) currentScene).setPlug(playerNumber, 2));
+        if (currentScene instanceof QuizSubScene) {
+            Platform.runLater(() -> ((QuizSubScene) currentScene).setPlug(playerNumber, 2));
         } else if (currentScene instanceof DeviceOrderSubScene) {
             Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).setDevice(playerNumber, 2));
         }
@@ -143,8 +143,8 @@ public class InputHandler {
                 || currentScene instanceof EndGameSubScene) {
             UIHelper.confirmSelectedNode();
             return;
-        } else if (currentScene instanceof PuzzleSubScene) {
-            Platform.runLater(() -> ((PuzzleSubScene) currentScene).checkAnswers());
+        } else if (currentScene instanceof QuizSubScene) {
+            Platform.runLater(() -> ((QuizSubScene) currentScene).checkAnswers());
             return;
         } else if (currentScene instanceof DeviceOrderSubScene) {
             Platform.runLater(() -> ((DeviceOrderSubScene) currentScene).checkAnswers());
@@ -173,7 +173,7 @@ public class InputHandler {
                 }
                 if (((StromBewusst) FXGL.getApp()).getLevel() == 1 && !quizLogic.quizDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
-                            new PuzzleSubScene(quizLogic)), Duration.ZERO);
+                            new QuizSubScene(quizLogic)), Duration.ZERO);
                     return;
                 } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2 && !deviceOrderLogic.isDeviceOrderDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
@@ -217,7 +217,7 @@ public class InputHandler {
      */
     public static void handleBack(Entity player) {
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
-        if (currentScene instanceof PuzzleSubScene) {
+        if (currentScene instanceof QuizSubScene) {
             FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
             Platform.runLater(() -> FXGL.getSceneService().popSubScene());
         } else if (currentScene instanceof DeviceOrderSubScene) {

@@ -24,7 +24,7 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
  * This class defines the layout of our puzzle sub-scene. It gets rendered on top of the main menu when the
  * player gets to the main desk in the room button 1 is pressed.
  */
-public class PuzzleSubScene extends SubScene {
+public class QuizSubScene extends SubScene {
     enum BoxType {
         QUESTION(70, 40, 700),
         REDANSWER(300, 300, 550),
@@ -58,7 +58,7 @@ public class PuzzleSubScene extends SubScene {
     private HBox scoretable;
 
 
-    public PuzzleSubScene(QuizLogic quizLogic) {
+    public QuizSubScene(QuizLogic quizLogic) {
         this.quizLogic = quizLogic;
 
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
