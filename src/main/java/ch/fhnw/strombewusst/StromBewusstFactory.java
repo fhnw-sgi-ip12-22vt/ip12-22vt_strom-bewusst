@@ -74,7 +74,7 @@ public class StromBewusstFactory implements EntityFactory {
 
         return entityBuilder(data)
                 .view(texture)
-                .zIndex(10)
+                .zIndex(110)
                 .build();
     }
 
@@ -350,11 +350,11 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DOOR)
                 .view("teacher-right.png")
-                .bbox(new HitBox(BoundingShape.box(60, 80)))
+                .bbox(new HitBox(BoundingShape.box(60, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .with(new DoorComponent(data.get("state")))
-                .zIndex(100)
+                .zIndex(90)
                 .build();
     }
 }
