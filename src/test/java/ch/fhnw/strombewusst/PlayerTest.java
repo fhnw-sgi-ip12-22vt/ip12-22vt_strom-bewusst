@@ -13,9 +13,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
     private static class DummyPlayerComponent extends PlayerComponent {
+
         @Override
         public void onAdded() {
             // Override the onAdded method, to avoid calling any view / UI related code
+        }
+
+        public boolean isPhysicsReady() {
+            return true;
         }
     }
 

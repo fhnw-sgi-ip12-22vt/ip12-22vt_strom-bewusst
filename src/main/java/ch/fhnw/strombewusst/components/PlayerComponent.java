@@ -17,8 +17,8 @@ public class PlayerComponent extends Component {
     private static final int PLAYER_SPEED = 300;
 
     private final int playerNum;
-    private boolean physicsReady = false;
 
+    private boolean physicsReady = false;
 
     private PhysicsComponent physics;
 
@@ -83,7 +83,7 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it right.
      */
     public void moveRight() {
-        if (!physicsReady) {
+        if (!isPhysicsReady()) {
             return;
         }
         if (physics.isMovingY()) {
@@ -99,7 +99,7 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it left.
      */
     public void moveLeft() {
-        if (!physicsReady) {
+        if (!isPhysicsReady()) {
             return;
         }
         if (physics.isMovingY()) {
@@ -114,7 +114,7 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it up.
      */
     public void moveUp() {
-        if (!physicsReady) {
+        if (!isPhysicsReady()) {
             return;
         }
         if (physics.isMovingX()) {
@@ -128,7 +128,7 @@ public class PlayerComponent extends Component {
      * Applies a velocity to the player entity to move it down.
      */
     public void moveDown() {
-        if (!physicsReady) {
+        if (!isPhysicsReady()) {
             return;
         }
         if (physics.isMovingX()) {
@@ -142,7 +142,7 @@ public class PlayerComponent extends Component {
      * Resets the velocity on the player entity to stop moving horizontally.
      */
     public void stopMovingX() {
-        if (!physicsReady) {
+        if (!isPhysicsReady()) {
             return;
         }
         physics.setVelocityX(0);
@@ -152,7 +152,7 @@ public class PlayerComponent extends Component {
      * Resets the velocity on the player entity to stop moving vertically.
      */
     public void stopMovingY() {
-        if (!physicsReady) {
+        if (!isPhysicsReady()) {
             return;
         }
         physics.setVelocityY(0);
@@ -161,11 +161,8 @@ public class PlayerComponent extends Component {
     public int getPlayerNum() {
         return playerNum;
     }
+
+    public boolean isPhysicsReady() {
+        return physicsReady;
+    }
 }
-
-
-
-
-
-
-
