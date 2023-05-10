@@ -350,10 +350,11 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DOOR)
                 .view("teacher-right.png")
-                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(64, 50)))
+                .bbox(new HitBox(BoundingShape.box(60, 80)))
+                .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .with(new DoorComponent(data.get("state")))
-                .zIndex(1)
+                .zIndex(100)
                 .build();
     }
 }
