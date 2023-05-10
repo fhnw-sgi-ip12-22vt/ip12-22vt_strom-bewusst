@@ -321,8 +321,8 @@ public class DeviceOrderSubScene extends SubScene {
      * Builds the puzzle UI.
      */
     public void buildDeviceOrder() {
-        List<DeviceOrderDevices> devices = deviceOrderLogic.getDevices();
-        //Collections.shuffle(devices); //comment it, then you pass puzzle with key 456789
+        List<DeviceOrderDevices> devices = deviceOrderLogic.getQueue();
+
         List<ImageType> types = Arrays.stream(ImageType.values())
                 .filter(x -> x.toString().charAt(0) == 'P')
                 .toList();

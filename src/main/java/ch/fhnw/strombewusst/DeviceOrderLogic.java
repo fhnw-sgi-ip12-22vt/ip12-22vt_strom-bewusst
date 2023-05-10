@@ -4,44 +4,43 @@ import com.almasb.fxgl.dsl.FXGL;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class DeviceOrderLogic {
+    /** The list of all devices as defined in devices.json */
+    private List<DeviceOrderDevices> allDevices;
+    /** The list of devices, devices that were already used in a queue get removed from this list */
+    private List<DeviceOrderDevices> devices;
+    /** The current queue of devices */
+    private List<DeviceOrderDevices> queue;
+    /** The solution of the current queue */
+    private List<DeviceOrderDevices> solution;
+    /** The current answer queue as ordered by the players */
+    private List<DeviceOrderDevices> playerAnswer;
 
-    private List<DeviceOrderDevices> devices = new ArrayList<>();
-    private DeviceOrderDevices[] solution;
-    private DeviceOrderDevices[] answer;
-    private Set<Integer> trackPassedDevices;
+    /** The number of devices in a queue. Since there are 2 players with 3 plugs each this is 6 */
     private static final int QUEUESIZE = 6;
-    private int index;
-
-    private int size;
-
     private int roundsLeft;
 
     private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
 
     public DeviceOrderLogic(int roundsTotal) {
         this.roundsLeft = roundsTotal;
-        this.size = roundsTotal;
     }
 
     /**
      * Initializes the devices, by loading the needed data from the JSON file.
      */
     public void initDevices() {
-        devices = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevices[].class)
-                .get()).toList();
-        trackPassedDevices = Stream.iterate(0, i -> i + 1)
-                .limit(devices.size())
-                .collect(Collectors.toSet());
+        allDevices = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevices[].class)
+                .get()).collect(Collectors.toList());
+
+        devices = new ArrayList<>(allDevices);
+        Collections.shuffle(devices);
+
         buildSolution();
     }
 
@@ -54,35 +53,31 @@ public class DeviceOrderLogic {
     }
 
     /**
-     * Randomly generates a puzzle and it's solution.
+     * Randomly generates a puzzle and its solution.
      */
     public void buildSolution() {
-        if (trackPassedDevices.size() >= QUEUESIZE) {
-            Random random = new Random();
-            Deque<DeviceOrderDevices> deviceSet = new LinkedList<>();
-
-            for (int i = 0; i < QUEUESIZE; i++) {
-                int randomNum = random.nextInt(devices.size());
-                while (!trackPassedDevices.contains(randomNum)) {
-                    randomNum = random.nextInt(devices.size());
-                }
-                deviceSet.add(devices.get(randomNum));
-                trackPassedDevices.remove(randomNum);
-            }
-            answer = new DeviceOrderDevices[QUEUESIZE];
-            solution = deviceSet.stream()
-                    .sorted(Comparator.comparingInt(DeviceOrderDevices::place))
-                    .toArray(DeviceOrderDevices[]::new);
-            index = 0;
+        if (devices.size() < QUEUESIZE) {
+            // not enough devices to avoid using any multiple times - reset device list
+            devices = new ArrayList<>(allDevices);
+            Collections.shuffle(devices);
         }
+
+        queue = new ArrayList<>(devices.subList(0, QUEUESIZE));
+        devices.removeAll(queue);
+
+        solution = queue.stream()
+                .sorted(Comparator.comparingInt(DeviceOrderDevices::place))
+                .toList();
+
+        if (!Config.IS_RELEASE || Config.IS_DEMO) {
+            queue = solution;
+        }
+
+        playerAnswer = new ArrayList<>();
     }
 
-    public List<DeviceOrderDevices> getDevices() {
-        return Arrays.stream(solution).unordered().collect(Collectors.toList());
-    }
-
-    public int getSize() {
-        return size;
+    public List<DeviceOrderDevices> getQueue() {
+        return queue;
     }
 
     public int getRoundsLeft() {
@@ -98,8 +93,8 @@ public class DeviceOrderLogic {
      * @param d The device to add to the queue
      */
     public void addAnswer(DeviceOrderDevices d) {
-        if (index < answer.length) {
-            answer[index++] = d;
+        if (playerAnswer.size() < QUEUESIZE) {
+            playerAnswer.add(d);
         }
     }
 
@@ -107,12 +102,11 @@ public class DeviceOrderLogic {
      * Clears the answer queue.
      */
     public void clearAnswerQueue() {
-        index = 0;
-        answer = new DeviceOrderDevices[QUEUESIZE];
+        playerAnswer.clear();
     }
 
     public int getIndex() {
-        return index < answer.length ? index : index - 1;
+        return playerAnswer.size();
     }
 
     public boolean isDoorOpen() {
@@ -125,12 +119,11 @@ public class DeviceOrderLogic {
      *         incorrect ones
      */
     public boolean[] compareAnswerSolution() {
-        boolean[] correctAtIndex = new boolean[solution.length];
-        for (int i = 0; i < solution.length; i++) {
-            if (answer[i] != null && answer[i].place() == solution[i].place()) {
-                correctAtIndex[i] = true;
-            }
+        boolean[] correctAtIndex = new boolean[QUEUESIZE];
+        for (int i = 0; i < playerAnswer.size(); i++) {
+            correctAtIndex[i] = playerAnswer.get(i).equals(solution.get(i));
         }
+
         return correctAtIndex;
     }
 
