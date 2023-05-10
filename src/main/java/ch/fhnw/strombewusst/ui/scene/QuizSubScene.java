@@ -60,6 +60,7 @@ public class QuizSubScene extends SubScene {
 
     public QuizSubScene(QuizLogic quizLogic) {
         this.quizLogic = quizLogic;
+        quizLogic.resetAnswers();
 
         Texture bg = getAssetLoader().loadTexture("background/puzzlebackground.png");
         bg.setFitWidth(getAppWidth());
@@ -213,7 +214,6 @@ public class QuizSubScene extends SubScene {
             answerPopUp.setTranslateY(250);
             getContentRoot().getChildren().addAll(answerPopUp);
 
-            quizLogic.resetAnswers();
             falseAnswerCount++;
             getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
         }
@@ -276,6 +276,7 @@ public class QuizSubScene extends SubScene {
 
     private void nextQuestion() {
         quizLogic.nextQuestion();
+        quizLogic.resetAnswers();
 
         if (quizLogic.quizDone()) {
             quizLogic.setDoorOpen(true);
