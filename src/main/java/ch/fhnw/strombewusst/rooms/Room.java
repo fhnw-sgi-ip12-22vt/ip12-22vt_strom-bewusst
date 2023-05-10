@@ -27,4 +27,9 @@ public interface Room {
      * @return the game level containing all entities.
      */
     Level getLevel();
+
+    /**
+     * Executes when the level is started. Can be used for cutscenes.
+     */
+    void onStarted();
 }

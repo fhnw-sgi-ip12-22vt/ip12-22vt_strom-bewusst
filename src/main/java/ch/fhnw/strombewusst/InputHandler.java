@@ -5,7 +5,7 @@ import ch.fhnw.strombewusst.ui.scene.DeviceOrderSubScene;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
-import ch.fhnw.strombewusst.ui.scene.NodeSelectionHelper;
+import ch.fhnw.strombewusst.ui.scene.UIHelper;
 import ch.fhnw.strombewusst.ui.scene.PuzzleSubScene;
 import com.almasb.fxgl.cutscene.CutsceneScene;
 import com.almasb.fxgl.dsl.FXGL;
@@ -45,7 +45,7 @@ public class InputHandler {
      */
     public static void handlePlayerUp(Entity player) {
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
-            NodeSelectionHelper.focusPreviousNode();
+            UIHelper.focusPreviousNode();
         } else {
             if (player != null) {
                 player.getComponent(PlayerComponent.class).moveUp();
@@ -59,7 +59,7 @@ public class InputHandler {
      */
     public static void handlePlayerDown(Entity player) {
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
-            NodeSelectionHelper.focusNextNode();
+            UIHelper.focusNextNode();
         } else {
             if (player != null) {
                 player.getComponent(PlayerComponent.class).moveDown();
@@ -141,7 +141,7 @@ public class InputHandler {
         if (currentScene instanceof MainMenu
                 || currentScene instanceof LeaderboardSubScene
                 || currentScene instanceof EndGameSubScene) {
-            NodeSelectionHelper.confirmSelectedNode();
+            UIHelper.confirmSelectedNode();
             return;
         } else if (currentScene instanceof PuzzleSubScene) {
             Platform.runLater(() -> ((PuzzleSubScene) currentScene).checkAnswers());
@@ -165,22 +165,20 @@ public class InputHandler {
         // check collision with main desk and open puzzle subscene if so
         List<Entity> entities = FXGL.getGameWorld().getEntitiesByType(EntityType.MAINDESK);
         for (Entity e : entities) {
-
             try {
                 // player.isColliding(e) only works if they are intersecting, not if they're right next to each other
                 // instead we check for the distance between bounding boxes
-                if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 1
-                        && !quizLogic.quizDone()) {
+                if (e.distanceBBox(player) > 1) {
+                    continue;
+                }
+                if (((StromBewusst) FXGL.getApp()).getLevel() == 1 && !quizLogic.quizDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
                             new PuzzleSubScene(quizLogic)), Duration.ZERO);
                     return;
-                } else {
-                    if (e.distanceBBox(player) <= 1 && ((StromBewusst) FXGL.getApp()).getLevel() == 2
-                            && !deviceOrderLogic.isDeviceOrderDone()) {
-                        FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
-                                new DeviceOrderSubScene(deviceOrderLogic)), Duration.ZERO);
-                        return;
-                    }
+                } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2 && !deviceOrderLogic.isDeviceOrderDone()) {
+                    FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
+                            new DeviceOrderSubScene(deviceOrderLogic)), Duration.ZERO);
+                    return;
                 }
             } catch (NullPointerException ignored) {
                 // BUGFIX: there is a weird race-condition that causes a null-pointer exception in rare cases.
@@ -191,7 +189,7 @@ public class InputHandler {
         // check collision with door and switch levels if so
         entities = FXGL.getGameWorld().getEntitiesByType(EntityType.DOOR);
         for (Entity e : entities) {
-            if (!player.isColliding(e)) {
+            if (e.distanceBBox(player) > 1) {
                 continue;
             }
             if (((StromBewusst) FXGL.getApp()).getLevel() == 1 && quizLogic.isDoorOpen()) {
@@ -203,10 +201,12 @@ public class InputHandler {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
-            } else if (((StromBewusst) FXGL.getApp()).getLevel() == 3 && deviceOrderLogic.isDoorOpen()) {
+                return;
+            } else if (((StromBewusst) FXGL.getApp()).getLevel() == 3) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
+                return;
             }
         }
     }

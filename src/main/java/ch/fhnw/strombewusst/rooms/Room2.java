@@ -1,5 +1,8 @@
 package ch.fhnw.strombewusst.rooms;
 
+import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.ui.scene.UIHelper;
+import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.GameWorld;
@@ -16,11 +19,6 @@ public class Room2 implements Room {
     private final Entity door;
 
     private final List<Entity> entities;
-
-    @Override
-    public Level getLevel() {
-        return new Level(FXGL.getAppWidth(), FXGL.getAppHeight(), entities);
-    }
 
     public Room2() {
         GameWorld world = FXGL.getGameWorld();
@@ -103,6 +101,20 @@ public class Room2 implements Room {
                 world.create("cabinet", new SpawnData(764, 625)),
                 world.create("cabinet", new SpawnData(828, 625))
         );
+    }
+
+    @Override
+    public Level getLevel() {
+        return new Level(Config.WIDTH, Config.HEIGHT, entities);
+    }
+
+    @Override
+    public void onStarted() {
+        if (Config.IS_RELEASE || Config.IS_DEMO) {
+            List<String> lines = FXGL.getAssetLoader().loadText(Config.ROOM_2_CUTSCENE_PATH);
+            Cutscene cutscene = new Cutscene(lines);
+            UIHelper.showCutsceneWithButton(cutscene);
+        }
     }
 
     @Override

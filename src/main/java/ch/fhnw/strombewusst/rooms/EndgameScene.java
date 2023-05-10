@@ -1,5 +1,8 @@
 package ch.fhnw.strombewusst.rooms;
 
+import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.ui.scene.UIHelper;
+import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.GameWorld;
@@ -9,17 +12,11 @@ import com.almasb.fxgl.entity.level.Level;
 import java.util.List;
 
 public class EndgameScene implements Room {
-
     private final Entity player1;
     private final Entity player2;
     private final Entity teacher;
 
     private final List<Entity> entities;
-
-
-    @Override
-    public Level getLevel() {
-        return new Level(FXGL.getAppWidth(), FXGL.getAppHeight(), entities); }
 
     public EndgameScene() {
         GameWorld world = FXGL.getGameWorld();
@@ -35,7 +32,19 @@ public class EndgameScene implements Room {
         ));
     }
 
+    @Override
+    public Level getLevel() {
+        return new Level(Config.WIDTH, Config.HEIGHT, entities);
+    }
 
+    @Override
+    public void onStarted() {
+        if (Config.IS_RELEASE || Config.IS_DEMO) {
+            List<String> lines = FXGL.getAssetLoader().loadText(Config.FINAL_CUTSCENE_PATH);
+            Cutscene cutscene = new Cutscene(lines);
+            UIHelper.showCutsceneWithButton(cutscene);
+        }
+    }
 
     @Override
     public Entity getPlayer1() {
@@ -51,5 +60,4 @@ public class EndgameScene implements Room {
     public Entity getDoor() {
         return teacher;
     }
-
 }

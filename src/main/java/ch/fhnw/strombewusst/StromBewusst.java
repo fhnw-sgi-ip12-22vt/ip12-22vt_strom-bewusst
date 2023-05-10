@@ -16,17 +16,14 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
-import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import com.almasb.fxgl.texture.Texture;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -34,8 +31,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -94,23 +89,13 @@ public class StromBewusst extends GameApplication {
             door = room.getDoor();
 
             FXGL.getGameWorld().setLevel(room.getLevel());
+            room.onStarted();
         } else {
             level = 0;
             FXGL.getGameController().gotoMainMenu();
             FXGL.getSceneService().pushSubScene(new EndGameSubScene());
         }
-        if (Config.IS_RELEASE || Config.IS_DEMO) {
-            List<String> lines = switch (level) {
-            case 1 -> FXGL.getAssetLoader().loadText(Config.TUTORIAL_CUTSCENE_PATH);
-            case 2 -> FXGL.getAssetLoader().loadText(Config.ROOM_2_CUTSCENE_PATH);
-            case 3 -> FXGL.getAssetLoader().loadText(Config.FINAL_CUTSCENE_PATH);
-            default -> new ArrayList<>();
-            };
-            Cutscene cutscene = new Cutscene(lines);
-            showCutsceneWithButton(cutscene);
-        }
     }
-
 
     /**
      * Saves the Leaderboard and exits to the main menu.
@@ -386,23 +371,6 @@ public class StromBewusst extends GameApplication {
             FXGL.getNotificationService().setBackgroundColor(Color.CRIMSON);
             FXGL.getNotificationService().pushNotification("FATAL ERROR! Application restarted", icon);
         });
-    }
-    private static void showCutsceneWithButton(Cutscene cutscene) {
-        FXGL.runOnce(() -> {
-            FXGL.getCutsceneService().startCutscene(cutscene);
-
-            Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
-            backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
-            backButton.setTranslateY(Config.HEIGHT - backButton.getHeight() - 10);
-
-            // This code is very sketchy, since it depends on the implementation of the CutsceneScene in FXGL.
-            // It may break after an FXGL update.
-            Pane pane = (Pane) FXGL.getSceneService().getCurrentScene().getRoot().getChildren().get(0);
-            backButton.opacityProperty().bind(pane.getChildren().get(3).opacityProperty());
-            // remove the KeyView Node and add the new texture instead
-            pane.getChildren().remove(4);
-            pane.getChildren().add(backButton);
-        }, Duration.ZERO);
     }
 
     public int getLevel() {

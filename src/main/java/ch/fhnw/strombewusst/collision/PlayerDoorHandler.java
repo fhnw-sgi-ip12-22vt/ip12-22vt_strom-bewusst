@@ -15,19 +15,19 @@ public class PlayerDoorHandler extends CollisionHandler {
 
     private Entity question;
 
-    protected void onCollisionBegin(Entity player, Entity desk) {
+    protected void onCollisionBegin(Entity player, Entity door) {
         if (((StromBewusst) FXGL.getApp()).getLevel() == 1
                 && FXGL.<QuizLogic>geto("quizLogic").isDoorOpen()) {
-            question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY() + 30);
+            question = FXGL.spawn("buttonicon", door.getX() + 50, door.getY() + 30);
         } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2
                 && FXGL.<DeviceOrderLogic>geto("deviceOrderLogic").isDoorOpen()) {
-            question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY() + 30);
+            question = FXGL.spawn("buttonicon", door.getX() + 50, door.getY() + 30);
         } else {
-            question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY());
+            question = FXGL.spawn("buttonicon", door.getX() + 50, door.getY());
         }
     }
 
-    protected void onCollisionEnd(Entity player, Entity desk) {
+    protected void onCollisionEnd(Entity player, Entity door) {
         if (question != null) {
             question.removeFromWorld();
         }
