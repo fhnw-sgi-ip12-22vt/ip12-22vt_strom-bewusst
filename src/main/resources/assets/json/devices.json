@@ -1,79 +1,66 @@
 [{
   "device": "Elektroherd",
   "consumption": 455,
-  "image": "stove.png",
-  "place": 1
+  "image": "stove.png"
   },
   {
     "device": "Beleuchtung",
     "consumption": 400,
-    "image": "lamp.png",
-    "place": 2
+    "image": "lamp.png"
   },
   {
     "device": "Kühlschrank",
     "consumption": 300,
-    "image": "fridge.png",
-    "place": 3
+    "image": "fridge.png"
   },
   {
     "device": "Waschmaschine",
     "consumption": 200,
-    "image": "washingmachine.png",
-    "place": 4
+    "image": "washingmachine.png"
   },
   {
     "device": "Fernseher",
     "consumption": 190,
-    "image": "Fernseher.png",
-    "place": 5
+    "image": "Fernseher.png"
   },
   {
     "device": "Geschirrspüler",
     "consumption": 146,
-    "image": "dishwasher.png",
-    "place": 6
+    "image": "dishwasher.png"
   },
   {
     "device": "Wlan-Router",
     "consumption": 135,
-    "image": "WLAN-Router.png",
-    "place": 7
+    "image": "WLAN-Router.png"
   },
   {
     "device": "PS5",
     "consumption": 120,
-    "image": "PS5.png",
-    "place": 8
+    "image": "PS5.png"
   },
   {
     "device": "Computer",
     "consumption": 90,
-    "image": "computer.png",
-    "place": 9
+    "image": "computer.png"
   },
   {
     "device": "Laptop",
     "consumption": 22,
-    "image": "laptop.png",
-    "place": 10
+    "image": "laptop.png"
   },
   {
     "device": "Staubsauger",
     "consumption": 9,
-    "image": "vacuum.png",
-    "place": 11
+    "image": "vacuum.png"
   },
   {
     "device": "Smartphone",
     "consumption": 6,
-    "image": "smartphone.png",
-    "place": 12
+    "image": "smartphone.png"
   },
   {
     "device": "Kaffeemachine",
     "consumption": 3,
-    "image": "coffeemachine.png",
-    "place": 13
+    "image": "coffeemachine.png"
   }
 ]

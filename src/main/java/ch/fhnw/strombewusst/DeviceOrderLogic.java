@@ -11,15 +11,15 @@ import java.util.stream.Collectors;
 
 public class DeviceOrderLogic {
     /** The list of all devices as defined in devices.json */
-    private List<DeviceOrderDevices> allDevices;
+    private List<DeviceOrderDevice> allDevices;
     /** The list of devices, devices that were already used in a queue get removed from this list */
-    private List<DeviceOrderDevices> devices;
+    private List<DeviceOrderDevice> devices;
     /** The current queue of devices */
-    private List<DeviceOrderDevices> queue;
+    private List<DeviceOrderDevice> queue;
     /** The solution of the current queue */
-    private List<DeviceOrderDevices> solution;
+    private List<DeviceOrderDevice> solution;
     /** The current answer queue as ordered by the players */
-    private List<DeviceOrderDevices> playerAnswer;
+    private List<DeviceOrderDevice> playerAnswer;
 
     /** The number of devices in a queue. Since there are 2 players with 3 plugs each this is 6 */
     private static final int QUEUESIZE = 6;
@@ -35,7 +35,7 @@ public class DeviceOrderLogic {
      * Initializes the devices, by loading the needed data from the JSON file.
      */
     public void initDevices() {
-        allDevices = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevices[].class)
+        allDevices = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevice[].class)
                 .get()).collect(Collectors.toList());
 
         devices = new ArrayList<>(allDevices);
@@ -66,7 +66,7 @@ public class DeviceOrderLogic {
         devices.removeAll(queue);
 
         solution = queue.stream()
-                .sorted(Comparator.comparingInt(DeviceOrderDevices::place))
+                .sorted(Comparator.comparingInt(DeviceOrderDevice::consumption))
                 .toList();
 
         if (!Config.IS_RELEASE || Config.IS_DEMO) {
@@ -76,7 +76,7 @@ public class DeviceOrderLogic {
         playerAnswer = new ArrayList<>();
     }
 
-    public List<DeviceOrderDevices> getQueue() {
+    public List<DeviceOrderDevice> getQueue() {
         return queue;
     }
 
@@ -92,7 +92,7 @@ public class DeviceOrderLogic {
      * Adds a device to the answer queue.
      * @param d The device to add to the queue
      */
-    public void addAnswer(DeviceOrderDevices d) {
+    public void addAnswer(DeviceOrderDevice d) {
         if (playerAnswer.size() < QUEUESIZE) {
             playerAnswer.add(d);
         }

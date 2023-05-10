@@ -1,9 +1,8 @@
 package ch.fhnw.strombewusst;
 
-public record DeviceOrderDevices(
+public record DeviceOrderDevice(
         String device,
         int consumption,
-        String image,
-        int place
+        String image
 ) {
 }

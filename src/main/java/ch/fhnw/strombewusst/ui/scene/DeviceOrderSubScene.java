@@ -1,6 +1,6 @@
 package ch.fhnw.strombewusst.ui.scene;
 
-import ch.fhnw.strombewusst.DeviceOrderDevices;
+import ch.fhnw.strombewusst.DeviceOrderDevice;
 import ch.fhnw.strombewusst.DeviceOrderLogic;
 import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.Timer;
@@ -75,7 +75,7 @@ public class DeviceOrderSubScene extends SubScene {
     }
 
     private Map<ImageType, Texture> currentTextures = new HashMap<ImageType, Texture>();
-    private Map<ImageType, DeviceOrderDevices> currentDevices = new HashMap<ImageType, DeviceOrderDevices>();
+    private Map<ImageType, DeviceOrderDevice> currentDevices = new HashMap<ImageType, DeviceOrderDevice>();
 
     private int falseAnswer = 0;
     private final DeviceOrderLogic deviceOrderLogic;
@@ -143,7 +143,7 @@ public class DeviceOrderSubScene extends SubScene {
         return box;
     }
 
-    void setImage(DeviceOrderDevices device, ImageType type) {
+    void setImage(DeviceOrderDevice device, ImageType type) {
         Texture texture = getAssetLoader().loadTexture(device.image());
         texture.setFitHeight(96);
         texture.setFitWidth(96 / texture.getHeight() * texture.getWidth());
@@ -240,7 +240,7 @@ public class DeviceOrderSubScene extends SubScene {
     public void checkAnswers() {
         cleanPopUp();
         boolean[] solution = deviceOrderLogic.compareAnswerSolution();
-        Set<DeviceOrderDevices> falseDevice = new HashSet<>();
+        Set<DeviceOrderDevice> falseDevice = new HashSet<>();
         String msg = "";
 
         for (int i = 0; i < solution.length; i++) {
@@ -263,7 +263,7 @@ public class DeviceOrderSubScene extends SubScene {
             getContentRoot().getChildren().addAll(popUp);
             falseAnswer++;
         } else {
-            for (DeviceOrderDevices d : falseDevice) {
+            for (DeviceOrderDevice d : falseDevice) {
                 msg += d.device() + "\n";
             }
             popUp = getTextBox(msg, BoxType.POPUP, Color.RED, FontWeight.SEMI_BOLD);
@@ -283,7 +283,7 @@ public class DeviceOrderSubScene extends SubScene {
         int index = deviceOrderLogic.getIndex();
 
         if (currentDevices.get(type) != null) {
-            DeviceOrderDevices device = currentDevices.get(type);
+            DeviceOrderDevice device = currentDevices.get(type);
             deleteImage(type);
             setImage(device, queue[index]);
             deviceOrderLogic.addAnswer(device);
@@ -321,7 +321,7 @@ public class DeviceOrderSubScene extends SubScene {
      * Builds the puzzle UI.
      */
     public void buildDeviceOrder() {
-        List<DeviceOrderDevices> devices = deviceOrderLogic.getQueue();
+        List<DeviceOrderDevice> devices = deviceOrderLogic.getQueue();
 
         List<ImageType> types = Arrays.stream(ImageType.values())
                 .filter(x -> x.toString().charAt(0) == 'P')
