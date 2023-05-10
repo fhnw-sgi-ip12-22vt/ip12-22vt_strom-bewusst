@@ -26,8 +26,8 @@ import com.almasb.fxgl.texture.Texture;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -391,14 +391,17 @@ public class StromBewusst extends GameApplication {
         FXGL.runOnce(() -> {
             FXGL.getCutsceneService().startCutscene(cutscene);
 
-            Rectangle rectangle = new Rectangle(100, 50);
-            rectangle.setTranslateX(Config.WIDTH - rectangle.getWidth());
-            rectangle.setTranslateY(Config.HEIGHT - rectangle.getHeight());
-
             Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
             backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
             backButton.setTranslateY(Config.HEIGHT - backButton.getHeight() - 10);
-            FXGL.getSceneService().getCurrentScene().getRoot().getChildren().addAll(rectangle, backButton);
+
+            // This code is very sketchy, since it depends on the implementation of the CutsceneScene in FXGL.
+            // It may break after an FXGL update.
+            Pane pane = (Pane) FXGL.getSceneService().getCurrentScene().getRoot().getChildren().get(0);
+            backButton.opacityProperty().bind(pane.getChildren().get(3).opacityProperty());
+            // remove the KeyView Node and add the new texture instead
+            pane.getChildren().remove(4);
+            pane.getChildren().add(backButton);
         }, Duration.ZERO);
     }
 
