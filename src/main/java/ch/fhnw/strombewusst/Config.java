@@ -33,4 +33,6 @@ public final class Config {
     public static final int DEVICE_ORDER_COUNT = 2;
     /** The number of seconds that the timer gets initialized with */
     public static final int TIMER_INITIAL_SECONDS = 60 * 15;
+    /** The number of seconds to wait after the last interaction before stopping the game */
+    public static final int TIME_OUT_SECONDS = 60 * 1;
 }

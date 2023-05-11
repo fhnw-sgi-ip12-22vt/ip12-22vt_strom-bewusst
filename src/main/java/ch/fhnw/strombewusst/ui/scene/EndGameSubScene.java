@@ -76,7 +76,7 @@ public class EndGameSubScene extends SubScene {
         btnEnd = new Button("Back");
         btnEnd.getStyleClass().add("main_menu_button");
         btnEnd.setStyle("-fx-text-fill: black;");
-        btnEnd.setOnAction(e -> ((StromBewusst) FXGL.getApp()).endGame(teamName.getTeamName()));
+        btnEnd.setOnAction(e -> ((StromBewusst) FXGL.getApp()).saveAndReset(teamName.getTeamName()));
 
         HBox endHBox = new HBox(btnEnd);
         endHBox.setPrefWidth(Config.WIDTH);

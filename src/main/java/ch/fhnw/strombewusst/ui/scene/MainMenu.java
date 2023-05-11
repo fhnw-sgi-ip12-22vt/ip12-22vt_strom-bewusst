@@ -1,13 +1,16 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.InputHandler;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
+import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -48,6 +51,19 @@ public class MainMenu extends FXGLMenu {
         buttonVBox.setTranslateY(300);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, buttonVBox);
+
+        getInput().addAction(new UserAction("update team name first") {
+            @Override
+            protected void onActionBegin() {
+                InputHandler.handlePlayerUp(null);
+            }
+        }, KeyCode.W);
+        getInput().addAction(new UserAction("update team name second") {
+            @Override
+            protected void onActionBegin() {
+                InputHandler.handlePlayerDown(null);
+            }
+        }, KeyCode.S);
     }
 
     @Override

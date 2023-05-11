@@ -95,17 +95,24 @@ public class StromBewusst extends GameApplication {
             FXGL.getGameWorld().setLevel(room.getLevel());
             room.onStarted();
         } else {
-            level = 0;
-            FXGL.getGameController().gotoMainMenu();
-            FXGL.getSceneService().pushSubScene(new EndGameSubScene());
+            endGame();
         }
+    }
+
+    /**
+     * Ends the game
+     */
+    public void endGame() {
+        FXGL.getGameController().gotoMainMenu();
+        FXGL.getSceneService().pushSubScene(new EndGameSubScene());
     }
 
     /**
      * Saves the Leaderboard and exits to the main menu.
      * @param teamName the team name to save the score under
      */
-    public void endGame(String teamName) {
+    public void saveAndReset(String teamName) {
+        level = 0;
         FXGL.getService(HighScoreService.class).commit(teamName);
         FXGL.getSaveLoadService().saveAndWriteTask(Config.SAVE_FILE_NAME).run();
         FXGL.getGameController().gotoMainMenu();

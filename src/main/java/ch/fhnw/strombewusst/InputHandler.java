@@ -20,10 +20,21 @@ import java.util.List;
 
 public class InputHandler {
     /**
+     * Resets the inactivity timer
+     */
+    public static void logInteraction() {
+        try {
+            FXGL.<Timer>geto("timer").logInteraction();
+        } catch (IllegalArgumentException ignored) {
+            // Timer not yet initialized - ignore
+        }
+    }
+    /**
      * Handles movement to the right
      * @param player the player entity to apply the movement to
      */
     public static void handlePlayerRight(Entity player) {
+        logInteraction();
         if (player != null) {
             player.getComponent(PlayerComponent.class).moveRight();
         }
@@ -34,6 +45,7 @@ public class InputHandler {
      * @param player the player entity to apply the movement to
      */
     public static void handlePlayerLeft(Entity player) {
+        logInteraction();
         if (player != null) {
             player.getComponent(PlayerComponent.class).moveLeft();
         }
@@ -44,6 +56,7 @@ public class InputHandler {
      * @param player the player entity to apply the movement to
      */
     public static void handlePlayerUp(Entity player) {
+        logInteraction();
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
             UIHelper.focusPreviousNode();
         } else {
@@ -58,6 +71,7 @@ public class InputHandler {
      * @param player the player entity to apply the movement to
      */
     public static void handlePlayerDown(Entity player) {
+        logInteraction();
         if (FXGL.getSceneService().getCurrentScene() instanceof MainMenu) {
             UIHelper.focusNextNode();
         } else {
@@ -72,6 +86,7 @@ public class InputHandler {
      * @param player the player entity to vertically idle
      */
     public static void handlePlayerVerticalIdle(Entity player) {
+        logInteraction();
         if (player != null) {
             player.getComponent(PlayerComponent.class).stopMovingY();
         }
@@ -82,6 +97,7 @@ public class InputHandler {
      * @param player the player entity to horizontally idle
      */
     public static void handlePlayerHorizontalIdle(Entity player) {
+        logInteraction();
         if (player != null) {
             player.getComponent(PlayerComponent.class).stopMovingX();
         }
@@ -92,6 +108,7 @@ public class InputHandler {
      * @param player the player entity whose player has pressed the button
      */
     public static void handleButtonLeft(Entity player) {
+        logInteraction();
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
@@ -107,6 +124,7 @@ public class InputHandler {
      * @param player the player entity whose player has pressed the button
      */
     public static void handleButtonMiddle(Entity player) {
+        logInteraction();
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
@@ -122,6 +140,7 @@ public class InputHandler {
      * @param player the player entity whose player has pressed the button
      */
     public static void handleButtonRight(Entity player) {
+        logInteraction();
         int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
@@ -137,6 +156,7 @@ public class InputHandler {
      * @param player the player entity whose player has pressed the button
      */
     public static void handleSelect(Entity player) {
+        logInteraction();
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof MainMenu
                 || currentScene instanceof LeaderboardSubScene
@@ -216,6 +236,7 @@ public class InputHandler {
      * @param player the player entity whose player has pressed the button
      */
     public static void handleBack(Entity player) {
+        logInteraction();
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof QuizSubScene) {
             FXGL.<QuizLogic>geto("quizLogic").resetAnswers();
