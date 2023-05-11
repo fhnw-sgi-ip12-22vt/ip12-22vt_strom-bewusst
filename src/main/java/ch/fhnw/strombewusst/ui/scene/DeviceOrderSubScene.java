@@ -94,7 +94,6 @@ public class DeviceOrderSubScene extends SubScene {
     };
 
     private HBox popUp;
-    private HBox scoreboard;
 
     public DeviceOrderSubScene(DeviceOrderLogic deviceOrderLogic) {
         this.deviceOrderLogic = deviceOrderLogic;
@@ -126,7 +125,11 @@ public class DeviceOrderSubScene extends SubScene {
         HBox playerTwo = getTextBox("Player 2", BoxType.PLAYERTWO, Color.BLACK, FontWeight.BOLD);
         HBox answerQueue = getTextBox("Eingabe", BoxType.QUEUEINPUT, Color.BLACK, FontWeight.BOLD);
 
-        getContentRoot().getChildren().addAll(bg, inputsVBox, response, playerOne, playerTwo, answerQueue);
+        HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), BoxType.SCORETABLE.x, BoxType.SCORETABLE.y);
+        HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 90);
+
+        getContentRoot().getChildren().addAll(bg, inputsVBox, response, playerOne, playerTwo, answerQueue,
+                scoreLabel, timerLabel);
 
         buildDeviceOrder();
         inputs();
@@ -294,7 +297,6 @@ public class DeviceOrderSubScene extends SubScene {
      */
     public void clearDeviceOrder() {
         getContentRoot().getChildren().removeAll(currentTextures.values());
-        getContentRoot().getChildren().removeAll(scoreboard);
     }
 
     private void cleanPopUp() {
@@ -325,11 +327,6 @@ public class DeviceOrderSubScene extends SubScene {
         List<ImageType> types = Arrays.stream(ImageType.values())
                 .filter(x -> x.toString().charAt(0) == 'P')
                 .toList();
-
-        scoreboard = getTextBox(FXGL.<Score>geto("score").toString(),
-                BoxType.SCORETABLE, Color.BLACK, FontWeight.SEMI_BOLD);
-        HBox timertable = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 90);
-        getContentRoot().getChildren().addAll(scoreboard, timertable);
 
         if (devices.size() == types.size()) {
             for (int i = 0; i < devices.size(); i++) {

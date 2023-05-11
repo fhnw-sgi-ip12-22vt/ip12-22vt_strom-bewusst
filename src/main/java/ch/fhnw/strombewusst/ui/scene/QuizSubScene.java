@@ -54,9 +54,6 @@ public class QuizSubScene extends SubScene {
 
     private HBox answerPopUp;
 
-    private HBox scoretable;
-
-
     public QuizSubScene(QuizLogic quizLogic) {
         this.quizLogic = quizLogic;
         quizLogic.resetAnswers();
@@ -88,7 +85,11 @@ public class QuizSubScene extends SubScene {
         HBox answerOne = getTextBox("Antwort 1", 955, 555);
         HBox answerTwo = getTextBox("Antwort 2", 1135, 555);
 
-        getContentRoot().getChildren().addAll(bg, inputsVBox, steering, response, answerOne, answerTwo);
+        HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 30);
+        HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 90);
+
+        getContentRoot().getChildren().addAll(bg, inputsVBox, steering, response, answerOne, answerTwo,
+                scoreLabel, timerLabel);
 
         currentQuiz = buildQuiz(quizLogic.getQuestion());
         inputs();
@@ -269,7 +270,7 @@ public class QuizSubScene extends SubScene {
     private void clearQuiz() {
         getContentRoot().getChildren()
                 .removeAll(currentQuiz[0], currentQuiz[1], currentQuiz[2], currentQuiz[3], textureAnswerP1,
-                        textureAnswerP2, scoretable);
+                        textureAnswerP2);
         falseAnswerCount = 0;
     }
 
@@ -292,10 +293,7 @@ public class QuizSubScene extends SubScene {
         HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
         HBox thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
 
-        scoretable = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 30);
-        HBox timertable = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 90);
-
-        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox, scoretable, timertable);
+        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox);
         return new HBox[] {questionHBox, firstHBox, secondHBox, thirdHBox};
     }
 }
