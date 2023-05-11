@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.Timer;
 import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
@@ -11,7 +12,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import static com.almasb.fxgl.dsl.FXGL.getSceneService;
@@ -105,5 +108,45 @@ public class UIHelper {
             pane.getChildren().remove(4);
             pane.getChildren().add(backButton);
         }, Duration.ZERO);
+    }
+
+    /**
+     * Creates a text label containing the time in timer with the required styling.
+     *
+     * @param timer the Timer from which the label gets generated
+     * @param x x coordinate of the HBox containing the label
+     * @param y y coordinate of the HBox containing the label
+     * @return the generated HBox
+     */
+    public static HBox createTimerLabel(Timer timer, int x, int y) {
+        Text timerLabel = new Text();
+        timerLabel.textProperty().bind(timer.getTimerProperty());
+        timerLabel.setStyle("-fx-font-size: 44px;");
+
+        HBox timerHBox = new HBox(timerLabel);
+        timerHBox.setTranslateX(x);
+        timerHBox.setTranslateY(y);
+
+        return timerHBox;
+    }
+
+    /**
+     * Generates a text label containing the score with the required styling.
+     *
+     * @param score the Score object from which the label gets generated
+     * @param x x coordinate of the HBox containing the label
+     * @param y y coordinate of the HBox containing the label
+     * @return the generated HBox
+     */
+    public static HBox createScoreLabel(Score score, int x, int y) {
+        Text scoreLabel = new Text();
+        scoreLabel.textProperty().bind(score.getScoreProperty().asString());
+        scoreLabel.setStyle("-fx-font-size: 44px;");
+
+        HBox scoreHBox = new HBox(scoreLabel);
+        scoreHBox.setTranslateX(x);
+        scoreHBox.setTranslateY(y);
+
+        return scoreHBox;
     }
 }

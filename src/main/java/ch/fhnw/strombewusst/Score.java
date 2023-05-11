@@ -2,8 +2,6 @@ package ch.fhnw.strombewusst;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 
 
 public class Score {
@@ -31,21 +29,6 @@ public class Score {
     public void increaseScoreByDeviceOrder(int penalty) {
         int points = Math.max(DEVICE_ORDER_MIN_POINTS, DEVICE_ORDER_MAX_POINTS - (penalty * DEVICE_ORDER_PENALTY));
         score.setValue(score.get() + points);
-    }
-
-    /**
-     * Generates a text label containing the score with the required styling.
-     * @param x x coordinate of the HBox containing the label
-     * @param y y coordinate of the HBox containing the label
-     * @return the generated HBox
-     */
-    public HBox pushScore(int x, int y) {
-        Text title = new Text(toString());
-        title.setStyle("-fx-font-size: 44px;");
-        HBox titleHBox1 = new HBox(title);
-        titleHBox1.setTranslateX(x);
-        titleHBox1.setTranslateY(y);
-        return titleHBox1;
     }
 
     public IntegerProperty getScoreProperty() {

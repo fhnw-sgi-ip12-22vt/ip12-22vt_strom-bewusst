@@ -3,7 +3,6 @@ package ch.fhnw.strombewusst.ui.scene;
 import ch.fhnw.strombewusst.QuizLogic;
 import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.Score;
-import ch.fhnw.strombewusst.Timer;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -293,8 +292,8 @@ public class QuizSubScene extends SubScene {
         HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
         HBox thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
 
-        scoretable = FXGL.<Score>geto("score").pushScore(950, 30);
-        HBox timertable = FXGL.<Timer>geto("timer").pushTimer(950, 90);
+        scoretable = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 30);
+        HBox timertable = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 90);
 
         getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox, scoretable, timertable);
         return new HBox[] {questionHBox, firstHBox, secondHBox, thirdHBox};

@@ -7,8 +7,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Timer {
@@ -52,22 +50,5 @@ public class Timer {
 
     public StringProperty getTimerProperty() {
         return timer;
-    }
-
-    /**
-     * control for subscenes
-     *
-     * @param x x-coordinate
-     * @param y y-coordinate
-     * @return the hbox layout
-     */
-    public HBox pushTimer(int x, int y) {
-        Text title = new Text();
-        title.textProperty().bindBidirectional(timer);
-        title.setStyle("-fx-font-size: 44px;");
-        HBox titleHBox1 = new HBox(title);
-        titleHBox1.setTranslateX(x);
-        titleHBox1.setTranslateY(y);
-        return titleHBox1;
     }
 }
