@@ -21,8 +21,10 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -316,8 +318,12 @@ public class StromBewusst extends GameApplication {
     protected void initUI() {
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString("%d"));
-        FXGL.addUINode(scoreText, 810, 67);
-        uiNodes.add(scoreText);
+        HBox scoreHBox = new HBox(scoreText);
+        scoreHBox.setPrefWidth(140);
+        scoreHBox.setPrefHeight(64);
+        scoreHBox.setAlignment(Pos.CENTER);
+        FXGL.addUINode(scoreHBox, 755, 21);
+        uiNodes.add(scoreHBox);
 
         Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         timerText.textProperty().bind(FXGL.<Timer>geto("timer").getTimerProperty());
