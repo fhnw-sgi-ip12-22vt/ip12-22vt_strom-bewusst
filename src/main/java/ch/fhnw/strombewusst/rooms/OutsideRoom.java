@@ -11,14 +11,14 @@ import com.almasb.fxgl.entity.level.Level;
 
 import java.util.List;
 
-public class EndgameScene implements Room {
+public class OutsideRoom implements Room {
     private final Entity player1;
     private final Entity player2;
     private final Entity teacher;
 
     private final List<Entity> entities;
 
-    public EndgameScene() {
+    public OutsideRoom() {
         GameWorld world = FXGL.getGameWorld();
         player1 = world.create("player", new SpawnData(603, 625).put("playerNum", 1));
         player2 = world.create("player", new SpawnData(656, 625).put("playerNum", 2));

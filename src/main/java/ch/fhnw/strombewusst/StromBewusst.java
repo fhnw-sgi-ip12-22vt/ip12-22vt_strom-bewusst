@@ -4,7 +4,7 @@ import ch.fhnw.strombewusst.collision.*;
 import ch.fhnw.strombewusst.input.Controller;
 import ch.fhnw.strombewusst.input.pi4jcomponents.Ads1115;
 import ch.fhnw.strombewusst.input.pi4jcomponents.helpers.PIN;
-import ch.fhnw.strombewusst.rooms.EndgameScene;
+import ch.fhnw.strombewusst.rooms.OutsideRoom;
 import ch.fhnw.strombewusst.rooms.Room;
 import ch.fhnw.strombewusst.rooms.Room1;
 import ch.fhnw.strombewusst.rooms.Room2;
@@ -157,7 +157,7 @@ public class StromBewusst extends GameApplication {
                 FXGL.getService(HighScoreService.class).setScore((int) newValue));
 
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
-        rooms = new Room[] {new Room1(), new Room2(), new EndgameScene()};
+        rooms = new Room[] {new Room1(), new Room2(), new OutsideRoom()};
         level = 0;
         nextLevel();
     }
