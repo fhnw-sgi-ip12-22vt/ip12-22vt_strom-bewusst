@@ -4,6 +4,7 @@ import ch.fhnw.strombewusst.Config;
 import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.StromBewusst;
 import ch.fhnw.strombewusst.TeamName;
+import ch.fhnw.strombewusst.Timer;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
@@ -29,27 +30,38 @@ public class EndGameSubScene extends SubScene {
         Label title = new Label("Spiel geschafft!");
         title.getStyleClass().add("title");
 
-        Label score = new Label(FXGL.<Score>geto("score").toString());
-        score.setPadding(new Insets(100, 0, 0, 0));
-        score.getStyleClass().add("subtitle");
+        Score score = FXGL.geto("score");
+        int actualTime = Config.TIMER_INITIAL_SECONDS - FXGL.<Timer>geto("timer").getSecondsRemainingProperty().get();
+        int bonus = score.addBonusPoints(Config.TIMER_INITIAL_SECONDS, actualTime);
+
+        Label scoreLabel = new Label(score.toString());
+        scoreLabel.getStyleClass().add("subtitle");
+
+        Label bonusLabel = new Label("(" + bonus + " BONUS)");
+        bonusLabel.getStyleClass().addAll("subtitle", "bonus");
+
+        HBox scoreHBox = new HBox(scoreLabel, bonusLabel);
+        scoreHBox.setSpacing(10);
+        scoreHBox.setPadding(new Insets(100, 0, 0, 0));
+        scoreHBox.setAlignment(Pos.CENTER);
 
         teamNameLabel = new Label();
         teamNameLabel.getStyleClass().add("subtitle");
         updateTeamNameLabel();
 
-        VBox titleVBox = new VBox(title, score, teamNameLabel);
+        VBox titleVBox = new VBox(title, scoreHBox, teamNameLabel);
         titleVBox.setPrefWidth(Config.WIDTH);
         titleVBox.setAlignment(Pos.CENTER);
         titleVBox.setTranslateY(50);
 
-        Texture selectButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
+        Texture selectButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 51, 51);
         Label selectText = new Label("Zurück zum Hauptmenü");
         selectText.getStyleClass().add("small_title");
         HBox selectHBox = new HBox(selectButton, selectText);
         selectHBox.setAlignment(Pos.CENTER);
         selectHBox.setSpacing(20);
 
-        Texture backButton = FXGL.getAssetLoader().loadTexture("blue-button-icon-single.png", 68, 68);
+        Texture backButton = FXGL.getAssetLoader().loadTexture("blue-button-icon-single.png", 51, 51);
         Label backText = new Label("Teamnamen ändern");
         backText.getStyleClass().add("small_title");
         HBox backHBox = new HBox(backButton, backText);

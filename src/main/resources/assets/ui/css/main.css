@@ -33,3 +33,7 @@
 .main_menu_button:focused {
     -fx-underline: true;
 }
+
+.bonus {
+    -fx-text-fill: gold;
+}
