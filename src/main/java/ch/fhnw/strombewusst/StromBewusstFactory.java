@@ -368,7 +368,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(physics)
                 .bbox(new HitBox(new Point2D(20, 0), BoundingShape.box(190, FXGL.getAppHeight())))
                 .bbox(new HitBox(new Point2D(0, 20), BoundingShape.box(FXGL.getAppWidth(), 190)))
-                .bbox(new HitBox(new Point2D(FXGL.getAppWidth() - 20, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+                .bbox(new HitBox(new Point2D(FXGL.getAppWidth() - 210, 0), BoundingShape.box(0, FXGL.getAppHeight())))
                 .bbox(new HitBox(new Point2D(0, FXGL.getAppHeight() - 20), BoundingShape.box(FXGL.getAppWidth(), 0)))
                 .zIndex(-100)
                 .build();
