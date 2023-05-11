@@ -21,15 +21,12 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 import java.util.Map;
 
@@ -163,13 +160,6 @@ public class StromBewusst extends GameApplication {
         rooms = new Room[] {new Room1(), new Room2(), new EndgameScene()};
         level = 0;
         nextLevel();
-
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            FXGL.<Timer>geto("timer").synchTimer();
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
     }
 
     /**
@@ -306,7 +296,7 @@ public class StromBewusst extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("score", new Score());
-        vars.put("timer", new Timer());
+        vars.put("timer", new Timer(Config.TIMER_INITIAL_SECONDS));
         vars.put("player1InfoText", "");
         vars.put("player2InfoText", "");
 

@@ -4,7 +4,7 @@ public final class Config {
     /** If release Mode is enabled, puzzles can be skipped, cutscenes are disabled and the devMenu is enabled. */
     public static final boolean IS_RELEASE = false;
     /** If demo Mode is enabled, puzzles can be skipped, but cutscenes are still enabled. */
-    public static final boolean IS_DEMO = false;
+    public static final boolean IS_DEMO = true;
     /** The tick-rate at which the game runs */
     public static final int TICK_RATE = 60;
     /** The screen height */
@@ -31,4 +31,6 @@ public final class Config {
     public static final int QUIZ_QUESTION_COUNT = 10;
     /** The number of rounds to play in the device order puzzle */
     public static final int DEVICE_ORDER_COUNT = 2;
+    /** The number of seconds that the timer gets initialized with */
+    public static final int TIMER_INITIAL_SECONDS = 60 * 15;
 }

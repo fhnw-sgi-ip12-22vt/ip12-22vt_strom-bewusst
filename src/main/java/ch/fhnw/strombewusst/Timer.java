@@ -1,43 +1,62 @@
 package ch.fhnw.strombewusst;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class Timer {
+    private final StringProperty timer;
+    private final IntegerProperty secondsRemaining;
+    private final Timeline timeline;
 
-    StringProperty timer;
-    long startTime;
+    public Timer(int initialSeconds) {
+        timer = new SimpleStringProperty();
+        secondsRemaining = new SimpleIntegerProperty(initialSeconds);
 
-    public Timer() {
-        startTime = System.currentTimeMillis();
-        timer = new SimpleStringProperty("");
+        timer.bind(Bindings.createStringBinding(() -> {
+            int minutes = secondsRemaining.get() / 60;
+            int secs = secondsRemaining.get() % 60;
+            return String.format("%02d:%02d", minutes, secs);
+        }, secondsRemaining));
+
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1),
+                event -> secondsRemaining.set(secondsRemaining.get() - 1)));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     /**
-     * @return stringproperty
+     * Pauses the timer
      */
+    public void pause() {
+        timeline.pause();
+    }
+
+    /**
+     * Unpauses the timer
+     */
+    public void unpause() {
+        timeline.play();
+    }
+
+    public IntegerProperty getSecondsRemainingProperty() {
+        return secondsRemaining;
+    }
+
     public StringProperty getTimerProperty() {
         return timer;
     }
 
     /**
-     * updates time
-     */
-    public void synchTimer() {
-        long secondsElapsed = (System.currentTimeMillis() - startTime) / 1000;
-        long secondsRemaining = 900 - secondsElapsed;
-        if (secondsRemaining < 0) {
-            secondsRemaining = 0;
-        }
-        long minutes = secondsRemaining / 60;
-        long seconds = secondsRemaining % 60;
-        timer.set(String.format("%02d:%02d", minutes, seconds));
-    }
-
-    /**
      * control for subscenes
+     *
      * @param x x-coordinate
      * @param y y-coordinate
      * @return the hbox layout

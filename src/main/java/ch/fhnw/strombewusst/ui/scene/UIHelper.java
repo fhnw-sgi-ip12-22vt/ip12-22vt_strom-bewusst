@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.Timer;
 import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.texture.Texture;
@@ -89,7 +90,8 @@ public class UIHelper {
      */
     public static void showCutsceneWithButton(Cutscene cutscene) {
         FXGL.runOnce(() -> {
-            FXGL.getCutsceneService().startCutscene(cutscene);
+            FXGL.<Timer>geto("timer").pause();
+            FXGL.getCutsceneService().startCutscene(cutscene, () -> FXGL.<Timer>geto("timer").unpause());
 
             Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
             backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
