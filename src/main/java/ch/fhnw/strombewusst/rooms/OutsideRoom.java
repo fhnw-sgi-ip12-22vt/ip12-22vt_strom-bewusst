@@ -22,15 +22,15 @@ public class OutsideRoom implements Room {
 
     public OutsideRoom() {
         GameWorld world = FXGL.getGameWorld();
-        player1 = world.create("player", new SpawnData(603, 625).put("playerNum", 1));
-        player2 = world.create("player", new SpawnData(656, 625).put("playerNum", 2));
+        player1 = world.create("player", new SpawnData(200, 200).put("playerNum", 1));
+        player2 = world.create("player", new SpawnData(250, 200).put("playerNum", 2));
         teacher = world.create("teacher", new SpawnData(500, 500).put("state", 0));
 
         entities = List.of(
                 player1,
                 player2,
                 teacher,
-                world.create("emptyRoom", new SpawnData().put("textureName", "outside.png")
+                world.create("outside", new SpawnData().put("textureName", "outside.png")
         ));
     }
 

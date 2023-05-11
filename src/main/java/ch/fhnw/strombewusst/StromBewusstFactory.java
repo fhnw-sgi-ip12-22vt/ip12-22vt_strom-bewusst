@@ -31,7 +31,6 @@ public class StromBewusstFactory implements EntityFactory {
     @Spawns("emptyRoom")
     public Entity newRoom(SpawnData data) {
         String textureName = data.get("textureName");
-
         PhysicsComponent physics = new PhysicsComponent();
         physics.setBodyType(BodyType.STATIC);
 
@@ -357,4 +356,22 @@ public class StromBewusstFactory implements EntityFactory {
                 .zIndex(90)
                 .build();
     }
+    @Spawns("outside")
+    public Entity newOutside(SpawnData data) {
+
+        PhysicsComponent physics = new PhysicsComponent();
+        String texture = data.get("textureName");
+        physics.setBodyType(BodyType.STATIC);
+
+        return entityBuilder(data)
+                .view(texture)
+                .with(physics)
+                .bbox(new HitBox(new Point2D(20, 0), BoundingShape.box(190, FXGL.getAppHeight())))
+                .bbox(new HitBox(new Point2D(0, 20), BoundingShape.box(FXGL.getAppWidth(), 190)))
+                .bbox(new HitBox(new Point2D(FXGL.getAppWidth() - 20, 0), BoundingShape.box(0, FXGL.getAppHeight())))
+                .bbox(new HitBox(new Point2D(0, FXGL.getAppHeight() - 20), BoundingShape.box(FXGL.getAppWidth(), 0)))
+                .zIndex(-100)
+                .build();
+    }
+
 }
