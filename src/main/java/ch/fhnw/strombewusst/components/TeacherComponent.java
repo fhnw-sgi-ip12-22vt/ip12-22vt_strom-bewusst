@@ -19,7 +19,7 @@ public class TeacherComponent extends Component {
         animIdle = new AnimationChannel(
                 image("teacher-animation.png"),
                 5,
-                42,
+                50,
                 70,
                 Duration.seconds(1.5),
                 0,
