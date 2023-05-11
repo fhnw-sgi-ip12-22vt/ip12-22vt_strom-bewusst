@@ -21,6 +21,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -28,6 +29,8 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -59,6 +62,8 @@ public class StromBewusst extends GameApplication {
 
     private Controller p1Controller;
     private Controller p2Controller;
+
+    private List<Node> uiNodes = new ArrayList<>();
 
     /**
      * Main Method, launches the FXGL application
@@ -312,22 +317,35 @@ public class StromBewusst extends GameApplication {
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString("%d"));
         FXGL.addUINode(scoreText, 810, 67);
+        uiNodes.add(scoreText);
 
         Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         timerText.textProperty().bind(FXGL.<Timer>geto("timer").getTimerProperty());
         FXGL.addUINode(timerText, 405, 65);
+        uiNodes.add(timerText);
 
         Text player1InfoText = new Text("");
         player1InfoText.setWrappingWidth(300);
         player1InfoText.setFont(Font.font("Verdana", FontWeight.BOLD, 15d));
         player1InfoText.textProperty().bind(FXGL.getsp("player1InfoText"));
         FXGL.addUINode(player1InfoText, 950, 45);
+        uiNodes.add(player1InfoText);
 
         Text player2InfoText = new Text("");
         player2InfoText.setWrappingWidth(300);
         player2InfoText.setFont(Font.font("Verdana", FontWeight.BOLD, 15d));
         player2InfoText.textProperty().bind(FXGL.getsp("player2InfoText"));
         FXGL.addUINode(player2InfoText, 950, 400);
+        uiNodes.add(player2InfoText);
+    }
+
+    /**
+     * Clears the UI that was initialized in initUI().
+     */
+    public void clearUI() {
+        for (Node node : uiNodes) {
+            FXGL.removeUINode(node);
+        }
     }
 
     /**

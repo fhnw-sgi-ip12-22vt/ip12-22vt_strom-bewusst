@@ -1,6 +1,8 @@
 package ch.fhnw.strombewusst.rooms;
 
 import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.StromBewusst;
+import ch.fhnw.strombewusst.Timer;
 import ch.fhnw.strombewusst.ui.scene.UIHelper;
 import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
@@ -39,6 +41,9 @@ public class OutsideRoom implements Room {
 
     @Override
     public void onStarted() {
+        FXGL.<Timer>geto("timer").pause();
+        ((StromBewusst) FXGL.getApp()).clearUI();
+
         if (Config.IS_RELEASE || Config.IS_DEMO) {
             List<String> lines = FXGL.getAssetLoader().loadText(Config.FINAL_CUTSCENE_PATH);
             Cutscene cutscene = new Cutscene(lines);
