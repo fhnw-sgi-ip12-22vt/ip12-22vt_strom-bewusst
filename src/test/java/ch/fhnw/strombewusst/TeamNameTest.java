@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst;
 
 import com.almasb.fxgl.app.services.FXGLAssetLoaderService;
 import com.almasb.fxgl.dsl.FXGL;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class TeamNameTest {
+    private static MockedStatic<FXGL> fxgl;
+
     private static List<String> firstNameStrings = List.of(
             "First1",
             "First2",
@@ -39,7 +42,7 @@ public class TeamNameTest {
         when(assetLoaderService.loadText(Config.TEAM_NAMES_FIRST_LIST_PATH)).thenReturn(firstNameStrings);
         when(assetLoaderService.loadText(Config.TEAM_NAMES_SECOND_LIST_PATH)).thenReturn(secondNameStrings);
 
-        MockedStatic<FXGL> fxgl = Mockito.mockStatic(FXGL.class);
+        fxgl = Mockito.mockStatic(FXGL.class);
         fxgl.when(FXGL::getAssetLoader).thenReturn(assetLoaderService);
     }
 
@@ -72,5 +75,10 @@ public class TeamNameTest {
 
         assertEquals(nameSplitBefore[0], nameSplitAfter[0]);
         assertNotEquals(nameSplitBefore[1], nameSplitAfter[1]);
+    }
+
+    @AfterAll
+    static void tearDown() {
+        fxgl.close();
     }
 }
