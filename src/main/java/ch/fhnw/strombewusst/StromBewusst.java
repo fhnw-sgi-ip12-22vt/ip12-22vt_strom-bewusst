@@ -67,6 +67,7 @@ public class StromBewusst extends GameApplication {
 
     private List<Node> uiNodes = new ArrayList<>();
 
+
     /**
      * Main Method, launches the FXGL application
      *
@@ -323,6 +324,7 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initUI() {
+        Font customGameFont = Font.loadFont("file:src/main/resources/fonts/PressStart2P-Regular.ttf", 5);
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString("%d"));
         HBox scoreHBox = new HBox(scoreText);
@@ -340,6 +342,7 @@ public class StromBewusst extends GameApplication {
         Text player1InfoText = new Text("");
         player1InfoText.setWrappingWidth(300);
         player1InfoText.setFont(Font.font("Verdana", FontWeight.BOLD, 15d));
+        player1InfoText.setFont(customGameFont);
         player1InfoText.textProperty().bind(FXGL.getsp("player1InfoText"));
         FXGL.addUINode(player1InfoText, 950, 45);
         uiNodes.add(player1InfoText);
