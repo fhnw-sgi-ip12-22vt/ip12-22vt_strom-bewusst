@@ -8,12 +8,15 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
+import com.almasb.fxgl.ui.FontType;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
@@ -194,34 +197,56 @@ public class QuizSubScene extends SubScene {
     public void checkAnswers() {
         cleanPopUp();
 
-        if (quizLogic.checkAnswer()) {
-            FXGL.<Score>geto("score").increaseScoreByQuiz(falseAnswerCount);
+        answerPopUp = new HBox();
+        answerPopUp.setPrefWidth(320);
+        answerPopUp.setAlignment(Pos.CENTER);
+        answerPopUp.setTranslateX(940);
+        answerPopUp.setTranslateY(265);
 
-            Text text = new Text("RICHTIG");
-            text.setStyle("-fx-font-size: 44px;");
-            text.setFill(Color.GREEN);
-            answerPopUp = new HBox(text);
-            answerPopUp.setTranslateX(1020);
-            answerPopUp.setTranslateY(250);
-            getContentRoot().getChildren().addAll(answerPopUp);
+        if (quizLogic.checkAnswer()) {
+            Text text = FXGL.getUIFactoryService().newText("RICHTIG", Color.LIMEGREEN, FontType.UI, 36);
+            answerPopUp.getChildren().add(text);
+
+            int score = FXGL.<Score>geto("score").increaseScoreByQuiz(falseAnswerCount);
+
+            Text scoreLabel = FXGL.getUIFactoryService()
+                    .newText("+ " + score, Color.LIMEGREEN, FontType.UI, 16);
+
+            getContentRoot().getChildren().add(scoreLabel);
+
+            FXGL.animationBuilder()
+                    .duration(Duration.seconds(1))
+                    .translate(scoreLabel)
+                    .from(new Point2D(950, 80))
+                    .to(new Point2D(950, 5))
+                    .buildAndPlay(this);
+
+            FXGL.animationBuilder()
+                    .duration(Duration.seconds(1))
+                    .fadeOut(scoreLabel)
+                    .buildAndPlay(this);
 
             nextQuestion();
         } else {
-            Text text = new Text("FALSCH");
-            text.setStyle("-fx-font-size: 44px;");
-            text.setFill(Color.RED);
-            answerPopUp = new HBox(text);
-            answerPopUp.setTranslateX(1020);
-            answerPopUp.setTranslateY(250);
-            getContentRoot().getChildren().addAll(answerPopUp);
+            Text text = FXGL.getUIFactoryService().newText("FALSCH", Color.CRIMSON, FontType.UI, 36);
+            answerPopUp.getChildren().add(text);
 
             falseAnswerCount++;
             getContentRoot().getChildren().removeAll(textureAnswerP1, textureAnswerP2);
         }
+
+        getContentRoot().getChildren().add(answerPopUp);
+
+        FXGL.animationBuilder()
+                .delay(Duration.seconds(1.5))
+                .duration(Duration.seconds(1))
+                .fadeOut(answerPopUp)
+                .buildAndPlay(this);
     }
 
     /**
      * Sets the provided plug as the currently selected one.
+     *
      * @param player The player selecting a device. 1 or 2
      * @param colour The colour selected (0=Red, 1=Yellow, 2=Blue)
      */

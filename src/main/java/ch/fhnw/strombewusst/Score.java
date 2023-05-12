@@ -18,19 +18,25 @@ public class Score {
     /**
      * Increases the score.
      * @param penalty the number of wrong answers by the players
+     * @return the amount of points the score was increased by
      */
-    public void increaseScoreByQuiz(int penalty) {
+    public int increaseScoreByQuiz(int penalty) {
         int points = Math.max(QUIZ_MIN_POINTS, QUIZ_MAX_POINTS - (penalty * QUIZ_PENALTY));
         score.setValue(score.get() + points);
+
+        return points;
     }
 
     /**
      * Increases the score.
      * @param penalty the number of wrong answers by the players
+     * @return the amount of points the score was increased by
      */
-    public void increaseScoreByDeviceOrder(int penalty) {
+    public int increaseScoreByDeviceOrder(int penalty) {
         int points = Math.max(DEVICE_ORDER_MIN_POINTS, DEVICE_ORDER_MAX_POINTS - (penalty * DEVICE_ORDER_PENALTY));
         score.setValue(score.get() + points);
+
+        return points;
     }
 
     /**
