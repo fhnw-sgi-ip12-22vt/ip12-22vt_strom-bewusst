@@ -7,6 +7,16 @@
 Kurzer Überblick über die grundlegenden Entscheidungen und Lösungsansätze, die Entwurf und Implementierung des Systems prägen.
 Hierzu gehören:
 
+
+[cols="1,1,1"]
+|===
+|Ziel/Requirement|Architektonischer Ansatz|Details
+|Erlernbarkeit|Das MVC Pattern hilt unseren Code leserlicher zu gestalten zu dem wurde während der erstellung der Software darauf geachtet alles möglich einfach zu halten.|<<section-concepts, MVC Pattern>>
+|Funktionale Eignung|FXGL und JavaFX eigenen sich ein Spiel herzustellen. Pi4j braucht es um den Kontroller mit dem Raspberry nutzen zu können.|<<section-technical-risks, Libraries>>
+|Zuverlässigkeit|Junit, Mockito und manuelle Tests wurden genutzt um die Zuverlässigkeit zu steigern| https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/Testplan.adoc/[Testplan]
+|===
+
+////
 * Technologieentscheidungen
 * Entscheidungen über die Top-Level-Zerlegung des Systems, beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder Architekturmuster,
 * Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen sowie
@@ -24,5 +34,5 @@ Vermeiden Sie redundante Beschreibungen und verweisen Sie eher auf weitere Ausf�
 .Weiterführende Informationen
 
 Siehe https://docs.arc42.org/section-4/[Lösungsstrategie] in der online-Dokumentation (auf Englisch!).
-
+////
 ****
