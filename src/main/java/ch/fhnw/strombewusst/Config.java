@@ -4,7 +4,7 @@ public final class Config {
     /** If release Mode is enabled, puzzles can be skipped, cutscenes are disabled and the devMenu is enabled. */
     public static final boolean IS_RELEASE = false;
     /** If demo Mode is enabled, puzzles can be skipped, but cutscenes are still enabled. */
-    public static final boolean IS_DEMO = false;
+    public static final boolean IS_DEMO = true;
     /** The tick-rate at which the game runs */
     public static final int TICK_RATE = 60;
     /** The screen height */

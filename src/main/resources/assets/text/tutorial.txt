@@ -1,20 +1,18 @@
 //init players
 1.name = Spieler 1
 2.name = Spieler 2
-3.name = Lehrer
+3.name = Herr Meier
 
 1.image = player1-large.png
 2.image = player2-large.png
 3.image = teacher-large.png
 
-3: Also gut, alle zusammen. Da ihr wieder einmal vergessen habt, eure Hausaufgaben zu machen, müsst ihr sie jetzt fertigstellen.
-3: Falls ihr bei einer Aufgabe nicht weiterkommt, könnt ihr jederzeit an den PCs nach Hinweisen suchen.
-3: Wenn ihr den Quiz am Lehrer-PC fertig habt, könnt ihr gehen.
-2: Ja Herr Meier, verstanden.
+3: Also gut, ihr zwei. Da ihr wieder einmal vergessen habt, eure Hausaufgaben zu machen, müsst ihr jetzt nachsitzen. Löst zusammen am Lehrer-PC das Rätsel. Wenn ihr das schafft, dann dürft ihr nach Hause gehen.
+3: Falls ihr bei einer Aufgabe feststeckt, könnt ihr jederzeit im Klassenzimmer nach Hinweisen suchen. Aber passt auf, dass ihr nicht zu viel Zeit verschwendet.
+2: Ja, Herr Meier. Wir werden unser Bestes geben.
 1: Ich kann nicht glauben, dass wir länger bleiben müssen.
-2: Machen wir die Hausaufgaben schnell fertig, dann können wir gehen.
-2: Es ist bereits spät und ich möchte nach Hause gehen.
-1: Hey, die Tür ist verschlossen.
-2: Oh mein Gott, was machen wir jetzt?
-1: Lösen wir die Rätsel und schauen dann, ob die Türe aufgeht.
+2: Lösen wir schnell das Rätsel. Es ist bereits spät und ich möchte nach Hause gehen.
+1: Hey, die Tür ist verschlossen. Herr Meier hat uns eingesperrt!
+2: Oh nein, was machen wir jetzt?
+1: Lösen wir die Rätsel und schauen dann, ob dann die Türe aufgeht.
 

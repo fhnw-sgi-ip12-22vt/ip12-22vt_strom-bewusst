@@ -1,8 +1,12 @@
 1.name = Spieler 1
 2.name = Spieler 2
 
-2: Diese Türe ist auch versperrt
-1: Was machen wir jetzt?
-2: Am besten sollten wir oben mal nach Hinweisen gucken
+1: Juhu, die Tür ist offen!
+2: Oh nein, die nächste Tür ist aber zu.
+2: Was sollen wir jetzt tun?
+1: Schau mal, hier ist ein Computer mit einem Rätsel. Wenn wir es lösen, öffnet sich vielleicht die Tür.
+2: Vielleicht gibt es einen Hinweis auf den Geräten hier. Siehst du die Nummern an jedem Gerät?
+1: Genau, das zeigt, wie viel Strom jedes Gerät pro Jahr verbraucht. Vielleicht müssen wir sie in die richtige Reihenfolge bringen, von dem Gerät mit dem geringsten Stromverbrauch bis zum höchsten.
+2: Gute Idee! Lass uns das mal ausprobieren.
 
 

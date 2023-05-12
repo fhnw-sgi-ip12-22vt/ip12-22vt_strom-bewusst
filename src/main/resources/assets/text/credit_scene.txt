@@ -1,14 +1,16 @@
 //init players
 1.name = Spieler 1
 2.name = Spieler 2
-3.name = Lehrer
+3.name = Herr Meier
 
 1.image = player1-large.png
 2.image = player2-large.png
 3.image = teacher-large.png
 
-3: Hallo Jungs
-3: Es tut mir leid das ich euch ausversehen eingesperrt habe
-3: Ich musste zu einem wichtigen Meeting und habe die Zeit ganz vergessen
-2: Schon gut, wir konnten sehr viel lernen während ihrer abwesenheit
-1: Ja, am ende des Tages konnten wir wieder raus kommen
+3: Hallo zusammen!
+3: Es tut mir leid, dass ich euch versehentlich eingeschlossen habe. Ich hatte ein wichtiges Meeting und habe die Zeit komplett vergessen.
+2: Schon gut, wir haben uns selbst aus dem Schulhaus befreien können.
+1: Ausserdem konnten wirwährend Ihrer Abwesenheit viel über Strom sparen lernen.
+3: Apropos Strom sparen, habt ihr denn alle PCs heruntergefahren und die Lichter ausgemacht, bevor ihr das Schulhaus verlassen habt? (schaut streng)
+3: Spass bei Seite. (lacht) Ich bin froh, dass alles geklappt hat. Ich werde darauf achten, dass so etwas nicht wieder passiert.
+3: Kommt mit Tschüss sagen, wenn ihr nach Hause gehen wollt. Dann sage ich euch noch wie viele Punkte ihr gesammelt habt.
