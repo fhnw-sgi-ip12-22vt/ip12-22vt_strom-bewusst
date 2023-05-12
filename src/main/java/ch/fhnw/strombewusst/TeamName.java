@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Random;
 
 public class TeamName {
-    private final List<String> nameCandidatesFirst = FXGL.getAssetLoader().loadText(Config.TEAM_NAMES_FIRST_LIST_PATH);
-    private final List<String> nameCandidatesSecond = FXGL.getAssetLoader().loadText(Config.TEAM_NAMES_SECOND_LIST_PATH);
+    private final List<String> nameCandidatesFirst = FXGL.getAssetLoader()
+            .loadText(Config.TEAM_NAMES_FIRST_LIST_PATH);
+    private final List<String> nameCandidatesSecond = FXGL.getAssetLoader()
+            .loadText(Config.TEAM_NAMES_SECOND_LIST_PATH);
 
     private String nameFirst;
     private String nameSecond;
