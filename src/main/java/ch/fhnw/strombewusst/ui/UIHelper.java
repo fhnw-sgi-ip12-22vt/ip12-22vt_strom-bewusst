@@ -1,4 +1,4 @@
-package ch.fhnw.strombewusst.ui.scene;
+package ch.fhnw.strombewusst.ui;
 
 import ch.fhnw.strombewusst.Config;
 import ch.fhnw.strombewusst.Score;
@@ -26,24 +26,22 @@ public class UIHelper {
     public static void focusPreviousNode() {
         Platform.runLater(() -> {
             Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
-            if (getSceneService().getCurrentScene() instanceof MainMenu) {
-                Node node = s.focusOwnerProperty().get();
+            Node node = s.focusOwnerProperty().get();
 
-                KeyEvent event = new KeyEvent(
-                        null,
-                        null,
-                        KeyEvent.KEY_PRESSED,
-                        "",
-                        "",
-                        KeyCode.UP,
-                        false,
-                        false,
-                        false,
-                        false
-                );
+            KeyEvent event = new KeyEvent(
+                    null,
+                    null,
+                    KeyEvent.KEY_PRESSED,
+                    "",
+                    "",
+                    KeyCode.UP,
+                    false,
+                    false,
+                    false,
+                    false
+            );
 
-                node.fireEvent(event);
-            }
+            node.fireEvent(event);
         });
     }
 
@@ -53,24 +51,22 @@ public class UIHelper {
     public static void focusNextNode() {
         Platform.runLater(() -> {
             Scene s = getSceneService().getCurrentScene().getContentRoot().getScene();
-            if (getSceneService().getCurrentScene() instanceof MainMenu) {
-                Node node = s.focusOwnerProperty().get();
+            Node node = s.focusOwnerProperty().get();
 
-                KeyEvent event = new KeyEvent(
-                        null,
-                        null,
-                        KeyEvent.KEY_PRESSED,
-                        "",
-                        "",
-                        KeyCode.DOWN,
-                        false,
-                        false,
-                        false,
-                        false
-                );
+            KeyEvent event = new KeyEvent(
+                    null,
+                    null,
+                    KeyEvent.KEY_PRESSED,
+                    "",
+                    "",
+                    KeyCode.DOWN,
+                    false,
+                    false,
+                    false,
+                    false
+            );
 
-                node.fireEvent(event);
-            }
+            node.fireEvent(event);
         });
     }
 

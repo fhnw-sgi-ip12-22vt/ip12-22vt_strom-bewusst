@@ -5,7 +5,7 @@ import ch.fhnw.strombewusst.ui.scene.DeviceOrderSubScene;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
 import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
-import ch.fhnw.strombewusst.ui.scene.UIHelper;
+import ch.fhnw.strombewusst.ui.UIHelper;
 import ch.fhnw.strombewusst.ui.scene.QuizSubScene;
 import com.almasb.fxgl.cutscene.CutsceneScene;
 import com.almasb.fxgl.dsl.FXGL;

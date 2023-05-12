@@ -1,7 +1,7 @@
 package ch.fhnw.strombewusst.rooms;
 
 import ch.fhnw.strombewusst.Config;
-import ch.fhnw.strombewusst.ui.scene.UIHelper;
+import ch.fhnw.strombewusst.ui.UIHelper;
 import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;

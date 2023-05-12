@@ -3,6 +3,7 @@ package ch.fhnw.strombewusst.ui.scene;
 import ch.fhnw.strombewusst.DeviceOrderDevice;
 import ch.fhnw.strombewusst.DeviceOrderLogic;
 import ch.fhnw.strombewusst.Score;
+import ch.fhnw.strombewusst.ui.UIHelper;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
