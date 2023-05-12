@@ -22,9 +22,9 @@ public class OutsideRoom implements Room {
 
     public OutsideRoom() {
         GameWorld world = FXGL.getGameWorld();
-        player1 = world.create("player", new SpawnData(200, 200).put("playerNum", 1));
-        player2 = world.create("player", new SpawnData(250, 200).put("playerNum", 2));
-        teacher = world.create("teacher", new SpawnData(500, 500).put("state", 0));
+        player1 = world.create("player", new SpawnData(500, 350).put("playerNum", 1));
+        player2 = world.create("player", new SpawnData(550, 350).put("playerNum", 2));
+        teacher = world.create("teacher", new SpawnData(460, 620).put("state", 0));
 
         entities = List.of(
                 player1,
