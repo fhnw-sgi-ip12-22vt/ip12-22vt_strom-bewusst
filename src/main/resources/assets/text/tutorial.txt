@@ -7,16 +7,14 @@
 2.image = player2-large.png
 3.image = teacher-large.png
 
-3: Also gut Jungs
-3: Da ihr wieder einmal vergessen habt eure Hausaufgaben zu machen, müsst ihr sie jetzt halt fertig machen
-3: Falls ihr bei einer Aufgabe nicht weiter kommen solltet, könnt ihr jederzeit Hinweise bei den PCs recherchieren
-3: Wenn ihr fertig seid könnt ihr sie oben am Lehrer PC abgeben
-2: Ja Herr Meier
-1: Verstanden
-1: ...
-1: Ich fasse es nicht, dass wir länger bleiben müssen
-2: Mach schnell deine Hausaufgaben fertig und lad sie auf den PC dann können wir gehen
-2: Es ist bereits spät ich will nach Hause gehen
-1: Hey, die Türe ist gesperrt
-2: OMG was machen wir jetzt?
+3: Also gut, alle zusammen. Da ihr wieder einmal vergessen habt, eure Hausaufgaben zu machen, müsst ihr sie jetzt fertigstellen.
+3: Falls ihr bei einer Aufgabe nicht weiterkommt, könnt ihr jederzeit an den PCs nach Hinweisen suchen.
+3: Wenn ihr den Quiz am Lehrer-PC fertig habt, könnt ihr gehen.
+2: Ja Herr Meier, verstanden.
+1: Ich kann nicht glauben, dass wir länger bleiben müssen.
+2: Machen wir die Hausaufgaben schnell fertig, dann können wir gehen.
+2: Es ist bereits spät und ich möchte nach Hause gehen.
+1: Hey, die Tür ist verschlossen.
+2: Oh mein Gott, was machen wir jetzt?
+1: Lösen wir die Rätsel und schauen dann, ob die Türe aufgeht.
 
