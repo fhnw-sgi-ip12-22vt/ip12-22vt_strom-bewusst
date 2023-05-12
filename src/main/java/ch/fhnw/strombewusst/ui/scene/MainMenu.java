@@ -47,6 +47,7 @@ public class MainMenu extends FXGLMenu {
         titleHBox.setTranslateY(100);
 
         Button btnPlay = new Button("Spiel starten");
+        btnPlay.setFont(FXGL.getAssetLoader().loadFont(FXGL.getSettings().getFontText()).newFont(30));
         // fireNewGame() clears the Scene and calls initGame(), to spawn all entities.
         btnPlay.setOnAction(e -> fireNewGame());
         btnPlay.getStyleClass().add("main_menu_button");
@@ -66,7 +67,7 @@ public class MainMenu extends FXGLMenu {
 
         VBox buttonVBox = new VBox(30, btnPlay);
         buttonVBox.setAlignment(Pos.CENTER);
-        buttonVBox.setTranslateX(780);
+        buttonVBox.setTranslateX(600);
         buttonVBox.setTranslateY(500);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, buttonVBox, leaderboardHBox);
