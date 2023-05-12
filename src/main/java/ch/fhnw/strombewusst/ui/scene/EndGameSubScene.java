@@ -23,7 +23,7 @@ public class EndGameSubScene extends SubScene {
     private final Label teamNameLabel;
 
     public EndGameSubScene() {
-        Texture bg = FXGL.getAssetLoader().loadTexture("background/mainmenu.png");
+        Texture bg = FXGL.getAssetLoader().loadTexture("background/menu-ohne-logo.png");
         bg.setFitWidth(Config.WIDTH);
         bg.setFitHeight(Config.HEIGHT);
 

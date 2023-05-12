@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.HighScoreService;
 import ch.fhnw.strombewusst.InputHandler;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
@@ -14,7 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 
 /**
@@ -45,12 +46,41 @@ public class MainMenu extends FXGLMenu {
        // btnLeaderboard.setOnAction(e -> getSceneService().pushSubScene(new LeaderboardSubScene()));
        // btnLeaderboard.getStyleClass().add("main_menu_button");
 
+        //Leaderboard
+
+        VBox leaderboardNames = new VBox();
+        leaderboardNames.setAlignment(Pos.CENTER_LEFT);
+        VBox leaderboardScores = new VBox();
+        leaderboardScores.setAlignment(Pos.CENTER_RIGHT);
+
+        HBox leaderboardHBox = new HBox(100, leaderboardNames, leaderboardScores);
+        leaderboardHBox.setAlignment(Pos.CENTER);
+        leaderboardHBox.setTranslateX(820);
+        leaderboardHBox.setTranslateY(200);
+
+        HighScoreService highScoreService = getService(HighScoreService.class);
+        highScoreService.getHighScores().forEach(data -> {
+            Label n = new Label(data.getTag());
+            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardNames.getChildren().add(n);
+
+            Label s = new Label(Integer.toString(data.getScore()));
+            s.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardScores.getChildren().add(s);
+        });
+        if (highScoreService.getHighScores().isEmpty()) {
+            Label n = new Label("noch keine High-Scores");
+            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardNames.getChildren().add(n);
+        }
+
+
         VBox buttonVBox = new VBox(30, btnPlay);
         buttonVBox.setTranslateX(870);
         buttonVBox.setAlignment(Pos.CENTER);
         buttonVBox.setTranslateY(500);
 
-        getContentRoot().getChildren().addAll(bg, titleHBox, buttonVBox);
+        getContentRoot().getChildren().addAll(bg, titleHBox, buttonVBox, leaderboardHBox);
 
         getInput().addAction(new UserAction("update team name first") {
             @Override
