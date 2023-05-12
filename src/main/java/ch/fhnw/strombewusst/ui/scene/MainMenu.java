@@ -83,6 +83,8 @@ public class MainMenu extends FXGLMenu {
                 .onFailure(error -> Logger.get(MainMenu.class).warning("Cannot read " + Config.SAVE_FILE_NAME))
                 .run();
 
+        leaderboardNames.getChildren().clear();
+        leaderboardScores.getChildren().clear();
         HighScoreService highScoreService = getService(HighScoreService.class);
         highScoreService.getHighScores().forEach(data -> {
             Label n = new Label(data.getTag());
