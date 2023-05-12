@@ -21,6 +21,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.logging.Logger;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import com.almasb.fxgl.ui.FontType;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
@@ -127,6 +128,10 @@ public class StromBewusst extends GameApplication {
         settings.setTitle("Strom Bewusst");
         settings.setVersion("0.1_BETA");
         settings.getCSSList().add("main.css");
+
+        settings.setFontUI("PressStart2P-Regular.ttf");
+        settings.setFontGame("PressStart2P-Regular.ttf");
+        settings.setFontText("PressStart2P-Regular.ttf");
 
         settings.setApplicationMode(Config.IS_RELEASE ? ApplicationMode.RELEASE : ApplicationMode.DEVELOPER);
         settings.setDeveloperMenuEnabled(!Config.IS_RELEASE);
@@ -323,7 +328,6 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initUI() {
-        Font customGameFont = Font.loadFont("file:src/main/resources/fonts/PressStart2P-Regular.ttf", 5);
         Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
         scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString("%d"));
         HBox scoreHBox = new HBox(scoreText);
@@ -333,22 +337,21 @@ public class StromBewusst extends GameApplication {
         FXGL.addUINode(scoreHBox, 755, 21);
         uiNodes.add(scoreHBox);
 
-        Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
+        Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 24.0);
         timerText.textProperty().bind(FXGL.<Timer>geto("timer").getTimerProperty());
-        FXGL.addUINode(timerText, 405, 65);
+        FXGL.addUINode(timerText, 398, 65);
         uiNodes.add(timerText);
 
-        Text player1InfoText = new Text("");
+        Text player1InfoText = FXGL.getUIFactoryService().newText("", Color.BLACK, FontType.TEXT, 14);
+        player1InfoText.setLineSpacing(6);
         player1InfoText.setWrappingWidth(300);
-        player1InfoText.setFont(Font.font("Verdana", FontWeight.BOLD, 15d));
-        player1InfoText.setFont(customGameFont);
         player1InfoText.textProperty().bind(FXGL.getsp("player1InfoText"));
         FXGL.addUINode(player1InfoText, 950, 45);
         uiNodes.add(player1InfoText);
 
-        Text player2InfoText = new Text("");
+        Text player2InfoText = FXGL.getUIFactoryService().newText("", Color.BLACK, FontType.TEXT, 14);
         player2InfoText.setWrappingWidth(300);
-        player2InfoText.setFont(Font.font("Verdana", FontWeight.BOLD, 15d));
+        player2InfoText.setLineSpacing(6);
         player2InfoText.textProperty().bind(FXGL.getsp("player2InfoText"));
         FXGL.addUINode(player2InfoText, 950, 400);
         uiNodes.add(player2InfoText);
