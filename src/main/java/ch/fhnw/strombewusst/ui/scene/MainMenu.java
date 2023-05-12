@@ -22,6 +22,9 @@ import static com.almasb.fxgl.dsl.FXGL.*;
  * This class defines the layout of the main menu.
  */
 public class MainMenu extends FXGLMenu {
+    private final VBox leaderboardNames;
+    private final VBox leaderboardScores;
+
     public MainMenu() {
         super(MenuType.MAIN_MENU);
 
@@ -42,38 +45,16 @@ public class MainMenu extends FXGLMenu {
         btnPlay.setOnAction(e -> fireNewGame());
         btnPlay.getStyleClass().add("main_menu_button");
 
-       // Button btnLeaderboard = new Button("Leaderboard");
-       // btnLeaderboard.setOnAction(e -> getSceneService().pushSubScene(new LeaderboardSubScene()));
-       // btnLeaderboard.getStyleClass().add("main_menu_button");
-
         //Leaderboard
-
-        VBox leaderboardNames = new VBox();
+        leaderboardNames = new VBox();
         leaderboardNames.setAlignment(Pos.CENTER_LEFT);
-        VBox leaderboardScores = new VBox();
+        leaderboardScores = new VBox();
         leaderboardScores.setAlignment(Pos.CENTER_RIGHT);
 
         HBox leaderboardHBox = new HBox(100, leaderboardNames, leaderboardScores);
         leaderboardHBox.setAlignment(Pos.CENTER);
         leaderboardHBox.setTranslateX(820);
         leaderboardHBox.setTranslateY(200);
-
-        HighScoreService highScoreService = getService(HighScoreService.class);
-        highScoreService.getHighScores().forEach(data -> {
-            Label n = new Label(data.getTag());
-            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
-            leaderboardNames.getChildren().add(n);
-
-            Label s = new Label(Integer.toString(data.getScore()));
-            s.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
-            leaderboardScores.getChildren().add(s);
-        });
-        if (highScoreService.getHighScores().isEmpty()) {
-            Label n = new Label("noch keine High-Scores");
-            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
-            leaderboardNames.getChildren().add(n);
-        }
-
 
         VBox buttonVBox = new VBox(30, btnPlay);
         buttonVBox.setTranslateX(870);
@@ -101,5 +82,21 @@ public class MainMenu extends FXGLMenu {
         getSaveLoadService().readAndLoadTask(Config.SAVE_FILE_NAME)
                 .onFailure(error -> Logger.get(MainMenu.class).warning("Cannot read " + Config.SAVE_FILE_NAME))
                 .run();
+
+        HighScoreService highScoreService = getService(HighScoreService.class);
+        highScoreService.getHighScores().forEach(data -> {
+            Label n = new Label(data.getTag());
+            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardNames.getChildren().add(n);
+
+            Label s = new Label(Integer.toString(data.getScore()));
+            s.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardScores.getChildren().add(s);
+        });
+        if (highScoreService.getHighScores().isEmpty()) {
+            Label n = new Label("noch keine High-Scores");
+            n.setStyle("-fx-font-size: 22px; -fx-text-fill: white;");
+            leaderboardNames.getChildren().add(n);
+        }
     }
 }
