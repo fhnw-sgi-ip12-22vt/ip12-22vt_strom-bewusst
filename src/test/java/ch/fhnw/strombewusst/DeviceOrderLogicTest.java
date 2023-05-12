@@ -2,6 +2,7 @@ package ch.fhnw.strombewusst;
 
 import com.almasb.fxgl.app.services.FXGLAssetLoaderService;
 import com.almasb.fxgl.dsl.FXGL;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class DeviceOrderLogicTest {
+    private static MockedStatic<FXGL> fxgl;
+
     private static DeviceOrderDevice[] devices = new DeviceOrderDevice[] {
         new DeviceOrderDevice("D1", 1, ""),
         new DeviceOrderDevice("D2", 2, ""),
@@ -38,7 +41,7 @@ public class DeviceOrderLogicTest {
         FXGLAssetLoaderService assetLoaderService = mock(FXGLAssetLoaderService.class);
         when(assetLoaderService.loadJSON(anyString(), any())).thenReturn(Optional.of(devices));
 
-        MockedStatic<FXGL> fxgl = Mockito.mockStatic(FXGL.class);
+        fxgl = Mockito.mockStatic(FXGL.class);
         fxgl.when(FXGL::getAssetLoader).thenReturn(assetLoaderService);
     }
 
@@ -97,5 +100,10 @@ public class DeviceOrderLogicTest {
 
         deviceOrderLogic.clearAnswerQueue();
         assertArrayEquals(new boolean[DeviceOrderLogic.QUEUESIZE], deviceOrderLogic.compareAnswerSolution());
+    }
+
+    @AfterAll
+    static void tearDown() {
+        fxgl.close();
     }
 }
