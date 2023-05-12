@@ -39,4 +39,6 @@ public final class Config {
     public static final String TEAM_NAMES_FIRST_LIST_PATH = "team_names_first.txt";
     /** Path of the text file containing the words used as the second part of the team names */
     public static final String TEAM_NAMES_SECOND_LIST_PATH = "team_names_second.txt";
+    /** Maximum number of entries in the leaderboard */
+    public static final int LEADERBOARD_ENTRY_COUNT = 10;
 }
