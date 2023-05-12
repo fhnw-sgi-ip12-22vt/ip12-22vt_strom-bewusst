@@ -21,7 +21,7 @@ Hierzu gehören:
 * Entscheidungen über die Top-Level-Zerlegung des Systems, beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder Architekturmuster,
 * Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen sowie
 * relevante organisatorische Entscheidungen, beispielsweise für bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben an andere Stakeholder.
-////
+
 .Motivation
 Diese wichtigen Entscheidungen bilden wesentliche „Eckpfeiler“ der Architektur.
 Von ihnen hängen viele weitere Entscheidungen oder Implementierungsregeln ab.
@@ -36,3 +36,4 @@ Vermeiden Sie redundante Beschreibungen und verweisen Sie eher auf weitere Ausf�
 Siehe https://docs.arc42.org/section-4/[Lösungsstrategie] in der online-Dokumentation (auf Englisch!).
 
 ****
+////
