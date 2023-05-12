@@ -39,6 +39,7 @@ pages:
   script:
     - mvn compile
     - mvn site
+    - mv target/site public
   artifacts:
     paths:
-      - "target/site/"
+      - public
