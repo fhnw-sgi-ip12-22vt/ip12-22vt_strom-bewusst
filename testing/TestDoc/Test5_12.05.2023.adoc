@@ -2,7 +2,7 @@
 
 [%autowidth]
 |===
-|Datum | geplant 07.05.2023
+|Datum | geplant 12.05.2023
 |Verantwortlich | Samuel Burkhardt
 |===
 
@@ -10,47 +10,51 @@
 |Link Testcase | Status | Bemerkungen
 
 |Benutzer/in lässt die gleiche Anzahl Multiple Choice Antworten wie die Anzahl Steckdosen pro Spieler anzeigen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.01_F002R01.adoc[TC2.01]
-|offen
-|
+|Erfolgreich
+|Es werden 3 Antwortmöglichkeiten Angezeigt
 
 |Benutzer/in kann Richtig-Falsch Antworten immer mit der ersten Steckdose(Richtig) und der letzten Steckdose(Falsch) beantworten https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.02_F002R02.adoc[TC2.02]
-|offen
+|Gestrichen
 |
 
 |Benutzer/in kann Schätzfragen mit dem Joystick eingeben https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.03_F002R03.adoc[TC2.03]
-|offen
+|Gestrichen
 |
 
 |Benutzer/in lässt die Reihenfolge der Fragen  pro Durchlauf zufällig anzeigen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.04_F002R04.adoc[TC2.04]
-|offen
-|
+|Erfolgreich
+|Die Fragen werden in zufälliger Reihenfolge angezeigt
 
 |Benutzer/in kann Eingabe von Stecker mit einem Button bestätigen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.05_F002R05.adoc[TC2.05]
-|offen
-|
+|Erfolgreich
+|Eingaben können mit dem roten Button bestätigt werden
 
 |Benutzer/in lässt Fragen anzeigen, die Inhaltlich an die Jugendliche angepasst sind https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.06_F002R06.adoc[TC2.06]
-|offen
+|Erfolgreich
 |
 
-|Benutzer/in  kann Rätsel über Stromverbrauch, Stromsparren oder kW/h-Angaben pro Gerät lösen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.07_F002R07.adoc[TC2.07]
-|offen
+|Benutzer/in kann Rätsel über Stromverbrauch, Stromsparren oder kW/h-Angaben pro Gerät lösen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/2_RätselQuiz/TC2.07_F002R07.adoc[TC2.07]
+|Gestrichen
 |
 
-|Benutzer/in wählt einen  farbigen Block, indem die entsprechende Farbe in der Steckerleiste eingesteckt wird https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/5_RätselGeräteordnung/TC5.01_F005R01.adoc[TC5.01]
-|offen
-|
+|Benutzer/in wählt einen farbigen Block, indem die entsprechende Farbe in der Steckerleiste eingesteckt wird https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/5_RätselGeräteordnung/TC5.01_F005R01.adoc[TC5.01]
+|Erfolgreich
+|Eingabe funktioniert bei beiden Rätseln mit beiden Controllern
+
 |Benutzer/in lässt die gleiche Anzahl Elektrogeräte wie die Anzahl Steckdosen der zwei Spieler zusammen anzeigen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/5_RätselGeräteordnung/TC5.02_F005R02.adoc[TC5.02]
-|offen
-|
+|Erfolgreich
+|Es werden immer genau 6 Geräte zur Auswahl gestellt
+
 |Benutzer/in lässt Geräte bildlich anzeigen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/5_RätselGeräteordnung/TC5.03_F005R03.adoc[TC5.03]
-|offen
-|
+|Erfolgreich
+|Die Texturen der Geräte werden im Device Order Rätsel angezeigt
+
 |Benutzer/in kann die Auswhal rückgängig machen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/5_RätselGeräteordnung/TC5.05_F005R05.adoc[TC5.05]
-|offen
-|
+|Erfolgreich*
+|Eingaben können mit dem blauen Button rückgängig gemacht werden. Das Rätsel wird geschlossen, aber kann wieder geöffnet werden.
+
 |Benutzer/in kann die Auswahl prüfen lassen https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/TestCases/5_RätselGeräteordnung/TC5.07_F005R07.adoc[TC5.07]
-|offen
-|
+|Erfolgreich
+|Die Rätsel können mit dem roten Button überprüft werden
 
 |===

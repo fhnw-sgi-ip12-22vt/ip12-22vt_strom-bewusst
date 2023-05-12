@@ -27,10 +27,10 @@
 |Steckerkontroller, Gameplay
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test4_29.04.2023.adoc[Test 4]
 
-|geplant 07.05.2023
+|12.05.2023
 |Steckercontroller MVP, Software MVP
 |Rätsel Quiz, Rätsel Geräteordnung
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test5_07.05.2023.adoc[Test 5]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test5_12.05.2023.adoc[Test 5]
 
 |===
 
@@ -54,6 +54,21 @@ Unit Tests werden kontinuierlich nach jedem git-Push ausgeführt, entsprechend i
 |Software MVP
 |Controller
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/input/ControllerTest.java[ControllerTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Score
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/ScoreTest.java[ScoreTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Device Order Logic Rätsel
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/DeviceOrderLogicTest.java[DeviceOrderLogicTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Team Name Generierung
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/TeamNameTest.java[TeamNameTest.java]
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
 
 |===
