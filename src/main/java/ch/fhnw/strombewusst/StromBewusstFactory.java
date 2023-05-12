@@ -370,7 +370,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .view(texture)
                 .with(physics)
-                .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(0, FXGL.getAppHeight()))) //rand oben
+                .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(0, FXGL.getAppHeight()))) //rand links
                 .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(FXGL.getAppWidth(), 250))) //rand oben
                 .bbox(new HitBox(new Point2D(FXGL.getAppWidth() - 210, 0),
                         BoundingShape.box(0, FXGL.getAppHeight()))) //rand rechts
@@ -378,6 +378,7 @@ public class StromBewusstFactory implements EntityFactory {
                         BoundingShape.box(FXGL.getAppWidth(), 0)))// rand unten
                 .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(510, 390)))
                 .bbox(new HitBox(new Point2D(565, 0), BoundingShape.box(395, 390)))
+                .bbox(new HitBox(new Point2D(570, 250), BoundingShape.box(FXGL.getAppWidth() - 570, 50)))
                 .bbox(new HitBox(new Point2D(0, 490), BoundingShape.box(420, 290)))
                 .bbox(new HitBox(new Point2D(420, 490), BoundingShape.box(80, 0)))
                 .bbox(new HitBox(new Point2D(570, 490), BoundingShape.box(100, 0)))
