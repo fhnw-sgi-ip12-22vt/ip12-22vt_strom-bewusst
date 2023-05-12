@@ -40,7 +40,7 @@ public class MainMenu extends FXGLMenu {
         titleHBox.setAlignment(Pos.CENTER);
         titleHBox.setTranslateY(100);
 
-        Button btnPlay = new Button("Play");
+        Button btnPlay = new Button("Spiel starten");
         // fireNewGame() clears the Scene and calls initGame(), to spawn all entities.
         btnPlay.setOnAction(e -> fireNewGame());
         btnPlay.getStyleClass().add("main_menu_button");
@@ -53,11 +53,11 @@ public class MainMenu extends FXGLMenu {
 
         HBox leaderboardHBox = new HBox(100, leaderboardNames, leaderboardScores);
         leaderboardHBox.setAlignment(Pos.CENTER);
-        leaderboardHBox.setTranslateX(820);
+        leaderboardHBox.setTranslateX(770);
         leaderboardHBox.setTranslateY(200);
 
         VBox buttonVBox = new VBox(30, btnPlay);
-        buttonVBox.setTranslateX(870);
+        buttonVBox.setTranslateX(780);
         buttonVBox.setAlignment(Pos.CENTER);
         buttonVBox.setTranslateY(500);
 

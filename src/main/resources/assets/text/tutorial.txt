@@ -14,5 +14,5 @@
 2: Lösen wir schnell das Rätsel. Es ist bereits spät und ich möchte nach Hause gehen.
 1: Hey, die Tür ist verschlossen. Herr Meier hat uns eingesperrt!
 2: Oh nein, was machen wir jetzt?
-1: Lösen wir die Rätsel und schauen dann, ob dann die Türe aufgeht.
+1: Lösen wir das Rätsel und schauen dann, ob dann die Türe aufgeht.
 

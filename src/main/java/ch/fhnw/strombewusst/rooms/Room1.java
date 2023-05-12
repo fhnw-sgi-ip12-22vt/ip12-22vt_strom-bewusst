@@ -21,8 +21,8 @@ public class Room1 implements Room {
     public Room1() {
         GameWorld world = FXGL.getGameWorld();
 
-        player1 = world.create("player", new SpawnData(566, 92).put("playerNum", 1));
-        player2 = world.create("player", new SpawnData(694, 92).put("playerNum", 2));
+        player1 = world.create("player", new SpawnData(566, 300).put("playerNum", 1));
+        player2 = world.create("player", new SpawnData(694, 300).put("playerNum", 2));
         door = world.create("door", new SpawnData(618, 6));
 
         entities = List.of(
