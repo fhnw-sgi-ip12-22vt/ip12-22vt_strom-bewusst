@@ -28,27 +28,27 @@ public class MainMenu extends FXGLMenu {
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
-        Label title = new Label("Strom Bewusst");
+        Label title = new Label("Leaderboard");
         title.getStyleClass().add("title");
 
         HBox titleHBox = new HBox(title);
-        titleHBox.setPrefWidth(getAppWidth());
+        titleHBox.setTranslateX(750);
         titleHBox.setAlignment(Pos.CENTER);
-        titleHBox.setTranslateY(50);
+        titleHBox.setTranslateY(100);
 
         Button btnPlay = new Button("Play");
         // fireNewGame() clears the Scene and calls initGame(), to spawn all entities.
         btnPlay.setOnAction(e -> fireNewGame());
         btnPlay.getStyleClass().add("main_menu_button");
 
-        Button btnLeaderboard = new Button("Leaderboard");
-        btnLeaderboard.setOnAction(e -> getSceneService().pushSubScene(new LeaderboardSubScene()));
-        btnLeaderboard.getStyleClass().add("main_menu_button");
+       // Button btnLeaderboard = new Button("Leaderboard");
+       // btnLeaderboard.setOnAction(e -> getSceneService().pushSubScene(new LeaderboardSubScene()));
+       // btnLeaderboard.getStyleClass().add("main_menu_button");
 
-        VBox buttonVBox = new VBox(30, btnPlay, btnLeaderboard);
-        buttonVBox.setPrefWidth(getAppWidth());
-        buttonVBox.setAlignment(Pos.TOP_CENTER);
-        buttonVBox.setTranslateY(300);
+        VBox buttonVBox = new VBox(30, btnPlay);
+        buttonVBox.setTranslateX(870);
+        buttonVBox.setAlignment(Pos.CENTER);
+        buttonVBox.setTranslateY(500);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, buttonVBox);
 
