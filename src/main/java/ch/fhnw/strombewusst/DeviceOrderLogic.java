@@ -22,7 +22,7 @@ public class DeviceOrderLogic {
     private List<DeviceOrderDevice> playerAnswer;
 
     /** The number of devices in a queue. Since there are 2 players with 3 plugs each this is 6 */
-    private static final int QUEUESIZE = 6;
+    public static final int QUEUESIZE = 6;
     private int roundsLeft;
 
     private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
