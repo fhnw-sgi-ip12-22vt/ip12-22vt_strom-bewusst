@@ -11,5 +11,5 @@ Eine Mikrowelle verbraucht ca. 183 kWh pro Jahr.
 Ein Staubsauger verbraucht ca. 78 kWh pro Jahr.
 Ein Laptop verbraucht ca. 88 kWh pro Jahr.
 Ein Staubsauger verbraucht ca. 78 kWh pro Jahr.
-Smartphones und Tablets verbraucht zusammen ca. 6 kWh pro Jahr.
+Smartphones und Tablets verbrauchen zusammen ca. 6 kWh pro Jahr.
 Eine Kaffeemaschine verbraucht ca. 365 kWh pro Jahr.
