@@ -358,7 +358,6 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .view(texture)
-                .scale(1.2, 1.2)
                 .zIndex(90)
                 .build();
     }
