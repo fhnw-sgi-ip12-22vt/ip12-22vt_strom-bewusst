@@ -11,8 +11,8 @@ Hierzu gehören:
 [cols="1,1,1"]
 |===
 |Ziel/Requirement|Architektonischer Ansatz|Details
-|Erlernbarkeit|Das MVC Pattern hilt unseren Code leserlicher zu gestalten zu dem wurde während der erstellung der Software darauf geachtet alles möglich einfach zu halten.| https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/software(sad)/system-architecture-documentation.adoc#user-content-mvc-design-pattern/[MVC Pattern]
-|Funktionale Eignung|FXGL und JavaFX eigenen sich ein Spiel herzustellen. Pi4j braucht es um den Kontroller mit dem Raspberry nutzen zu können.|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/software(sad)/system-architecture-documentation.adoc#user-content-mischung-fxgl-und-javafx/[Libraries]
+|Erlernbarkeit|Das MVC Pattern hilt unseren Code leserlicher zu gestalten zu dem wurde während der erstellung der Software darauf geachtet alles möglich einfach zu halten.|<<section-concepts, MVC Pattern>>
+|Funktionale Eignung|FXGL und JavaFX eigenen sich ein Spiel herzustellen. Pi4j braucht es um den Kontroller mit dem Raspberry nutzen zu können.|<<section-technical-risks, Libraries>>
 |Zuverlässigkeit|Junit, Mockito und manuelle Tests wurden genutzt um die Zuverlässigkeit zu steigern| https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/Testplan.adoc/[Testplan]
 |===
 
