@@ -1,7 +1,7 @@
 package ch.fhnw.strombewusst;
 
 public final class Config {
-    /** If release Mode is enabled, puzzles can be skipped, cutscenes are disabled and the devMenu is enabled. */
+    /** If release Mode is disabled, puzzles can be skipped, cutscenes are disabled and the devMenu is enabled. */
     public static final boolean IS_RELEASE = false;
     /** If demo Mode is enabled, puzzles can be skipped, but cutscenes are still enabled. */
     public static final boolean IS_DEMO = false;
