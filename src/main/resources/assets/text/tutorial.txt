@@ -5,7 +5,7 @@
 
 1.image = player1-large.png
 2.image = player2-large.png
-3.image = teacher.png
+3.image = teacher-large.png
 
 3: Also gut Jungs
 3: Da ihr wieder einmal vergessen habt eure Hausaufgaben zu machen, müsst ihr sie jetzt halt fertig machen

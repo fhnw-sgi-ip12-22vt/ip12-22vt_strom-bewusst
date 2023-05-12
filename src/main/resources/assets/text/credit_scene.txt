@@ -5,7 +5,7 @@
 
 1.image = player1-large.png
 2.image = player2-large.png
-3.image = teacher.png
+3.image = teacher-large.png
 
 3: Hallo Jungs
 3: Es tut mir leid das ich euch ausversehen eingesperrt habe
