@@ -36,8 +36,8 @@ public class TeamNameTest {
     @BeforeAll
     static void setUpDSLMock() {
         FXGLAssetLoaderService assetLoaderService = mock(FXGLAssetLoaderService.class);
-        when(assetLoaderService.loadText("team_names_first.txt")).thenReturn(firstNameStrings);
-        when(assetLoaderService.loadText("team_names_second.txt")).thenReturn(secondNameStrings);
+        when(assetLoaderService.loadText(Config.TEAM_NAMES_FIRST_LIST_PATH)).thenReturn(firstNameStrings);
+        when(assetLoaderService.loadText(Config.TEAM_NAMES_SECOND_LIST_PATH)).thenReturn(secondNameStrings);
 
         MockedStatic<FXGL> fxgl = Mockito.mockStatic(FXGL.class);
         fxgl.when(FXGL::getAssetLoader).thenReturn(assetLoaderService);

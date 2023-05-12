@@ -35,4 +35,8 @@ public final class Config {
     public static final int TIMER_INITIAL_SECONDS = 60 * 15;
     /** The number of seconds to wait after the last interaction before stopping the game */
     public static final int TIME_OUT_SECONDS = 60 * 1;
+    /** Path of the text file containing the words used as the first part of the team names */
+    public static final String TEAM_NAMES_FIRST_LIST_PATH = "team_names_first.txt";
+    /** Path of the text file containing the words used as the second part of the team names */
+    public static final String TEAM_NAMES_SECOND_LIST_PATH = "team_names_second.txt";
 }
