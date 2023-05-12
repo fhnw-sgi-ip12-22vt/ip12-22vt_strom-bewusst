@@ -1,4 +1,5 @@
 .title {
+    -fx-font-family: "Press Start 2P";
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 60px;
