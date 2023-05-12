@@ -48,6 +48,9 @@
         <maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+        <maven-project-info-reports.version>3.4.2</maven-project-info-reports.version>
+        <maven-site-plugin.version>4.0.0-M6</maven-site-plugin.version>
+        <maven-javadoc.version>3.5.0</maven-javadoc.version>
 
         <!-- Maven Properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -275,6 +278,17 @@
                 </configuration>
             </plugin>
 
+            <!-- Site Plugins -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports.version}</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -334,6 +348,56 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc.version}</version>
+                <configuration>
+                    <doctitle>Strom Bewusst</doctitle>
+                    <bottom>Copyright © 2023</bottom>
+                    <show>protected</show>
+                    <excludePackageNames>ch.fhnw.strombewusst.input.pi4jcomponents</excludePackageNames>
+                    <doclint>none</doclint>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>default</id>
+                        <configuration>
+
+                        </configuration>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <configLocation>checkstyle_config.xml</configLocation>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <profiles>
         <profile>
             <id>jfx-remote-run-kiosk</id>
