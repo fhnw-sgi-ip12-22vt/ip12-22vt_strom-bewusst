@@ -42,4 +42,20 @@ class ScoreTest {
                 / Score.DEVICE_ORDER_PENALTY + 1);
         assertEquals(Score.DEVICE_ORDER_MIN_POINTS, score.getScore());
     }
+
+    @Test
+    void addMinBonus() {
+        score.getScoreProperty().setValue(1000);
+
+        score.addBonusPoints(100, 100);
+        assertEquals(1000, score.getScore());
+    }
+
+    @Test
+    void addMaxBonus() {
+        score.getScoreProperty().setValue(1000);
+
+        score.addBonusPoints(100, 0);
+        assertEquals(1000 + 1000 * Score.MAX_BONUS_MULTIPLICATOR, score.getScore());
+    }
 }
