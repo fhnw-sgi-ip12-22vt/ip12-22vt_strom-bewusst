@@ -17,9 +17,7 @@ import java.util.stream.Collectors;
  * @author Almas Baimagambetov (almaslvl@gmail.com)
  */
 public final class HighScoreService extends EngineService {
-
     private IntegerProperty score = new SimpleIntegerProperty();
-    private int numScoresToKeep = 10;
 
     private ArrayList<HighScoreData> highScores = new ArrayList<>();
 
@@ -62,10 +60,8 @@ public final class HighScoreService extends EngineService {
     }
 
     private void updateScores() {
-        highScores = highScores.stream()
-                .sorted(Comparator.comparingInt(HighScoreData::getScore).reversed())
-                .limit(numScoresToKeep)
-                .collect(Collectors.toCollection(ArrayList::new));
+        highScores = highScores.stream().sorted(Comparator.comparingInt(HighScoreData::getScore).reversed())
+                .limit(Config.LEADERBOARD_ENTRY_COUNT).collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
