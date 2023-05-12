@@ -191,11 +191,11 @@ public class InputHandler {
                 if (e.distanceBBox(player) > 1) {
                     continue;
                 }
-                if (((StromBewusst) FXGL.getApp()).getLevel() == 1 && !quizLogic.quizDone()) {
+                if (FXGL.geti("level") == 1 && !quizLogic.quizDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
                             new QuizSubScene(quizLogic)), Duration.ZERO);
                     return;
-                } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2 && !deviceOrderLogic.isDeviceOrderDone()) {
+                } else if (FXGL.geti("level") == 2 && !deviceOrderLogic.isDeviceOrderDone()) {
                     FXGL.runOnce(() -> FXGL.getSceneService().pushSubScene(
                             new DeviceOrderSubScene(deviceOrderLogic)), Duration.ZERO);
                     return;
@@ -212,17 +212,17 @@ public class InputHandler {
             if (e.distanceBBox(player) > 1) {
                 continue;
             }
-            if (((StromBewusst) FXGL.getApp()).getLevel() == 1 && quizLogic.isDoorOpen()) {
+            if (FXGL.geti("level") == 1 && quizLogic.isDoorOpen()) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
                 return;
-            } else if (((StromBewusst) FXGL.getApp()).getLevel() == 2 && deviceOrderLogic.isDoorOpen()) {
+            } else if (FXGL.geti("level") == 2 && deviceOrderLogic.isDoorOpen()) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);
                 return;
-            } else if (((StromBewusst) FXGL.getApp()).getLevel() == 3) {
+            } else if (FXGL.geti("level") == 3) {
                 FXGL.runOnce(
                         () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
                         Duration.ZERO);

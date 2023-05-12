@@ -58,7 +58,6 @@ public class StromBewusst extends GameApplication {
     private Entity player1;
     private Entity player2;
     private Entity door;
-    private int level = 0;
 
     private Room[] rooms;
 
@@ -81,11 +80,12 @@ public class StromBewusst extends GameApplication {
      * Loads the next level, or ends the game if the current level is the last one.
      */
     public void nextLevel() {
-        level++;
+        FXGL.inc("level", 1);
 
         FXGL.set("player1InfoText", "");
         FXGL.set("player2InfoText", "");
 
+        int level = FXGL.geti("level");
         if (level <= rooms.length) {
             Room room = rooms[level - 1];
 
@@ -113,7 +113,6 @@ public class StromBewusst extends GameApplication {
      * @param teamName the team name to save the score under
      */
     public void saveAndReset(String teamName) {
-        level = 0;
         FXGL.getService(HighScoreService.class).commit(teamName);
         FXGL.getSaveLoadService().saveAndWriteTask(Config.SAVE_FILE_NAME).run();
         FXGL.getGameController().gotoMainMenu();
@@ -173,7 +172,6 @@ public class StromBewusst extends GameApplication {
 
         FXGL.getGameWorld().addEntityFactory(new StromBewusstFactory());
         rooms = new Room[] {new Room1(), new Room2(), new OutsideRoom()};
-        level = 0;
         nextLevel();
     }
 
@@ -310,6 +308,7 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initGameVars(Map<String, Object> vars) {
+        vars.put("level", 0);
         vars.put("score", new Score());
         vars.put("timer", new Timer(Config.TIMER_INITIAL_SECONDS));
         vars.put("player1InfoText", "");
@@ -395,9 +394,5 @@ public class StromBewusst extends GameApplication {
             FXGL.getNotificationService().setBackgroundColor(Color.CRIMSON);
             FXGL.getNotificationService().pushNotification("FATAL ERROR! Application restarted", icon);
         });
-    }
-
-    public int getLevel() {
-        return level;
     }
 }
