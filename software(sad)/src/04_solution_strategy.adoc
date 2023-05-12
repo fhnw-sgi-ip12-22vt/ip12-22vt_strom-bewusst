@@ -7,11 +7,21 @@
 Kurzer Überblick über die grundlegenden Entscheidungen und Lösungsansätze, die Entwurf und Implementierung des Systems prägen.
 Hierzu gehören:
 
+
+[cols="1,1,1"]
+|===
+|Ziel/Requirement|Architektonischer Ansatz|Details
+|Erlernbarkeit|Das MVC Pattern hilt unseren Code leserlicher zu gestalten zu dem wurde während der erstellung der Software darauf geachtet alles möglich einfach zu halten.| https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/software(sad)/system-architecture-documentation.adoc#user-content-mvc-design-pattern/[MVC Pattern]
+|Funktionale Eignung|FXGL und JavaFX eigenen sich ein Spiel herzustellen. Pi4j braucht es um den Kontroller mit dem Raspberry nutzen zu können.|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/software(sad)/system-architecture-documentation.adoc#user-content-mischung-fxgl-und-javafx/[Libraries]
+|Zuverlässigkeit|Junit, Mockito und manuelle Tests wurden genutzt um die Zuverlässigkeit zu steigern| https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/Testplan.adoc/[Testplan]
+|===
+
+////
 * Technologieentscheidungen
 * Entscheidungen über die Top-Level-Zerlegung des Systems, beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder Architekturmuster,
 * Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen sowie
 * relevante organisatorische Entscheidungen, beispielsweise für bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben an andere Stakeholder.
-
+////
 .Motivation
 Diese wichtigen Entscheidungen bilden wesentliche „Eckpfeiler“ der Architektur.
 Von ihnen hängen viele weitere Entscheidungen oder Implementierungsregeln ab.
