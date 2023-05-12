@@ -343,19 +343,27 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("teacher")
     public Entity newTeacher(SpawnData data) {
+        AnimationChannel animation = new AnimationChannel(
+                image("teacher.png"),
+                2, 50, 72,
+                Duration.seconds(0.6), 0, 1
+        );
+        AnimatedTexture texture = new AnimatedTexture(animation);
+        texture.loopAnimationChannel(animation);
+        texture.loop();
+
         return entityBuilder(data)
                 .type(EntityType.DOOR)
-                .bbox(new HitBox(BoundingShape.box(60, 20)))
+                .bbox(new HitBox(BoundingShape.box(50, 20)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
-                .with(new DoorComponent(data.get("state")))
-                .with(new TeacherComponent())
+                .view(texture)
+                .scale(1.2, 1.2)
                 .zIndex(90)
                 .build();
     }
     @Spawns("outside")
     public Entity newOutside(SpawnData data) {
-
         PhysicsComponent physics = new PhysicsComponent();
         String texture = data.get("textureName");
         physics.setBodyType(BodyType.STATIC);
