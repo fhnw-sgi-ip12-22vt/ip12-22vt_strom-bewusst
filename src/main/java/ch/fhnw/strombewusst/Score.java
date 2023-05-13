@@ -9,8 +9,8 @@ public class Score {
     public static final int QUIZ_MAX_POINTS = 300;
     public static final int QUIZ_PENALTY = 100;
     public static final int DEVICE_ORDER_MIN_POINTS = 1000;
-    public static final int DEVICE_ORDER_MAX_POINTS = 2500;
-    public static final int DEVICE_ORDER_PENALTY = 1000;
+    public static final int DEVICE_ORDER_MAX_POINTS = 2000;
+    public static final int DEVICE_ORDER_PENALTY = 200;
     public static final float MIN_BONUS_MULTIPLICATOR = 0f; // 0f -> no bonus points
     public static final float MAX_BONUS_MULTIPLICATOR = 1f; // 1f -> double the points
     private final IntegerProperty score = new SimpleIntegerProperty(0);
