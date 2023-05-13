@@ -305,12 +305,12 @@ public class QuizSubScene extends SubScene {
     }
 
     private Node[] buildQuiz(QuizQuestion question) {
-        Text questionHBox = buildTextbox(question.question(), BoxType.QUESTION);
-        Text firstHBox = buildTextbox(question.answerOptions()[0], BoxType.REDANSWER);
-        Text secondHBox = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
-        Text thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
+        Text questionText = buildTextbox(question.question(), BoxType.QUESTION);
+        Text firstAnswerText = buildTextbox(question.answerOptions()[0], BoxType.REDANSWER);
+        Text secondAnswerText = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
+        Text thirdAnswerText = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
 
-        getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox);
-        return new Node[] {questionHBox, firstHBox, secondHBox, thirdHBox};
+        getContentRoot().getChildren().addAll(questionText, firstAnswerText, secondAnswerText, thirdAnswerText);
+        return new Node[] {questionText, firstAnswerText, secondAnswerText, thirdAnswerText};
     }
 }
