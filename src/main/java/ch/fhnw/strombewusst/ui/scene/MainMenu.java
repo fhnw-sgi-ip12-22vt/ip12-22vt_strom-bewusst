@@ -46,13 +46,18 @@ public class MainMenu extends FXGLMenu {
         titleHBox.setTranslateX(650);
         titleHBox.setTranslateY(100);
 
+        Texture selectButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
         Button btnPlay = new Button("Spiel starten");
-        btnPlay.setFont(FXGL.getAssetLoader().loadFont(FXGL.getSettings().getFontText()).newFont(30));
+        btnPlay.getStyleClass().add("main_menu_button");
+        HBox selectHBox = new HBox(selectButton, btnPlay);
         // fireNewGame() clears the Scene and calls initGame(), to spawn all entities.
         btnPlay.setOnAction(e -> fireNewGame());
-        btnPlay.getStyleClass().add("main_menu_button");
+        selectHBox.setAlignment(Pos.CENTER);
+        selectHBox.setSpacing(20);
+        selectHBox.setTranslateX(600);
+        selectHBox.setTranslateY(500);
 
-        //Leaderboard
+        // Leaderboard
         leaderboardNames = new VBox();
         leaderboardNames.setAlignment(Pos.CENTER_LEFT);
         leaderboardNames.setSpacing(6);
@@ -65,12 +70,7 @@ public class MainMenu extends FXGLMenu {
         leaderboardHBox.setTranslateX(700);
         leaderboardHBox.setTranslateY(200);
 
-        VBox buttonVBox = new VBox(30, btnPlay);
-        buttonVBox.setAlignment(Pos.CENTER);
-        buttonVBox.setTranslateX(600);
-        buttonVBox.setTranslateY(500);
-
-        getContentRoot().getChildren().addAll(bg, titleHBox, buttonVBox, leaderboardHBox);
+        getContentRoot().getChildren().addAll(bg, titleHBox, selectHBox, leaderboardHBox);
 
         getInput().addAction(new UserAction("update team name first") {
             @Override
