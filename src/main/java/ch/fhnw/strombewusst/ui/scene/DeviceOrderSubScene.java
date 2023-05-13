@@ -4,10 +4,13 @@ import ch.fhnw.strombewusst.DeviceOrderDevice;
 import ch.fhnw.strombewusst.DeviceOrderLogic;
 import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.ui.UIHelper;
+import com.almasb.fxgl.animation.AnimationBuilder;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
+import javafx.animation.Interpolator;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
@@ -16,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -74,15 +78,15 @@ public class DeviceOrderSubScene extends SubScene {
         }
     }
 
-    private Map<ImageType, Texture> currentTextures = new HashMap<ImageType, Texture>();
-    private Map<ImageType, DeviceOrderDevice> currentDevices = new HashMap<ImageType, DeviceOrderDevice>();
+    private final Map<ImageType, Texture> currentTextures = new HashMap<>();
+    private final Map<ImageType, DeviceOrderDevice> currentDevices = new HashMap<>();
 
     private int falseAnswer = 0;
     private final DeviceOrderLogic deviceOrderLogic;
 
     private final ImageType[][] plugMap = {
-        {ImageType.PLAYERONERED, ImageType.PLAYERONEYELLOW, ImageType.PLAYERONEBLUE},
-        {ImageType.PLAYERTWORED, ImageType.PLAYERTWOYELLOW, ImageType.PLAYERTWOBLUE}
+            {ImageType.PLAYERONERED, ImageType.PLAYERONEYELLOW, ImageType.PLAYERONEBLUE},
+            {ImageType.PLAYERTWORED, ImageType.PLAYERTWOYELLOW, ImageType.PLAYERTWOBLUE}
     };
 
     private final ImageType[] queue = {
@@ -155,11 +159,6 @@ public class DeviceOrderSubScene extends SubScene {
         getContentRoot().getChildren().addAll(texture);
         currentTextures.put(type, texture);
         currentDevices.put(type, device);
-    }
-
-    void deleteImage(ImageType type) {
-        getContentRoot().getChildren().removeAll(currentTextures.get(type));
-        currentDevices.put(type, null);
     }
 
     void inputs() {
@@ -277,6 +276,7 @@ public class DeviceOrderSubScene extends SubScene {
 
     /**
      * Adds the provided device to the queue.
+     *
      * @param player The player selecting a device. 1 or 2
      * @param colour The colour selected (0=Red, 1=Yellow, 2=Blue)
      */
@@ -287,8 +287,17 @@ public class DeviceOrderSubScene extends SubScene {
 
         if (currentDevices.get(type) != null) {
             DeviceOrderDevice device = currentDevices.get(type);
-            deleteImage(type);
-            setImage(device, queue[index]);
+
+            new AnimationBuilder()
+                    .duration(Duration.seconds(0.5))
+                    .interpolator(Interpolator.EASE_BOTH)
+                    .translate(currentTextures.get(type))
+                    .to(new Point2D(queue[index].x, queue[index].y))
+                    .buildAndPlay(this);
+
+            currentDevices.put(type, null);
+
+            //setImage(device, queue[index]);
             deviceOrderLogic.addAnswer(device);
         }
     }
