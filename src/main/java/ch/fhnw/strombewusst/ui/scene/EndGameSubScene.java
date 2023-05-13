@@ -3,7 +3,6 @@ package ch.fhnw.strombewusst.ui.scene;
 import ch.fhnw.strombewusst.Config;
 import ch.fhnw.strombewusst.InputHandler;
 import ch.fhnw.strombewusst.Score;
-import ch.fhnw.strombewusst.StromBewusst;
 import ch.fhnw.strombewusst.TeamName;
 import ch.fhnw.strombewusst.Timer;
 import com.almasb.fxgl.dsl.FXGL;
