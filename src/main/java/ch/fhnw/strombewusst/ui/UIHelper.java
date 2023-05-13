@@ -6,14 +6,17 @@ import ch.fhnw.strombewusst.Timer;
 import com.almasb.fxgl.cutscene.Cutscene;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.texture.Texture;
+import com.almasb.fxgl.ui.FontType;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -115,9 +118,8 @@ public class UIHelper {
      * @return the generated HBox
      */
     public static HBox createTimerLabel(Timer timer, int x, int y) {
-        Text timerLabel = new Text();
+        Text timerLabel = FXGL.getUIFactoryService().newText("", Color.BLACK, 26);
         timerLabel.textProperty().bind(timer.getTimerProperty());
-        timerLabel.setStyle("-fx-font-size: 44px;");
 
         HBox timerHBox = new HBox(timerLabel);
         timerHBox.setTranslateX(x);
@@ -135,14 +137,38 @@ public class UIHelper {
      * @return the generated HBox
      */
     public static HBox createScoreLabel(Score score, int x, int y) {
-        Text scoreLabel = new Text();
-        scoreLabel.textProperty().bind(score.getScoreProperty().asString());
-        scoreLabel.setStyle("-fx-font-size: 44px;");
+        Text scoreLabel = FXGL.getUIFactoryService().newText("", Color.BLACK, 26);
+        scoreLabel.textProperty().bind(score.getScoreProperty().asString("Score: %d"));
 
         HBox scoreHBox = new HBox(scoreLabel);
         scoreHBox.setTranslateX(x);
         scoreHBox.setTranslateY(y);
 
         return scoreHBox;
+    }
+
+    /**
+     * Creates a Label with the UI font using font size 20.
+     * @param text the text to display inside the label
+     * @param position the position to translate the label to
+     * @return the created label
+     */
+    public static Text getUITitle(String text, Point2D position) {
+        return getUITitle(text, position, 20);
+    }
+
+    /**
+     * Creates a Label with the UI font.
+     * @param text the text to display inside the label
+     * @param position the position to translate the label to
+     * @param size the text size
+     * @return the created label
+     */
+    public static Text getUITitle(String text, Point2D position, double size) {
+        Text title = FXGL.getUIFactoryService().newText(text, Color.BLACK, FontType.UI, size);
+        title.setTranslateX(position.getX());
+        title.setTranslateY(position.getY());
+
+        return title;
     }
 }

@@ -11,6 +11,7 @@ import com.almasb.fxgl.texture.Texture;
 import com.almasb.fxgl.ui.FontType;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -29,11 +30,14 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
  */
 public class QuizSubScene extends SubScene {
     enum BoxType {
-        QUESTION(70, 40, 700),
-        REDANSWER(300, 300, 550),
-        YELLOWANSWER(300, 450, 550),
-        BLUEANSWER(300, 600, 550);
-        final int x, y, width;
+        QUESTION(90, 70, 670),
+        REDANSWER(310, 320, 500),
+        YELLOWANSWER(310, 470, 500),
+        BLUEANSWER(310, 620, 500);
+
+        final int x;
+        final int y;
+        final int width;
 
         BoxType(int x, int y, int width) {
             this.x = x;
@@ -51,7 +55,7 @@ public class QuizSubScene extends SubScene {
     private final int plugP2Y = 590;
 
     private int falseAnswerCount = 0;
-    private HBox[] currentQuiz;
+    private Node[] currentQuiz;
     private Texture textureAnswerP1;
     private Texture textureAnswerP2;
     private final QuizLogic quizLogic;
@@ -67,45 +71,35 @@ public class QuizSubScene extends SubScene {
         bg.setFitHeight(getAppHeight());
 
         Texture selectButton = getAssetLoader().loadTexture("red-button-icon-single.png", 48, 48);
-        Text selectText = new Text("Antworten prüfen");
-        selectText.getStyleClass().add("message");
+        Text selectText = FXGL.getUIFactoryService().newText("Antworten prüfen", Color.BLACK, 14);
         HBox selectHBox = new HBox(selectButton, selectText);
         selectHBox.setAlignment(Pos.CENTER_LEFT);
-        selectHBox.setSpacing(20);
+        selectHBox.setSpacing(15);
 
         Texture backButton = getAssetLoader().loadTexture("blue-button-icon-single.png", 48, 48);
-        Text backText = new Text("Zurück");
+        Text backText = FXGL.getUIFactoryService().newText("Zurück", Color.BLACK, 14);
         backText.getStyleClass().add("message");
         HBox backHBox = new HBox(backButton, backText);
         backHBox.setAlignment(Pos.CENTER_LEFT);
-        backHBox.setSpacing(20);
+        backHBox.setSpacing(15);
 
         VBox inputsVBox = new VBox(selectHBox, backHBox);
         inputsVBox.setTranslateX(950);
-        inputsVBox.setTranslateY(410);
+        inputsVBox.setTranslateY(420);
 
-        HBox steering = getTextBox("Steuerung", 950, 380);
-        HBox response = getTextBox("Rückmeldung", 950, 210);
-        HBox answerOne = getTextBox("Antwort 1", 955, 555);
-        HBox answerTwo = getTextBox("Antwort 2", 1135, 555);
+        Text responseTitle = UIHelper.getUITitle("Rückmeldung", new Point2D(950, 230));
+        Text controlsTitle = UIHelper.getUITitle("Steuerung", new Point2D(950, 405));
+        Text answerOneTitle = UIHelper.getUITitle("Spieler 1", new Point2D(950, 585), 13);
+        Text answerTwoTitle = UIHelper.getUITitle("Spieler 2", new Point2D(1130, 585), 13);
 
-        HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 30);
-        HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 90);
+        HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 50);
+        HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 115);
 
-        getContentRoot().getChildren().addAll(bg, inputsVBox, steering, response, answerOne, answerTwo,
-                scoreLabel, timerLabel);
+        getContentRoot().getChildren().addAll(bg, inputsVBox, controlsTitle, responseTitle, answerOneTitle,
+                answerTwoTitle, scoreLabel, timerLabel);
 
         currentQuiz = buildQuiz(quizLogic.getQuestion());
         inputs();
-    }
-
-    HBox getTextBox(String txt, int x, int y) {
-        Text text = new Text(txt);
-        text.getStyleClass().add("small_title");
-        HBox textHBox = new HBox(text);
-        textHBox.setTranslateX(x);
-        textHBox.setTranslateY(y);
-        return textHBox;
     }
 
     void setImagePlug(String image, int player) {
@@ -210,15 +204,15 @@ public class QuizSubScene extends SubScene {
             int score = FXGL.<Score>geto("score").increaseScoreByQuiz(falseAnswerCount);
 
             Text scoreLabel = FXGL.getUIFactoryService()
-                    .newText("+ " + score, Color.LIMEGREEN, FontType.UI, 16);
+                    .newText("+ " + score, Color.LIMEGREEN, FontType.UI, 22);
 
             getContentRoot().getChildren().add(scoreLabel);
 
             FXGL.animationBuilder()
                     .duration(Duration.seconds(1))
                     .translate(scoreLabel)
-                    .from(new Point2D(950, 80))
-                    .to(new Point2D(950, 5))
+                    .from(new Point2D(1100, 80))
+                    .to(new Point2D(1100, 5))
                     .buildAndPlay(this);
 
             FXGL.animationBuilder()
@@ -282,15 +276,12 @@ public class QuizSubScene extends SubScene {
         }
     }
 
-    private HBox buildTextbox(String text, BoxType type) {
-        Text box = new Text(text);
-        box.setWrappingWidth(type.width);
-        box.getStyleClass().add("small_title");
-        HBox hBox = new HBox(box);
-        hBox.setTranslateX(type.x);
-        hBox.setTranslateY(type.y);
+    private Text buildTextbox(String text, BoxType type) {
+        Text label = UIHelper.getUITitle(text, new Point2D(type.x, type.y), 16);
+        label.setWrappingWidth(type.width);
+        label.setLineSpacing(8);
 
-        return hBox;
+        return label;
     }
 
     private void clearQuiz() {
@@ -313,13 +304,13 @@ public class QuizSubScene extends SubScene {
         }
     }
 
-    private HBox[] buildQuiz(QuizQuestion question) {
-        HBox questionHBox = buildTextbox(question.question(), BoxType.QUESTION);
-        HBox firstHBox = buildTextbox(question.answerOptions()[0], BoxType.REDANSWER);
-        HBox secondHBox = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
-        HBox thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
+    private Node[] buildQuiz(QuizQuestion question) {
+        Text questionHBox = buildTextbox(question.question(), BoxType.QUESTION);
+        Text firstHBox = buildTextbox(question.answerOptions()[0], BoxType.REDANSWER);
+        Text secondHBox = buildTextbox(question.answerOptions()[1], BoxType.YELLOWANSWER);
+        Text thirdHBox = buildTextbox(question.answerOptions()[2], BoxType.BLUEANSWER);
 
         getContentRoot().getChildren().addAll(questionHBox, firstHBox, secondHBox, thirdHBox);
-        return new HBox[] {questionHBox, firstHBox, secondHBox, thirdHBox};
+        return new Node[] {questionHBox, firstHBox, secondHBox, thirdHBox};
     }
 }

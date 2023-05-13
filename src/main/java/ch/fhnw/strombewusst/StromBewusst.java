@@ -328,8 +328,8 @@ public class StromBewusst extends GameApplication {
      */
     @Override
     protected void initUI() {
-        Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 38.0);
-        scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString("%d"));
+        Text scoreText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 24);
+        scoreText.textProperty().bind(FXGL.<Score>geto("score").getScoreProperty().asString());
         HBox scoreHBox = new HBox(scoreText);
         scoreHBox.setPrefWidth(140);
         scoreHBox.setPrefHeight(64);
@@ -337,7 +337,7 @@ public class StromBewusst extends GameApplication {
         FXGL.addUINode(scoreHBox, 755, 21);
         uiNodes.add(scoreHBox);
 
-        Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 24.0);
+        Text timerText = FXGL.getUIFactoryService().newText("", Color.ANTIQUEWHITE, 24);
         timerText.textProperty().bind(FXGL.<Timer>geto("timer").getTimerProperty());
         FXGL.addUINode(timerText, 398, 65);
         uiNodes.add(timerText);
