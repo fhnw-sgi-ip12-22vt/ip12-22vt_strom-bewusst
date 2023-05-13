@@ -2,6 +2,7 @@
 == Qualitätsanforderungen
 
 [role="arc42help"]
+////
 ****
 .Inhalt
 Dieser Abschnitt enthält möglichst alle Qualitätsanforderungen als Qualitätsbaum mit Szenarien.
@@ -12,15 +13,23 @@ Nehmen Sie hier auch Qualitätsanforderungen geringerer Priorität auf, deren Ni
 .Motivation
 Weil Qualitätsanforderungen die Architekturentscheidungen oft maßgeblich beeinflussen, sollten Sie die für Ihre Stakeholder relevanten Qualitätsanforderungen kennen, möglichst konkret und operationalisiert.
 ****
-
 .Weiterführende Informationen
 
 Siehe https://docs.arc42.org/section-10/[Qualitätsanforderungen] in der online-Dokumentation (auf Englisch!).
-
+////
 === Qualitätsbaum
 
 [role="arc42help"]
 ****
+[col="1,1,1", options="header"]
+|===
+|Qualität|Beschreibung|ID
+|Erlernbar|Das System soll einfach zu verstehen sein und dritten ermöglichen sich zurecht zu finden|Q1
+|Effizient|Das Spiel soll mit dem gegebenen Ressourcen möglichst effizient umgehen|Q2
+|Zuverlässig|Die Software läuft unter gegeben Rahmenbedingungen ohne Probleme|Q3
+|Bedienbarkeit|Das Spiel ist selbsterklärend und kann von End-Usern ohne grosse Vorkenntnisse genutzt werden|Q4
+|===
+////
 .Inhalt
 Der Qualitätsbaum (à la ATAM) mit Qualitätsszenarien an den Blättern.
 
@@ -32,12 +41,22 @@ Die mit Prioritäten versehene Baumstruktur gibt Überblick über die -- oftmals
 * Mindmap mit Qualitätsoberbegriffen als Hauptzweige
 
 In jedem Fall sollten Sie hier Verweise auf die Qualitätsszenarien des folgenden Abschnittes aufnehmen.
+////
 ****
-
 === Qualitätsszenarien
-
 [role="arc42help"]
 ****
+[col="1,1", options="header"]
+|===
+|ID|Beschreibung
+|Q1| Dritte können leicht Änderungen oder Erweiterungen am Code vornehmen
+|Q2| Die Software soll auch mit den limitierten Ressourcen des Raspberry Pi laufen
+|Q3|Software sollte während dem spielen nicht abstürzen
+|Q4|Unsere Zielgruppe muss nicht erklärt werden wie das Spiel zu spielen ist
+|===
+
+
+////
 .Inhalt
 Konkretisierung der (in der Praxis oftmals vagen oder impliziten) Qualitätsanforderungen durch (Qualitäts-)Szenarien.
 
@@ -59,4 +78,5 @@ Insbesondere wenn Sie die Qualität Ihrer Architektur mit Methoden wie ATAM übe
 
 .Form
 Entweder tabellarisch oder als Freitext.
+////
 ****
