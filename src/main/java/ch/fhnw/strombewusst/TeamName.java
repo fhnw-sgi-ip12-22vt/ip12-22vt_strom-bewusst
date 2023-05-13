@@ -48,7 +48,8 @@ public class TeamName {
         nameSecond = nameCandidatesSecond.get(i);
     }
 
-    public String getTeamName() {
+    @Override
+    public String toString() {
         return nameFirst + " " + nameSecond;
     }
 }

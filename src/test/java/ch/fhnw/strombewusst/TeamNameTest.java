@@ -53,15 +53,15 @@ public class TeamNameTest {
 
     @Test
     void ctorName() {
-        assertTrue(firstNameStrings.contains(teamName.getTeamName().split(" ")[0]));
-        assertTrue(secondNameStrings.contains(teamName.getTeamName().split(" ")[1]));
+        assertTrue(firstNameStrings.contains(teamName.toString().split(" ")[0]));
+        assertTrue(secondNameStrings.contains(teamName.toString().split(" ")[1]));
     }
 
     @Test
     void updateFirst() {
-        String[] nameSplitBefore = teamName.getTeamName().split(" ");
+        String[] nameSplitBefore = teamName.toString().split(" ");
         teamName.updateFirst();
-        String[] nameSplitAfter = teamName.getTeamName().split(" ");
+        String[] nameSplitAfter = teamName.toString().split(" ");
 
         assertNotEquals(nameSplitBefore[0], nameSplitAfter[0]);
         assertEquals(nameSplitBefore[1], nameSplitAfter[1]);
@@ -69,9 +69,9 @@ public class TeamNameTest {
 
     @Test
     void updateSecond() {
-        String[] nameSplitBefore = teamName.getTeamName().split(" ");
+        String[] nameSplitBefore = teamName.toString().split(" ");
         teamName.updateSecond();
-        String[] nameSplitAfter = teamName.getTeamName().split(" ");
+        String[] nameSplitAfter = teamName.toString().split(" ");
 
         assertEquals(nameSplitBefore[0], nameSplitAfter[0]);
         assertNotEquals(nameSplitBefore[1], nameSplitAfter[1]);

@@ -1,6 +1,7 @@
 package ch.fhnw.strombewusst.ui.scene;
 
 import ch.fhnw.strombewusst.Config;
+import ch.fhnw.strombewusst.InputHandler;
 import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.StromBewusst;
 import ch.fhnw.strombewusst.TeamName;
@@ -11,7 +12,6 @@ import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
@@ -21,7 +21,6 @@ import javafx.scene.layout.VBox;
  * Defines the layout of our end game sub-scene.
  */
 public class EndGameSubScene extends SubScene {
-    private final Button btnEnd;
     private final TeamName teamName = new TeamName();
     private final Label teamNameLabel;
 
@@ -76,17 +75,7 @@ public class EndGameSubScene extends SubScene {
         inputsVBox.setAlignment(Pos.CENTER);
         inputsVBox.setTranslateY(420);
 
-        btnEnd = new Button("Back");
-        btnEnd.getStyleClass().add("main_menu_button");
-        btnEnd.setStyle("-fx-text-fill: black;");
-        btnEnd.setOnAction(e -> ((StromBewusst) FXGL.getApp()).saveAndReset(teamName.getTeamName()));
-
-        HBox endHBox = new HBox(btnEnd);
-        endHBox.setPrefWidth(Config.WIDTH);
-        endHBox.setAlignment(Pos.CENTER);
-        endHBox.setTranslateY(Config.HEIGHT - 140);
-
-        getContentRoot().getChildren().addAll(bg, titleVBox, inputsVBox, endHBox);
+        getContentRoot().getChildren().addAll(bg, titleVBox, inputsVBox);
 
         getInput().addAction(new UserAction("update team name first") {
             @Override
@@ -102,20 +91,19 @@ public class EndGameSubScene extends SubScene {
                 updateTeamNameLabel();
             }
         }, KeyCode.U);
+        getInput().addAction(new UserAction("end game") {
+            @Override
+            protected void onActionBegin() {
+                InputHandler.handleSelect(null);
+            }
+        }, KeyCode.ESCAPE);
     }
 
     /**
      * Updates the username label with a new randomly generated username.
      */
     public void updateTeamNameLabel() {
-        teamNameLabel.setText("Teamname: " + teamName.getTeamName());
-    }
-
-    @Override
-    public void onUpdate(double tpf) {
-        if (!(btnEnd.isFocused())) {
-            btnEnd.requestFocus();
-        }
+        teamNameLabel.setText("Teamname: " + teamName.toString());
     }
 
     public TeamName getTeamName() {

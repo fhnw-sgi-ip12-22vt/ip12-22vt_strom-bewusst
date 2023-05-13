@@ -159,9 +159,11 @@ public class InputHandler {
     public static void handleSelect(Entity player) {
         logInteraction();
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
-        if (currentScene instanceof MainMenu
-                || currentScene instanceof EndGameSubScene) {
+        if (currentScene instanceof MainMenu) {
             UIHelper.confirmSelectedNode();
+            return;
+        } else if (currentScene instanceof EndGameSubScene) {
+            ((StromBewusst) FXGL.getApp()).saveAndReset(((EndGameSubScene) currentScene).getTeamName().toString());
             return;
         } else if (currentScene instanceof QuizSubScene) {
             Platform.runLater(() -> ((QuizSubScene) currentScene).checkAnswers());
