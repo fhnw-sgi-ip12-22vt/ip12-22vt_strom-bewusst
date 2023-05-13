@@ -106,6 +106,10 @@ public class UIHelper {
             // remove the KeyView Node and add the new texture instead
             pane.getChildren().remove(4);
             pane.getChildren().add(backButton);
+
+            Text textRPG = (Text) pane.getChildren().get(3);
+            textRPG.setFont(FXGL.getUIFactoryService().newFont(FontType.TEXT, 14));
+            textRPG.setLineSpacing(6);
         }, Duration.ZERO);
     }
 
