@@ -22,7 +22,7 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 
 
 /**
- * This class defines our entities. The methods in this class get called by FXGL when using FXGL.spawn()
+ * Defines our entities. The methods in this class get called by FXGL when using FXGL.spawn()
  */
 public class StromBewusstFactory implements EntityFactory {
     @Spawns("emptyRoom")

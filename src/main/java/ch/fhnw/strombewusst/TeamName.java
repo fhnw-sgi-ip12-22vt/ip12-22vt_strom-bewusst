@@ -5,6 +5,9 @@ import com.almasb.fxgl.dsl.FXGL;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Implements the logic behind the team name generation used at the end of the game.
+ */
 public class TeamName {
     private final List<String> nameCandidatesFirst = FXGL.getAssetLoader()
             .loadText(Config.TEAM_NAMES_FIRST_LIST_PATH);

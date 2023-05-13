@@ -11,6 +11,9 @@ import com.almasb.fxgl.entity.level.Level;
 
 import java.util.List;
 
+/**
+ * Defines the entities and cutscene of room 1.
+ */
 public class Room1 implements Room {
     private final Entity player1;
     private final Entity player2;

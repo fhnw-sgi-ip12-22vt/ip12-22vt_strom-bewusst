@@ -13,6 +13,9 @@ import com.almasb.fxgl.entity.level.Level;
 
 import java.util.List;
 
+/**
+ * Defines the entities and cutscene of the last room (outside the school).
+ */
 public class OutsideRoom implements Room {
     private final Entity player1;
     private final Entity player2;

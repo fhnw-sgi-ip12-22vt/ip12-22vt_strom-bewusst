@@ -17,6 +17,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Defines the layout of our end game sub-scene.
+ */
 public class EndGameSubScene extends SubScene {
     private final Button btnEnd;
     private final TeamName teamName = new TeamName();

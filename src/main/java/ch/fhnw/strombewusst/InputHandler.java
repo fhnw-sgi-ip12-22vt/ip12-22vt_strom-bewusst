@@ -3,7 +3,6 @@ package ch.fhnw.strombewusst;
 import ch.fhnw.strombewusst.components.PlayerComponent;
 import ch.fhnw.strombewusst.ui.scene.DeviceOrderSubScene;
 import ch.fhnw.strombewusst.ui.scene.EndGameSubScene;
-import ch.fhnw.strombewusst.ui.scene.LeaderboardSubScene;
 import ch.fhnw.strombewusst.ui.scene.MainMenu;
 import ch.fhnw.strombewusst.ui.UIHelper;
 import ch.fhnw.strombewusst.ui.scene.QuizSubScene;
@@ -17,7 +16,9 @@ import javafx.util.Duration;
 
 import java.util.List;
 
-
+/**
+ * Handles the inputs depending on the current game state.
+ */
 public class InputHandler {
     /**
      * Resets the inactivity timer
@@ -159,7 +160,6 @@ public class InputHandler {
         logInteraction();
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof MainMenu
-                || currentScene instanceof LeaderboardSubScene
                 || currentScene instanceof EndGameSubScene) {
             UIHelper.confirmSelectedNode();
             return;

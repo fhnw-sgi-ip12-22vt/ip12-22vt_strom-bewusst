@@ -7,6 +7,9 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 
+/**
+ * Implements the logic of collisions between a player and a door
+ */
 public class PlayerDoorHandler extends CollisionHandler {
     public PlayerDoorHandler() {
         super(EntityType.PLAYER, EntityType.DOOR);

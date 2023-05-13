@@ -22,6 +22,9 @@ import javafx.util.Duration;
 
 import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
+/**
+ * Helper class containing methods useful for building and interacting with the user interface.
+ */
 public class UIHelper {
     /**
      * Focuses the previous node, by simulating an Arrow-Up KeyEvent.

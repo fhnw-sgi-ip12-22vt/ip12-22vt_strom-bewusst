@@ -10,6 +10,9 @@ import com.almasb.fxgl.physics.CollisionHandler;
 
 import java.util.List;
 
+/**
+ * Implements the logic of collisions between players and desks.
+ */
 public class PlayerDeskHandler extends CollisionHandler {
     private final List<String> infoBoxes = FXGL.getAssetLoader().loadText(Config.ROOM_1_TEXT_PATH);
 

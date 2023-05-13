@@ -10,6 +10,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 
+/**
+ * Implements the game timer that counts backward from x to 0.
+ * Also implements the inactivity timeout.
+ */
 public class Timer {
     private final StringProperty timer;
     private final IntegerProperty secondsRemaining;

@@ -10,6 +10,9 @@ import com.almasb.fxgl.physics.CollisionHandler;
 
 import java.util.List;
 
+/**
+ * Implements the logic of collisions between players and devices.
+ */
 public class PlayerDeviceHandler extends CollisionHandler {
 
     private final List<String> infoBoxes = FXGL.getAssetLoader().loadText(Config.ROOM_2_TEXT_PATH);

@@ -4,6 +4,9 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 
+/**
+ * Implements the score logic
+ */
 public class Score {
     public static final int QUIZ_MIN_POINTS = 100;
     public static final int QUIZ_MAX_POINTS = 300;

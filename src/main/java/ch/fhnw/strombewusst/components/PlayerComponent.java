@@ -11,7 +11,7 @@ import javafx.util.Duration;
 import static com.almasb.fxgl.dsl.FXGL.image;
 
 /**
- * This class handles the behaviour of player entities. This includes movement and animation.
+ * Implements the behaviour of player entities. This includes movement and animation.
  */
 public class PlayerComponent extends Component {
     private static final int PLAYER_SPEED = 300;

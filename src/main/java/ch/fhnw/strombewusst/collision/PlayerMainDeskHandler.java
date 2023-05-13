@@ -7,6 +7,9 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 
+/**
+ * Implements the logic of collisions between a player and the main desk.
+ */
 public class PlayerMainDeskHandler extends CollisionHandler {
     public PlayerMainDeskHandler() {
         super(EntityType.PLAYER, EntityType.MAINDESK);

@@ -5,6 +5,9 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsComponent;
 
+/**
+ * Implements the logic of collisions between players.
+ */
 public class PlayerPlayerHandler extends CollisionHandler {
     public PlayerPlayerHandler() {
         super(EntityType.PLAYER, EntityType.PLAYER);

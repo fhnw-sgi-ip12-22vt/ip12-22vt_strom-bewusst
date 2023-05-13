@@ -3,6 +3,9 @@ package ch.fhnw.strombewusst.rooms;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.level.Level;
 
+/**
+ * Defines the functions that need to be implemented by all rooms.
+ */
 public interface Room {
     /**
      * Returns the player 1 entity.

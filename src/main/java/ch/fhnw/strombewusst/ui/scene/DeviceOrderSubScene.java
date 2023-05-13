@@ -37,8 +37,8 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 
 /**
- * This class defines the layout of our device sub-scene. It gets rendered on top of the main menu when the
- * player gets to the main desk in the room button 1 is pressed.
+ * Defines the layout of our device order puzzle sub-scene. It gets rendered on top of the main menu when the player
+ * gets to the main desk in the room button 1 is pressed.
  */
 public class DeviceOrderSubScene extends SubScene {
     enum BoxType {

@@ -9,6 +9,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implements the logic of the device order logic puzzle.
+ */
 public class DeviceOrderLogic {
     /** The list of all devices as defined in devices.json */
     private List<DeviceOrderDevice> allDevices;

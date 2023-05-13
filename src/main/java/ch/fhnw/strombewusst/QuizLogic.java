@@ -10,6 +10,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Implements the logic of the device order logic puzzle.
+ */
 public class QuizLogic {
     private int answerP1;
     private int answerP2;

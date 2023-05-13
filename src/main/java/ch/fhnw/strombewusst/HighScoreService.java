@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * High Score Service class. Originally written for the Geometry Wars Example Game.
+ * High Score Service class. Originally written for the Geometry Wars Example Game, adapted for this game.
  *
  * @author Almas Baimagambetov (almaslvl@gmail.com)
  */

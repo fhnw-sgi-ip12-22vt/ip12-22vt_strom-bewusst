@@ -19,6 +19,9 @@ import com.pi4j.plugin.raspberrypi.platform.RaspberryPiPlatform;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the input from the controllers.
+ */
 public class Controller {
     public static final PiGpio PI_GPIO = PiGpio.newNativeInstance();
     public static final Context PI4J_CONTEXT = Pi4J.newContextBuilder()

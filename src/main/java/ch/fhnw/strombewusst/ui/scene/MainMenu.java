@@ -23,7 +23,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 
 /**
- * This class defines the layout of the main menu.
+ * Defines the layout of the main menu.
  */
 public class MainMenu extends FXGLMenu {
     private final VBox leaderboardNames;

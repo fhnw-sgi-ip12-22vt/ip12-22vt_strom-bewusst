@@ -25,8 +25,8 @@ import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
 import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 /**
- * This class defines the layout of our puzzle sub-scene. It gets rendered on top of the main menu when the
- * player gets to the main desk in the room button 1 is pressed.
+ * Defines the layout of the quiz puzzle sub-scene. It gets rendered on top of the main menu when the player gets to the
+ * main desk in the room button 1 is pressed.
  */
 public class QuizSubScene extends SubScene {
     enum BoxType {
