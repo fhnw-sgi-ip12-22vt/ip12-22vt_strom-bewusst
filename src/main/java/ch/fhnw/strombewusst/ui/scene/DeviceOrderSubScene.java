@@ -9,6 +9,7 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
+import com.almasb.fxgl.ui.FontType;
 import javafx.animation.Interpolator;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
@@ -130,11 +131,17 @@ public class DeviceOrderSubScene extends SubScene {
         HBox playerTwo = getTextBox("Player 2", BoxType.PLAYERTWO, Color.BLACK, FontWeight.BOLD);
         HBox answerQueue = getTextBox("Eingabe", BoxType.QUEUEINPUT, Color.BLACK, FontWeight.BOLD);
 
-        HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), BoxType.SCORETABLE.x, BoxType.SCORETABLE.y);
-        HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 90);
+        HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 50);
+        HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 115);
+
+        popUp = new HBox();
+        popUp.setPrefWidth(320);
+        popUp.setAlignment(Pos.CENTER);
+        popUp.setTranslateX(950);
+        popUp.setTranslateY(270);
 
         getContentRoot().getChildren().addAll(bg, inputsVBox, response, playerOne, playerTwo, answerQueue,
-                scoreLabel, timerLabel);
+                scoreLabel, timerLabel, popUp);
 
         buildDeviceOrder();
         inputs();
@@ -241,6 +248,7 @@ public class DeviceOrderSubScene extends SubScene {
      */
     public void checkAnswers() {
         cleanPopUp();
+
         boolean[] solution = deviceOrderLogic.compareAnswerSolution();
         Set<DeviceOrderDevice> falseDevice = new HashSet<>();
         String msg = "";
@@ -253,23 +261,56 @@ public class DeviceOrderSubScene extends SubScene {
 
         if (falseDevice.isEmpty()) {
             DeviceOrderLogic logic = deviceOrderLogic;
-            FXGL.<Score>geto("score").increaseScoreByDeviceOrder(falseAnswer);
 
-            msg = "RICHTIG";
-            popUp = getTextBox(msg, BoxType.POPUP, Color.GREEN, FontWeight.SEMI_BOLD);
-            getContentRoot().getChildren().addAll(popUp);
+            int score = FXGL.<Score>geto("score").increaseScoreByDeviceOrder(falseAnswer);
+
+            Text scoreLabel = FXGL.getUIFactoryService()
+                    .newText("+ " + score, Color.LIMEGREEN, FontType.UI, 22);
+
+            getContentRoot().getChildren().add(scoreLabel);
+
+            FXGL.animationBuilder()
+                    .duration(Duration.seconds(1))
+                    .translate(scoreLabel)
+                    .from(new Point2D(1100, 80))
+                    .to(new Point2D(1100, 5))
+                    .buildAndPlay(this);
+
+            FXGL.animationBuilder()
+                    .duration(Duration.seconds(1))
+                    .fadeOut(scoreLabel)
+                    .buildAndPlay(this);
+
+            Text text = FXGL.getUIFactoryService().newText("RICHTIG", Color.LIMEGREEN, FontType.UI, 36);
+            popUp.getChildren().add(text);
+
+            FXGL.animationBuilder()
+                    .delay(Duration.seconds(1.5))
+                    .duration(Duration.seconds(1))
+                    .fadeOut(popUp)
+                    .buildAndPlay(this);
+
             logic.setRoundsLeft(logic.getRoundsLeft() - 1);
             nextQueue();
         } else if (falseDevice.stream().anyMatch(Objects::isNull)) {
-            popUp = getTextBox("Nicht alle Geräte sortiert", BoxType.POPUP, Color.RED, FontWeight.SEMI_BOLD);
-            getContentRoot().getChildren().addAll(popUp);
-            falseAnswer++;
+            Text text = FXGL.getUIFactoryService().newText("NICHT KOMPLETT", Color.CRIMSON, FontType.UI, 20);
+            popUp.getChildren().add(text);
+
+            FXGL.animationBuilder()
+                    .delay(Duration.seconds(1.5))
+                    .duration(Duration.seconds(1))
+                    .fadeOut(popUp)
+                    .buildAndPlay(this);
         } else {
             for (DeviceOrderDevice d : falseDevice) {
                 msg += d.device() + "\n";
             }
-            popUp = getTextBox(msg, BoxType.POPUP, Color.RED, FontWeight.SEMI_BOLD);
-            getContentRoot().getChildren().addAll(popUp);
+
+            Text text = FXGL.getUIFactoryService().newText(msg, Color.CRIMSON, FontType.UI, 11);
+            text.setLineSpacing(4);
+            popUp.getChildren().add(text);
+            popUp.opacityProperty().set(1);
+
             falseAnswer++;
         }
     }
@@ -296,8 +337,8 @@ public class DeviceOrderSubScene extends SubScene {
                     .buildAndPlay(this);
 
             currentDevices.put(type, null);
+            currentDevices.put(queue[index], device);
 
-            //setImage(device, queue[index]);
             deviceOrderLogic.addAnswer(device);
         }
     }
@@ -310,10 +351,7 @@ public class DeviceOrderSubScene extends SubScene {
     }
 
     private void cleanPopUp() {
-        if (popUp != null) {
-            getContentRoot().getChildren().removeAll(popUp);
-            popUp = null;
-        }
+        popUp.getChildren().clear();
     }
 
     private void nextQueue() {
