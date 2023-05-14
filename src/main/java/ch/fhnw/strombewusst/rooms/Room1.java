@@ -36,7 +36,7 @@ public class Room1 implements Room {
                         .put("textureName", "room1-with-sidebar.png")),
                 door,
 
-                world.create("main-desk", new SpawnData(264, 75).put("room", "1")),
+                world.create("main-desk", new SpawnData(320, 75).put("room", "1")),
                 world.create("desk", new SpawnData(103, 267).put("deskNum", 0)),
                 world.create("desk", new SpawnData(264, 267).put("deskNum", 1)),
                 world.create("desk", new SpawnData(425, 267).put("deskNum", 2)),
