@@ -44,7 +44,7 @@ public class MainMenu extends FXGLMenu {
         HBox titleHBox = new HBox(title);
         titleHBox.setAlignment(Pos.CENTER);
         titleHBox.setTranslateX(650);
-        titleHBox.setTranslateY(185);
+        titleHBox.setTranslateY(100);
 
         Texture selectButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
         Button btnPlay = new Button("Spiel starten");
@@ -55,20 +55,20 @@ public class MainMenu extends FXGLMenu {
         selectHBox.setAlignment(Pos.CENTER);
         selectHBox.setSpacing(0);
         selectHBox.setTranslateX(700);
-        selectHBox.setTranslateY(500);
+        selectHBox.setTranslateY(525);
 
         // Leaderboard
         leaderboardNames = new VBox();
         leaderboardNames.setAlignment(Pos.CENTER_LEFT);
-        leaderboardNames.setSpacing(20);
+        leaderboardNames.setSpacing(15);
         leaderboardScores = new VBox();
         leaderboardScores.setAlignment(Pos.CENTER_RIGHT);
-        leaderboardScores.setSpacing(20);
+        leaderboardScores.setSpacing(15);
 
         HBox leaderboardHBox = new HBox(100, leaderboardNames, leaderboardScores);
         leaderboardHBox.setAlignment(Pos.CENTER);
         leaderboardHBox.setTranslateX(730);
-        leaderboardHBox.setTranslateY(275);
+        leaderboardHBox.setTranslateY(200);
 
         getContentRoot().getChildren().addAll(bg, titleHBox, selectHBox, leaderboardHBox);
 
