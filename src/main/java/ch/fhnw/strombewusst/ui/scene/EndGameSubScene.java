@@ -9,8 +9,10 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
@@ -56,15 +58,17 @@ public class EndGameSubScene extends SubScene {
         titleVBox.setTranslateY(50);
 
         Texture selectButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 51, 51);
-        Label selectText = new Label("Zurück zum Hauptmenü");
-        selectText.getStyleClass().add("small_title");
+        Button selectText = new Button("Zurück zum Hauptmenü");
+        selectText.getStyleClass().add("main_menu_button");
+        Platform.runLater(selectText::requestFocus);
+        selectText.setOnAction((e) -> InputHandler.handleSelect(null));
         HBox selectHBox = new HBox(selectButton, selectText);
         selectHBox.setAlignment(Pos.CENTER);
         selectHBox.setSpacing(20);
 
         Texture backButton = FXGL.getAssetLoader().loadTexture("blue-button-icon-single.png", 51, 51);
         Label backText = new Label("Teamnamen ändern");
-        backText.getStyleClass().add("small_title");
+        backText.getStyleClass().add("main_menu_button");
         HBox backHBox = new HBox(backButton, backText);
         backHBox.setAlignment(Pos.CENTER);
         backHBox.setSpacing(20);

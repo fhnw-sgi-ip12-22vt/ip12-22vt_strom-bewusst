@@ -163,7 +163,9 @@ public class InputHandler {
             UIHelper.confirmSelectedNode();
             return;
         } else if (currentScene instanceof EndGameSubScene) {
-            ((StromBewusst) FXGL.getApp()).saveAndReset(((EndGameSubScene) currentScene).getTeamName().toString());
+            Platform.runLater(() -> {
+                ((StromBewusst) FXGL.getApp()).saveAndReset(((EndGameSubScene) currentScene).getTeamName().toString());
+            });
             return;
         } else if (currentScene instanceof QuizSubScene) {
             Platform.runLater(() -> ((QuizSubScene) currentScene).checkAnswers());
