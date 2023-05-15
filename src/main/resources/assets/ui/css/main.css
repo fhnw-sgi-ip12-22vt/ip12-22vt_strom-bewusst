@@ -1,5 +1,5 @@
 .title {
-    -fx-font-family: customGameFont;
+    -fx-font-family: "Press Start 2P";
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 60px;
@@ -9,12 +9,14 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 40px;
+    -fx-font-family: "Press Start 2P";
 }
 
 .small_title{
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 23px;
+    -fx-font-family: "Press Start 2P";
 }
 
 .message{
@@ -35,4 +37,5 @@
 
 .bonus {
     -fx-text-fill: gold;
+    -fx-font-family: "Press Start 2P";
 }

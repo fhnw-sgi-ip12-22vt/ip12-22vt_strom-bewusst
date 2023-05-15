@@ -55,7 +55,7 @@ public class EndGameSubScene extends SubScene {
         VBox titleVBox = new VBox(title, scoreHBox, teamNameLabel);
         titleVBox.setPrefWidth(Config.WIDTH);
         titleVBox.setAlignment(Pos.CENTER);
-        titleVBox.setTranslateY(50);
+        titleVBox.setTranslateY(150);
 
         Texture selectButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 51, 51);
         Button selectText = new Button("Zurück zum Hauptmenü");
@@ -76,7 +76,7 @@ public class EndGameSubScene extends SubScene {
         VBox inputsVBox = new VBox(selectHBox, backHBox);
         inputsVBox.setPrefWidth(Config.WIDTH);
         inputsVBox.setAlignment(Pos.CENTER);
-        inputsVBox.setTranslateY(420);
+        inputsVBox.setTranslateY(520);
 
         getContentRoot().getChildren().addAll(bg, titleVBox, inputsVBox);
 
