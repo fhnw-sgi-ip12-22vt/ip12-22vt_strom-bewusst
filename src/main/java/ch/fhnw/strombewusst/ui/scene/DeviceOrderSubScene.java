@@ -41,64 +41,22 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
  * gets to the main desk in the room button 1 is pressed.
  */
 public class DeviceOrderSubScene extends SubScene {
-    enum BoxType {
-        CONTROLS(950, 380, 30),
-        RESPONSE(950, 210, 30),
-        PLAYERONE(65, 25, 30),
-        PLAYERTWO(65, 280, 30),
-        QUEUEINPUT(65, 530, 30),
-        POPUP(950, 240, 15),
-        SCORETABLE(950, 30, 44);
-        final int x, y, width;
-
-        BoxType(int x, int y, int width) {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-        }
-    }
-
-    enum ImageType {
-        PLAYERONERED(140, 90),
-        PLAYERONEYELLOW(425, 90),
-        PLAYERONEBLUE(710, 90),
-        PLAYERTWORED(140, 350),
-        PLAYERTWOYELLOW(425, 350),
-        PLAYERTWOBLUE(710, 350),
-        QUEUEFIRST(70, 590),
-        QUEUESECOND(230, 590),
-        QUEUETHIRD(365, 590),
-        QUEUEFOURTH(500, 590),
-        QUEUEFIFTH(625, 590),
-        QUEUESIXTH(750, 590);
-        final int x, y;
-
-        ImageType(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
     private final Map<ImageType, Texture> currentTextures = new HashMap<>();
     private final Map<ImageType, DeviceOrderDevice> currentDevices = new HashMap<>();
-
-    private int falseAnswer = 0;
     private final DeviceOrderLogic deviceOrderLogic;
-
     private final ImageType[][] plugMap = {
             {ImageType.PLAYERONERED, ImageType.PLAYERONEYELLOW, ImageType.PLAYERONEBLUE},
             {ImageType.PLAYERTWORED, ImageType.PLAYERTWOYELLOW, ImageType.PLAYERTWOBLUE}
     };
-
     private final ImageType[] queue = {
-        ImageType.QUEUEFIRST,
-        ImageType.QUEUESECOND,
-        ImageType.QUEUETHIRD,
-        ImageType.QUEUEFOURTH,
-        ImageType.QUEUEFIFTH,
-        ImageType.QUEUESIXTH
+            ImageType.QUEUEFIRST,
+            ImageType.QUEUESECOND,
+            ImageType.QUEUETHIRD,
+            ImageType.QUEUEFOURTH,
+            ImageType.QUEUEFIFTH,
+            ImageType.QUEUESIXTH
     };
-
+    private int falseAnswer = 0;
     private HBox popUp;
 
     public DeviceOrderSubScene(DeviceOrderLogic deviceOrderLogic) {
@@ -128,8 +86,11 @@ public class DeviceOrderSubScene extends SubScene {
 
         HBox response = getTextBox("Rückmeldung", BoxType.RESPONSE, Color.BLACK, FontWeight.BOLD);
         HBox playerOne = getTextBox("Player 1", BoxType.PLAYERONE, Color.BLACK, FontWeight.BOLD);
+        playerOne.getStyleClass().add("message");
         HBox playerTwo = getTextBox("Player 2", BoxType.PLAYERTWO, Color.BLACK, FontWeight.BOLD);
+        playerTwo.getStyleClass().add("message");
         HBox answerQueue = getTextBox("Eingabe", BoxType.QUEUEINPUT, Color.BLACK, FontWeight.BOLD);
+        answerQueue.getStyleClass().add("message");
 
         HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 50);
         HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 115);
@@ -149,7 +110,7 @@ public class DeviceOrderSubScene extends SubScene {
 
     HBox getTextBox(String txt, BoxType type, Color color, FontWeight font) {
         Text text = new Text(txt);
-        text.setFont(Font.font("Arial", font, type.width));
+        text.setFont(Font.font("Press Start 2P", font, 15));
         text.setFill(color);
         HBox box = new HBox(text);
         box.setTranslateX(type.x);
@@ -380,6 +341,44 @@ public class DeviceOrderSubScene extends SubScene {
             for (int i = 0; i < devices.size(); i++) {
                 setImage(devices.get(i), types.get(i));
             }
+        }
+    }
+
+    enum BoxType {
+        CONTROLS(950, 380, 30),
+        RESPONSE(950, 210, 30),
+        PLAYERONE(65, 35, 30),
+        PLAYERTWO(65, 290, 30),
+        QUEUEINPUT(65, 545, 30),
+        POPUP(950, 240, 15),
+        SCORETABLE(950, 30, 44);
+        final int x, y, width;
+
+        BoxType(int x, int y, int width) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+        }
+    }
+
+    enum ImageType {
+        PLAYERONERED(140, 90),
+        PLAYERONEYELLOW(425, 90),
+        PLAYERONEBLUE(710, 90),
+        PLAYERTWORED(140, 350),
+        PLAYERTWOYELLOW(425, 350),
+        PLAYERTWOBLUE(710, 350),
+        QUEUEFIRST(70, 590),
+        QUEUESECOND(230, 590),
+        QUEUETHIRD(365, 590),
+        QUEUEFOURTH(500, 590),
+        QUEUEFIFTH(625, 590),
+        QUEUESIXTH(750, 590);
+        final int x, y;
+
+        ImageType(int x, int y) {
+            this.x = x;
+            this.y = y;
         }
     }
 }
