@@ -49,12 +49,12 @@ public class DeviceOrderSubScene extends SubScene {
             {ImageType.PLAYERTWORED, ImageType.PLAYERTWOYELLOW, ImageType.PLAYERTWOBLUE}
     };
     private final ImageType[] queue = {
-            ImageType.QUEUEFIRST,
-            ImageType.QUEUESECOND,
-            ImageType.QUEUETHIRD,
-            ImageType.QUEUEFOURTH,
-            ImageType.QUEUEFIFTH,
-            ImageType.QUEUESIXTH
+        ImageType.QUEUEFIRST,
+        ImageType.QUEUESECOND,
+        ImageType.QUEUETHIRD,
+        ImageType.QUEUEFOURTH,
+        ImageType.QUEUEFIFTH,
+        ImageType.QUEUESIXTH
     };
     private int falseAnswer = 0;
     private HBox popUp;
