@@ -56,11 +56,13 @@ Der Titel gibt den Namen Ihres Systems wieder; die drei Spalten sind: Kommunikat
 TODO:
 Keine Schnittstellen zu externen Systemen
 ////
-
+image::buisiness-context.png[Fachlicher Kontext]
 [cols="1,2,2" options="header"]
 |===
 | Kommunikations-beziehung | Input                                                 | Output 
-| Spieler                  | Game-Controls durch Peripherie (Controller mit Stecker, Steuerkreuz, Buttons) | Visueller Output mit dem aktuellen Spielstatus (Score, Rätsel, Spielerbewegung, etc.)
+| Benutzer| Game-Controls durch Peripherie (Controller mit Stecker, Steuerkreuz, Buttons) | Visueller Output mit dem aktuellen Spielstatus (Score, Rätsel, Spielerbewegung, etc.)
+|Administrator| Installiert die Software auf ein System und Konfiguriert die Einstellung / Migriert die Daten falls kein Speicher mehr vorhanden ist| Spiel Strombewusst auf einem neuem System / Freier Speicher für neue Spieler
+|Entwickler| Erweitert den Source Code um weitere Level| Neue Features im Spiel Strombewusst
 |===
 
 === Technischer Kontext
