@@ -103,7 +103,6 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("main-desk")
     public Entity newMainDesk(SpawnData data) {
-        //add texture variable on constructor
         String roomnum = data.get("room");
         return entityBuilder(data)
                 .type(EntityType.MAINDESK)
@@ -246,7 +245,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("lamp")))
                 .view("lamp.png")
-                .zIndex(110)
+                .zIndex(200)
                 .build();
     }
 
@@ -305,10 +304,10 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.DEVICE)
                 .view("laptop.png")
-                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(50, 50)))
+                .bbox(new HitBox(new Point2D(8, 15), BoundingShape.box(60, 50)))
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("laptop")))
-                .zIndex(1)
+                .zIndex(3)
                 .build();
     }
 
@@ -334,7 +333,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .with(new DeviceComponent(data.get("computer")))
                 .scale(1.5, 1.5)
-                .zIndex(2)
+                .zIndex(200)
                 .build();
     }
 
