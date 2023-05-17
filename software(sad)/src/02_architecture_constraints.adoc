@@ -48,3 +48,17 @@ CrowPi OS
 * JUnit 5.9.0 (Test-Framework)
 * Mockito 5.3.1 (Mocking-Framework)
 ****
+
+=== Organisatorische Randbedingung
+****
+[cols="1,1", options="header"]
+|===
+|Randbedingung|Erläuterung
+|Team| Die Teammitglieder von Projekt Strombewusst sind Andrin Martig (1. Semester) Viktor Weilenmann, Marco Worni, Samuel Burkhardt, Daniel Barber, Damjan Mlinar, Nguyen Hoang Viet
+|Team Coach| Im Rahmen des Projektes wurde uns Norbert Seyff als Team Coach zu geteilt
+|Kunden| Unsere Direkten Kunden sind Hannah Sarah Kühne (1. Semester), Katja Pott (2. Semester) und Cédric Merz
+|Auftraggeber| Der Auftraggeber und Hauptsponsor ist Primeo Energie
+|Projekt Rahmen| Dieses Projekt ist Teil des Studierenden Programms der FHNW
+|===
+****
+
