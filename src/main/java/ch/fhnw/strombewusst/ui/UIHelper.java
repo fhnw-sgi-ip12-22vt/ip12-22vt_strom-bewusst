@@ -92,11 +92,16 @@ public class UIHelper {
     /**
      * Starts a cutscene and overrides the Enter KeyView with a button texture.
      * @param cutscene the cutscene to be started
+     * @param unpauseTimerAfter if true the timer will get unpaused after the cutscene ends.
      */
-    public static void showCutsceneWithButton(Cutscene cutscene) {
+    public static void showCutsceneWithButton(Cutscene cutscene, boolean unpauseTimerAfter) {
         FXGL.runOnce(() -> {
             FXGL.<Timer>geto("timer").pause();
-            FXGL.getCutsceneService().startCutscene(cutscene, () -> FXGL.<Timer>geto("timer").unpause());
+            if (unpauseTimerAfter) {
+                FXGL.getCutsceneService().startCutscene(cutscene, () -> FXGL.<Timer>geto("timer").unpause());
+            } else {
+                FXGL.getCutsceneService().startCutscene(cutscene);
+            }
 
             Texture backButton = FXGL.getAssetLoader().loadTexture("red-button-icon-single.png", 68, 68);
             backButton.setTranslateX(Config.WIDTH - backButton.getWidth() - 10);
