@@ -6,7 +6,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
@@ -33,7 +32,6 @@ public class TeamNameTest {
             "Second5"
     );
 
-    @InjectMocks
     private static TeamName teamName;
 
     @BeforeAll
