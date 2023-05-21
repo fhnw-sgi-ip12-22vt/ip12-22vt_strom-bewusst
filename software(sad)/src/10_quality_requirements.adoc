@@ -1,8 +1,7 @@
 [[section-quality-scenarios]]
 == Qualitätsanforderungen
-
-[role="arc42help"]
 ////
+[role="arc42help"]
 ****
 .Inhalt
 Dieser Abschnitt enthält möglichst alle Qualitätsanforderungen als Qualitätsbaum mit Szenarien.
@@ -18,8 +17,6 @@ Weil Qualitätsanforderungen die Architekturentscheidungen oft maßgeblich beein
 Siehe https://docs.arc42.org/section-10/[Qualitätsanforderungen] in der online-Dokumentation (auf Englisch!).
 ////
 === Qualitätsbaum
-
-[role="arc42help"]
 ****
 [col="1,1,1", options="header"]
 |===
@@ -44,7 +41,6 @@ In jedem Fall sollten Sie hier Verweise auf die Qualitätsszenarien des folgende
 ////
 ****
 === Qualitätsszenarien
-[role="arc42help"]
 ****
 [col="1,1", options="header"]
 |===
