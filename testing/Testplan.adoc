@@ -71,6 +71,11 @@ Unit Tests werden kontinuierlich nach jedem git-Push ausgeführt, entsprechend i
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/TeamNameTest.java[TeamNameTest.java]
 |https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
 
+|Software MVP
+|Input Handler Player Movement Handling
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/InputHandlerPlayerMovementTest.java[InputHandlerPlayerMovementTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
 |===
 
 ////
