@@ -56,7 +56,8 @@ Der Titel gibt den Namen Ihres Systems wieder; die drei Spalten sind: Kommunikat
 TODO:
 Keine Schnittstellen zu externen Systemen
 ////
-image::buisiness-context.png[Fachlicher Kontext]
+image::business_context.png[Fachlicher Kontext]
+
 [cols="1,2,2" options="header"]
 |===
 | Kommunikations-beziehung | Input                                                 | Output 
