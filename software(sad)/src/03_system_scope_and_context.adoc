@@ -56,7 +56,7 @@ Der Titel gibt den Namen Ihres Systems wieder; die drei Spalten sind: Kommunikat
 TODO:
 Keine Schnittstellen zu externen Systemen
 ////
-image::business_context.png[Fachlicher Kontext]
+image::03_business_context.png[Fachlicher Kontext]
 
 [cols="1,2,2" options="header"]
 |===
@@ -95,3 +95,4 @@ TODO:
 Schnittstellen zu Controller und Bildschirm. Evtl. LEDs, etc.
 Diagramm falls möglich, sobald wir eine spezifische Idee und feste Hardware haben.
 ////
+image::03_technical_context.png[Technischer Kontext]
