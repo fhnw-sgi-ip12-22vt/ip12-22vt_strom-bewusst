@@ -90,9 +90,8 @@ Beispielsweise UML Deployment-Diagramme mit den Kanälen zu Nachbarsystemen, beg
 **<Mapping fachliche auf technische Schnittstellen>**
 ////
 
-////
-TODO:
-Schnittstellen zu Controller und Bildschirm. Evtl. LEDs, etc.
-Diagramm falls möglich, sobald wir eine spezifische Idee und feste Hardware haben.
-////
 image::03_technical_context.png[Technischer Kontext]
+
+////
+TODO: Beschreibung
+////

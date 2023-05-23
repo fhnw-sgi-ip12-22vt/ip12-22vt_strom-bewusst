@@ -35,6 +35,11 @@ Siehe https://docs.arc42.org/section-5/[Bausteinsicht] in der online-Dokumentati
 
 image::05_blackbox_diagram.png["Hierarchie in der Bausteinsicht"]
 
+////
+TODO: Beschreibung (siehe Vorlage unten)
+////
+
+////
 === Whitebox Gesamtsystem
 
 [role="arc42help"]
@@ -180,3 +185,4 @@ _<Whitebox-Template>_
 ==== Whitebox <_Baustein y.1_>
 
 _<Whitebox-Template>_
+////
