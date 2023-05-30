@@ -28,10 +28,3 @@ Rahmenbedingungen:
     - Die 6 Studenten haben pro Person 360 Arbeitsstunden zur Verfügung, um das Projekt abzuschließen.
     - Diese Stunden müssen auf die verschiedenen Projektphasen und Aufgaben effizient verteilt werden.
 
-
-Spiel:
-- Das Spiel heißt: "Power-Escape". Es handelt sich um ein Escape Spiel, in dem Rätsel gelöst werden müssen, um in den nächsten Raum zu kommen. Die Rätsel sind alle mit dem Thema Strom verbunden.
-
-## Ziel des Projektes:
-
-Das Ziel des Projektes ist es, ein Spiel zu entwickeln, das den 12-16 Jährigen Schülern das Thema Strom näher bringt. Das Spiel soll in der Ausstellung von Primeo Energy eingesetzt werden.
