@@ -10,27 +10,27 @@
 |13.11.2022
 |Prototyp Räume
 |Gameplay
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
+|link:TestDoc/Test1_13.11.2022.adoc[Test 1]
 
 |09.12.2022
 |Software MVP
 |Gameplay
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test2_09.12.2022.adoc[Test 2]
+|link:TestDoc/Test2_09.12.2022.adoc[Test 2]
 
 |18.12.2022
 |Steckerkontroller MVP, Konsole MVP
 |Steckerkontroller, Gameplay
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test3_18.12.2022.adoc[Test 3]
+|link:TestDoc/Test3_18.12.2022.adoc[Test 3]
 
 |29.04.2023
 |Steckercontroller MVP, Software MVP
 |Steckerkontroller, Gameplay
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test4_29.04.2023.adoc[Test 4]
+|link:TestDoc/Test4_29.04.2023.adoc[Test 4]
 
 |12.05.2023
 |Steckercontroller MVP, Software MVP
 |Rätsel Quiz, Rätsel Geräteordnung
-|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test5_12.05.2023.adoc[Test 5]
+|link:TestDoc/Test5_12.05.2023.adoc[Test 5]
 
 |===
 
