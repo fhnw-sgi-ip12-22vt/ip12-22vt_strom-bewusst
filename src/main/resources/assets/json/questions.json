@@ -39,7 +39,7 @@
   },
 
   {
-    "question": "Mit welchen mitteln kann Strom hergestellt werden?",
+    "question": "Mit welchen Mitteln kann Strom hergestellt werden?",
     "answerOptions": [
       "Gas, Öl Kohle",
       "Sonne, Wind und Wasser",
@@ -49,13 +49,13 @@
   },
 
   {
-    "question": "Dreckiges Geschirr, wie können wir es am Strom effizientesten abwaschen?",
+    "question": "Wie können wir dreckiges Geschirr am Strom-effizientesten abwaschen?",
     "answerOptions": [
-      "Von Hand",
+      "Mit dem Eco Programm des Geschirrspülers",
       "Mit dem Kurzprogramm der Geschirrspülmaschine",
-      "Mit dem Eco Programm des Geschirrspülers"
+      "Von Hand"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 0
   },
 
   {
@@ -71,11 +71,11 @@
   {
     "question": "Welches Gerät verbraucht am meisten Strom?",
     "answerOptions": [
+      "Elektrischer Kochherd",
       "Laptop",
-      "Fernseher",
-      "Elektrischer Kochherd"
+      "Fernseher"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 0
   },
 
   {
@@ -89,7 +89,7 @@
   },
 
   {
-    "question": "Wieso sind Fossile Energien wie Öl, Gas und Kohle Umweltschädlich?",
+    "question": "Wieso sind fossile Energien wie Öl, Gas und Kohle Umweltschädlich?",
     "answerOptions": [
       "Weil sie verbrannt werden, wodurch Treibhausgase entstehen",
       "Weil sie nach der Benutzung in die Umwelt geworfen werden",
@@ -109,27 +109,27 @@
   },
 
   {
-    "question": "Welches Element ist der Hauptproduzent der Schweizer Energiegewinnung?",
+    "question": "Was ist die Hauptquelle der Schweizer Energiegewinnung?",
     "answerOptions": [
-      "Kernkraftwerk",
+      "Wasserkraftwerk",
       "Windkraftwerk",
-      "Wasserkraftwerk"
+      "Kernkraftwerk"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 0
   },
 
   {
-    "question": "Wie viele Wasserkraftwerke hat die Schweiz?",
+    "question": "Wie viele Wasserkraftwerke gibt es in der Schweiz?",
     "answerOptions": [
-      "20’000",
+      "1’300",
       "1’753",
-      "1’300"
+      "20’000"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 0
   },
 
   {
-    "question": "Was ist der effektivste Weg, um Strom in der Küche zu sparen?",
+    "question": "Was ist der effektivste Weg um Strom in der Küche zu sparen?",
     "answerOptions": [
       "Kühlschrank schnell wieder schliessen",
       "Kochen mit Deckel",
@@ -139,13 +139,13 @@
   },
 
   {
-    "question": "Was ist der effektivste Weg, um Wasser aufzukochen?",
+    "question": "Was ist der effektivste Weg um Wasser aufzukochen?",
     "answerOptions": [
       "Im Topf auf dem Herd",
-      "In der Mikrowelle",
-      "Im Wasserkocher"
+      "Im Wasserkocher",
+      "In der Mikrowelle"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 1
   },
 
   {
@@ -154,16 +154,6 @@
       "Atomen",
       "Elektronen",
       "Photonen"
-    ],
-    "correctAnswer": 1
-  },
-
-  {
-    "question": "Was verbraucht am wenigsten Strom?",
-    "answerOptions": [
-      "Baden in der Badewanne",
-      "Duschen in der Dusche",
-      "Duschen im Garten mit dem Wasserschlauch"
     ],
     "correctAnswer": 1
   },
