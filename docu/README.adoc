@@ -1,0 +1,38 @@
+= Produktdokumentation
+
+In diesem Projekt sollen Sie die Dokumentation ihres Produktes Ablegen. Dazu gehört die Dokumentation von:
+
+- Softwaredokumentation (SAD)
+- Hardware-Dokumentation
+- Testdokumentation
+- Programmierkonventionen
+
+Sie sollen diese Dokumentation im Ascii-Doc Format schreiben. Referenzen hierfür ist einerseits die Dokumentation aus dem OOPI1/EIPR (https://gitlab.fhnw.ch/2022hs-oop1/docs) oder auch:
+
+- https://docs.asciidoctor.org/asciidoc/latest/
+- https://www.informatik-aktuell.de/entwicklung/methoden/docs-as-code-die-grundlagen.html
+- https://www.vogella.com/tutorials/AsciiDoc/article.html
+- https://www.heise.de/hintergrund/Documentation-as-Code-mit-Asciidoctor-4642013.html
+- https://blogs.uni-bremen.de/studytools/2021/09/11/projekte-dokumentierenmit-asciidoc/
+
+
+== Softwaredokumentation
+Die Softwaredokumentation soll nach den Vorgaben von arc42 erstellt werden (https://arc42.org/). Als erstes soll jedoch die link:software(sad)/system-idee.adoc[System-Idee] geschrieben werden.
+
+== Hardwaredokumentation
+In der Hardwaredokumentation sollen Sie alles erfassen, was zum Bauen des Produkts nötig ist. Dazu gehören:
+
+- *Teileliste*: In der Teileliste führen sie alle Teile auf, welche Sie verbaut haben. Für jedes Teil soll auch noch angegeben werden, wie viel es gekostet hat und wie es verdrahtet wurde.
+- *Files*: Alle Files, welche sie für die Erstellung von physischen Bauteilen aus Holz (z.b. Laser) oder Plastik (z.b. 3D-Druck) gebraucht haben.
+- *Abmessungen*: Für Elemente, welche sie nicht automatisiert herstellen liessen geben Sie die Masse an.
+
+== Testdokumentation
+Die Testdokumentation zeigt auf, wie sie geprüft haben, ob das Produkt den Vorgaben entspricht. Einige Vorgaben werden automatisch mit Unit-Test überprüfbar sein, ander mit manuellen Tests.
+
+Bei den Unit-Tests wird davon ausgegangen, dass diese regelmässig ab Entstehungsdatum durchgeführt werden. Hier muss nicht angegeben werden, wann genau diese Tests ausgeführt wurden.
+
+Bei den manuellen Test sollen Testprotokolle darüber auskunft geben, wann was geprüft wurde und was das Resultat der Prüfung war. Dafür werden Testfälle erstellt, die dann immer wieder neu zu Tests zusammengeführt werden können. Auch der Abnahmetest am Ende des Projekts ist so eine Zusammenstellung derjenigen Tests, welche die wichtigsten Requirements überprüfen.
+
+
+== Programmierkonventionen (Coding-Conventions)
+Die Coding-Conventions geben vor, wie der Code geschrieben werden soll. Hierbei soll sich das Team an schon vorhandenen Coding-Conventions orientieren. Interessant ist vielmehr, wie sichergestellt wurde, dass diese Regeln auch eingehalten wurden.

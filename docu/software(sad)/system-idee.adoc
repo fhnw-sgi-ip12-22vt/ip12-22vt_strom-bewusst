@@ -1,0 +1,84 @@
+= image:images/fhnw-logo.png[Fachhochschule Nordwestschweiz, 100] image:images/primeo-energie-logo.png[Primeo Energie, 100] Systemidee Projekt Strom Bewusst
+
+== Kernaufgabe des Systems
+****
+Ziel des Projektes Strom Bewusst ist es, ein Spiel für das Erlebniscenter Kosmos von Primeo Energie zu schaffen. Das Spiel soll Kindern näherbringen wie viel Strom im Alltag verbraucht wird - oft auch ohne dass es uns bewusst ist - und Tipps zum Stromsparen vermitteln.
+
+Folgende Produktziele sollen erfüllt werden:
+
+1. Strombewusstsein schaffen +
+  Den Kindern und Jugendlichen soll deutlich gemacht werden, wie viel Energie sie im Alltag nutzten.
+2. Wie kann man Energie sparen? +
+  Stromsparen im Alltag anregen, es soll gezeigt werden in welchen Bereichen die Kinder und Jugendliche selbst Hand anlegen können.
+3. Mit Spass Wissen vermitteln +
+  Der Wissenstransfer soll spielerisch stattfinden, so dass die Kinder und Jugendlichen Freude am Spiel haben und am Ende des Tages die Informationen auch wirklich aufnehmen
+****
+
+== Kategorie von System
+****
+Unser Projekt ist ein operationales System, jedoch ohne externe Schnittstellen. Ausserdem hat unser System einige Eigenschaften eines Eingebetteten Systems, da wir spezielle Hardware und Peripherie verwenden werden.
+Abhängig von der Spielidee für welche wir uns entscheiden werden wird unser System auch Eigenschaften eines Simulationssystemes besitzen.
+****
+
+== Wesentliche Qualitätsanforderungen
+****
+Unser Team hat folgende Qualitätsanforderungen (nach https://de.wikipedia.org/wiki/ISO/IEC_9126[DIN/ISO 9126]) als besonders wichtig für das System identifiziert:
+
+* **Benutzbarkeit**, insbesondere Erlenbarkeit und Attraktivität +
+  Wichtig weil das Projekt unsere Zielgruppe fesseln soll
+* **Zuverlässigkeit**, insbesondere Fehlertoleranz +
+  Wichtig weil der administrationsaufwand für Primeo Energie möglichst klein sein soll
+* **Funktionalität**, insbesondere Angemessenheit +
+  Wichtig weil wir sicherstellen wollen, dass unser System für die Ausstellung der Primeo Energie geeignet ist
+
+Aufgrund dieser Qualitätsanforderungen haben wir die folgenden spezifischen Ziele definiert:
+
+* Die Spielmechanik soll für die Kinder in unserer Zielgruppe einfach erlernbar sein. Die Kinder sollen ohne zusätzlichen Anleitung in der Lage sein, das Spiel durchzuspielen. Das notwendige Wissen wird innerhalb des Spieles vermittelt. +
+  Um dieses Ziel zu testen, werden wir das Spiel verschiedenen Kindern die in unsere Zielgruppe fallen zum testen geben und anschliessend Feedback einholen, wo die Erlernbarkeit und Benutzbarkeit noch erhöht werden kann.
+* Das Spielgerät soll unter normalen Gebrauchsbedingungen ohne grössere Reparaturen mindestens 6 Monate halten. +
+  Dieses Ziel ist schwer für uns zu testen. Wir werden nach bestem Wissen und Gewissen Material verwenden, welchem wir zutrauen, die entsprechende Lebensdauer zu überstehen, und wo möglich berücksichtigen wir beim Design mögliche nötige Reparaturen.
+* Das Spielgerät soll ohne grossen Betriebsaufwand korrekt laufen. +
+  Um dieses Ziel zu testen, werden wir während allen Playtests Ausschau nach Abstürzen und anderen Bugs, welche manuelle Intervention benötigen würden und werden diese fixen. +
+  Ausserdem soll das Spiel automatisch starten, sobald das Gerät angeschaltet wird.
+
+Es gibt ausserdem einige Qualitätsanforderungen die für unser Projekt weniger relevant sind, namentlich Sicherheit, da das System weder Schnittstellen auf externe Systeme hat, noch speziell schützenswerte Daten verarbeitet werden, Übertragbarkeit, da unser System einen spezialisierten Anwendungsfall hat und einzigartig sein wird und Effizienz, da diese auf das Spielerlebnis nur bedingt Einfluss hat.
+****
+
+== Relevante Stakeholder
+****
+Folgende Personen und Gruppen haben ein Interesse am System
+
+.Auftraggeber
+Primeo Energie
+
+Die Primeo Energie wird nach Projektabschluss das System in ihrer Ausstellung in Betrieb nehmen und administrireren.
+
+.Kunden
+* Cédric Merz
+* Hannah Sarah Kühne
+
+.Coach
+* Norbert Seyff
+
+.Teammitglieder
+* Andrin Martig
+* Daniel Barber
+* Samuel Burkhardt
+* Damjan Mlinar
+* Hoang Viet Nguyen
+* Viktor Weilenmann
+* Marco Worni
+
+.Benutzer
+Zielgruppe sind 12 - 16 jährige Kinder welche die Ausstellung der Primeo Energie besuchen
+****
+
+== Schnittstellen zu externen Systemen
+****
+Das System ist in sich geschlossen. Es gibt keine Schnittstellen zu externen Systemen.
+****
+
+== Datenhaltung
+****
+Abhängig von der Spielidee für die wir uns entscheiden müssen Spieldaten wie z.B. High-Scores persistent gespeichert werden. Dafür werden wir gegebenenfalls eine SQLite Datenbank verwenden, so können wir uns die  Vorteile relationaler Datenbanken zunutze machen, ohne eine externe Schnittstelle erstellen zu müssen.
+****

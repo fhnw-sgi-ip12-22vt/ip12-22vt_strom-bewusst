@@ -1,0 +1,5 @@
+image::images/pi4j-header.png[]
+
+_Hier stehen die Informationen zur Hardware._
+
+Informationen zum Erstellen und Zusammenbauen finden sie hier: https://www.cs.technik.fhnw.ch/confluence20/display/IP1222vt/Material[]

@@ -1,0 +1,18 @@
+== TC5.01 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F005R01[F005R01] : Benutzer/in wählt einen farbigen Block, indem die entsprechende Farbe in der Steckerleiste eingesteckt wird ==
+
+=== Beschreibung: === 
+Jede Steckdose soll einer Antwortmöglichkeit auf dem Screen entsprechen.
+
+=== Annahmen und Voraussetzungen: === 
+Geräteordnung Rätsel ist soweit implementiert, dass es geöffnet werden kann.
+
+=== Testdaten: ===
+Geräteordnung Rätsel User Interface
+
+=== Auszuführende Schritte: ===
+    * Figuren stehen vor dem "Main Desk" in Raum 2
+    * Figuren öffnen das Quiz mit Button 1
+    * Auswahlmöglichkeit wählen indem auf dem Controller der Stecker eingesteckt wird
+        
+=== Erwartetes Ergebnis: === 
+Die zur Wahl stehenden Geräte werden angezeigt und können durch einstecken in der Steckerleiste ausgewählt werden.

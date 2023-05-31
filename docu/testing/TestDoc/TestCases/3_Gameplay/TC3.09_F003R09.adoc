@@ -1,0 +1,19 @@
+== TC3.9 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R09[F003R09] : Benutzer/in kann durch Text scrollen ==
+
+=== Beschreibung: === 
+Textfelder, die nicht auf einem einzigen Textfeld platz haben, sollen mit einem Button umgeblättert werden können.
+
+=== Annahmen und Voraussetzungen: === 
+Die Textfelder sind im Code implementiert.
+
+=== Testdaten: ===
+Überall wo Text im Spiel vorkommt.
+
+=== Auszuführende Schritte: ===
+    
+    * Textfeld ist offen
+    * Der Button 1 wird nun gedrückt.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Der Text wird weitergeführt, indem der nächste Textblock gezeigt wird.

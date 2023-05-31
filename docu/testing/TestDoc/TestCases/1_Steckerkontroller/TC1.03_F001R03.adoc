@@ -1,0 +1,19 @@
+== TC1.3 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R03[F001R03] : Benutzer/in kann Mit Joystick zwischen gewählten Optionen schalten ==
+
+=== Beschreibung: === 
+Auf dem Bildschirm gibt es verschiedene Objekte, die ausgewählt werden können. 
+
+=== Annahmen und Voraussetzungen: === 
+Der Joystick ist in der Hardware verbaut, die Eingaben werden von der Software erkannt.
+
+=== Testdaten: ===
+Standpunkte der Objekte, Druck auf den Joystick
+
+=== Auszuführende Schritte: ===
+    
+    * In einer Situation im Spiel wo verschiedene Objekte angewählt werden können.
+    * Durch navigieren werden andere Objekte gewählt. 
+        
+=== Erwartetes Ergebnis: === 
+
+    * Die Auswahl springt vom alten Objekt zum neuen Objekt.

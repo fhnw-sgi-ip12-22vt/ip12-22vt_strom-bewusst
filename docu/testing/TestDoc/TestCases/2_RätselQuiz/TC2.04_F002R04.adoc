@@ -1,0 +1,19 @@
+== TC2.04 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R04[F002R04] : Benutzer/in lässt Die Reihenfolge der Fragen  pro Durchlauf zufällig anzeigen ==
+
+=== Beschreibung: === 
+Die Fragen sollen in einer zufälligen Reihenfolge erscheinen. 
+
+=== Annahmen und Voraussetzungen: === 
+Im Code sind Fragen für das Quizrätsel implementiert. Die Fragen können während des Quizdurchlaufs dargestellt werden. 
+
+=== Testdaten: ===
+Quizrätsel
+
+=== Auszuführende Schritte: ===
+    
+    * Das Quiz wird einmal durchgespielt
+    * Die Reihenfolge der Fragen werden notiert
+    * Ein zweiter Durchlauf wird vorgenommen, auch hier wird die Reihenfolge notiert
+        
+=== Erwartetes Ergebnis: === 
+Die Wahrscheinlichkeit soll sehr gering sein (bewusst intuitiv), dass es sich um die gleiche Reihenfolge handelt.

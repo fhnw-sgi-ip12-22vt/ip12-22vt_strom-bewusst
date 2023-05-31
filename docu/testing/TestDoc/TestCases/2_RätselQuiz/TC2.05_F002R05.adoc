@@ -1,0 +1,19 @@
+== TC2.05 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R05[F002R05] : Benutzer/in kann Eingabe von Stecker mit einem Button bestätigen ==
+
+=== Beschreibung: === 
+Nachdem eine Antwort mit dem Stecker gewählt worden ist soll diese mit dem Button 1 bestätigt werden. Erst dann erfolgt die Auflösung. 
+
+=== Annahmen und Voraussetzungen: === 
+Eingaben von Button 1 und Steckdose werden im Quiz erkannt.
+
+=== Testdaten: ===
+Quizrätsel, Button 1, Steckdosen
+
+=== Auszuführende Schritte: ===
+    
+    * Eine Quizfrage erscheint
+    * Die Antwort wird mit dem Stecker gewählt
+    * Die Auswahl wird mit dem Button 1 bestätigt
+        
+=== Erwartetes Ergebnis: === 
+Die Auflösung erscheint, Punkte werden vergeben. Dann folgt die nächste Frage. 

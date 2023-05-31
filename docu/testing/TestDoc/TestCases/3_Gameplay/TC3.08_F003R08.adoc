@@ -1,0 +1,19 @@
+== TC3.8 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R08[F003R08] : Benutzer/in kann mit Objekten interagieren ==
+
+=== Beschreibung: === 
+Objekte reagieren wie vorgesehen auf die Inpute der Spieler.
+
+=== Annahmen und Voraussetzungen: === 
+Im Sourcecode sind alle Objekte, die auf Input reagieren sollen, als solche erfasst.
+
+=== Testdaten: ===
+Objekte, mit denen interagiert werden kann.
+
+=== Auszuführende Schritte: ===
+    
+    * Figur befindet sich in der Nähe des Objekts
+    * Mit dem Button 1 kann das Objekt geöffnet werden.
+        
+=== Erwartetes Ergebnis: === 
+
+    * In der Subszene kann nun mit Eingaben die Anzeige verändert werden.

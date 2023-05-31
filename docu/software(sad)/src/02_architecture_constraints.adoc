@@ -1,0 +1,64 @@
+[[section-architecture-constraints]]
+== Randbedingungen
+
+////
+[role="arc42help"]
+****
+.Inhalt
+Randbedingungen und Vorgaben, die ihre Freiheiten bezüglich Entwurf, Implementierung oder Ihres Entwicklungsprozesses einschränken.
+Diese Randbedingungen gelten manchmal organisations- oder firmenweit über die Grenzen einzelner Systeme hinweg.
+
+.Motivation
+Für eine tragfähige Architektur sollten Sie genau wissen, wo Ihre Freiheitsgrade bezüglich der Entwurfsentscheidungen liegen und wo Sie Randbedingungen beachten müssen.
+Sie können Randbedingungen vielleicht noch verhandeln, zunächst sind sie aber da.
+
+.Form
+Einfache Tabellen der Randbedingungen mit Erläuterungen.
+Bei Bedarf unterscheiden Sie technische, organisatorische und politische Randbedingungen oder übergreifende Konventionen (beispielsweise Programmier- oder Versionierungsrichtlinien, Dokumentations- oder Namenskonvention).
+
+
+.Weiterführende Informationen
+
+Siehe https://docs.arc42.org/section-2/[Randbedingungen] in der online-Dokumentation (auf Englisch!).
+
+****
+////
+
+=== Technologie Stack
+****
+Die folgenden Technologien und Libraries wurden für das Projekt empfohlen und wurden von uns übernommen.
+
+Auf die Hardware-Komponenten die in der Konsole und in den Controllern verbaut sind, wird in diesem Dokument nicht weiter eingegangen. Diese sind in der Hardwaredokumentation im Detail beschrieben.
+
+.Programmiersprache +
+Java 17
+
+.Hardware +
+Raspberry Pi 4
+
+.Operating System
+CrowPi OS
+
+.Productive Libraries +
+* Pi4J 2.2.0 (Java API für Raspberry Pi)
+** Pi4J Example Components
+* FXGL 17.3 (Java Gamelibrary)
+
+.Testing Libraries
+* JUnit 5.9.0 (Test-Framework)
+* Mockito 5.3.1 (Mocking-Framework)
+****
+
+=== Organisatorische Randbedingung
+****
+[cols="1,1", options="header"]
+|===
+|Randbedingung|Erläuterung
+|Team| Die Teammitglieder von Projekt Strombewusst sind Andrin Martig (1. Semester) Viktor Weilenmann, Marco Worni, Samuel Burkhardt, Daniel Barber, Damjan Mlinar, Nguyen Hoang Viet
+|Team Coach| Im Rahmen des Projektes wurde uns Norbert Seyff als Team Coach zu geteilt
+|Kunden| Unsere Direkten Kunden sind Hannah Sarah Kühne (1. Semester), Katja Pott (2. Semester) und Cédric Merz
+|Auftraggeber| Der Auftraggeber und Hauptsponsor ist Primeo Energie
+|Projekt Rahmen| Dieses Projekt ist Teil des Studierenden Programms der FHNW
+|===
+****
+

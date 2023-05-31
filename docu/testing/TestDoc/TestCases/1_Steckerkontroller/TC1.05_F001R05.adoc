@@ -1,0 +1,20 @@
+== TC1.5 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R05[F001R05] : Benutzer/in kann mit Button 2 Auswahl abbrechen  ==
+
+=== Beschreibung: === 
+Wurde eine Auswahl bestätigt, so kann diese wieder rückgängig gemacht werden indem der Button 2 gedrückt wird.
+
+=== Annahmen und Voraussetzungen: === 
+Button 2 ist in der Hardware verbaut und die Eingabe wird von der Software erkannt.
+
+=== Testdaten: ===
+Druck auf den Button
+
+=== Auszuführende Schritte: ===
+    
+    * Der Stecker wird in eine Steckdose eingesteckt.
+    * Der Button 1 wird gedrückt.
+    * Der Button 2 wird gedrückt.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Die markierte Eingabe ist nun nicht mehr markiert.

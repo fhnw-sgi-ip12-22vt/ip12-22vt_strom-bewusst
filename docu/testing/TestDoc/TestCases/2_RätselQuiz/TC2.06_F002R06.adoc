@@ -1,0 +1,17 @@
+== TC2.06 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F002R06[F002R06] : Benutzer/in lässt Fragen anzeigen, die inhaltlich an die Jugendliche angepasst sind ==
+
+=== Beschreibung: === 
+Die Fragen sollen nicht zu schwierig aber auch nicht zu einfach lösbar sein.
+
+=== Annahmen und Voraussetzungen: === 
+Fragen wurden an das Schwierigkeitslevel der Jugendlichen angepasst und ins Quiz implementiert.
+
+=== Testdaten: ===
+Quizrätsel
+
+=== Auszuführende Schritte: ===
+    
+    * Benutzer/innen spielen das Quiz
+        
+=== Erwartetes Ergebnis: === 
+Die Fragen können mit den gesammelten Informationen gelöst werden. 

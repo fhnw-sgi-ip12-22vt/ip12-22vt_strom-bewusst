@@ -1,0 +1,16 @@
+== TC5.03 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F005R03[F005R03] : Benutzer/in lässt Geräte bildlich anzeigen ==
+
+=== Beschreibung: === 
+Alle Auswahlmöglichkeiten werden im User Interface angezeigt.
+
+=== Annahmen und Voraussetzungen: === 
+Geräteordnung Rätsel ist geöffnet.
+
+=== Testdaten: ===
+Geräteordnung Rätsel User Interface
+
+=== Auszuführende Schritte: ===
+    * Geräteordnung Rätsel öffnen
+        
+=== Erwartetes Ergebnis: === 
+Alle Auswahlmöglichkeiten werden angezeigt.

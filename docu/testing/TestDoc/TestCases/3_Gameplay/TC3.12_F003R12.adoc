@@ -1,0 +1,21 @@
+== TC3.12 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R12[F003R12] : Benutzer/in  kann Türe  nur "one-way" nutzen ==
+
+=== Beschreibung: === 
+Nachdem eine Türe benutzt wurde, kann diese im aktuellen Spieldurchlauf nicht mehr benutzt werden.
+
+=== Annahmen und Voraussetzungen: === 
+Die Tür wird grafisch dargestellt und die jeweilige Eingabe um die Tür zu öffnen ist im Code implementiert.
+
+=== Testdaten: ===
+Türen in den Räumen.
+
+=== Auszuführende Schritte: ===
+    
+    * Figur steht vor einer Tür
+    * Die Türe wird benutzt
+    * Figur ist im nächsten Raum
+    * Die Türe wird nochmals angeklickt
+        
+=== Erwartetes Ergebnis: === 
+
+    * Es passiert nichts

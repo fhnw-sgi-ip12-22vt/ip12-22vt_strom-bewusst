@@ -1,0 +1,215 @@
+
+= Testplan =
+
+//== Construction 1 : 18.11.2022 - 23.12.2022 == 
+
+== Manuelle Tests
+|===
+| Datum |Testobjekt | Was getestet wird |Testdokument
+
+|13.11.2022
+|Prototyp Räume
+|Gameplay
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test1_13.11.2022.adoc[Test 1]
+
+|09.12.2022
+|Software MVP
+|Gameplay
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test2_09.12.2022.adoc[Test 2]
+
+|18.12.2022
+|Steckerkontroller MVP, Konsole MVP
+|Steckerkontroller, Gameplay
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test3_18.12.2022.adoc[Test 3]
+
+|29.04.2023
+|Steckercontroller MVP, Software MVP
+|Steckerkontroller, Gameplay
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test4_29.04.2023.adoc[Test 4]
+
+|12.05.2023
+|Steckercontroller MVP, Software MVP
+|Rätsel Quiz, Rätsel Geräteordnung
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/docu/-/blob/main/testing/TestDoc/Test5_12.05.2023.adoc[Test 5]
+
+|===
+
+== Unit-Tests
+
+Unit Tests werden kontinuierlich nach jedem git-Push ausgeführt, entsprechend ist ein Link für die aktuellste Pipeline gegeben.
+
+|===
+| Testobjekt | Was getestet wird | Source | Testdokument
+
+|Software MVP
+|Quiz Rätsel
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/QuizLogicTest.java[QuizLogicTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Player Movement
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/PlayerTest.java[PlayerTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Controller
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/input/ControllerTest.java[ControllerTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Score
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/ScoreTest.java[ScoreTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Device Order Logic Rätsel
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/DeviceOrderLogicTest.java[DeviceOrderLogicTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Team Name Generierung
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/TeamNameTest.java[TeamNameTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|Software MVP
+|Input Handler Player Movement Handling
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/blob/main/src/test/java/ch/fhnw/strombewusst/InputHandlerPlayerMovementTest.java[InputHandlerPlayerMovementTest.java]
+|https://gitlab.fhnw.ch/ip12-22vt/ip12-22vt_strombewusst/strombewusstfxgl/-/pipelines/latest[Aktuellste Pipeline]
+
+|===
+
+////
+== Construction 2 : 23.12.2022 - 17.3.2023 == 
+
+|===
+| Datum |Testobjekt | Testart | Was getestet wird |Testdokument
+
+|(ausstehend, voraussichtlich 10.2.2023)
+|Klassen und Methoden (Räume)
+|JUnit Test
+|
+|
+
+|(ausstehend, voraussichtlich 10.2.2023)
+|Klassen und Methoden (Bewegung)
+|JUnit Test
+|
+|
+
+|(ausstehend, voraussichtlich 10.2.2023)
+|Klassen und Methoden (Steuerung/Mechanik)
+|JUnit Test
+|
+|
+
+|(ausstehend, voraussichtlich 24.2.2023)
+|Konsole
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 24.2.2023)
+|Kontroller
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 24.2.2023)
+|Elektronik
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 24.2.2023)
+|Steuerung/Mechanik
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 11.3.2023)
+|Bewegung
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 11.3.2023)
+|Räume
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 11.3.2023)
+|Rätsel
+|Manueller Test
+|
+|
+
+|===
+
+== Construction 3 : 17.03.2023 - 21.4.2023 == 
+
+|===
+| Datum |Testobjekt | Testart | Was getestet wird |Testdokument
+
+|(ausstehend, voraussichtlich 31.3.2023)
+|Klassen und Methoden (Räume)
+|JUnit Test
+|
+|
+
+|(ausstehend, voraussichtlich 31.3.2023)
+|Klassen und Methoden (Bewegung)
+|JUnit Test
+|
+|
+
+|(ausstehend, voraussichtlich 31.3.2023)
+|Klassen und Methoden (Steuerung/Mechanik)
+|JUnit Test
+|
+|
+
+|(ausstehend, voraussichtlich 7.4.2023)
+|Konsole
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 7.4.2023)
+|Kontroller
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 7.4.2023)
+|Elektronik
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 7.4.2023)
+|Steuerung/Mechanik
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 14.4.2023)
+|Bewegung
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 14.4.2023)
+|Räume
+|Manueller Test
+|
+|
+
+|(ausstehend, voraussichtlich 14.4.2023)
+|Rätsel
+|Manueller Test
+|
+|
+
+|===
+////

@@ -1,0 +1,18 @@
+== TC5.06 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F005R06[F005R06] : Benutzer/in kann die Auswahl prüfen lassen ==
+
+=== Beschreibung: === 
+Die Auswahl der Geräte soll geprüft werden können, indem der Bestätigungs-Button gedrückt wird.
+
+=== Annahmen und Voraussetzungen: === 
+Geräteordnung Rätsel ist geöffnet, es wurden alle Geräte geordnet.
+
+=== Testdaten: ===
+Geräteordnung Rätsel User Interface
+
+=== Auszuführende Schritte: ===
+    * Geräteordnung Rätsel öffnen
+    * Alle Geräte durch einstecken auf dem Controller in eine Ordnung bringen
+    * Bestätigungs-Button drücken
+        
+=== Erwartetes Ergebnis: === 
+Die Ordnung der Geräte wird geprüft, und eine Rückmeldung angezeigt (Korrekt oder Inkorrekt)

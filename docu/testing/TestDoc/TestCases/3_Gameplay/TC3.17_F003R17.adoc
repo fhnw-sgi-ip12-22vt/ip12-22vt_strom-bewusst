@@ -1,0 +1,19 @@
+== TC3.17 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F003R17[F003R17] : Benutzer/in kann das Spiel über ein Hauptmenü beginnen ==
+
+=== Beschreibung: === 
+Im Hauptmenu kann eine Eingabe getätigt werden, so dass das Spiel gestartet wird.
+
+=== Annahmen und Voraussetzungen: === 
+Die Eingabe und das Hauptmenu ist im Code implementiert. 
+
+=== Testdaten: ===
+Hauptmenü.
+
+=== Auszuführende Schritte: ===
+    
+    * Benutzer/in befindet sich im Hauptmenü. 
+    * Button 1 wird gedrückt um den Start des Spiels zu bestätigen.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Die Spieler/innen können nun das Spiel spielen.

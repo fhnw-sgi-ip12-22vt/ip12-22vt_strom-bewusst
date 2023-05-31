@@ -1,0 +1,21 @@
+== TC1.4 : https://www.cs.technik.fhnw.ch/confluence20/display/VT122202/Requirements#Requirements-F001R04[F001R04] : Benutzer/in kann mit Button 1 Auswahl bestätigen ==
+
+=== Beschreibung: === 
+Die Auswahl wird gewählt, indem der Stecker in die Steckdose gesteckt wird. Um die Auswahl festzulegen, wird mit dem ersten Button die Auswahl bestätigt. 
+
+=== Annahmen und Voraussetzungen: === 
+Button 1 ist in der Hardware verbaut und die Eingabe wird von der Software erkannt. 
+
+=== Testdaten: ===
+Druck auf den Button
+
+=== Auszuführende Schritte: ===
+    
+    * Benutzer/in  hat ein Rätsel geöffnet.
+    * Der Stecker wird in eine Steckdose eingesteckt.
+    * Der Button 1 wird gedrückt.
+        
+=== Erwartetes Ergebnis: === 
+
+    * Die Eingabe wird auf dem Bildschirm markiert.
+    * Der Stecker kann nun in eine andere Steckdose eingesteckt werden.

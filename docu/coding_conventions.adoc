@@ -1,0 +1,20 @@
+= Coding Conventions
+
+== Verwendete Konventionen
+
+- Namenskonventionen: Packagenamen sind immer klein, Klassen sind CamelCase, Variablen sind drinkingCamelCase, Konstanten und Enums sind in UPPER_CASE.
+- 4 Leerschläge Einrückung pro Block, Leerzeichen wie hier beschrieben.
+- Keine Mehrfachdeklarationen pro Zeile.
+- Öffnende Klammer auf der vorherigen Zeile, schliessende auf eine neue Zeile.
+- Zeilen sind max. 120 Zeichen lang
+- Methoden sind max. 150 Zeilen lang
+- Verkettungen sind umgebrochen auf neue Zeilen mit 8 Leerzeichen Einrückung
+
+=== Dokumentation:
+
+- Für jede Klasse ist ein JavaDoc Kommentar gesetzt, welcher die Zuständigkeit beschreibt.
+- Bei jeder public Funktion ausser bei Konstruktoren und bei Gettern / Settern ist ein JavaDoc Kommentar gesetzt, welcher mindestens die Funktion beschreibt und bei komplexeren Funktionen die Parameter.
+
+== Sicherstellung der Einhaltung der Konventionen
+
+- Die konfigurierten Coding Conventions wurden in einer Checkstyle Konfig festgehalten, welche von Maven automatisch in der CI/CD Pipeline ausgeführt wird. Fehler lassen die Pipeline failen.
