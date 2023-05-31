@@ -101,7 +101,7 @@ public class DeviceOrderSubScene extends SubScene {
         popUp.setTranslateX(950);
         popUp.setTranslateY(270);
 
-        getContentRoot().getChildren().addAll(bg, inputsVBox, response, playerOne, playerTwo, answerQueue,
+        getContentRoot().getChildren().addAll(bg, inputsVBox, response, playerOne, playerTwo,
                 scoreLabel, timerLabel, popUp);
 
         buildDeviceOrder();
