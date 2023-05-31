@@ -37,16 +37,17 @@ public class Room2 implements Room {
                 door,
                 world.create("prev-door", new SpawnData(618, FXGL.getAppHeight() - 127)),
                 // Geräteorderung
-                world.create("main-desk", new SpawnData(86, 236).put("room", "2")),
+                world.create("main-desk", new SpawnData(86, (236)).put("room", "2")),
 
                 // Haushaltgeräte
                 world.create("television", new SpawnData(100, 385).put("television", 4)),
-                world.create("router", new SpawnData(323, 575).put("router", 6)),
+                //create("router", new SpawnData(323, 575).put("router", 6)),
                 world.create("microwave", new SpawnData(405, 215).put("microwave", 9)),
                 world.create("smartphone", new SpawnData(810, 30).put("smartphone", 13)),
                 world.create("coffeemachine", new SpawnData(764, 580).put("coffeemachine", 14)),
-                world.create("laptop", new SpawnData(214, 210).put("laptop", 11)),
-                world.create("computer", new SpawnData(406, 400).put("computer", 8)),
+                world.create("laptop", new SpawnData(520, 25).put("laptop", 11)),
+                world.create("router", new SpawnData(450, 370).put("router", 6)),
+                world.create("computer", new SpawnData(323, 575).put("computer", 8)),
                 world.create("vacuum", new SpawnData(534, 258).put("vacuum", 12)),
                 world.create("lamp", new SpawnData(0, 500).put("lamp", 1)),
                 world.create("ps5", new SpawnData(210, 405).put("ps5", 7)),
@@ -116,7 +117,7 @@ public class Room2 implements Room {
         if (Config.IS_RELEASE || Config.IS_DEMO) {
             List<String> lines = FXGL.getAssetLoader().loadText(Config.ROOM_2_CUTSCENE_PATH);
             Cutscene cutscene = new Cutscene(lines);
-            UIHelper.showCutsceneWithButton(cutscene);
+            UIHelper.showCutsceneWithButton(cutscene, true);
         }
     }
 

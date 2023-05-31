@@ -50,7 +50,7 @@ public class OutsideRoom implements Room {
         if (Config.IS_RELEASE || Config.IS_DEMO) {
             List<String> lines = FXGL.getAssetLoader().loadText(Config.FINAL_CUTSCENE_PATH);
             Cutscene cutscene = new Cutscene(lines);
-            UIHelper.showCutsceneWithButton(cutscene);
+            UIHelper.showCutsceneWithButton(cutscene, false);
         }
     }
 

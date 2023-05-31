@@ -26,7 +26,7 @@ public class InputHandler {
     public static void logInteraction() {
         try {
             FXGL.<Timer>geto("timer").logInteraction();
-        } catch (IllegalArgumentException ignored) {
+        } catch (Exception ignored) {
             // Timer not yet initialized - ignore
         }
     }

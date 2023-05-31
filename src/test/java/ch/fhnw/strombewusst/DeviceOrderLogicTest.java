@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.InjectMocks;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
@@ -33,7 +32,6 @@ public class DeviceOrderLogicTest {
 
     private static List<DeviceOrderDevice> deviceList = Arrays.stream(devices).toList();
 
-    @InjectMocks
     private DeviceOrderLogic deviceOrderLogic;
 
     @BeforeAll
