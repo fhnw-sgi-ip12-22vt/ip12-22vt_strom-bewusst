@@ -301,6 +301,8 @@ public class QuizSubScene extends SubScene {
             quizLogic.setDoorOpen(true);
             getSceneService().popSubScene();
 
+            FXGL.getGameWorld().removeEntities(FXGL.getGameWorld().getEntitiesByType(EntityType.BUTTON));
+
             Texture openDoorTexture = FXGL.getAssetLoader().loadTexture("door-open.png");
             ViewComponent doorViewComponent = FXGL.getGameWorld().getSingleton(EntityType.DOOR).getViewComponent();
             doorViewComponent.clearChildren();
