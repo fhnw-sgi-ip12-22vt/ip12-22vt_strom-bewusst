@@ -1,10 +1,12 @@
 package ch.fhnw.strombewusst.ui.scene;
 
+import ch.fhnw.strombewusst.EntityType;
 import ch.fhnw.strombewusst.QuizLogic;
 import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.ui.UIHelper;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.components.ViewComponent;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -298,6 +300,11 @@ public class QuizSubScene extends SubScene {
         if (quizLogic.quizDone()) {
             quizLogic.setDoorOpen(true);
             getSceneService().popSubScene();
+
+            Texture openDoorTexture = FXGL.getAssetLoader().loadTexture("door-open.png");
+            ViewComponent doorViewComponent = FXGL.getGameWorld().getSingleton(EntityType.DOOR).getViewComponent();
+            doorViewComponent.clearChildren();
+            doorViewComponent.addChild(openDoorTexture);
         } else {
             clearQuiz();
             currentQuiz = buildQuiz(quizLogic.getQuestion());
