@@ -71,7 +71,7 @@ public class Room1 implements Room {
         if (Config.IS_RELEASE || Config.IS_DEMO) {
             List<String> lines = FXGL.getAssetLoader().loadText(Config.TUTORIAL_CUTSCENE_PATH);
             Cutscene cutscene = new Cutscene(lines);
-            UIHelper.showCutsceneWithButton(cutscene, true);
+            UIHelper.showCutsceneWithButton(cutscene);
         }
     }
 

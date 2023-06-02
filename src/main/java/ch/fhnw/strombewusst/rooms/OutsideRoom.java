@@ -44,13 +44,13 @@ public class OutsideRoom implements Room {
 
     @Override
     public void onStarted() {
-        FXGL.<Timer>geto("timer").pause();
+        FXGL.<Timer>geto("timer").stop();
         ((StromBewusst) FXGL.getApp()).clearUI();
 
         if (Config.IS_RELEASE || Config.IS_DEMO) {
             List<String> lines = FXGL.getAssetLoader().loadText(Config.FINAL_CUTSCENE_PATH);
             Cutscene cutscene = new Cutscene(lines);
-            UIHelper.showCutsceneWithButton(cutscene, false);
+            UIHelper.showCutsceneWithButton(cutscene);
         }
     }
 

@@ -5,6 +5,6 @@ package ch.fhnw.strombewusst;
  */
 public enum EntityType {
     PLAYER, DESK, MAINDESK, BOOKSHELF, DOOR, PREVDOOR,
-    CABINET, DEVICE, NOTICE
+    CABINET, DEVICE, BUTTON
 }
 

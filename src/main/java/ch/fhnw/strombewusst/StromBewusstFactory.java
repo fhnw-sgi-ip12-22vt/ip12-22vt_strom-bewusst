@@ -69,6 +69,7 @@ public class StromBewusstFactory implements EntityFactory {
         texture.loop();
 
         return entityBuilder(data)
+                .type(EntityType.BUTTON)
                 .view(texture)
                 .zIndex(110)
                 .build();
@@ -107,7 +108,7 @@ public class StromBewusstFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.MAINDESK)
                 .view("main-desk" + roomnum + ".png")
-                .bbox(new HitBox(new Point2D(6, roomnum.equals("2") ? 20 : 0), BoundingShape.box(90, 10)))
+                .bbox(new HitBox(new Point2D(6, roomnum.equals("2") ? 20 : 0), BoundingShape.box(100, 10)))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .zIndex(1)

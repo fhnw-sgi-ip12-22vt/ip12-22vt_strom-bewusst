@@ -21,8 +21,8 @@ public class PlayerDeskHandler extends CollisionHandler {
     }
 
     @Override
-    protected void onCollisionBegin(Entity player, Entity type) {
-        int deskNum = type.getComponent(DeskComponent.class).getDeskNum();
+    protected void onCollisionBegin(Entity player, Entity desk) {
+        int deskNum = desk.getComponent(DeskComponent.class).getDeskNum();
 
         if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
             FXGL.set("player1InfoText", infoBoxes.get(deskNum));
@@ -33,10 +33,17 @@ public class PlayerDeskHandler extends CollisionHandler {
 
     protected void onCollisionEnd(Entity player, Entity desk) {
         try {
+            String varName;
             if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-                FXGL.set("player1InfoText", "");
+                varName = "player1InfoText";
             } else {
-                FXGL.set("player2InfoText", "");
+                varName = "player2InfoText";
+            }
+
+            int deskNum = desk.getComponent(DeskComponent.class).getDeskNum();
+
+            if (FXGL.gets(varName).equals(infoBoxes.get(deskNum))) {
+                FXGL.set(varName, "");
             }
         } catch (IllegalArgumentException ignored) {
             // BUGFIX: prevent crash on edge-case when text is shown during level change

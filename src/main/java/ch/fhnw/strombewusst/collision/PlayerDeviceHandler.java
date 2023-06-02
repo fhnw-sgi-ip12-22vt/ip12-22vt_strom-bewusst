@@ -21,8 +21,8 @@ public class PlayerDeviceHandler extends CollisionHandler {
     }
 
     @Override
-    protected void onCollisionBegin(Entity player, Entity type) {
-        int deviceNum = type.getComponent(DeviceComponent.class).getDeviceNum();
+    protected void onCollisionBegin(Entity player, Entity device) {
+        int deviceNum = device.getComponent(DeviceComponent.class).getDeviceNum();
 
         if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
             FXGL.set("player1InfoText", infoBoxes.get(deviceNum));
@@ -33,10 +33,17 @@ public class PlayerDeviceHandler extends CollisionHandler {
 
     protected void onCollisionEnd(Entity player, Entity device) {
         try {
+            String varName;
             if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
-                FXGL.set("player1InfoText", "");
+                varName = "player1InfoText";
             } else {
-                FXGL.set("player2InfoText", "");
+                varName = "player2InfoText";
+            }
+
+            int deviceNum = device.getComponent(DeviceComponent.class).getDeviceNum();
+
+            if (FXGL.gets(varName).equals(infoBoxes.get(deviceNum))) {
+                FXGL.set(varName, "");
             }
         } catch (IllegalArgumentException ignored) {
             // BUGFIX: prevent crash on edge-case when text is shown during level change
