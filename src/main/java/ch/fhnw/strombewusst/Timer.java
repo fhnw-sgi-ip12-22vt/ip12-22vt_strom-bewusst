@@ -19,6 +19,7 @@ public class Timer {
     private final IntegerProperty secondsRemaining;
     private final Timeline timeline;
     private int lastInteraction;
+    private boolean stopped = false;
 
     public Timer(int initialSeconds) {
         timer = new SimpleStringProperty();
@@ -53,10 +54,20 @@ public class Timer {
     }
 
     /**
+     * Stops the timer
+     */
+    public void stop() {
+        stopped = true;
+        timeline.stop();
+    }
+
+    /**
      * Unpauses the timer
      */
     public void unpause() {
-        timeline.play();
+        if (!stopped) {
+            timeline.play();
+        }
     }
 
     public IntegerProperty getSecondsRemainingProperty() {
