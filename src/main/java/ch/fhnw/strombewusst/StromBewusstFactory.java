@@ -69,6 +69,7 @@ public class StromBewusstFactory implements EntityFactory {
         texture.loop();
 
         return entityBuilder(data)
+                .type(EntityType.BUTTON)
                 .view(texture)
                 .zIndex(110)
                 .build();
