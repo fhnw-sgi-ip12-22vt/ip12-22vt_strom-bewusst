@@ -211,27 +211,16 @@ public class InputHandler {
         }
 
         // check collision with door and switch levels if so
-        entities = FXGL.getGameWorld().getEntitiesByType(EntityType.DOOR);
-        for (Entity e : entities) {
-            if (e.distanceBBox(player) > 1) {
-                continue;
-            }
-            if (FXGL.geti("level") == 1 && quizLogic.isDoorOpen()) {
-                FXGL.runOnce(
-                        () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
-                        Duration.ZERO);
-                return;
-            } else if (FXGL.geti("level") == 2 && deviceOrderLogic.isDoorOpen()) {
-                FXGL.runOnce(
-                        () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
-                        Duration.ZERO);
-                return;
-            } else if (FXGL.geti("level") == 3) {
-                FXGL.runOnce(
-                        () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
-                        Duration.ZERO);
-                return;
-            }
+        Entity door = FXGL.getGameWorld().getSingleton(EntityType.DOOR);
+
+        if (door.distanceBBox(player) > 1) {
+            return;
+        }
+
+        if (door.getBoolean("open")) {
+            FXGL.runOnce(
+                    () -> FXGL.getGameScene().getViewport().fade(() -> ((StromBewusst) FXGL.getApp()).nextLevel()),
+                    Duration.ZERO);
         }
     }
 

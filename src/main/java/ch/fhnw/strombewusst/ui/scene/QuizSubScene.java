@@ -6,7 +6,6 @@ import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.ui.UIHelper;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.components.ViewComponent;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -298,15 +297,10 @@ public class QuizSubScene extends SubScene {
         quizLogic.resetAnswers();
 
         if (quizLogic.quizDone()) {
-            quizLogic.setDoorOpen(true);
             getSceneService().popSubScene();
 
             FXGL.getGameWorld().removeEntities(FXGL.getGameWorld().getEntitiesByType(EntityType.BUTTON));
-
-            Texture openDoorTexture = FXGL.getAssetLoader().loadTexture("door-open.png");
-            ViewComponent doorViewComponent = FXGL.getGameWorld().getSingleton(EntityType.DOOR).getViewComponent();
-            doorViewComponent.clearChildren();
-            doorViewComponent.addChild(openDoorTexture);
+            FXGL.getGameWorld().getSingleton(EntityType.DOOR).setProperty("open", true);
         } else {
             clearQuiz();
             currentQuiz = buildQuiz(quizLogic.getQuestion());

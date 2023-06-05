@@ -28,8 +28,6 @@ public class DeviceOrderLogic {
     public static final int QUEUESIZE = 6;
     private int roundsLeft;
 
-    private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
-
     public DeviceOrderLogic(int roundsTotal) {
         this.roundsLeft = roundsTotal;
     }
@@ -49,10 +47,6 @@ public class DeviceOrderLogic {
 
     public boolean isDeviceOrderDone() {
         return !(roundsLeft > 0);
-    }
-
-    public void setDoorOpen(boolean doorOpen) {
-        this.doorOpen = doorOpen;
     }
 
     /**
@@ -112,9 +106,6 @@ public class DeviceOrderLogic {
         return playerAnswer.size();
     }
 
-    public boolean isDoorOpen() {
-        return doorOpen;
-    }
 
     /**
      * Compares the current queue to the solution.

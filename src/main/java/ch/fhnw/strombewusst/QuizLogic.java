@@ -17,7 +17,6 @@ public class QuizLogic {
     private int answerP1;
     private int answerP2;
 
-    private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
     private final int size;
 
     private final Deque<QuizQuestion> questionSet = new LinkedList<>();
@@ -36,10 +35,6 @@ public class QuizLogic {
                 .get()).toList();
 
         buildSet();
-    }
-
-    public void setDoorOpen(boolean doorOpen) {
-        this.doorOpen = true;
     }
 
     /**
@@ -118,10 +113,6 @@ public class QuizLogic {
 
             questionSet.add(questions.get(randomNum));
         }
-    }
-
-    public boolean isDoorOpen() {
-        return doorOpen;
     }
 }
 

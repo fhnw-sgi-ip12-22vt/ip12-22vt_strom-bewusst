@@ -7,12 +7,14 @@ import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.entity.components.ViewComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
+import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
@@ -131,13 +133,28 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("door")
     public Entity newDoor(SpawnData data) {
-        return entityBuilder(data)
+        Texture closedDoorTexture = FXGL.getAssetLoader().loadTexture("door.png");
+        Texture openDoorTexture = FXGL.getAssetLoader().loadTexture("door-open.png");
+
+        Entity door = entityBuilder(data)
                 .type(EntityType.DOOR)
-                .view("door.png")
+                .view(closedDoorTexture)
                 .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(64, 50)))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
+                .with("open", false)
                 .build();
+
+        ViewComponent doorViewComponent = door.getViewComponent();
+        door.getProperties().booleanProperty("open")
+                .addListener(((observable, oldValue, newValue) -> {
+                    doorViewComponent.clearChildren();
+                    doorViewComponent.addChild(Boolean.TRUE.equals(newValue) ? openDoorTexture : closedDoorTexture);
+                }));
+
+        door.setProperty("open", !(Config.IS_RELEASE) || Config.IS_DEMO);
+
+        return door;
     }
 
     @Spawns("prev-door")
@@ -356,6 +373,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .view(texture)
                 .zIndex(90)
+                .with("open", true)
                 .build();
     }
     @Spawns("outside")
