@@ -24,7 +24,7 @@ public class PlayerDeviceHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity player, Entity device) {
         int deviceNum = device.getComponent(DeviceComponent.class).getDeviceNum();
 
-        if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+        if (player.getInt("playerNum") == 1) {
             FXGL.set("player1InfoText", infoBoxes.get(deviceNum));
         } else {
             FXGL.set("player2InfoText", infoBoxes.get(deviceNum));
@@ -34,7 +34,7 @@ public class PlayerDeviceHandler extends CollisionHandler {
     protected void onCollisionEnd(Entity player, Entity device) {
         try {
             String varName;
-            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+            if (player.getInt("playerNum") == 1) {
                 varName = "player1InfoText";
             } else {
                 varName = "player2InfoText";

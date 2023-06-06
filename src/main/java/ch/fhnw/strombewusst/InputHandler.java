@@ -110,7 +110,7 @@ public class InputHandler {
      */
     public static void handleButtonLeft(Entity player) {
         logInteraction();
-        int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+        int playerNumber = player.getInt("playerNum");
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof QuizSubScene) {
@@ -126,7 +126,7 @@ public class InputHandler {
      */
     public static void handleButtonMiddle(Entity player) {
         logInteraction();
-        int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+        int playerNumber = player.getInt("playerNum");
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof QuizSubScene) {
@@ -142,7 +142,7 @@ public class InputHandler {
      */
     public static void handleButtonRight(Entity player) {
         logInteraction();
-        int playerNumber = player.getComponent(PlayerComponent.class).getPlayerNum();
+        int playerNumber = player.getInt("playerNum");
 
         Scene currentScene = FXGL.getSceneService().getCurrentScene();
         if (currentScene instanceof QuizSubScene) {
@@ -240,7 +240,7 @@ public class InputHandler {
                 FXGL.getSceneService().popSubScene();
             });
         } else if (currentScene instanceof EndGameSubScene) {
-            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+            if (player.getInt("playerNum") == 1) {
                 ((EndGameSubScene) currentScene).getTeamName().updateFirst();
             } else {
                 ((EndGameSubScene) currentScene).getTeamName().updateSecond();

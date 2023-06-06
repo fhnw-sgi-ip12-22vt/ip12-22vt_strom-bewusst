@@ -1,168 +1,132 @@
 package ch.fhnw.strombewusst.components;
 
-import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
-import com.almasb.fxgl.texture.AnimatedTexture;
-import com.almasb.fxgl.texture.AnimationChannel;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Point2D;
-import javafx.util.Duration;
-
-import static com.almasb.fxgl.dsl.FXGL.image;
 
 /**
- * Implements the behaviour of player entities. This includes movement and animation.
+ * Implements the behaviour of player entities.
  */
 public class PlayerComponent extends Component {
     private static final int PLAYER_SPEED = 300;
 
-    private final int playerNum;
-
     private boolean physicsReady = false;
 
-    private PhysicsComponent physics;
+    private final PhysicsComponent physics;
 
-    private final AnimatedTexture texture;
-    private final AnimationChannel animIdle, animWalk;
+    private boolean movingRight = false;
+    private boolean movingLeft = false;
+    private boolean movingUp = false;
+    private boolean movingDown = false;
 
-    public PlayerComponent(int playerNum) {
-        this.playerNum = playerNum;
-        animIdle = new AnimationChannel(
-                image("player" + playerNum + ".png"),
-                5,
-                42,
-                70,
-                Duration.seconds(1.5),
-                0,
-                1
-        );
-        animWalk = new AnimationChannel(
-                image("player" + playerNum + ".png"),
-                5,
-                42,
-                70,
-                Duration.seconds(0.8),
-                1,
-                4
-        );
+    private final ObjectProperty<Point2D> velocity = new SimpleObjectProperty<>(Point2D.ZERO);
 
-        texture = new AnimatedTexture(animIdle);
+    /**
+     * returns the velocity property
+     * @return the velocity property
+     */
+    public ObjectProperty<Point2D> velocityProperty() {
+        return velocity;
     }
 
-    public PlayerComponent() {
-        playerNum = 0;
-
-        texture = null;
-        animIdle = null;
-        animWalk = null;
-    }
-
-    @Override
-    public void onAdded() {
-        entity.getTransformComponent().setScaleOrigin(new Point2D(32, 32));
-        texture.loopAnimationChannel(animIdle);
-        entity.getViewComponent().addChild(texture);
-
+    public PlayerComponent(PhysicsComponent physics) {
+        this.physics = physics;
         physics.setOnPhysicsInitialized(() -> physicsReady = true);
     }
 
     @Override
     public void onUpdate(double tpf) {
-        if (physics.isMoving()) {
-            if (texture.getAnimationChannel() != animWalk) {
-                texture.loopAnimationChannel(animWalk);
-            }
-        } else {
-            if (texture.getAnimationChannel() != animIdle) {
-                texture.loopAnimationChannel(animIdle);
-            }
+        if (!physicsReady) {
+            return;
         }
+
+        if (!physics.getLinearVelocity().equals(velocity.get())) {
+            physics.setLinearVelocity(velocity.get());
+        }
+    }
+
+    /**
+     * Creates a velocity vector for the player according to the moving... booleans
+     * @return the direction velocity vector
+     */
+    private Point2D getVelocity() {
+        double velocityX = 0;
+        double velocityY = 0;
+
+        if (movingRight) {
+            velocityX = PLAYER_SPEED;
+        } else if (movingLeft) {
+            velocityX = -PLAYER_SPEED;
+        }
+
+        if (movingDown) {
+            velocityY = PLAYER_SPEED;
+        } else if (movingUp) {
+            velocityY = -PLAYER_SPEED;
+        }
+
+        if ((movingRight || movingLeft) && (movingUp || movingDown)) {
+            double diagonalMultiplier = Math.sqrt(2) / 2d;
+            velocityX *= diagonalMultiplier;
+            velocityY *= diagonalMultiplier;
+        }
+
+        return new Point2D(velocityX, velocityY);
     }
 
     /**
      * Applies a velocity to the player entity to move it right.
      */
     public void moveRight() {
-        if (!isPhysicsReady()) {
-            return;
-        }
-        if (physics.isMovingY()) {
-            physics.setVelocityX(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
-        } else {
-            physics.setVelocityX(PLAYER_SPEED);
-        }
-        // BUGFIX: avoid wrong-thread crash
-        FXGL.runOnce(() -> getEntity().setScaleX(1), Duration.ZERO);
+        movingRight = true;
+        movingLeft = false;
+        velocity.set(getVelocity());
     }
 
     /**
      * Applies a velocity to the player entity to move it left.
      */
     public void moveLeft() {
-        if (!isPhysicsReady()) {
-            return;
-        }
-        if (physics.isMovingY()) {
-            physics.setVelocityX(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
-        } else {
-            physics.setVelocityX(-PLAYER_SPEED);
-        }
-        FXGL.runOnce(() -> getEntity().setScaleX(-1), Duration.ZERO);
+        movingLeft = true;
+        movingRight = false;
+        velocity.set(getVelocity());
     }
 
     /**
      * Applies a velocity to the player entity to move it up.
      */
     public void moveUp() {
-        if (!isPhysicsReady()) {
-            return;
-        }
-        if (physics.isMovingX()) {
-            physics.setVelocityY(-Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
-        } else {
-            physics.setVelocityY(-PLAYER_SPEED);
-        }
+        movingUp = true;
+        movingDown = false;
+        velocity.set(getVelocity());
     }
 
     /**
      * Applies a velocity to the player entity to move it down.
      */
     public void moveDown() {
-        if (!isPhysicsReady()) {
-            return;
-        }
-        if (physics.isMovingX()) {
-            physics.setVelocityY(Math.sqrt(PLAYER_SPEED * PLAYER_SPEED / 2f));
-        } else {
-            physics.setVelocityY(PLAYER_SPEED);
-        }
+        movingDown = true;
+        movingUp = false;
+        velocity.set(getVelocity());
     }
 
     /**
      * Resets the velocity on the player entity to stop moving horizontally.
      */
     public void stopMovingX() {
-        if (!isPhysicsReady()) {
-            return;
-        }
-        physics.setVelocityX(0);
+        movingRight = false;
+        movingLeft = false;
+        velocity.set(getVelocity());
     }
 
     /**
      * Resets the velocity on the player entity to stop moving vertically.
      */
     public void stopMovingY() {
-        if (!isPhysicsReady()) {
-            return;
-        }
-        physics.setVelocityY(0);
-    }
-
-    public int getPlayerNum() {
-        return playerNum;
-    }
-
-    public boolean isPhysicsReady() {
-        return physicsReady;
+        movingUp = false;
+        movingDown = false;
+        velocity.set(getVelocity());
     }
 }

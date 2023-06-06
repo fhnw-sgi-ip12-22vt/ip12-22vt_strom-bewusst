@@ -281,7 +281,7 @@ public class StromBewusst extends GameApplication {
     private UserAction getUserAction(String name, Runnable onAction, Runnable onActionEnd) {
         return new UserAction(name) {
             @Override
-            protected void onAction() {
+            protected void onActionBegin() {
                 onAction.run();
             }
 

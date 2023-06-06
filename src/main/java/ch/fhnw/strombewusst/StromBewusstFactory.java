@@ -15,6 +15,9 @@ import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
 import com.almasb.fxgl.texture.Texture;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
@@ -46,17 +49,60 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
+        int playerNum = data.get("playerNum");
+
         PhysicsComponent physics = new PhysicsComponent();
         physics.setBodyType(BodyType.DYNAMIC);
 
-        return entityBuilder(data)
+        PlayerComponent playerComponent = new PlayerComponent(physics);
+
+        AnimationChannel animIdle = new AnimationChannel(
+                FXGL.image("player" + playerNum + ".png"),
+                5,
+                42,
+                70,
+                Duration.seconds(1.5),
+                0,
+                1
+        );
+        AnimationChannel animWalk = new AnimationChannel(
+                FXGL.image("player" + playerNum + ".png"),
+                5,
+                42,
+                70,
+                Duration.seconds(0.8),
+                1,
+                4
+        );
+        AnimatedTexture texture = new AnimatedTexture(animIdle);
+
+        Entity player = entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .with(physics)
-                .with(new PlayerComponent(data.get("playerNum")))
+                .with(playerComponent)
                 .bbox(new HitBox(BoundingShape.box(40, 64)))
                 .with(new CollidableComponent(true))
                 .zIndex(100)
+                .with("playerNum", playerNum)
                 .build();
+
+        texture.loopAnimationChannel(animIdle);
+        player.getViewComponent().addChild(texture);
+        player.getTransformComponent().setScaleOrigin(new Point2D(16, 16));
+
+        playerComponent.velocityProperty().addListener(((observable, oldValue, newValue) -> {
+            if (Point2D.ZERO.equals(newValue)) {
+                texture.loopAnimationChannel(animIdle);
+            } else if (newValue.getX() > 0) {
+                texture.loopAnimationChannel(animWalk);
+                player.setScaleX(1);
+            } else {
+                texture.loopAnimationChannel(animWalk);
+                player.setScaleX(-1);
+            }
+        }));
+
+        return player;
     }
 
     @Spawns("buttonicon")

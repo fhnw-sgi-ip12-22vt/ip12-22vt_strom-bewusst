@@ -24,7 +24,7 @@ public class PlayerDeskHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity player, Entity desk) {
         int deskNum = desk.getComponent(DeskComponent.class).getDeskNum();
 
-        if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+        if (player.getInt("playerNum") == 1) {
             FXGL.set("player1InfoText", infoBoxes.get(deskNum));
         } else {
             FXGL.set("player2InfoText", infoBoxes.get(deskNum));
@@ -34,7 +34,7 @@ public class PlayerDeskHandler extends CollisionHandler {
     protected void onCollisionEnd(Entity player, Entity desk) {
         try {
             String varName;
-            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+            if (player.getInt("playerNum") == 1) {
                 varName = "player1InfoText";
             } else {
                 varName = "player2InfoText";

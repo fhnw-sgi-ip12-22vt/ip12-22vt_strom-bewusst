@@ -12,21 +12,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
-    private static class DummyPlayerComponent extends PlayerComponent {
-
-        @Override
-        public void onAdded() {
-            // Override the onAdded method, to avoid calling any view / UI related code
-        }
-
-        public boolean isPhysicsReady() {
-            return true;
-        }
-    }
-
-    PhysicsComponent physics;
-    PhysicsWorld physicsWorld;
-    Entity player;
+    private PhysicsComponent physics;
+    private PhysicsWorld physicsWorld;
+    private Entity player;
 
     @BeforeEach
     void entitySetup() {
@@ -36,7 +24,7 @@ public class PlayerTest {
         player = new Entity();
         player.setType(EntityType.PLAYER);
         player.addComponent(physics);
-        player.addComponent(new DummyPlayerComponent());
+        player.addComponent(new PlayerComponent(physics));
 
         physicsWorld = new PhysicsWorld(100, 10);
         physicsWorld.setGravity(0, 0);
@@ -49,12 +37,14 @@ public class PlayerTest {
 
     @Test
     void playerUpTest() {
-        player.getComponent(DummyPlayerComponent.class).moveUp();
+        player.getComponent(PlayerComponent.class).moveUp();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
-        player.getComponent(DummyPlayerComponent.class).stopMovingY();
+        player.getComponent(PlayerComponent.class).onUpdate(1);
+        player.getComponent(PlayerComponent.class).stopMovingY();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
+        player.getComponent(PlayerComponent.class).onUpdate(1);
         Point2D afterMoveUpPosition = player.getPosition();
 
         assertEquals(new Point2D(0, -20), afterMoveUpPosition);
@@ -62,16 +52,14 @@ public class PlayerTest {
 
     @Test
     void playerLeftTest() {
-        try {
-            player.getComponent(DummyPlayerComponent.class).moveLeft();
-        } catch (kotlin.UninitializedPropertyAccessException ignored) {
-            // Exception happens because of the FXGL.runOnce() call
-        }
+        player.getComponent(PlayerComponent.class).moveLeft();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
-        player.getComponent(DummyPlayerComponent.class).stopMovingX();
+        player.getComponent(PlayerComponent.class).onUpdate(1);
+        player.getComponent(PlayerComponent.class).stopMovingX();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
+        player.getComponent(PlayerComponent.class).onUpdate(1);
         Point2D afterMoveLeftPosition = player.getPosition();
 
         assertEquals(new Point2D(-20, 0), afterMoveLeftPosition);
@@ -79,12 +67,14 @@ public class PlayerTest {
 
     @Test
     void playerDownTest() {
-        player.getComponent(DummyPlayerComponent.class).moveDown();
+        player.getComponent(PlayerComponent.class).moveDown();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
-        player.getComponent(DummyPlayerComponent.class).stopMovingY();
+        player.getComponent(PlayerComponent.class).onUpdate(1);
+        player.getComponent(PlayerComponent.class).stopMovingY();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
+        player.getComponent(PlayerComponent.class).onUpdate(1);
         Point2D afterMoveDownPosition = player.getPosition();
 
         assertEquals(new Point2D(0, 20), afterMoveDownPosition);
@@ -92,16 +82,14 @@ public class PlayerTest {
 
     @Test
     void playerRightTest() {
-        try {
-            player.getComponent(DummyPlayerComponent.class).moveRight();
-        } catch (kotlin.UninitializedPropertyAccessException ignored) {
-            // Exception happens because of the FXGL.runOnce() call
-        }
+        player.getComponent(PlayerComponent.class).moveRight();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
-        player.getComponent(DummyPlayerComponent.class).stopMovingX();
+        player.getComponent(PlayerComponent.class).onUpdate(1);
+        player.getComponent(PlayerComponent.class).stopMovingX();
         physicsWorld.onUpdate(1.0);
         physics.onUpdate(1.0);
+        player.getComponent(PlayerComponent.class).onUpdate(1);
         Point2D afterMoveRightPosition = player.getPosition();
 
         assertEquals(new Point2D(20, 0), afterMoveRightPosition);
