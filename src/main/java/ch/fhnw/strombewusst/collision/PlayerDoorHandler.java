@@ -15,12 +15,14 @@ public class PlayerDoorHandler extends CollisionHandler {
 
     private Entity question;
 
+    @Override
     protected void onCollisionBegin(Entity player, Entity door) {
         if (door.getBoolean("open")) {
             question = FXGL.spawn("buttonicon", door.getX() + 50, door.getY() + 30);
         }
     }
 
+    @Override
     protected void onCollisionEnd(Entity player, Entity door) {
         if (question != null) {
             question.removeFromWorld();

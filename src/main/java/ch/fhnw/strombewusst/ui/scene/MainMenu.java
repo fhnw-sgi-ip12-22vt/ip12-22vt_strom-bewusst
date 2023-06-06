@@ -37,7 +37,6 @@ public class MainMenu extends FXGLMenu {
         bg.setFitHeight(getAppHeight());
 
         Label title = new Label("Leaderboard");
-        //title.getStyleClass().add("title");
         title.setTextFill(Color.WHITE);
         title.setFont(FXGL.getAssetLoader().loadFont(FXGL.getSettings().getFontText()).newFont(50));
 

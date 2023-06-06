@@ -47,13 +47,13 @@ public class QuizSubScene extends SubScene {
         }
     }
 
-    private final int plugP1X = 925;
+    private static final int PLUG_P1_X = 925;
 
-    private final int plugP1Y = 590;
+    private static final int PLUG_P1_Y = 590;
 
-    private final int plugP2X = 1100;
+    private static final int PLUG_P2_X = 1100;
 
-    private final int plugP2Y = 590;
+    private static final int PLUG_P2_Y = 590;
 
     private int falseAnswerCount = 0;
     private Node[] currentQuiz;
@@ -106,14 +106,14 @@ public class QuizSubScene extends SubScene {
     void setImagePlug(String image, int player) {
         if (player == 1) {
             textureAnswerP1 = getAssetLoader().loadTexture(image);
-            textureAnswerP1.setTranslateX(plugP1X);
-            textureAnswerP1.setTranslateY(plugP1Y);
+            textureAnswerP1.setTranslateX(PLUG_P1_X);
+            textureAnswerP1.setTranslateY(PLUG_P1_Y);
             textureAnswerP1.setScaleX(0.75);
             textureAnswerP1.setScaleY(0.75);
         } else {
             textureAnswerP2 = getAssetLoader().loadTexture(image);
-            textureAnswerP2.setTranslateX(plugP2X);
-            textureAnswerP2.setTranslateY(plugP2Y);
+            textureAnswerP2.setTranslateX(PLUG_P2_X);
+            textureAnswerP2.setTranslateY(PLUG_P2_Y);
             textureAnswerP2.setScaleX(0.75);
             textureAnswerP2.setScaleY(0.75);
         }
