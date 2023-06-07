@@ -31,6 +31,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -385,7 +386,7 @@ public class StromBewusst extends GameApplication {
             log.fatal("Uncaught Exception:", exception);
             log.fatal("Fatal Error, restarting game");
 
-            FXGL.getGameController().gotoMainMenu();
+            FXGL.runOnce(FXGL.getGameController()::gotoMainMenu, Duration.ZERO);
 
             // Pushing a notification so the user has an indication of what happened
             // This looks very weird, since notifications are animated and look a lot like what an achievement.

@@ -85,17 +85,16 @@ public class StromBewusstFactory implements EntityFactory {
 
         texture.loopAnimationChannel(animIdle);
         player.getViewComponent().addChild(texture);
-        player.getTransformComponent().setScaleOrigin(new Point2D(16, 16));
 
         playerComponent.velocityProperty().addListener(((observable, oldValue, newValue) -> {
             if (Point2D.ZERO.equals(newValue)) {
                 texture.loopAnimationChannel(animIdle);
             } else if (newValue.getX() > 0) {
                 texture.loopAnimationChannel(animWalk);
-                player.setScaleX(1);
+                texture.setScaleX(1);
             } else {
                 texture.loopAnimationChannel(animWalk);
-                player.setScaleX(-1);
+                texture.setScaleX(-1);
             }
         }));
 
