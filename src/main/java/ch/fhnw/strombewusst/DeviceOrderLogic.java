@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Implements the logic of the device order logic puzzle.
@@ -28,8 +27,6 @@ public class DeviceOrderLogic {
     public static final int QUEUESIZE = 6;
     private int roundsLeft;
 
-    private boolean doorOpen = !(Config.IS_RELEASE) || Config.IS_DEMO;
-
     public DeviceOrderLogic(int roundsTotal) {
         this.roundsLeft = roundsTotal;
     }
@@ -39,7 +36,7 @@ public class DeviceOrderLogic {
      */
     public void initDevices() {
         allDevices = Arrays.stream(FXGL.getAssetLoader().loadJSON(Config.DEVICES_JSON_PATH, DeviceOrderDevice[].class)
-                .get()).collect(Collectors.toList());
+                .orElse(new DeviceOrderDevice[]{})).toList();
 
         devices = new ArrayList<>(allDevices);
         Collections.shuffle(devices);
@@ -48,11 +45,7 @@ public class DeviceOrderLogic {
     }
 
     public boolean isDeviceOrderDone() {
-        return !(roundsLeft > 0);
-    }
-
-    public void setDoorOpen(boolean doorOpen) {
-        this.doorOpen = doorOpen;
+        return roundsLeft <= 0;
     }
 
     /**
@@ -112,9 +105,6 @@ public class DeviceOrderLogic {
         return playerAnswer.size();
     }
 
-    public boolean isDoorOpen() {
-        return doorOpen;
-    }
 
     /**
      * Compares the current queue to the solution.

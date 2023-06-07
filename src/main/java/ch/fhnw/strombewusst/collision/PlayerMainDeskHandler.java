@@ -15,8 +15,9 @@ public class PlayerMainDeskHandler extends CollisionHandler {
         super(EntityType.PLAYER, EntityType.MAINDESK);
     }
 
-    Entity question;
+    private Entity question;
 
+    @Override
     protected void onCollisionBegin(Entity player, Entity desk) {
         if (FXGL.geti("level") == 1 && !FXGL.<QuizLogic>geto("quizLogic").quizDone()) {
             question = FXGL.spawn("buttonicon", desk.getX() + 50, desk.getY() - 32);
@@ -25,6 +26,7 @@ public class PlayerMainDeskHandler extends CollisionHandler {
         }
     }
 
+    @Override
     protected void onCollisionEnd(Entity player, Entity desk) {
         if (question != null) {
             question.removeFromWorld();

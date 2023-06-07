@@ -7,12 +7,14 @@ import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.entity.components.ViewComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
+import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
@@ -44,17 +46,59 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
+        int playerNum = data.get("playerNum");
+
         PhysicsComponent physics = new PhysicsComponent();
         physics.setBodyType(BodyType.DYNAMIC);
 
-        return entityBuilder(data)
+        PlayerComponent playerComponent = new PlayerComponent(physics);
+
+        AnimationChannel animIdle = new AnimationChannel(
+                FXGL.image("player" + playerNum + ".png"),
+                5,
+                42,
+                70,
+                Duration.seconds(1.5),
+                0,
+                1
+        );
+        AnimationChannel animWalk = new AnimationChannel(
+                FXGL.image("player" + playerNum + ".png"),
+                5,
+                42,
+                70,
+                Duration.seconds(0.8),
+                1,
+                4
+        );
+        AnimatedTexture texture = new AnimatedTexture(animIdle);
+
+        Entity player = entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .with(physics)
-                .with(new PlayerComponent(data.get("playerNum")))
+                .with(playerComponent)
                 .bbox(new HitBox(BoundingShape.box(40, 64)))
                 .with(new CollidableComponent(true))
                 .zIndex(100)
+                .with("playerNum", playerNum)
                 .build();
+
+        texture.loopAnimationChannel(animIdle);
+        player.getViewComponent().addChild(texture);
+
+        playerComponent.velocityProperty().addListener(((observable, oldValue, newValue) -> {
+            if (Point2D.ZERO.equals(newValue)) {
+                texture.loopAnimationChannel(animIdle);
+            } else if (newValue.getX() > 0) {
+                texture.loopAnimationChannel(animWalk);
+                texture.setScaleX(1);
+            } else {
+                texture.loopAnimationChannel(animWalk);
+                texture.setScaleX(-1);
+            }
+        }));
+
+        return player;
     }
 
     @Spawns("buttonicon")
@@ -131,13 +175,28 @@ public class StromBewusstFactory implements EntityFactory {
 
     @Spawns("door")
     public Entity newDoor(SpawnData data) {
-        return entityBuilder(data)
+        Texture closedDoorTexture = FXGL.getAssetLoader().loadTexture("door.png");
+        Texture openDoorTexture = FXGL.getAssetLoader().loadTexture("door-open.png");
+
+        Entity door = entityBuilder(data)
                 .type(EntityType.DOOR)
-                .view("door.png")
+                .view(closedDoorTexture)
                 .bbox(new HitBox(new Point2D(0, 0), BoundingShape.box(64, 50)))
                 .with(new CollidableComponent(true))
                 .zIndex(1)
+                .with("open", false)
                 .build();
+
+        ViewComponent doorViewComponent = door.getViewComponent();
+        door.getProperties().booleanProperty("open")
+                .addListener(((observable, oldValue, newValue) -> {
+                    doorViewComponent.clearChildren();
+                    doorViewComponent.addChild(Boolean.TRUE.equals(newValue) ? openDoorTexture : closedDoorTexture);
+                }));
+
+        door.setProperty("open", !(Config.IS_RELEASE) || Config.IS_DEMO);
+
+        return door;
     }
 
     @Spawns("prev-door")
@@ -356,6 +415,7 @@ public class StromBewusstFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .view(texture)
                 .zIndex(90)
+                .with("open", true)
                 .build();
     }
     @Spawns("outside")

@@ -7,7 +7,6 @@ import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.ui.UIHelper;
 import com.almasb.fxgl.animation.AnimationBuilder;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.components.ViewComponent;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -25,7 +24,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +42,8 @@ import static com.almasb.fxgl.dsl.FXGL.getSceneService;
  * gets to the main desk in the room button 1 is pressed.
  */
 public class DeviceOrderSubScene extends SubScene {
-    private final Map<ImageType, Texture> currentTextures = new HashMap<>();
-    private final Map<ImageType, DeviceOrderDevice> currentDevices = new HashMap<>();
+    private final Map<ImageType, Texture> currentTextures = new EnumMap<>(ImageType.class);
+    private final Map<ImageType, DeviceOrderDevice> currentDevices = new EnumMap<>(ImageType.class);
     private final DeviceOrderLogic deviceOrderLogic;
     private final ImageType[][] plugMap = {
             {ImageType.PLAYERONERED, ImageType.PLAYERONEYELLOW, ImageType.PLAYERONEBLUE},
@@ -68,16 +67,18 @@ public class DeviceOrderSubScene extends SubScene {
         bg.setFitWidth(getAppWidth());
         bg.setFitHeight(getAppHeight());
 
+        String cssClassName = "message";
+
         Texture selectButton = getAssetLoader().loadTexture("red-button-icon-single.png", 48, 48);
         Text selectText = new Text("Antworten prüfen");
-        selectText.getStyleClass().add("message");
+        selectText.getStyleClass().add(cssClassName);
         HBox selectHBox = new HBox(selectButton, selectText);
         selectHBox.setAlignment(Pos.CENTER_LEFT);
         selectHBox.setSpacing(20);
 
         Texture backButton = getAssetLoader().loadTexture("blue-button-icon-single.png", 48, 48);
         Text backText = new Text("Zurück");
-        backText.getStyleClass().add("message");
+        backText.getStyleClass().add(cssClassName);
         HBox backHBox = new HBox(backButton, backText);
         backHBox.setAlignment(Pos.CENTER_LEFT);
         backHBox.setSpacing(20);
@@ -88,11 +89,11 @@ public class DeviceOrderSubScene extends SubScene {
 
         HBox response = getTextBox("Rückmeldung", BoxType.RESPONSE, Color.BLACK, FontWeight.BOLD);
         HBox playerOne = getTextBox("Player 1", BoxType.PLAYERONE, Color.BLACK, FontWeight.BOLD);
-        playerOne.getStyleClass().add("message");
+        playerOne.getStyleClass().add(cssClassName);
         HBox playerTwo = getTextBox("Player 2", BoxType.PLAYERTWO, Color.BLACK, FontWeight.BOLD);
-        playerTwo.getStyleClass().add("message");
+        playerTwo.getStyleClass().add(cssClassName);
         HBox answerQueue = getTextBox("Eingabe", BoxType.QUEUEINPUT, Color.BLACK, FontWeight.BOLD);
-        answerQueue.getStyleClass().add("message");
+        answerQueue.getStyleClass().add(cssClassName);
 
         HBox scoreLabel = UIHelper.createScoreLabel(FXGL.geto("score"), 950, 50);
         HBox timerLabel = UIHelper.createTimerLabel(FXGL.geto("timer"), 950, 115);
@@ -214,7 +215,6 @@ public class DeviceOrderSubScene extends SubScene {
 
         boolean[] solution = deviceOrderLogic.compareAnswerSolution();
         Set<DeviceOrderDevice> falseDevice = new HashSet<>();
-        String msg = "";
 
         for (int i = 0; i < solution.length; i++) {
             if (!solution[i]) {
@@ -265,11 +265,12 @@ public class DeviceOrderSubScene extends SubScene {
                     .fadeOut(popUp)
                     .buildAndPlay(this);
         } else {
+            StringBuilder message = new StringBuilder();
             for (DeviceOrderDevice d : falseDevice) {
-                msg += d.device() + "\n";
+                message.append(d.device()).append("\n");
             }
 
-            Text text = FXGL.getUIFactoryService().newText(msg, Color.CRIMSON, FontType.UI, 11);
+            Text text = FXGL.getUIFactoryService().newText(message.toString(), Color.CRIMSON, FontType.UI, 11);
             text.setLineSpacing(4);
             popUp.getChildren().add(text);
             popUp.opacityProperty().set(1);
@@ -319,15 +320,10 @@ public class DeviceOrderSubScene extends SubScene {
 
     private void nextQueue() {
         if (deviceOrderLogic.isDeviceOrderDone()) {
-            deviceOrderLogic.setDoorOpen(true);
             getSceneService().popSubScene();
 
             FXGL.getGameWorld().removeEntities(FXGL.getGameWorld().getEntitiesByType(EntityType.BUTTON));
-
-            Texture openDoorTexture = FXGL.getAssetLoader().loadTexture("door-open.png");
-            ViewComponent doorViewComponent = FXGL.getGameWorld().getSingleton(EntityType.DOOR).getViewComponent();
-            doorViewComponent.clearChildren();
-            doorViewComponent.addChild(openDoorTexture);
+            FXGL.getGameWorld().getSingleton(EntityType.DOOR).setProperty("open", true);
         } else {
             clearDeviceOrder();
             falseAnswer = 0;
@@ -361,7 +357,9 @@ public class DeviceOrderSubScene extends SubScene {
         QUEUEINPUT(65, 545, 30),
         POPUP(950, 240, 15),
         SCORETABLE(950, 30, 44);
-        final int x, y, width;
+        private final int x;
+        private final int y;
+        private final int width;
 
         BoxType(int x, int y, int width) {
             this.x = x;
@@ -383,7 +381,8 @@ public class DeviceOrderSubScene extends SubScene {
         QUEUEFOURTH(500, 590),
         QUEUEFIFTH(625, 590),
         QUEUESIXTH(750, 590);
-        final int x, y;
+        private final int x;
+        private final int y;
 
         ImageType(int x, int y) {
             this.x = x;

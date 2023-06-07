@@ -3,7 +3,6 @@ package ch.fhnw.strombewusst.collision;
 import ch.fhnw.strombewusst.Config;
 import ch.fhnw.strombewusst.EntityType;
 import ch.fhnw.strombewusst.components.DeviceComponent;
-import ch.fhnw.strombewusst.components.PlayerComponent;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
@@ -24,17 +23,18 @@ public class PlayerDeviceHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity player, Entity device) {
         int deviceNum = device.getComponent(DeviceComponent.class).getDeviceNum();
 
-        if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+        if (player.getInt("playerNum") == 1) {
             FXGL.set("player1InfoText", infoBoxes.get(deviceNum));
         } else {
             FXGL.set("player2InfoText", infoBoxes.get(deviceNum));
         }
     }
 
+    @Override
     protected void onCollisionEnd(Entity player, Entity device) {
         try {
             String varName;
-            if (player.getComponent(PlayerComponent.class).getPlayerNum() == 1) {
+            if (player.getInt("playerNum") == 1) {
                 varName = "player1InfoText";
             } else {
                 varName = "player2InfoText";

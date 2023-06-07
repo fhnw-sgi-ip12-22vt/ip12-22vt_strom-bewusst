@@ -6,7 +6,6 @@ import ch.fhnw.strombewusst.QuizQuestion;
 import ch.fhnw.strombewusst.Score;
 import ch.fhnw.strombewusst.ui.UIHelper;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.components.ViewComponent;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
@@ -48,13 +47,13 @@ public class QuizSubScene extends SubScene {
         }
     }
 
-    private final int plugP1X = 925;
+    private static final int PLUG_P1_X = 925;
 
-    private final int plugP1Y = 590;
+    private static final int PLUG_P1_Y = 590;
 
-    private final int plugP2X = 1100;
+    private static final int PLUG_P2_X = 1100;
 
-    private final int plugP2Y = 590;
+    private static final int PLUG_P2_Y = 590;
 
     private int falseAnswerCount = 0;
     private Node[] currentQuiz;
@@ -107,14 +106,14 @@ public class QuizSubScene extends SubScene {
     void setImagePlug(String image, int player) {
         if (player == 1) {
             textureAnswerP1 = getAssetLoader().loadTexture(image);
-            textureAnswerP1.setTranslateX(plugP1X);
-            textureAnswerP1.setTranslateY(plugP1Y);
+            textureAnswerP1.setTranslateX(PLUG_P1_X);
+            textureAnswerP1.setTranslateY(PLUG_P1_Y);
             textureAnswerP1.setScaleX(0.75);
             textureAnswerP1.setScaleY(0.75);
         } else {
             textureAnswerP2 = getAssetLoader().loadTexture(image);
-            textureAnswerP2.setTranslateX(plugP2X);
-            textureAnswerP2.setTranslateY(plugP2Y);
+            textureAnswerP2.setTranslateX(PLUG_P2_X);
+            textureAnswerP2.setTranslateY(PLUG_P2_Y);
             textureAnswerP2.setScaleX(0.75);
             textureAnswerP2.setScaleY(0.75);
         }
@@ -298,15 +297,10 @@ public class QuizSubScene extends SubScene {
         quizLogic.resetAnswers();
 
         if (quizLogic.quizDone()) {
-            quizLogic.setDoorOpen(true);
             getSceneService().popSubScene();
 
             FXGL.getGameWorld().removeEntities(FXGL.getGameWorld().getEntitiesByType(EntityType.BUTTON));
-
-            Texture openDoorTexture = FXGL.getAssetLoader().loadTexture("door-open.png");
-            ViewComponent doorViewComponent = FXGL.getGameWorld().getSingleton(EntityType.DOOR).getViewComponent();
-            doorViewComponent.clearChildren();
-            doorViewComponent.addChild(openDoorTexture);
+            FXGL.getGameWorld().getSingleton(EntityType.DOOR).setProperty("open", true);
         } else {
             clearQuiz();
             currentQuiz = buildQuiz(quizLogic.getQuestion());
