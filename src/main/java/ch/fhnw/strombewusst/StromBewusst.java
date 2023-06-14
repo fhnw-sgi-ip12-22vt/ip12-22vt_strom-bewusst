@@ -14,12 +14,15 @@ import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.CursorInfo;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.ReadOnlyGameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.logging.FileOutput;
 import com.almasb.fxgl.logging.Logger;
+import com.almasb.fxgl.logging.LoggerLevel;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.ui.FontType;
 import javafx.geometry.Pos;
@@ -67,6 +70,8 @@ public class StromBewusst extends GameApplication {
     private Controller p2Controller;
 
     private List<Node> uiNodes = new ArrayList<>();
+
+    private FileOutput fileOutput;
 
 
     /**
@@ -162,6 +167,12 @@ public class StromBewusst extends GameApplication {
                 return new MainMenu();
             }
         });
+
+        Logger.removeAllOutputs();
+        if (settings.isFileSystemWriteAllowed() && !settings.isNative()) {
+            fileOutput = new FileOutput("FXGL");
+            Logger.addOutput(fileOutput, LoggerLevel.DEBUG);
+        }
     }
 
     /**
@@ -385,6 +396,13 @@ public class StromBewusst extends GameApplication {
             Logger log = Logger.get(StromBewusst.class);
             log.fatal("Uncaught Exception:", exception);
             log.fatal("Fatal Error, restarting game");
+
+            ReadOnlyGameSettings settings = FXGL.getSettings();
+            fileOutput.close();
+            if (settings.isFileSystemWriteAllowed() && settings.isDesktop() && !settings.isNative()) {
+                fileOutput = new FileOutput("FXGL");
+                Logger.addOutput(fileOutput, LoggerLevel.DEBUG);
+            }
 
             FXGL.runOnce(FXGL.getGameController()::gotoMainMenu, Duration.ZERO);
 
